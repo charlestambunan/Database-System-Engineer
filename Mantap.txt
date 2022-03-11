@@ -1,0 +1,9 @@
+{
+  "name": "Error",
+  "body": {
+    "message": "exception: Security must be explicitly enabled when using a [basic] license. Enable security by setting [xpack.security.enabled] to [true] in the elasticsearch.yml file and restart the node.",
+    "status_code": 500
+  },
+  "message": "Internal Server Error",
+  "stack": "Error: Internal Server Error\n    at fetch_Fetch.fetchResponse (http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:56906)\n    at async http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:55074\n    at async http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:55031"
+}

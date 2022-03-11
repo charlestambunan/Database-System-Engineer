@@ -1,0 +1,79 @@
+    1  sudo dnf install cockpit
+    2  sudo systemctl enable --now cockpit.socket
+    3  sudo firewall-cmd --add-service=cockpit
+    4  sudo firewall-cmd --add-service=cockpit --permanent
+    5  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    6  sudo dnf upgrade
+    7  sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
+    8  sudo yum update
+    9  sudo yum install snapd
+   10  sudo systemctl enable --now snapd.socket
+   11  sudo ln -s /var/lib/snapd/snap /snap
+   12  sudo snap install firefox
+   13  snap install firefox
+   14  vi /etc/yum.repos.d/google-chrome.repo
+   15  yum info google-chrome-stable
+   16  yum install google-chrome-stable
+   17  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+   18  nano /etc/yum.repos.d/elasticsearch.repo
+   19  sudo dnf install --enablerepo=elasticsearch elasticsearch 
+   20  ps -p 1
+   21  sudo chkconfig --add elasticsearch
+   22  sudo -i service elasticsearch start
+   23  sudo -i service elasticsearch stop
+   24  sudo systemctl start elasticsearch.service
+   25  dnf search openjdk
+   26  sudo dnf install java-latest-openjdk.x86_64
+   27  sudo alternatives --config java
+   28  java --version
+   29  sudo vim /etc/elasticsearch/elasticsearch.yml
+   30  sudo nano /etc/elasticsearch/elasticsearch.yml
+   31  sudo reboot
+   32  ip a
+   33  history
+   34  chrome
+   35  metricbeat modules enable elasticsearch-xpack
+   36  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.17.0-x86_64.rpm
+   37  sudo rpm -vi metricbeat-7.17.0-x86_64.rpm
+   38  metricbeat modules list
+   39  metricbeat modules enable nginx
+   40  nano /etc/metricbeat/metricbeat.yml 
+   41  sudo nano /etc/elasticsearch/elasticsearch.yml
+   42  nano /etc/elasticsearch/elasticsearch.yml 
+   43  nano /etc/metricbeat/metricbeat.yml 
+   44  curl -X GET "localhost:9200/_cluster/settings?pretty"
+   45  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "xpack.monitoring.collection.enabled": true
+  }
+}
+'
+   46  metricbeat modules enable elasticsearch-xpack
+   47  nano modules.d/elasticsearch-xpack.yml
+   48  modules.d/elasticsearch-xpack.yml
+   49  nano filebeat modules enable nginx
+   50  filebeat modules enable nginx
+   51  nano modules.d/elasticsearch-xpack.yml
+   52  cd ..
+   53  cd .. 
+   54  ls -la
+   55  nano /etc/modules-load.d/elasticsearch-xpack.yml
+   56  systemctl status kibana.service 
+   57  systemctl start kibana.service 
+   58  systemctl enable kibana.service 
+   59  systemctl status kibana.service 
+   60  systemctl status kibana.service 
+   61  cd home/
+   62  cd ctambunan/
+   63  sudo service metricbeat start
+   64  sudo service metricbeat start
+   65  systemctl start metricbeat
+   66  systemctl status metricbeat
+   67  systemctl enable metricbeat
+   68  ls -la
+   69  cd Documents/
+   70  ls -la
+   71  touch installasi_metrics_beat2.txt
+   72  history installasi_metrics_beat2.txt 
+   73  history >> installasi_metrics_beat2.txt 

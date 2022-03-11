@@ -1,0 +1,52 @@
+    1  poweroff
+    2  ls -la
+    3  cd Documents/
+    4  ls -la
+    5  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    6  nano 
+    7  nano /etc/yum.repos.d/ELK.repo
+    8  yum install elasticsearch
+    9  yum install kibana
+   10  yum install logstash
+   11  ls -la
+   12  exit
+   13  ip a
+   14  ip a
+   15  poweroff
+   16  ip a
+   17  nano /etc/kibana/kibana.yml 
+   18  firewall-cmd --permanent --add-port=5601/tcp
+   19  firewall-cmd --reload
+   20  firewall-cmd --list-port
+   21  ip a
+   22  nano /etc/kibana/kibana.yml 
+   23  systemctl enable kibana.service 
+   24  systemctl start kibana.service 
+   25  systemctl status kibana.service 
+   26  nano /etc/kibana/kibana.yml 
+   27  firewall-cmd --permanent --add-port=5601/tcp
+   28  firewall-cmd --reload'
+
+   29  firewall-cmd --reload
+   30  firewall-cmd --list-port
+   31  firewall-cmd --permanent --add-port=5700/tcp
+   32  firewall-cmd --reload
+   33  firewall-cmd --list-port
+   34  ip a
+   35  systemctl status kibana.service 
+   36  systemctl stop kibana.service 
+   37  systemctl status 'kibana.service 
+   38  systemctl enable kibana.service 
+   39  systemctl status kibana.service 
+   40  systemctl start kibana.service 
+   41  systemctl status kibana.service 
+   42  wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+   43  nano /etc/elasticsearch/elasticsearch.yml 
+   44  systemctl restart elasticsearch.service 
+   45  systemctl status elasticsearch.service 
+   46  ls -la
+   47  mv google-chrome-stable_current_x86_64.rpm Documents/ElasticSearch03/
+   48  ls -la
+   49  cd Documents/ElasticSearch03/
+   50  ls -la
+   51  history >> ELKConfigurationDatabase.txt

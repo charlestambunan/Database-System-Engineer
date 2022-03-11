@@ -1,0 +1,367 @@
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan: 
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[root@fedora ctambunan]# history
+    1  sudo dnf install cockpit
+    2  sudo systemctl enable --now cockpit.socket
+    3  sudo firewall-cmd --add-service=cockpit
+    4  sudo firewall-cmd --add-service=cockpit --permanent
+    5  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    6  sudo dnf upgrade
+    7  sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
+    8  sudo yum update
+    9  sudo yum install snapd
+   10  sudo systemctl enable --now snapd.socket
+   11  sudo ln -s /var/lib/snapd/snap /snap
+   12  sudo snap install firefox
+   13  snap install firefox
+   14  vi /etc/yum.repos.d/google-chrome.repo
+   15  yum info google-chrome-stable
+   16  yum install google-chrome-stable
+   17  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+   18  nano /etc/yum.repos.d/elasticsearch.repo
+   19  sudo dnf install --enablerepo=elasticsearch elasticsearch 
+   20  ps -p 1
+   21  sudo chkconfig --add elasticsearch
+   22  sudo -i service elasticsearch start
+   23  sudo -i service elasticsearch stop
+   24  sudo systemctl start elasticsearch.service
+   25  dnf search openjdk
+   26  sudo dnf install java-latest-openjdk.x86_64
+   27  sudo alternatives --config java
+   28  java --version
+   29  sudo vim /etc/elasticsearch/elasticsearch.yml
+   30  sudo nano /etc/elasticsearch/elasticsearch.yml
+   31  sudo reboot
+   32  ip a
+   33  history
+[root@fedora ctambunan]# chrome
+bash: chrome: command not found
+[root@fedora ctambunan]# metricbeat modules enable elasticsearch-xpack
+
+bash: metricbeat: command not found
+[root@fedora ctambunan]# curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.17.0-x86_64.rpm
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 41.5M  100 41.5M    0     0  1246k      0  0:00:34  0:00:34 --:--:-- 1993k
+[root@fedora ctambunan]# ^C
+[root@fedora ctambunan]# sudo rpm -vi metricbeat-7.17.0-x86_64.rpm
+Verifying packages...
+Preparing packages...
+metricbeat-7.17.0-1.x86_64
+[root@fedora ctambunan]# metricbeat modules list
+Enabled:
+system
+
+Disabled:
+activemq
+aerospike
+airflow
+apache
+appsearch
+aws
+awsfargate
+azure
+beat
+beat-xpack
+ceph
+ceph-mgr
+cloudfoundry
+cockroachdb
+consul
+coredns
+couchbase
+couchdb
+docker
+dropwizard
+elasticsearch
+elasticsearch-xpack
+enterprisesearch
+envoyproxy
+etcd
+gcp
+golang
+graphite
+haproxy
+http
+ibmmq
+iis
+istio
+jolokia
+kafka
+kibana
+kibana-xpack
+kubernetes
+kvm
+linux
+logstash
+logstash-xpack
+memcached
+mongodb
+mssql
+munin
+mysql
+nats
+nginx
+openmetrics
+oracle
+php_fpm
+postgresql
+prometheus
+rabbitmq
+redis
+redisenterprise
+sql
+stan
+statsd
+syncgateway
+tomcat
+traefik
+uwsgi
+vsphere
+windows
+zookeeper
+[root@fedora ctambunan]# metricbeat modules enable nginx
+Enabled nginx
+[root@fedora ctambunan]# nano /etc/metricbeat/metricbeat.yml 
+[root@fedora ctambunan]# sudo nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora ctambunan]# nano /etc/elasticsearch/elasticsearch.yml 
+[root@fedora ctambunan]# nano /etc/metricbeat/metricbeat.yml 
+[root@fedora ctambunan]# curl -X GET "localhost:9200/_cluster/settings?pretty"
+{
+  "persistent" : { },
+  "transient" : { }
+}
+[root@fedora ctambunan]# curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "xpack.monitoring.collection.enabled": true
+  }
+}
+'
+{
+  "acknowledged" : true,
+  "persistent" : {
+    "xpack" : {
+      "monitoring" : {
+        "collection" : {
+          "enabled" : "true"
+        }
+      }
+    }
+  },
+  "transient" : { }
+}
+[root@fedora ctambunan]# metricbeat modules enable elasticsearch-xpack
+Enabled elasticsearch-xpack
+[root@fedora ctambunan]# nano modules.d/elasticsearch-xpack.yml
+[root@fedora ctambunan]# modules.d/elasticsearch-xpack.yml
+bash: modules.d/elasticsearch-xpack.yml: No such file or directory
+[root@fedora ctambunan]# nano filebeat modules enable nginx
+[root@fedora ctambunan]# filebeat modules enable nginx
+bash: filebeat: command not found
+[root@fedora ctambunan]# nano modules.d/elasticsearch-xpack.yml
+[root@fedora ctambunan]# cd ..
+[root@fedora home]# cd .. 
+[root@fedora /]# ls -la
+total 28
+dr-xr-xr-x.  17 root root   236 Feb  2 14:30 .
+dr-xr-xr-x.  17 root root   236 Feb  2 14:30 ..
+lrwxrwxrwx.   1 root root     7 Jul 22  2021 bin -> usr/bin
+dr-xr-xr-x.   6 root root  4096 Feb  2 13:54 boot
+drwxr-xr-x.  20 root root  4120 Feb  2 14:55 dev
+drwxr-xr-x. 202 root root 12288 Feb  2 15:27 etc
+drwxr-xr-x.   3 root root    23 Feb  2 13:55 home
+lrwxrwxrwx.   1 root root     7 Jul 22  2021 lib -> usr/lib
+lrwxrwxrwx.   1 root root     9 Jul 22  2021 lib64 -> usr/lib64
+drwxr-xr-x.   2 root root     6 Jul 22  2021 media
+drwxr-xr-x.   3 root root    18 Feb  2 13:52 mnt
+drwxr-xr-x.   3 root root    20 Feb  2 14:39 opt
+dr-xr-xr-x. 358 root root     0 Feb  2 14:55 proc
+dr-xr-x---.   4 root root  4096 Feb  2 15:28 root
+drwxr-xr-x.  73 root root  1860 Feb  2 15:05 run
+lrwxrwxrwx.   1 root root     8 Jul 22  2021 sbin -> usr/sbin
+lrwxrwxrwx.   1 root root    19 Feb  2 14:30 snap -> /var/lib/snapd/snap
+drwxr-xr-x.   2 root root     6 Jul 22  2021 srv
+dr-xr-xr-x.  13 root root     0 Feb  2 14:55 sys
+drwxrwxrwt.  21 root root   500 Feb  2 15:42 tmp
+drwxr-xr-x.  12 root root   144 Feb  2 13:45 usr
+drwxr-xr-x.  23 root root  4096 Feb  2 14:30 var
+[root@fedora /]# nano /etc/modules-load.d/elasticsearch-xpack.yml
+[root@fedora /]# systemctl status kibana.service 
+× kibana.service - Kibana
+     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Wed 2022-02-02 15:19:23 WIB; 27min ago
+       Docs: https://www.elastic.co
+   Main PID: 4930 (code=exited, status=1/FAILURE)
+        CPU: 2.460s
+
+Feb 02 15:19:20 fedora systemd[1]: kibana.service: Main process exited, code=exited, status=1/FAILURE
+Feb 02 15:19:20 fedora systemd[1]: kibana.service: Failed with result 'exit-code'.
+Feb 02 15:19:20 fedora systemd[1]: kibana.service: Consumed 2.460s CPU time.
+Feb 02 15:19:23 fedora systemd[1]: kibana.service: Scheduled restart job, restart counter is at 3.
+Feb 02 15:19:23 fedora systemd[1]: Stopped Kibana.
+Feb 02 15:19:23 fedora systemd[1]: kibana.service: Consumed 2.460s CPU time.
+Feb 02 15:19:23 fedora systemd[1]: kibana.service: Start request repeated too quickly.
+Feb 02 15:19:23 fedora systemd[1]: kibana.service: Failed with result 'exit-code'.
+Feb 02 15:19:23 fedora systemd[1]: Failed to start Kibana.
+[root@fedora /]# systemctl start kibana.service 
+[root@fedora /]# systemctl enable kibana.service 
+[root@fedora /]# systemctl status kibana.service 
+● kibana.service - Kibana
+     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: disabled)
+     Active: activating (auto-restart) (Result: exit-code) since Wed 2022-02-02 15:47:17 WIB; 785ms ago
+       Docs: https://www.elastic.co
+    Process: 114592 ExecStart=/usr/share/kibana/bin/kibana --logging.dest=/var/log/kibana/kibana.log --pid.file=/run/kibana/kibana.pid --deprecation.skip_deprecated_settings[0]=logging.dest (code=exited, status=1/FAILURE)
+   Main PID: 114592 (code=exited, status=1/FAILURE)
+        CPU: 2.365s
+[root@fedora /]# systemctl status kibana.service 
+● kibana.service - Kibana
+     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-02-02 15:47:20 WIB; 3s ago
+       Docs: https://www.elastic.co
+   Main PID: 114612 (node)
+      Tasks: 7 (limit: 4539)
+     Memory: 93.4M
+        CPU: 2.145s
+     CGroup: /system.slice/kibana.service
+             └─114612 /usr/share/kibana/bin/../node/bin/node /usr/share/kibana/bin/../src/cli/dist --logging.dest=/var/log/kibana/kibana.log --pid.file=/run/kibana/kibana.pid "--deprecation.skip_deprecated_settings[0]=logging.dest"
+
+Feb 02 15:47:20 fedora systemd[1]: Started Kibana.
+[root@fedora /]# cd home/
+[root@fedora home]# cd ctambunan/
+[root@fedora ctambunan]# sudo service metricbeat start
+/etc/init.d/metricbeat: line 40: /etc/rc.d/init.d/functions: No such file or directory
+/etc/init.d/metricbeat: line 44: status: command not found
+Starting metricbeat: 2022-02-02T15:48:07.374+0700	INFO	instance/beat.go:686	Home path: [/usr/share/metricbeat] Config path: [/etc/metricbeat] Data path: [/var/lib/metricbeat] Logs path: [/var/log/metricbeat] Hostfs Path: [/]
+2022-02-02T15:48:07.375+0700	INFO	instance/beat.go:694	Beat ID: 8519f9f3-0227-41d0-99c6-fc766b69fa94
+2022-02-02T15:48:07.381+0700	WARN	[add_cloud_metadata]	add_cloud_metadata/provider_aws_ec2.go:79	read token request for getting IMDSv2 token returns empty: Put "http://169.254.169.254/latest/api/token": dial tcp 169.254.169.254:80: connect: connection refused. No token in the metadata request will be used.
+2022-02-02T15:48:07.382+0700	INFO	[beat]	instance/beat.go:1040	Beat info	{"system_info": {"beat": {"path": {"config": "/etc/metricbeat", "data": "/var/lib/metricbeat", "home": "/usr/share/metricbeat", "logs": "/var/log/metricbeat"}, "type": "metricbeat", "uuid": "8519f9f3-0227-41d0-99c6-fc766b69fa94"}}}
+2022-02-02T15:48:07.383+0700	INFO	[beat]	instance/beat.go:1049	Build info	{"system_info": {"build": {"commit": "93708bd74e909e57ed5d9bea3cf2065f4cc43af3", "libbeat": "7.17.0", "time": "2022-01-28T10:05:40.000Z", "version": "7.17.0"}}}
+2022-02-02T15:48:07.383+0700	INFO	[beat]	instance/beat.go:1052	Go runtime info	{"system_info": {"go": {"os":"linux","arch":"amd64","max_procs":1,"version":"go1.17.5"}}}
+2022-02-02T15:48:07.384+0700	INFO	[beat]	instance/beat.go:1056	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2022-02-02T14:56:00+07:00","containerized":false,"name":"fedora","ip":["127.0.0.1/8","::1/128","192.168.86.132/24","fe80::20c:29ff:fed6:920f/64"],"kernel_version":"5.15.18-200.fc35.x86_64","mac":["00:0c:29:d6:92:0f"],"os":{"type":"linux","family":"redhat","platform":"fedora","name":"Fedora Linux","version":"35 (Cloud Edition)","major":35,"minor":0,"patch":0},"timezone":"WIB","timezone_offset_sec":25200,"id":"c93dcbffb5c84347836a03f0012b41d5"}}}
+2022-02-02T15:48:07.384+0700	INFO	[beat]	instance/beat.go:1085	Process info	{"system_info": {"process": {"capabilities": {"inheritable":null,"permitted":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"effective":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"bounding":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"ambient":null}, "cwd": "/", "exe": "/usr/share/metricbeat/bin/metricbeat", "name": "metricbeat", "pid": 114696, "ppid": 114695, "seccomp": {"mode":"disabled","no_new_privs":false}, "start_time": "2022-02-02T15:48:05.880+0700"}}}
+2022-02-02T15:48:07.398+0700	INFO	instance/beat.go:328	Setup Beat: metricbeat; Version: 7.17.0
+2022-02-02T15:48:07.399+0700	INFO	[index-management]	idxmgmt/std.go:184	Set output.elasticsearch.index to 'metricbeat-7.17.0' as ILM is enabled.
+2022-02-02T15:48:07.399+0700	INFO	[esclientleg]	eslegclient/connection.go:105	elasticsearch url: http://localhost:9200
+2022-02-02T15:48:07.393+0700	INFO	[add_cloud_metadata]	add_cloud_metadata/add_cloud_metadata.go:101	add_cloud_metadata: hosting provider type not detected.
+2022-02-02T15:48:07.402+0700	INFO	[publisher]	pipeline/module.go:113	Beat name: fedora
+Config OK
+/etc/init.d/metricbeat: line 66: daemon: command not found
+
+[root@fedora ctambunan]# sudo service metricbeat start
+/etc/init.d/metricbeat: line 40: /etc/rc.d/init.d/functions: No such file or directory
+/etc/init.d/metricbeat: line 44: status: command not found
+Starting metricbeat: 2022-02-02T15:48:22.442+0700	INFO	instance/beat.go:686	Home path: [/usr/share/metricbeat] Config path: [/etc/metricbeat] Data path: [/var/lib/metricbeat] Logs path: [/var/log/metricbeat] Hostfs Path: [/]
+2022-02-02T15:48:22.450+0700	INFO	instance/beat.go:694	Beat ID: 8519f9f3-0227-41d0-99c6-fc766b69fa94
+2022-02-02T15:48:22.453+0700	WARN	[add_cloud_metadata]	add_cloud_metadata/provider_aws_ec2.go:79	read token request for getting IMDSv2 token returns empty: Put "http://169.254.169.254/latest/api/token": dial tcp 169.254.169.254:80: connect: connection refused. No token in the metadata request will be used.
+2022-02-02T15:48:22.455+0700	INFO	[beat]	instance/beat.go:1040	Beat info	{"system_info": {"beat": {"path": {"config": "/etc/metricbeat", "data": "/var/lib/metricbeat", "home": "/usr/share/metricbeat", "logs": "/var/log/metricbeat"}, "type": "metricbeat", "uuid": "8519f9f3-0227-41d0-99c6-fc766b69fa94"}}}
+2022-02-02T15:48:22.455+0700	INFO	[beat]	instance/beat.go:1049	Build info	{"system_info": {"build": {"commit": "93708bd74e909e57ed5d9bea3cf2065f4cc43af3", "libbeat": "7.17.0", "time": "2022-01-28T10:05:40.000Z", "version": "7.17.0"}}}
+2022-02-02T15:48:22.455+0700	INFO	[beat]	instance/beat.go:1052	Go runtime info	{"system_info": {"go": {"os":"linux","arch":"amd64","max_procs":1,"version":"go1.17.5"}}}
+2022-02-02T15:48:22.456+0700	INFO	[beat]	instance/beat.go:1056	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2022-02-02T14:56:00+07:00","containerized":false,"name":"fedora","ip":["127.0.0.1/8","::1/128","192.168.86.132/24","fe80::20c:29ff:fed6:920f/64"],"kernel_version":"5.15.18-200.fc35.x86_64","mac":["00:0c:29:d6:92:0f"],"os":{"type":"linux","family":"redhat","platform":"fedora","name":"Fedora Linux","version":"35 (Cloud Edition)","major":35,"minor":0,"patch":0},"timezone":"WIB","timezone_offset_sec":25200,"id":"c93dcbffb5c84347836a03f0012b41d5"}}}
+2022-02-02T15:48:22.458+0700	INFO	[beat]	instance/beat.go:1085	Process info	{"system_info": {"process": {"capabilities": {"inheritable":null,"permitted":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"effective":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"bounding":["chown","dac_override","dac_read_search","fowner","fsetid","kill","setgid","setuid","setpcap","linux_immutable","net_bind_service","net_broadcast","net_admin","net_raw","ipc_lock","ipc_owner","sys_module","sys_rawio","sys_chroot","sys_ptrace","sys_pacct","sys_admin","sys_boot","sys_nice","sys_resource","sys_time","sys_tty_config","mknod","lease","audit_write","audit_control","setfcap","mac_override","mac_admin","syslog","wake_alarm","block_suspend","audit_read","38","39","40"],"ambient":null}, "cwd": "/", "exe": "/usr/share/metricbeat/bin/metricbeat", "name": "metricbeat", "pid": 114717, "ppid": 114716, "seccomp": {"mode":"disabled","no_new_privs":false}, "start_time": "2022-02-02T15:48:21.610+0700"}}}
+2022-02-02T15:48:22.458+0700	INFO	instance/beat.go:328	Setup Beat: metricbeat; Version: 7.17.0
+2022-02-02T15:48:22.458+0700	INFO	[index-management]	idxmgmt/std.go:184	Set output.elasticsearch.index to 'metricbeat-7.17.0' as ILM is enabled.
+2022-02-02T15:48:22.459+0700	INFO	[esclientleg]	eslegclient/connection.go:105	elasticsearch url: http://localhost:9200
+2022-02-02T15:48:22.460+0700	INFO	[publisher]	pipeline/module.go:113	Beat name: fedora
+2022-02-02T15:48:22.506+0700	INFO	[add_cloud_metadata]	add_cloud_metadata/add_cloud_metadata.go:101	add_cloud_metadata: hosting provider type not detected.
+Config OK
+/etc/init.d/metricbeat: line 66: daemon: command not found
+
+[root@fedora ctambunan]# systemctl start metricbeat
+[root@fedora ctambunan]# systemctl status metricbeat
+● metricbeat.service - Metricbeat is a lightweight shipper for metrics.
+     Loaded: loaded (/usr/lib/systemd/system/metricbeat.service; disabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-02-02 15:48:55 WIB; 4s ago
+       Docs: https://www.elastic.co/beats/metricbeat
+   Main PID: 114731 (metricbeat)
+      Tasks: 8 (limit: 4539)
+     Memory: 94.1M
+        CPU: 1.087s
+     CGroup: /system.slice/metricbeat.service
+             └─114731 /usr/share/metricbeat/bin/metricbeat --environment systemd -c /etc/metricbeat/metricbeat.yml --path.home /usr/share/metricbeat --path.config /etc/metricbeat --path.data /var/lib/metricbeat --path.logs /var/log/metr>
+
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.589+0700        INFO        [index-management]        idxmgmt/std.go:261        Auto ILM enable success.
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.686+0700        INFO        [index-management.ilm]        ilm/std.go:180        ILM policy metricbeat successfully created.
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.686+0700        INFO        [index-management]        idxmgmt/std.go:397        Set setup.template.name to '{metricbeat-7.17.0 {now/d}-000001}' as ILM is enabled.
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.686+0700        INFO        [index-management]        idxmgmt/std.go:402        Set setup.template.pattern to 'metricbeat-7.17.0-*' as ILM is enabled.
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.686+0700        INFO        [index-management]        idxmgmt/std.go:436        Set settings.index.lifecycle.rollover_alias in template to {metricbeat-7.17.0 {now/d}-000001}>
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.686+0700        INFO        [index-management]        idxmgmt/std.go:440        Set settings.index.lifecycle.name in template to {metricbeat {"policy":{"phases":{"hot":{"act>
+Feb 02 15:48:57 fedora metricbeat[114731]: 2022-02-02T15:48:57.688+0700        INFO        template/load.go:197        Existing template will be overwritten, as overwrite is enabled.
+Feb 02 15:48:59 fedora metricbeat[114731]: 2022-02-02T15:48:59.070+0700        INFO        template/load.go:131        Try loading template metricbeat-7.17.0 to Elasticsearch
+Feb 02 15:48:59 fedora metricbeat[114731]: 2022-02-02T15:48:59.791+0700        INFO        template/load.go:123        Template with name "metricbeat-7.17.0" loaded.
+Feb 02 15:48:59 fedora metricbeat[114731]: 2022-02-02T15:48:59.791+0700        INFO        [index-management]        idxmgmt/std.go:297        Loaded index template.
+lines 1-21/21 (END)
+sudo service metricbeat start^C
+[root@fedora ctambunan]# systemctl enable metricbeat
+Created symlink /etc/systemd/system/multi-user.target.wants/metricbeat.service → /usr/lib/systemd/system/metricbeat.service.
+[root@fedora ctambunan]# ls -la
+total 42532
+drwx------. 14 ctambunan ctambunan     4096 Feb  2 15:26 .
+drwxr-xr-x.  3 root      root            23 Feb  2 13:55 ..
+-rw-------.  1 ctambunan ctambunan       16 Feb  2 14:54 .bash_history
+-rw-r--r--.  1 ctambunan ctambunan       18 Jul 22  2021 .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan      141 Jul 22  2021 .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan      492 Jul 22  2021 .bashrc
+drwx------.  7 ctambunan ctambunan      181 Feb  2 14:40 .cache
+drwx------. 10 ctambunan ctambunan     4096 Feb  2 14:54 .config
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Desktop
+drwxr-xr-x.  3 ctambunan ctambunan       52 Feb  2 15:29 Documents
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Downloads
+drwx------.  4 ctambunan ctambunan       32 Feb  2 14:18 .local
+-rw-r--r--.  1 root      root      43520129 Feb  2 15:27 metricbeat-7.17.0-x86_64.rpm
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Music
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Pictures
+drwx------.  3 ctambunan ctambunan       19 Feb  2 14:40 .pki
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Public
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Templates
+drwxr-xr-x.  2 ctambunan ctambunan        6 Feb  2 14:18 Videos
+-rw-r--r--.  1 ctambunan ctambunan      658 Jul 24  2021 .zshrc
+[root@fedora ctambunan]# cd Documents/
+[root@fedora Documents]# ls -la
+total 8
+drwxr-xr-x.  3 ctambunan ctambunan   52 Feb  2 15:29 .
+drwx------. 14 ctambunan ctambunan 4096 Feb  2 15:26 ..
+drwxr-xr-x.  2 root      root         6 Feb  2 15:28 ELK
+-rw-r--r--.  1 root      root      1159 Feb  2 15:29 installasi_metrics_beat.txt
+[root@fedora Documents]# touch installasi_metrics_beat2.txt
+[root@fedora Documents]# history installasi_metrics_beat2.txt 
+bash: history: installasi_metrics_beat2.txt: numeric argument required
+[root@fedora Documents]# history >> installasi_metrics_beat2.txt 
+[root@fedora Documents]# mv installasi_metrics_beat.txt installasi_metrics_beat1.txt
+[root@fedora Documents]# ls -la
+total 12
+drwxr-xr-x.  3 ctambunan ctambunan   89 Feb  2 15:50 .
+drwx------. 14 ctambunan ctambunan 4096 Feb  2 15:26 ..
+drwxr-xr-x.  2 root      root         6 Feb  2 15:28 ELK
+-rw-r--r--.  1 root      root      1159 Feb  2 15:29 installasi_metrics_beat1.txt
+-rw-r--r--.  1 root      root      3084 Feb  2 15:49 installasi_metrics_beat2.txt
+[root@fedora Documents]# mv installasi_metrics_beat{1..2}.txt
+mv: overwrite 'installasi_metrics_beat2.txt'? ^C
+[root@fedora Documents]# mv installasi_metrics_beat{1..2}.txt ELK/
+[root@fedora Documents]# ls -la
+total 4
+drwxr-xr-x.  3 ctambunan ctambunan   17 Feb  2 15:50 .
+drwx------. 14 ctambunan ctambunan 4096 Feb  2 15:26 ..
+drwxr-xr-x.  2 root      root        78 Feb  2 15:50 ELK
+[root@fedora Documents]# curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-7.17.0-x86_64.rpm
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 34.1M  100 34.1M    0     0   773k      0  0:00:45  0:00:45 --:--:-- 1715k
+[root@fedora Documents]# cd ELK/
+[root@fedora ELK]# ls -la
+total 12
+drwxr-xr-x. 2 root      root       114 Feb  2 18:07 .
+drwxr-xr-x. 3 ctambunan ctambunan   53 Feb  2 16:03 ..
+-rw-r--r--. 1 root      root      1159 Feb  2 15:29 installasi_metrics_beat1.txt
+-rw-r--r--. 1 root      root      3084 Feb  2 15:49 installasi_metrics_beat2.txt
+-rw-r--r--. 1 root      root      1627 Feb  2 18:07 installasi_metrics_beat3.txt
+[root@fedora ELK]# touch installasi_metrics_beat4.txt
+[root@fedora ELK]# history >> installasi_metrics_beat4.txt 

@@ -1,0 +1,162 @@
+    1  sudo dnf install cockpit
+    2  sudo systemctl enable --now cockpit.socket
+    3  sudo firewall-cmd --add-service=cockpit
+    4  sudo firewall-cmd --add-service=cockpit --permanent
+    5  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    6  sudo dnf upgrade
+    7  sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
+    8  sudo yum update
+    9  sudo yum install snapd
+   10  sudo systemctl enable --now snapd.socket
+   11  sudo ln -s /var/lib/snapd/snap /snap
+   12  sudo snap install firefox
+   13  snap install firefox
+   14  vi /etc/yum.repos.d/google-chrome.repo
+   15  yum info google-chrome-stable
+   16  yum install google-chrome-stable
+   17  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+   18  nano /etc/yum.repos.d/elasticsearch.repo
+   19  sudo dnf install --enablerepo=elasticsearch elasticsearch 
+   20  ps -p 1
+   21  sudo chkconfig --add elasticsearch
+   22  sudo -i service elasticsearch start
+   23  sudo -i service elasticsearch stop
+   24  sudo systemctl start elasticsearch.service
+   25  dnf search openjdk
+   26  sudo dnf install java-latest-openjdk.x86_64
+   27  sudo alternatives --config java
+   28  java --version
+   29  sudo vim /etc/elasticsearch/elasticsearch.yml
+   30  sudo nano /etc/elasticsearch/elasticsearch.yml
+   31  sudo reboot
+   32  ip a
+   33  sudo -i service kibana start
+   34  nano /etc/kibana/kibana.yml 
+   35  sudo systemctl start kibana
+   36  sudo systemctl enable kibana
+   37  firewall-cmd --add-port=5601/tcp --permanent
+   38  firewall-cmd --reload
+   39  http://localhost:5601
+   40  systemctl status elasticsearch.service 
+   41  sudo systemctl status kibana
+   42  sudo systemctl status kibana
+   43  "/home/username/kibanalog.txt"
+   44  nano /home/username/kibanalog.txt
+   45  nano /home/ctambunan/kibanalog.txt
+   46  nano /etc/kibana/kibana.yml 
+   47  systemctl enable kibana.service
+   48  systemctl status kibana.service
+   49  sudo systemctl start kibana
+   50  systemctl status kibana.service
+   51  history
+   52  ip a
+   53  exit
+   54  ls -la
+   55  cd Documents/
+   56  ls -la
+   57  mkdir ELK
+   58  nano installasi_metrics_beat.txt
+   59  ls -la
+   60  cd ELK
+   61  ls -la
+   62  nano installasi_metrics_beat3.txt
+   63  history >> installasi_metrics_beat3.txt 
+   64  history
+   65  exit
+   66  history
+   67  chrome
+   68  metricbeat modules enable elasticsearch-xpack
+   69  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.17.0-x86_64.rpm
+   70  sudo rpm -vi metricbeat-7.17.0-x86_64.rpm
+   71  metricbeat modules list
+   72  metricbeat modules enable nginx
+   73  nano /etc/metricbeat/metricbeat.yml 
+   74  sudo nano /etc/elasticsearch/elasticsearch.yml
+   75  nano /etc/elasticsearch/elasticsearch.yml 
+   76  nano /etc/metricbeat/metricbeat.yml 
+   77  curl -X GET "localhost:9200/_cluster/settings?pretty"
+   78  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+   79  {
+   80    "persistent": {
+   81      "xpack.monitoring.collection.enabled": true
+   82    }
+   83  }
+   84  '
+   85  metricbeat modules enable elasticsearch-xpack
+   86  nano modules.d/elasticsearch-xpack.yml
+   87  modules.d/elasticsearch-xpack.yml
+   88  nano filebeat modules enable nginx
+   89  filebeat modules enable nginx
+   90  nano modules.d/elasticsearch-xpack.yml
+   91  cd ..
+   92  cd .. 
+   93  ls -la
+   94  nano /etc/modules-load.d/elasticsearch-xpack.yml
+   95  systemctl status kibana.service 
+   96  systemctl start kibana.service 
+   97  systemctl enable kibana.service 
+   98  systemctl status kibana.service 
+   99  systemctl status kibana.service 
+  100  cd home/
+  101  cd ctambunan/
+  102  sudo service metricbeat start
+  103  sudo service metricbeat start
+  104  systemctl start metricbeat
+  105  systemctl status metricbeat
+  106  systemctl enable metricbeat
+  107  ls -la
+  108  cd Documents/
+  109  ls -la
+  110  touch installasi_metrics_beat2.txt
+  111  history installasi_metrics_beat2.txt 
+  112  history >> installasi_metrics_beat2.txt 
+  113  mv installasi_metrics_beat.txt installasi_metrics_beat1.txt
+  114  ls -la
+  115  mv installasi_metrics_beat{1..2}.txt
+  116  mv installasi_metrics_beat{1..2}.txt ELK/
+  117  ls -la
+  118  curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-7.17.0-x86_64.rpm
+  119  cd ELK/
+  120  ls -la
+  121  touch installasi_metrics_beat4.txt
+  122  history >> installasi_metrics_beat4.txt 
+  123  nano installasi_metrics_beat5.txt
+  124  exit
+  125  sudo systemctl start elasticsearch
+  126  sudo systemctl start elasticsearch
+  127  sudo systemctl enable elasticsearch
+  128  curl -X GET "localhost:9200"
+  129  sudo dnf install kibana
+  130  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  131  nano /etc/yum.repos.d/kibana.repo
+  132  sudo dnf install kibana 
+  133  systemctl start elasticsearch.service
+  134  systemctl start kibana.service
+  135  systemctl start logstash.service
+  136  systemctl status logstash.service
+  137  systemctl status elasticsearch.service
+  138  nano /etc/elasticsearch/elasticsearch.yml
+  139  cd /var/lib/elasticsearch/
+  140  ls -la
+  141  nano /etc/elasticsearch/elasticsearch.yml
+  142  systemctl start logstash.service
+  143  systemctl enable logstash.service
+  144  systemctl status logstash.service
+  145  systemctl status logstash.service
+  146  systemctl status kibana.service
+  147  systemctl status elastic.service
+  148  systemctl status elasticsearch.service
+  149  history
+  150  curl -X GET "localhost:9200"
+  151  curl -X GET "localhost:9200"
+  152  curl -X GET "localhost:5061"
+  153  ls -la
+  154  cd ..
+  155  cd /home/ctambunan/
+  156  ls -la
+  157  cd Documents/
+  158  ls -la
+  159  cd ELK/
+  160  ls -la
+  161  touch installasi_metrics_beat6.txt
+  162  history >> installasi_metrics_beat6.txt 

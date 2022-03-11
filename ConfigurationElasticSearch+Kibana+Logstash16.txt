@@ -1,0 +1,157 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> D:
+Set-Location: Cannot find drive. A drive with the name 'D' does not exist.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Web console: https://fedora:9090/ or https://192.168.86.128:9090/
+
+Last login: Mon Jan 31 23:59:29 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 10:59:29 /home/ctambunan]$ systemctl start elasticsearch.service
+
+[root@fedora 11:42:35 /home/ctambunan]$
+[root@fedora 11:42:35 /home/ctambunan]$ systemctl start kibana.service
+[root@fedora 11:42:49 /home/ctambunan]$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+[root@fedora 11:43:36 /home/ctambunan]$ nano /etc/yum.repos.d/logstash.repo
+[root@fedora 11:44:02 /home/ctambunan]$ sudo yum install logstash
+Fedora 35 - x86_64 - Updates                                                                                                2.9 kB/s | 5.0 kB     00:01
+Fedora 35 - x86_64 - Updates                                                                                                1.6 MB/s | 2.6 MB     00:01
+Fedora Modular 35 - x86_64 - Updates                                                                                        4.2 kB/s | 4.4 kB     00:01
+Elastic repository for 7.x packages                                                                                         1.7 MB/s |  40 MB     00:23
+Dependencies resolved.
+============================================================================================================================================================
+ Package                             Architecture                      Version                                Repository                               Size
+============================================================================================================================================================
+Installing:
+ logstash                            x86_64                            1:7.17.0-1                             logstash-7.x                            349 M
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 349 M
+Installed size: 602 M
+Is this ok [y/N]: y
+Downloading Packages:
+logstash-7.17.0-x86_64.rpm                                                                                                  1.7 MB/s | 349 MB     03:20
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       1.7 MB/s | 349 MB     03:20
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+  Installing       : logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+  Running scriptlet: logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+Using bundled JDK: /usr/share/logstash/jdk
+Using provided startup.options file: /etc/logstash/startup.options
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+
+/usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/pleaserun-0.0.32/lib/pleaserun/platform/base.rb:112: warning: constant ::Fixnum is deprecated
+Successfully created system startup script for Logstash
+
+  Verifying        : logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+
+Installed:
+  logstash-1:7.17.0-1.x86_64
+
+Complete!
+[root@fedora 11:48:46 /home/ctambunan]$ client_loop: send disconnect: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Web console: https://fedora:9090/ or https://192.168.86.128:9090/
+
+Last login: Wed Feb  2 10:59:26 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 13:30:05 /home/ctambunan]$ poweroff
+Connection to 192.168.86.128 closed by remote host.
+Connection to 192.168.86.128 closed.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.132
+ctambunan@192.168.86.132's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Wed Feb  2 15:51:27 2022 from ::ffff:192.168.86.1
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+Sorry, try again.
+[sudo] password for ctambunan:
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[root@fedora ctambunan]# sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+[root@fedora ctambunan]# sudo nano /etc/yum.repos.d/logstash.repo
+[root@fedora ctambunan]# sudo yum install logstash
+Elastic repository for 7.x packages                                                                                         2.2 MB/s |  40 MB     00:18
+Last metadata expiration check: 0:00:52 ago on Wed 02 Feb 2022 04:10:18 PM WIB.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                             Architecture                      Version                                  Repository                             Size
+============================================================================================================================================================
+Installing:
+ logstash                            x86_64                            1:7.17.0-1                               kibana-7.x                            349 M
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 349 M
+Installed size: 602 M
+Is this ok [y/N]: y
+Downloading Packages:
+logstash-7.17.0-x86_64.rpm                                                                                                  1.8 MB/s | 349 MB     03:15
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       1.8 MB/s | 349 MB     03:15
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+  Installing       : logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+  Running scriptlet: logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+Using bundled JDK: /usr/share/logstash/jdk
+Using provided startup.options file: /etc/logstash/startup.options
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+/usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/pleaserun-0.0.32/lib/pleaserun/platform/base.rb:112: warning: constant ::Fixnum is deprecated
+Successfully created system startup script for Logstash
+
+  Verifying        : logstash-1:7.17.0-1.x86_64                                                                                                         1/1
+
+Installed:
+  logstash-1:7.17.0-1.x86_64
+
+Complete!
+[root@fedora ctambunan]# client_loop: send disconnect: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.132
+ctambunan@192.168.86.132's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Wed Feb  2 16:05:03 2022 from 192.168.86.1
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[systemd]
+Failed Units: 2
+  kibana.service
+  mcelog.service
+[root@fedora ctambunan]# poweroff
+[root@fedora ctambunan]# Connection to 192.168.86.132 closed by remote host.
+Connection to 192.168.86.132 closed.

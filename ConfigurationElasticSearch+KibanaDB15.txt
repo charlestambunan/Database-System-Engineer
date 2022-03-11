@@ -1,0 +1,280 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Web console: https://fedora:9090/ or https://192.168.86.128:9090/
+
+Last login: Mon Jan 31 08:28:52 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 08:29:04 /home/ctambunan]$ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+[root@fedora 08:29:18 /home/ctambunan]$ dnf search openjdk
+Last metadata expiration check: 8:58:03 ago on Sun 30 Jan 2022 11:31:35 PM WIB.
+============================================================= Name & Summary Matched: openjdk ==============================================================
+java-1.8.0-openjdk.x86_64 : OpenJDK 8 Runtime Environment
+java-1.8.0-openjdk-demo.x86_64 : OpenJDK 8 Demos
+java-1.8.0-openjdk-demo-fastdebug.x86_64 : OpenJDK 8 Demos optimised with full debugging on
+java-1.8.0-openjdk-demo-slowdebug.x86_64 : OpenJDK 8 Demos unoptimised with full debugging on
+java-1.8.0-openjdk-devel.x86_64 : OpenJDK 8 Development Environment
+java-1.8.0-openjdk-devel-fastdebug.x86_64 : OpenJDK 8 Development Environment optimised with full debugging on
+java-1.8.0-openjdk-devel-slowdebug.x86_64 : OpenJDK 8 Development Environment unoptimised with full debugging on
+java-1.8.0-openjdk-fastdebug.x86_64 : OpenJDK 8 Runtime Environment optimised with full debugging on
+java-1.8.0-openjdk-headless.x86_64 : OpenJDK 8 Headless Runtime Environment
+java-1.8.0-openjdk-headless-fastdebug.x86_64 : OpenJDK 8 Runtime Environment optimised with full debugging on
+java-1.8.0-openjdk-headless-slowdebug.x86_64 : OpenJDK 8 Runtime Environment unoptimised with full debugging on
+java-1.8.0-openjdk-javadoc.noarch : OpenJDK 8 API documentation
+java-1.8.0-openjdk-javadoc-zip.noarch : OpenJDK 8 API documentation compressed in a single archive
+java-1.8.0-openjdk-openjfx.x86_64 : OpenJDK x OpenJFX connector. This package adds symliks finishing Java FX integration to java-1.8.0-openjdk
+java-1.8.0-openjdk-openjfx-devel.i686 : OpenJDK x OpenJFX connector for FX developers. This package adds symliks finishing Java FX integration to
+                                      : java-1.8.0-openjdk-devel
+java-1.8.0-openjdk-openjfx-devel.x86_64 : OpenJDK x OpenJFX connector for FX developers. This package adds symliks finishing Java FX integration to
+                                        : java-1.8.0-openjdk-devel
+java-1.8.0-openjdk-openjfx-devel-fastdebug.x86_64 : OpenJDK x OpenJFX connector for FX developers for packages with debugging on and optimisation. This
+                                                  : package adds symliks finishing Java FX integration to java-1.8.0-openjdk-devel-slowdebug
+java-1.8.0-openjdk-openjfx-devel-slowdebug.x86_64 : OpenJDK x OpenJFX connector for FX developers for packages with debugging on and no optimisation. This
+                                                  : package adds symliks finishing Java FX integration to java-1.8.0-openjdk-devel-slowdebug
+java-1.8.0-openjdk-openjfx-fastdebug.x86_64 : OpenJDK x OpenJFX connector for packages with debugging on and optimisation. his package adds symliks
+                                            : finishing Java FX integration to java-1.8.0-openjdk-fastdebug
+java-1.8.0-openjdk-openjfx-slowdebug.x86_64 : OpenJDK x OpenJFX connector for packages with debugging on and no optimisation. his package adds symliks
+                                            : finishing Java FX integration to java-1.8.0-openjdk-slowdebug
+java-1.8.0-openjdk-slowdebug.x86_64 : OpenJDK 8 Runtime Environment unoptimised with full debugging on
+java-1.8.0-openjdk-src.x86_64 : OpenJDK 8 Source Bundle
+java-1.8.0-openjdk-src-fastdebug.x86_64 : OpenJDK 8 Source Bundle for packages with debugging on and optimisation
+java-1.8.0-openjdk-src-slowdebug.x86_64 : OpenJDK 8 Source Bundle for packages with debugging on and no optimisation
+java-11-openjdk.i686 : OpenJDK 11 Runtime Environment
+java-11-openjdk.x86_64 : OpenJDK 11 Runtime Environment
+java-11-openjdk-demo.x86_64 : OpenJDK 11 Demos
+java-11-openjdk-demo-fastdebug.x86_64 : OpenJDK 11 Demos optimised with full debugging on
+java-11-openjdk-demo-slowdebug.x86_64 : OpenJDK 11 Demos unoptimised with full debugging on
+java-11-openjdk-devel.i686 : OpenJDK 11 Development Environment
+java-11-openjdk-devel.x86_64 : OpenJDK 11 Development Environment
+java-11-openjdk-devel-fastdebug.x86_64 : OpenJDK 11 Development Environment optimised with full debugging on
+java-11-openjdk-devel-slowdebug.x86_64 : OpenJDK 11 Development Environment unoptimised with full debugging on
+java-11-openjdk-fastdebug.x86_64 : OpenJDK 11 Runtime Environment optimised with full debugging on
+java-11-openjdk-headless.i686 : OpenJDK 11 Headless Runtime Environment
+java-11-openjdk-headless.x86_64 : OpenJDK 11 Headless Runtime Environment
+java-11-openjdk-headless-fastdebug.x86_64 : OpenJDK 11 Runtime Environment optimised with full debugging on
+java-11-openjdk-headless-slowdebug.i686 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-headless-slowdebug.x86_64 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-javadoc.x86_64 : OpenJDK 11 API documentation
+java-11-openjdk-javadoc-zip.x86_64 : OpenJDK 11 API documentation compressed in a single archive
+java-11-openjdk-jmods.x86_64 : JMods for OpenJDK 11
+java-11-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 11 optimised with full debugging on
+java-11-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 11 unoptimised with full debugging on
+java-11-openjdk-slowdebug.x86_64 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-src.x86_64 : OpenJDK 11 Source Bundle
+java-11-openjdk-src-fastdebug.x86_64 : OpenJDK 11 Source Bundle for packages with debugging on and optimisation
+java-11-openjdk-src-slowdebug.x86_64 : OpenJDK 11 Source Bundle for packages with debugging on and no optimisation
+java-11-openjdk-static-libs.x86_64 : OpenJDK 11 libraries for static linking
+java-11-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 11 libraries for static linking optimised with full debugging on
+java-11-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 11 libraries for static linking unoptimised with full debugging on
+java-17-openjdk.i686 : OpenJDK 17 Runtime Environment
+java-17-openjdk.x86_64 : OpenJDK 17 Runtime Environment
+java-17-openjdk-demo.x86_64 : OpenJDK 17 Demos
+java-17-openjdk-demo-fastdebug.x86_64 : OpenJDK 17 Demos optimised with full debugging on
+java-17-openjdk-demo-slowdebug.x86_64 : OpenJDK 17 Demos unoptimised with full debugging on
+java-17-openjdk-devel.i686 : OpenJDK 17 Development Environment
+java-17-openjdk-devel.x86_64 : OpenJDK 17 Development Environment
+java-17-openjdk-devel-fastdebug.x86_64 : OpenJDK 17 Development Environment optimised with full debugging on
+java-17-openjdk-devel-slowdebug.x86_64 : OpenJDK 17 Development Environment unoptimised with full debugging on
+java-17-openjdk-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-17-openjdk-headless.i686 : OpenJDK 17 Headless Runtime Environment
+java-17-openjdk-headless.x86_64 : OpenJDK 17 Headless Runtime Environment
+java-17-openjdk-headless-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-17-openjdk-headless-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-17-openjdk-javadoc.x86_64 : OpenJDK 17 API documentation
+java-17-openjdk-javadoc-zip.x86_64 : OpenJDK 17 API documentation compressed in a single archive
+java-17-openjdk-jmods.x86_64 : JMods for OpenJDK 17
+java-17-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 17 optimised with full debugging on
+java-17-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 17 unoptimised with full debugging on
+java-17-openjdk-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-17-openjdk-src.x86_64 : OpenJDK 17 Source Bundle
+java-17-openjdk-src-fastdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and optimisation
+java-17-openjdk-src-slowdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and no optimisation
+java-17-openjdk-static-libs.x86_64 : OpenJDK 17 libraries for static linking
+java-17-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 17 libraries for static linking optimised with full debugging on
+java-17-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 17 libraries for static linking unoptimised with full debugging on
+java-latest-openjdk.x86_64 : OpenJDK 17 Runtime Environment
+java-latest-openjdk.i686 : OpenJDK 17 Runtime Environment
+java-latest-openjdk-demo.x86_64 : OpenJDK 17 Demos
+java-latest-openjdk-demo-fastdebug.x86_64 : OpenJDK 17 Demos optimised with full debugging on
+java-latest-openjdk-demo-slowdebug.x86_64 : OpenJDK 17 Demos unoptimised with full debugging on
+java-latest-openjdk-devel.i686 : OpenJDK 17 Development Environment
+java-latest-openjdk-devel.x86_64 : OpenJDK 17 Development Environment
+java-latest-openjdk-devel-fastdebug.x86_64 : OpenJDK 17 Development Environment optimised with full debugging on
+java-latest-openjdk-devel-slowdebug.x86_64 : OpenJDK 17 Development Environment unoptimised with full debugging on
+java-latest-openjdk-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-latest-openjdk-headless.x86_64 : OpenJDK 17 Headless Runtime Environment
+java-latest-openjdk-headless.i686 : OpenJDK 17 Headless Runtime Environment
+java-latest-openjdk-headless-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-latest-openjdk-headless-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-latest-openjdk-javadoc.x86_64 : OpenJDK 17 API documentation
+java-latest-openjdk-javadoc-zip.x86_64 : OpenJDK 17 API documentation compressed in a single archive
+java-latest-openjdk-jmods.x86_64 : JMods for OpenJDK 17
+
+java-latest-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 17 optimised with full debugging on
+java-latest-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 17 unoptimised with full debugging on
+java-latest-openjdk-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-latest-openjdk-src.x86_64 : OpenJDK 17 Source Bundle
+java-latest-openjdk-src-fastdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and optimisation
+java-latest-openjdk-src-slowdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and no optimisation
+java-latest-openjdk-static-libs.x86_64 : OpenJDK 17 libraries for static linking
+java-latest-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 17 libraries for static linking optimised with full debugging on
+java-latest-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 17 libraries for static linking unoptimised with full debugging on
+maven-local-openjdk8.noarch : OpenJDK 8 toolchain for XMvn
+maven-openjdk11.noarch : OpenJDK 11 binding for Maven
+maven-openjdk17.noarch : OpenJDK 17 binding for Maven
+maven-openjdk8.noarch : OpenJDK 8 binding for Maven
+openjdk-asmtools-javadoc.noarch : Javadoc for openjdk-asmtools
+================================================================== Name Matched: openjdk ===================================================================
+openjdk-asmtools.noarch : To develop tools create proper & improper Java '.class' files
+================================================================= Summary Matched: openjdk =================================================================
+icedtea-web.x86_64 : Additional Java components for OpenJDK - Java Web Start implementation
+[root@fedora 08:29:39 /home/ctambunan]$ sudo dnf install java-latest-openjdk.x86_64
+Fedora 35 - x86_64 - Updates                                                                                                2.8 kB/s | 4.8 kB     00:01
+Fedora Modular 35 - x86_64 - Updates                                                                                         14 kB/s | 3.8 kB     00:00
+Package java-latest-openjdk-1:17.0.2.0.8-2.rolling.fc35.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@fedora 08:29:49 /home/ctambunan]$ sudo alternatives --config java
+
+There is 1 program that provides 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           java-latest-openjdk.x86_64 (/usr/lib/jvm/java-17-openjdk-17.0.2.0.8-2.rolling.fc35.x86_64/bin/java)
+
+Enter to keep the current selection[+], or type selection number: 1
+[root@fedora 08:30:00 /home/ctambunan]$ java --version
+openjdk 17.0.2 2022-01-18
+OpenJDK Runtime Environment 21.9 (build 17.0.2+8)
+OpenJDK 64-Bit Server VM 21.9 (build 17.0.2+8, mixed mode, sharing)
+[root@fedora 08:30:05 /home/ctambunan]$ nano /etc/yum.repos.d/elasticsearch.repo
+[root@fedora 08:31:10 /home/ctambunan]$ sudo dnf install --enablerepo=elasticsearch elasticsearch
+Elasticsearch repository for 7.x packages                                                                                   2.3 kB/s | 1.3 kB     00:00
+Dependencies resolved.
+============================================================================================================================================================
+ Package                                 Architecture                     Version                             Repository                               Size
+============================================================================================================================================================
+Installing:
+ elasticsearch                           x86_64                           7.16.3-1                            elasticsearch                           297 M
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 297 M
+Installed size: 493 M
+Is this ok [y/N]: y
+Downloading Packages:
+elasticsearch-7.16.3-x86_64.rpm                                                                                             470 kB/s | 297 MB     10:46
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       470 kB/s | 297 MB     10:46
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: elasticsearch-7.16.3-1.x86_64                                                                                                      1/1
+Creating elasticsearch group... OK
+Creating elasticsearch user... OK
+
+  Installing       : elasticsearch-7.16.3-1.x86_64                                                                                                      1/1
+  Running scriptlet: elasticsearch-7.16.3-1.x86_64                                                                                                      1/1
+### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd
+ sudo systemctl daemon-reload
+ sudo systemctl enable elasticsearch.service
+### You can start elasticsearch service by executing
+ sudo systemctl start elasticsearch.service
+
+
+Created elasticsearch keystore in /etc/elasticsearch/elasticsearch.keystore
+
+/usr/lib/tmpfiles.d/elasticsearch.conf:1: Line references path below legacy directory /var/run/, updating /var/run/elasticsearch → /run/elasticsearch; please update the tmpfiles.d/ drop-in file accordingly.
+
+  Verifying        : elasticsearch-7.16.3-1.x86_64                                                                                                      1/1
+
+Installed:
+  elasticsearch-7.16.3-1.x86_64
+
+Complete!
+[root@fedora 08:54:06 /home/ctambunan]$ sudo chkconfig --add elasticsearch
+[root@fedora 08:54:25 /home/ctambunan]$ sudo -i service elasticsearch start
+Starting elasticsearch (via systemctl):
+
+                                                           [  OK  ]
+[root@fedora 08:54:48 /home/ctambunan]$
+[root@fedora 08:54:48 /home/ctambunan]$
+[root@fedora 08:54:48 /home/ctambunan]$ curl -X GET "localhost:9200/?pretty"
+{
+  "name" : "fedora",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "nVCbOC6wRwqBOCHeJZT2IA",
+  "version" : {
+    "number" : "7.16.3",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "4e6e4eab2297e949ec994e688dad46290d018022",
+    "build_date" : "2022-01-06T23:43:02.825887787Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.10.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+[root@fedora 08:54:53 /home/ctambunan]$ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+[root@fedora 09:37:26 /home/ctambunan]$ nano /etc/yum.repos.d/kibana.repo
+[root@fedora 09:37:49 /home/ctambunan]$ sudo dnf install kibana
+Kibana repository for 7.x packages                                                                                          871 kB/s |  39 MB     00:45
+Last metadata expiration check: 0:00:51 ago on Mon 31 Jan 2022 09:37:54 AM WIB.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                            Architecture                       Version                                 Repository                              Size
+============================================================================================================================================================
+Installing:
+ kibana                             x86_64                             7.16.3-1                                kibana-7.x                             274 M
+
+Transaction Summary
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 274 M
+Installed size: 732 M
+Is this ok [y/N]: y
+Downloading Packages:
+kibana-7.16.3-x86_64.rpm                                                                                                    722 kB/s | 274 MB     06:28
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       722 kB/s | 274 MB     06:28
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: kibana-7.16.3-1.x86_64                                                                                                             1/1
+  Installing       : kibana-7.16.3-1.x86_64                                                                                                             1/1
+  Running scriptlet: kibana-7.16.3-1.x86_64                                                                                                             1/1
+Creating kibana group... OK
+Creating kibana user... OK
+
+Created Kibana keystore in /etc/kibana/kibana.keystore
+
+/usr/lib/tmpfiles.d/elasticsearch.conf:1: Line references path below legacy directory /var/run/, updating /var/run/elasticsearch → /run/elasticsearch; please update the tmpfiles.d/ drop-in file accordingly.
+
+  Verifying        : kibana-7.16.3-1.x86_64                                                                                                             1/1
+
+Installed:
+  kibana-7.16.3-1.x86_64
+
+Complete!
+[root@fedora 09:51:28 /home/ctambunan]$ poweroff
+Connection to 192.168.86.128 closed by remote host.
+Connection to 192.168.86.128 closed.
+PS C:\Users\Charles Tambunan>

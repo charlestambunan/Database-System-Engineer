@@ -1,0 +1,672 @@
+[root@fedora 21:12:24 /home/ctambunan/TambunanShellScripting]$ service elasticsearch status
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:53:00 WIB; 1h 19min ago
+       Docs: https://www.elastic.co
+    Process: 8425 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 8425 (code=exited, status=1/FAILURE)
+        CPU: 2.874s
+
+Jan 28 19:52:58 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:53:00 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Consumed 2.874s CPU time.
+
+[root@fedora 21:13:46 /home/ctambunan/TambunanShellScripting]$ netstat -anp | grep elasticsearch
+[root@fedora 21:13:53 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 21:14:52 /home/ctambunan/TambunanShellScripting]$ netstat -anp | grep 9200
+unix  2      [ ]         DGRAM      CONNECTED     19200    791/systemd-resolve
+[root@fedora 21:14:56 /home/ctambunan/TambunanShellScripting]$ tasklist | findstr "elasticsearch"
+bash: tasklist: command not found
+bash: findstr: command not found
+[root@fedora 21:15:51 /home/ctambunan/TambunanShellScripting]$ netstat --listen
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:pmcdproxy       0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:pmwebapi        0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:hostmon         0.0.0.0:*               LISTEN
+tcp        0      0 localhost:dey-sapi      0.0.0.0:*               LISTEN
+tcp        0      0 localhost:redis         0.0.0.0:*               LISTEN
+tcp        0      0 localhost:domain        0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:sunrpc          0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN
+tcp        0      0 localhost:esmagent      0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:58317           0.0.0.0:*               LISTEN
+tcp        0      0 localhost:pmcd          0.0.0.0:*               LISTEN
+tcp6       0      0 [::]:pmcdproxy          [::]:*                  LISTEN
+tcp6       0      0 [::]:pmwebapi           [::]:*                  LISTEN
+tcp6       0      0 [::]:mysql              [::]:*                  LISTEN
+tcp6       0      0 [::]:hostmon            [::]:*                  LISTEN
+tcp6       0      0 localhost:pmcd          [::]:*                  LISTEN
+tcp6       0      0 [::]:https              [::]:*                  LISTEN
+tcp6       0      0 [::]:sunrpc             [::]:*                  LISTEN
+tcp6       0      0 [::]:http               [::]:*                  LISTEN
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN
+tcp6       0      0 localhost:redis         [::]:*                  LISTEN
+tcp6       0      0 localhost:dey-sapi      [::]:*                  LISTEN
+tcp6       0      0 [::]:56083              [::]:*                  LISTEN
+tcp6       0      0 [::]:websm              [::]:*                  LISTEN
+udp        0      0 0.0.0.0:hostmon         0.0.0.0:*
+udp        0      0 0.0.0.0:36198           0.0.0.0:*
+udp        0      0 localhost:domain        0.0.0.0:*
+udp        0      0 0.0.0.0:sunrpc          0.0.0.0:*
+udp        0      0 localhost:323           0.0.0.0:*
+udp        0      0 localhost:927           0.0.0.0:*
+udp6       0      0 [::]:hostmon            [::]:*
+udp6       0      0 [::]:55210              [::]:*
+udp6       0      0 [::]:sunrpc             [::]:*
+udp6       0      0 localhost:323           [::]:*
+raw6       0      0 [::]:ipv6-icmp          [::]:*                  7
+Active UNIX domain sockets (only servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ACC ]     STREAM     LISTENING     29536    /run/pcp/pmcd.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19730    @/org/kernel/linux/storage/multipathd
+unix  2      [ ACC ]     STREAM     LISTENING     33078    /run/pcp/pmproxy.socket
+unix  2      [ ACC ]     STREAM     LISTENING     32328    /run/pcp/pmlogger.1940.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28547    /var/lib/gssproxy/default.sock
+unix  2      [ ACC ]     STREAM     LISTENING     18492    /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     22647    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     22649    /run/systemd/userdb/io.systemd.DynamicUser
+unix  2      [ ACC ]     STREAM     LISTENING     22650    /run/systemd/io.system.ManagedOOM
+unix  2      [ ACC ]     STREAM     LISTENING     19169    /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     19173    /run/pcscd/pcscd.comm
+unix  2      [ ACC ]     STREAM     LISTENING     19175    /run/.heim_org.h5l.kcm-socket
+unix  2      [ ACC ]     STREAM     LISTENING     19728    /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19731    /run/rpcbind.sock
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26910    /run/systemd/coredump
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26912    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     26915    /run/systemd/userdb/io.systemd.Multiplexer
+unix  2      [ ACC ]     STREAM     LISTENING     19172    @ISCSID_UIP_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     32645    /etc/httpd/run/cgisock.2658
+unix  2      [ ACC ]     STREAM     LISTENING     18810    /run/systemd/journal/io.systemd.journal
+unix  2      [ ACC ]     STREAM     LISTENING     19239    /run/irqbalance/irqbalance841.sock
+unix  2      [ ACC ]     STREAM     LISTENING     27556    /run/systemd/resolve/io.systemd.Resolve
+unix  2      [ ACC ]     STREAM     LISTENING     27570    /run/systemd/userdb/io.systemd.Home
+unix  2      [ ACC ]     STREAM     LISTENING     30088    /var/lib/mysql/mysql.sock
+unix  2      [ ACC ]     STREAM     LISTENING     32954    /var/lib/pcp/pmcd/root.socket
+unix  2      [ ACC ]     STREAM     LISTENING     29049    /var/run/vmware/guestServicePipe
+unix  2      [ ACC ]     STREAM     LISTENING     23277    /var/run/abrt/abrt.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28548    /run/gssproxy.sock
+unix  2      [ ACC ]     STREAM     LISTENING     19171    @ISCSIADM_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     23450    /run/php-fpm/www.sock
+Active Bluetooth connections (only servers)
+Proto  Destination       Source            State         PSM DCID   SCID      IMTU    OMTU Security
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         27 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         23 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         15 0x0000 0x0000    1691    1691 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         19 0x0000 0x0000     672       0 LOW
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         17 0x0000 0x0000     672       0 LOW
+l2cap  *                 *                 LISTEN          1 0x0000 0x0000     672       0 SDP
+Proto  Destination       Source            State     Channel
+[root@fedora 21:16:29 /home/ctambunan/TambunanShellScripting]$ netstat -na | grep -i LISTEN
+tcp        0      0 0.0.0.0:44322           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:44323           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:4330          0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:5601          0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:58317           0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:44321         0.0.0.0:*               LISTEN
+tcp6       0      0 :::44322                :::*                    LISTEN
+tcp6       0      0 :::44323                :::*                    LISTEN
+tcp6       0      0 :::3306                 :::*                    LISTEN
+tcp6       0      0 :::5355                 :::*                    LISTEN
+tcp6       0      0 ::1:44321               :::*                    LISTEN
+tcp6       0      0 :::443                  :::*                    LISTEN
+tcp6       0      0 :::111                  :::*                    LISTEN
+tcp6       0      0 :::80                   :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 ::1:6379                :::*                    LISTEN
+tcp6       0      0 ::1:4330                :::*                    LISTEN
+tcp6       0      0 :::56083                :::*                    LISTEN
+tcp6       0      0 :::9090                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     29536    /run/pcp/pmcd.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19730    @/org/kernel/linux/storage/multipathd
+unix  2      [ ACC ]     STREAM     LISTENING     33078    /run/pcp/pmproxy.socket
+unix  2      [ ACC ]     STREAM     LISTENING     32328    /run/pcp/pmlogger.1940.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28547    /var/lib/gssproxy/default.sock
+unix  2      [ ACC ]     STREAM     LISTENING     18492    /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     22647    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     22649    /run/systemd/userdb/io.systemd.DynamicUser
+unix  2      [ ACC ]     STREAM     LISTENING     22650    /run/systemd/io.system.ManagedOOM
+unix  2      [ ACC ]     STREAM     LISTENING     19169    /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     19173    /run/pcscd/pcscd.comm
+unix  2      [ ACC ]     STREAM     LISTENING     19175    /run/.heim_org.h5l.kcm-socket
+unix  2      [ ACC ]     STREAM     LISTENING     19728    /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19731    /run/rpcbind.sock
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26910    /run/systemd/coredump
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26912    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     26915    /run/systemd/userdb/io.systemd.Multiplexer
+unix  2      [ ACC ]     STREAM     LISTENING     19172    @ISCSID_UIP_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     32645    /etc/httpd/run/cgisock.2658
+unix  2      [ ACC ]     STREAM     LISTENING     18810    /run/systemd/journal/io.systemd.journal
+unix  2      [ ACC ]     STREAM     LISTENING     19239    /run/irqbalance/irqbalance841.sock
+unix  2      [ ACC ]     STREAM     LISTENING     27556    /run/systemd/resolve/io.systemd.Resolve
+unix  2      [ ACC ]     STREAM     LISTENING     27570    /run/systemd/userdb/io.systemd.Home
+unix  2      [ ACC ]     STREAM     LISTENING     30088    /var/lib/mysql/mysql.sock
+unix  2      [ ACC ]     STREAM     LISTENING     32954    /var/lib/pcp/pmcd/root.socket
+unix  2      [ ACC ]     STREAM     LISTENING     29049    /var/run/vmware/guestServicePipe
+unix  2      [ ACC ]     STREAM     LISTENING     23277    /var/run/abrt/abrt.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28548    /run/gssproxy.sock
+unix  2      [ ACC ]     STREAM     LISTENING     19171    @ISCSIADM_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     23450    /run/php-fpm/www.sock
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         27 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         23 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         15 0x0000 0x0000    1691    1691 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         19 0x0000 0x0000     672       0 LOW
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         17 0x0000 0x0000     672       0 LOW
+l2cap  *                 *                 LISTEN          1 0x0000 0x0000     672       0 SDP
+[root@fedora 21:17:13 /home/ctambunan/TambunanShellScripting]$
+[root@fedora 21:17:13 /home/ctambunan/TambunanShellScripting]$ netstat -na | grep -i LISTEN
+tcp        0      0 0.0.0.0:44322           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:44323           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:4330          0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:5601          0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:58317           0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:44321         0.0.0.0:*               LISTEN
+tcp6       0      0 :::44322                :::*                    LISTEN
+tcp6       0      0 :::44323                :::*                    LISTEN
+tcp6       0      0 :::3306                 :::*                    LISTEN
+tcp6       0      0 :::5355                 :::*                    LISTEN
+tcp6       0      0 ::1:44321               :::*                    LISTEN
+tcp6       0      0 :::443                  :::*                    LISTEN
+tcp6       0      0 :::111                  :::*                    LISTEN
+tcp6       0      0 :::80                   :::*                    LISTEN
+tcp6       0      0 :::22                   :::*                    LISTEN
+tcp6       0      0 ::1:6379                :::*                    LISTEN
+tcp6       0      0 ::1:4330                :::*                    LISTEN
+tcp6       0      0 :::56083                :::*                    LISTEN
+tcp6       0      0 :::9090                 :::*                    LISTEN
+unix  2      [ ACC ]     STREAM     LISTENING     29536    /run/pcp/pmcd.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19730    @/org/kernel/linux/storage/multipathd
+unix  2      [ ACC ]     STREAM     LISTENING     33078    /run/pcp/pmproxy.socket
+unix  2      [ ACC ]     STREAM     LISTENING     32328    /run/pcp/pmlogger.1940.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28547    /var/lib/gssproxy/default.sock
+unix  2      [ ACC ]     STREAM     LISTENING     18492    /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     22647    /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     22649    /run/systemd/userdb/io.systemd.DynamicUser
+unix  2      [ ACC ]     STREAM     LISTENING     22650    /run/systemd/io.system.ManagedOOM
+unix  2      [ ACC ]     STREAM     LISTENING     19169    /run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     19173    /run/pcscd/pcscd.comm
+unix  2      [ ACC ]     STREAM     LISTENING     19175    /run/.heim_org.h5l.kcm-socket
+unix  2      [ ACC ]     STREAM     LISTENING     19728    /run/lvm/lvmpolld.socket
+unix  2      [ ACC ]     STREAM     LISTENING     19731    /run/rpcbind.sock
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26910    /run/systemd/coredump
+unix  2      [ ACC ]     SEQPACKET  LISTENING     26912    /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     26915    /run/systemd/userdb/io.systemd.Multiplexer
+unix  2      [ ACC ]     STREAM     LISTENING     19172    @ISCSID_UIP_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     32645    /etc/httpd/run/cgisock.2658
+unix  2      [ ACC ]     STREAM     LISTENING     18810    /run/systemd/journal/io.systemd.journal
+unix  2      [ ACC ]     STREAM     LISTENING     19239    /run/irqbalance/irqbalance841.sock
+unix  2      [ ACC ]     STREAM     LISTENING     27556    /run/systemd/resolve/io.systemd.Resolve
+unix  2      [ ACC ]     STREAM     LISTENING     27570    /run/systemd/userdb/io.systemd.Home
+unix  2      [ ACC ]     STREAM     LISTENING     30088    /var/lib/mysql/mysql.sock
+unix  2      [ ACC ]     STREAM     LISTENING     32954    /var/lib/pcp/pmcd/root.socket
+unix  2      [ ACC ]     STREAM     LISTENING     29049    /var/run/vmware/guestServicePipe
+unix  2      [ ACC ]     STREAM     LISTENING     23277    /var/run/abrt/abrt.socket
+unix  2      [ ACC ]     STREAM     LISTENING     28548    /run/gssproxy.sock
+unix  2      [ ACC ]     STREAM     LISTENING     19171    @ISCSIADM_ABSTRACT_NAMESPACE
+unix  2      [ ACC ]     STREAM     LISTENING     23450    /run/php-fpm/www.sock
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         27 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         23 0x0000 0x0000     672       0 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         15 0x0000 0x0000    1691    1691 MEDIUM
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         19 0x0000 0x0000     672       0 LOW
+l2cap  c0:e4:34:98:cf:1a *                 LISTEN         17 0x0000 0x0000     672       0 LOW
+l2cap  *                 *                 LISTEN          1 0x0000 0x0000     672       0 SDP
+[root@fedora 21:17:23 /home/ctambunan/TambunanShellScripting]$
+
+[root@fedora 21:17:23 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+[root@fedora 21:26:29 /home/ctambunan/TambunanShellScripting]$ systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+[root@fedora 21:26:39 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 21:26:29 WIB; 19s ago
+       Docs: https://www.elastic.co
+
+   Main PID: 10934 (java)
+
+      Tasks: 77 (limit: 4607)
+     Memory: 2.2G
+        CPU: 1min 31.185s
+     CGroup: /system.slice/elasticsearch.service
+             ├─10934 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─11141 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 21:26:00 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 21:26:02 fedora systemd-entrypoint[10934]: [0.002s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 21:26:29 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 21:27:05 /home/ctambunan/TambunanShellScripting]$ linux --version
+bash: linux: command not found
+[root@fedora 21:30:03 /home/ctambunan/TambunanShellScripting]$ cat /etc/issue
+\S
+Kernel \r on an \m (\l)
+
+[root@fedora 21:30:31 /home/ctambunan/TambunanShellScripting]$ cat /etc/fedora-release
+Fedora release 35 (Thirty Five)
+[root@fedora 21:30:42 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 21:32:32 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 21:26:29 WIB; 6min ago
+       Docs: https://www.elastic.co
+   Main PID: 10934 (java)
+      Tasks: 79 (limit: 4607)
+
+     Memory: 2.2G
+        CPU: 2min 11.248s
+     CGroup: /system.slice/elasticsearch.service
+             ├─10934 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─11141 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 21:26:00 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 21:26:02 fedora systemd-entrypoint[10934]: [0.002s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 21:26:29 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 21:33:40 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 21:34:51 /home/ctambunan/TambunanShellScripting]$ nano /home/ctambunan/TambunanShellScripting/IntroductionShellScriptingDB12.txt
+[root@fedora 21:35:44 /home/ctambunan/TambunanShellScripting]$ cp /etc/elasticsearch/elasticsearch.yml /home/ctambunan/TambunanShellScripting/IntroductionShellScriptingDB12.txt
+cp: overwrite '/home/ctambunan/TambunanShellScripting/IntroductionShellScriptingDB12.txt'? yes
+[root@fedora 21:36:10 /home/ctambunan/TambunanShellScripting]$ curl -XGET 'localhost:9200'
+{
+  "name" : "charles_01_Node_001",
+  "cluster_name" : "charles_tambunan",
+  "cluster_uuid" : "cari7MNDTkKnVMHu-u7GNg",
+  "version" : {
+    "number" : "7.16.3",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "4e6e4eab2297e949ec994e688dad46290d018022",
+    "build_date" : "2022-01-06T23:43:02.825887787Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.10.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+[root@fedora 21:40:27 /home/ctambunan/TambunanShellScripting]$ curl -XGET 'http://localhost:9200/_cat/nodes?v'
+ip              heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name
+192.168.231.130           10          96   3    0.12    0.10     0.09 cdfhilmrstw *      charles_01_Node_001
+[root@fedora 21:42:02 /home/ctambunan/TambunanShellScripting]$ ./bin/elasticsearch -E cluster.name=acme_logging
+bash: ./bin/elasticsearch: No such file or directory
+[root@fedora 21:44:10 /home/ctambunan/TambunanShellScripting]$ nano /bin/elasticsearch -E cluster.name=acme_logging
+[root@fedora 21:44:23 /home/ctambunan/TambunanShellScripting]$ sudo yum -y install epel-release
+Fedora 35 - x86_64 - Updates                                                                                                 15 kB/s |  10 kB     00:00
+Fedora 35 - x86_64 - Updates                                                                                                511 kB/s | 2.3 MB     00:04
+Fedora Modular 35 - x86_64 - Updates                                                                                         45 kB/s |  12 kB     00:00
+Fedora Modular 35 - x86_64 - Updates                                                                                         55 kB/s | 134 kB     00:02
+Last metadata expiration check: 0:00:01 ago on Fri 28 Jan 2022 09:48:53 PM WIB.
+No match for argument: epel-release
+Error: Unable to find a match: epel-release
+[root@fedora 21:48:56 /home/ctambunan/TambunanShellScripting]$ sudo yum -y install nginx httpd-tools
+Last metadata expiration check: 0:01:14 ago on Fri 28 Jan 2022 09:48:53 PM WIB.
+Package httpd-tools-2.4.52-1.fc35.x86_64 is already installed.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                                  Architecture                    Version                                    Repository                        Size
+============================================================================================================================================================
+Installing:
+ nginx                                    x86_64                          1:1.20.2-1.fc35                            updates                          595 k
+
+Installing dependencies:
+ gperftools-libs                          x86_64                          2.9.1-2.fc35                               fedora                           309 k
+ nginx-mimetypes                          noarch                          2.1.53-2.fc35                              fedora                            21 k
+
+Transaction Summary
+============================================================================================================================================================
+Install  3 Packages
+
+Total download size: 925 k
+Installed size: 3.2 M
+Downloading Packages:
+(1/3): nginx-mimetypes-2.1.53-2.fc35.noarch.rpm                                                                              90 kB/s |  21 kB     00:00
+(2/3): gperftools-libs-2.9.1-2.fc35.x86_64.rpm                                                                              196 kB/s | 309 kB     00:01
+(3/3): nginx-1.20.2-1.fc35.x86_64.rpm                                                                                       152 kB/s | 595 kB     00:03
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       167 kB/s | 925 kB     00:05
+Running transaction check
+Transaction check succeeded.
+
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Installing       : nginx-mimetypes-2.1.53-2.fc35.noarch                                                                                               1/3
+  Installing       : gperftools-libs-2.9.1-2.fc35.x86_64                                                                                                2/3
+  Installing       : nginx-1:1.20.2-1.fc35.x86_64                                                                                                       3/3
+  Running scriptlet: nginx-1:1.20.2-1.fc35.x86_64                                                                                                       3/3
+  Verifying        : gperftools-libs-2.9.1-2.fc35.x86_64                                                                                                1/3
+  Verifying        : nginx-mimetypes-2.1.53-2.fc35.noarch                                                                                               2/3
+  Verifying        : nginx-1:1.20.2-1.fc35.x86_64                                                                                                       3/3
+
+Installed:
+  gperftools-libs-2.9.1-2.fc35.x86_64                  nginx-1:1.20.2-1.fc35.x86_64                  nginx-mimetypes-2.1.53-2.fc35.noarch
+
+Complete!
+[root@fedora 21:50:15 /home/ctambunan/TambunanShellScripting]$ sudo htpasswd -c /etc/nginx/htpasswd.users charles800
+New password:
+Re-type new password:
+Adding password for user charles800
+[root@fedora 21:51:11 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 22:01:09 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 21:26:29 WIB; 34min ago
+       Docs: https://www.elastic.co
+   Main PID: 10934 (java)
+      Tasks: 78 (limit: 4607)
+     Memory: 1.9G
+        CPU: 3min 34.658s
+     CGroup: /system.slice/elasticsearch.service
+             ├─10934 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─11141 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 21:26:00 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 21:26:02 fedora systemd-entrypoint[10934]: [0.002s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 21:26:29 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 22:01:28 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 22:09:32 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 22:09:51 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 22:09:51 WIB; 5s ago
+       Docs: https://www.elastic.co
+    Process: 12688 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 12688 (code=exited, status=1/FAILURE)
+        CPU: 19.424s
+
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Jan 28 22:09:51 fedora systemd-entrypoint[12688]: For complete error details, refer to the log at /var/log/elasticsearch/charles_tambunan.log
+Jan 28 22:09:51 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 22:09:51 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 22:09:51 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 22:09:51 fedora systemd[1]: elasticsearch.service: Consumed 19.424s CPU time.
+[root@fedora 22:09:57 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 22:11:42 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+[root@fedora 22:12:06 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 22:12:06 WIB; 7s ago
+       Docs: https://www.elastic.co
+   Main PID: 12931 (java)
+      Tasks: 76 (limit: 4607)
+     Memory: 2.3G
+        CPU: 51.741s
+     CGroup: /system.slice/elasticsearch.service
+             ├─12931 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─13122 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 22:11:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 22:11:46 fedora systemd-entrypoint[12931]: [0.003s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 22:12:06 fedora systemd[1]: Started Elasticsearch.
+...skipping...
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 22:12:06 WIB; 7s ago
+       Docs: https://www.elastic.co
+   Main PID: 12931 (java)
+      Tasks: 76 (limit: 4607)
+     Memory: 2.3G
+        CPU: 51.741s
+     CGroup: /system.slice/elasticsearch.service
+             ├─12931 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─13122 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 22:11:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 22:11:46 fedora systemd-entrypoint[12931]: [0.003s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 22:12:06 fedora systemd[1]: Started Elasticsearch.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 22:12:06 WIB; 7s ago
+       Docs: https://www.elastic.co
+   Main PID: 12931 (java)
+      Tasks: 76 (limit: 4607)
+     Memory: 2.3G
+        CPU: 51.741s
+     CGroup: /system.slice/elasticsearch.service
+             ├─12931 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─13122 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 22:11:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 22:11:46 fedora systemd-entrypoint[12931]: [0.003s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 22:12:06 fedora systemd[1]: Started Elasticsearch.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+...skipping...
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 22:12:06 WIB; 7s ago
+       Docs: https://www.elastic.co
+   Main PID: 12931 (java)
+      Tasks: 76 (limit: 4607)
+     Memory: 2.3G
+        CPU: 51.741s
+     CGroup: /system.slice/elasticsearch.service
+             ├─12931 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─13122 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 22:11:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 22:11:46 fedora systemd-entrypoint[12931]: [0.003s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 22:12:06 fedora systemd[1]: Started Elasticsearch.
+...skipping...
+
+                   SUMMARY OF LESS COMMANDS
+
+      Commands marked with * may be preceded by a number, N.
+      Notes in parentheses indicate the behavior if N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MOVING
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+  b  ^B  ESC-v      *  Backward one window (or N lines).
+  z                 *  Forward  one window (and set window to N).
+  w                 *  Backward one window (and set window to N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to N).
+  u  ^U             *  Backward one half-window (and set half-window to N).
+  ESC-)  RightArrow *  Right one half screen width (or N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SEARCHING
+
+  /pattern          *  Search forward for (N-th) matching line.
+  ?pattern          *  Search backward for (N-th) matching line.
+  n                 *  Repeat previous search (for N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  ESC-U                Clear search highlighting.
+  &pattern          *  Display only matching lines.
+        ---------------------------------------------------
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+        ^W       WRAP search if no match found.
+ ---------------------------------------------------------------------------
+
+                           JUMPING
+
+  g  <  ESC-<       *  Go to first line in file (or line N).
+  G  >  ESC->       *  Go to last line in file (or line N).
+  p  %              *  Go to beginning of file (or N percent into file).
+  t                 *  Go to the (N-th) next tag.
+  T                 *  Go to the (N-th) previous tag.
+HELP -- Press RETURN for more, or q when done...skipping...
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Fri 2022-01-28 22:12:06 WIB; 7s ago
+       Docs: https://www.elastic.co
+   Main PID: 12931 (java)
+      Tasks: 76 (limit: 4607)
+     Memory: 2.3G
+        CPU: 51.741s
+     CGroup: /system.slice/elasticsearch.service
+             ├─12931 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alw>
+             └─13122 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 28 22:11:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 22:11:46 fedora systemd-entrypoint[12931]: [0.003s][warning][logging] Output options for existing outputs are ignored.
+Jan 28 22:12:06 fedora systemd[1]: Started Elasticsearch.
+~
+
+[root@fedora 22:13:19 /home/ctambunan/TambunanShellScripting]$ curl -X GET "localhost:9200/_cluster/health?pretty"
+{
+  "cluster_name" : "charles_tambunan",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 9,
+  "active_shards" : 9,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+[root@fedora 22:13:24 /home/ctambunan/TambunanShellScripting]$ poweroff
+Connection to 192.168.231.130 closed by remote host.
+Connection to 192.168.231.130 closed.
+PS D:\>
