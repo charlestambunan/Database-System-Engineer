@@ -1,0 +1,320 @@
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "shay banon",
+"fields": [
+"title",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "shay banon",
+"fields": [
+"title^2",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "elasticsearch training",
+"fields": [
+"title^2",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "shard"
+}
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": {
+"query": "shark",
+"fuzziness": 1
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": {
+"query": "monitering datu",
+"fuzziness": 1
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"size": 100,
+"_source": "author",
+"query": {
+"match": {
+"author": {
+"query": "hi world",
+"fuzziness": 2
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category": "Brewing in Beats"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {
+"match": {
+"content": "filebeat"
+}
+},
+"filter": {
+"match": {
+"category.keyword": "Brewing in Beats"
+}
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "security"
+}
+},
+"sort": [
+{
+"publish_date": {
+"order": "desc"
+}
+}
+]
+}
+
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {"match": {"content": "security"}},
+"must_not": {"match": {"author.keyword": ""}}
+}
+},
+"sort": [
+{
+"author.keyword": {
+"order": "asc"
+}
+},
+{
+"publish_date": {
+"order": "desc"
+}
+}
+]
+}
+
+GET blogs/_search
+{
+"size": 10,
+"query": {
+"match": {
+"content": "elasticsearch"
+}
+},
+"sort": [
+{"_score": {"order": "desc"}},
+{"_id": {"order":"asc"}}
+]
+}
+
+GET blogs/_search
+{
+"query": {
+"match_phrase": {
+"title": "kibana"
+}
+},
+"highlight": {
+"fields": {
+"title": {}
+},
+"pre_tags": ["<es-hit>"],
+"post_tags": ["</es-hit>"]
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category": "User Stories"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category.keyword": "User Stories"
+}
+}
+}
+
+GET logs_server*/_search
+{
+"aggs": {
+"average_response_size": {
+"avg": {
+"field": "response_size"
+}
+}
+}
+}
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"average_response_size": {
+"avg": {
+"field": "response_size"
+}
+}
+}
+}
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"runtime_histogram": {
+"histogram": {
+"field": "runtime_ms",
+"interval": 100,
+"min_doc_count": 1000
+},
+"aggs": {
+"average_runtime": {
+"avg": {
+"field": "runtime_ms"
+}
+}
+}
+}
+}
+}
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"logs_by_month": {
+"date_histogram": {
+"field": "@timestamp",
+"interval": "month",
+"order": {
+"average_runtime": "asc"
+}
+},
+"aggs": {
+"average_runtime": {
+"avg": {
+"field": "runtime_ms"
+}
+}
+}
+}
+}
+}
+
+PUT _template/logs_template
+{
+"index_patterns": "logs-*",
+"order": 1,
+"settings": {
+"number_of_shards": 4,
+"number_of_replicas": 1
+},
+"mappings": {
+"_doc": {
+"properties": {
+"@timestamp": {
+"type": "date"
+}
+}
+}
+}
+}
+
+
+GET logs-2022-02/_search?scroll=30s
+{
+"size": 500,
+"query": {
+"match_all": {}
+},
+"sort": [
+{
+"_doc": {
+"order": "asc"
+}
+}
+]
+}
+
+GET _search/scroll
+{
+"scroll": "30s",
+"scroll_id":
+"DnF1ZXJ5VGhlbkZldGNoBQAAAAAAAAWOFnlWQVR3N3pxUjdLMn-
+JLcUZpSDVkWWcAAAAAAAAFjAAAAWPFnlWQVR3N3pxUjdLMnJLcUZpSDVkWWcAAAAAA
+AAFkRZ5VkFUdzd6cVI3SzJyS3FGaUg1ZFln"
+}
+

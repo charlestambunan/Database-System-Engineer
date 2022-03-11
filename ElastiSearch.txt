@@ -1,0 +1,462 @@
+Jan 31 08:46:37 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 2809.
+Jan 31 08:46:51 fedora systemd[1]: Started Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished successfully.
+░░ 
+░░ The job identifier is 2809.
+Jan 31 09:55:01 fedora systemd[1]: Stopping Elasticsearch...
+░░ Subject: A stop job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A stop job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 6338.
+Jan 31 09:55:01 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+░░ Subject: Unit succeeded
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has successfully entered the 'dead' state.
+Jan 31 09:55:01 fedora systemd[1]: Stopped Elasticsearch.
+░░ Subject: A stop job for unit elasticsearch.service has finished
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A stop job for unit elasticsearch.service has finished.
+░░ 
+░░ The job identifier is 6338 and the job result is done.
+Jan 31 09:55:01 fedora systemd[1]: elasticsearch.service: Consumed 1min 47.804s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
+-- Boot a9be4f3807a74a6a9cd4f3e195bd22a7 --
+Feb 01 08:53:37 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 261.
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 01 08:53:39 fedora systemd-entrypoint[2027]:         ... 10 more
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 01 08:53:42 fedora systemd-entrypoint[1132]:         ... 9 more
+Feb 01 08:53:42 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ An ExecStart= process belonging to unit elasticsearch.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+Feb 01 08:53:42 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has entered the 'failed' state with result 'exit-code'.
+Feb 01 08:53:42 fedora systemd[1]: Failed to start Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished with a failure.
+░░ 
+░░ The job identifier is 261 and the job result is failed.
+Feb 01 08:53:42 fedora systemd[1]: elasticsearch.service: Consumed 7.580s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
+-- Boot 71051cb169624b04b14d2a7b8652ebbb --
+Feb 01 20:53:47 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 266.
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 01 20:53:49 fedora systemd-entrypoint[2024]:         ... 10 more
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 01 20:53:52 fedora systemd-entrypoint[1113]:         ... 9 more
+Feb 01 20:53:52 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ An ExecStart= process belonging to unit elasticsearch.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+Feb 01 20:53:52 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has entered the 'failed' state with result 'exit-code'.
+Feb 01 20:53:52 fedora systemd[1]: Failed to start Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished with a failure.
+░░ 
+░░ The job identifier is 266 and the job result is failed.
+Feb 01 20:53:52 fedora systemd[1]: elasticsearch.service: Consumed 9.457s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
+-- Boot 385355f12a85415f85fc42371206af1c --
+Feb 02 10:50:08 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 306.
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 10:50:10 fedora systemd-entrypoint[1865]:         ... 10 more
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 10:50:13 fedora systemd-entrypoint[1127]:         ... 9 more
+Feb 02 10:50:13 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ An ExecStart= process belonging to unit elasticsearch.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+Feb 02 10:50:13 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has entered the 'failed' state with result 'exit-code'.
+Feb 02 10:50:13 fedora systemd[1]: Failed to start Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished with a failure.
+░░ 
+░░ The job identifier is 306 and the job result is failed.
+Feb 02 10:50:13 fedora systemd[1]: elasticsearch.service: Consumed 8.983s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
+Feb 02 11:27:27 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 8323.
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 11:27:28 fedora systemd-entrypoint[8072]:         ... 10 more
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 11:27:30 fedora systemd-entrypoint[8005]:         ... 9 more
+Feb 02 11:27:30 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ An ExecStart= process belonging to unit elasticsearch.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+Feb 02 11:27:30 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has entered the 'failed' state with result 'exit-code'.
+Feb 02 11:27:30 fedora systemd[1]: Failed to start Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished with a failure.
+░░ 
+░░ The job identifier is 8323 and the job result is failed.
+Feb 02 11:27:30 fedora systemd[1]: elasticsearch.service: Consumed 8.887s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
+Feb 02 11:36:56 fedora systemd[1]: Starting Elasticsearch...
+░░ Subject: A start job for unit elasticsearch.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has begun execution.
+░░ 
+░░ The job identifier is 8685.
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 11:36:57 fedora systemd-entrypoint[8450]:         ... 10 more
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: JsonParseException[Duplicate field 'node.name'
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]];
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]: Caused by: com.fasterxml.jackson.core.JsonParseException: Duplicate field 'node.name'
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 24, column: 10]
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at com.fasterxml.jackson.core.json.JsonReadContext._checkDup(JsonReadContext.java:204)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at com.fasterxml.jackson.core.json.JsonReadContext.setCurrentName(JsonReadContext.java:198)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:399)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Feb 02 11:36:58 fedora systemd-entrypoint[8383]:         ... 9 more
+Feb 02 11:36:58 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ An ExecStart= process belonging to unit elasticsearch.service has exited.
+░░ 
+░░ The process' exit code is 'exited' and its exit status is 1.
+Feb 02 11:36:58 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service has entered the 'failed' state with result 'exit-code'.
+Feb 02 11:36:58 fedora systemd[1]: Failed to start Elasticsearch.
+░░ Subject: A start job for unit elasticsearch.service has failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit elasticsearch.service has finished with a failure.
+░░ 
+░░ The job identifier is 8685 and the job result is failed.
+Feb 02 11:36:58 fedora systemd[1]: elasticsearch.service: Consumed 3.433s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit elasticsearch.service completed and consumed the indicated resources.
