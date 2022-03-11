@@ -1,0 +1,3691 @@
+Elastic Search Database Engineer 1 25 January 2022
+
+Chapter 1 Introduction Elastic Search
+
+Search
+• Full-text search is where it all began:
+Logging
+• A popular use case for the Elastic Stack is storing and 
+analyzing log data:
+
+Metrics
+• Using the Elastic Stack to analyze all types of metric data, 
+from CPU usage to the weather on Mars:
+
+Business Analytics
+• Using the Elastic Stack to analyze business needs and 
+build custom applications 
+‒ from studying purchasing patterns, to improving medical care, to 
+matching people together
+
+Security Analytics
+• Using the Elastic Stack to analyze security issues and 
+threats:
+
+The Elastic Stack is a collection of products with 
+Elasticsearch at the heart 
+‒ reliably and securely take data from any source, in any format, 
+and search, analyze, and visualize it in real time
+
+The Elastic Stack is a collection of products with 
+Elasticsearch at the heart 
+‒ reliably and securely take data from any source, in any format, 
+and search, analyze, and visualize it in real time
+
+Logstash is a server-side data processing pipeline 
+‒ ingest data from a multitude of sources simultaneously 
+‒ parse, transform, and prepare your data for ingestion
+
+Elasticsearch is a distributed, RESTful search and 
+analytics engine that centrally stores your data 
+‒ a node is a single instance of Elasticsearch 
+‒ a cluster is a collection of one or more nodes
+
+Kibana is an analytics and visualization platform 
+‒ manage the stack 
+‒ search, view and interact with your Elasticsearch data 
+‒ visualize your data in a variety of charts, tables, and maps
+
+Static Data vs. Time Series Data
+
+• In general, we can categorize most data in our customers’ use cases as one of the following: 
+
+‒ (relatively) static data: a large (or small) dataset that may grow 
+or change slowly, like a catalog or inventory of items 
+
+‒ time series data: event data associated with a moment in time 
+that typically grows rapidly, like log files or metrics
+ 
+• Elasticsearch works great for both types of data 
+‒ and therefore we will use two datasets in the course…
+
+Ingesting the Log Data
+• The log events are in log files 
+‒ can be easily ingested using Filebeat, which tails the log files
+
+What do we want from our log data?
+• To be able to answer questions about web traffic:
+
+Summary
+• Elasticsearch is designed to be scalable and easy-to-use by 
+any programming language 
+• The Elastic Stack is a collection of products with 
+Elasticsearch at the heart 
+• Beats are single-purpose data shippers 
+• Logstash is a server-side data processing pipeline 
+• Kibana is an analytics and visualization platform
+
+Quiz : 
+
+1. True or False: Elasticsearch uses Apache Lucene behind the 
+scenes to index and search data.True = Benar 
+ 
+2. What were two of Shay’s main objectives when designing 
+Elasticsearch?
+
+1. distributed from the ground up in its design 
+2. easily used by any other programming language = Benar
+ 
+3. In general, most data in our customers’ use cases can be 
+categorized into what two types of data?
+
+‒ (relatively) static data: a large (or small) dataset that may grow 
+or change slowly, like a catalog or inventory of items 
+‒ time series data: event data associated with a moment in time 
+that typically grows rapidly, like log files or metrics = Benar 
+ 
+4. You have data in a database. What component of the Elastic 
+Stack might you use to ingest it into Elasticsearch?
+
+Beats are single-purpose data shippers 
+‒ e.g. Filebeat, Metricbeat, Packetbeat, Winlogbeat, etc. 
+‒ lightweight agents that send data from your machines to 
+Logstash or Elasticsearch
+ 
+5. You want to monitor the performance of your servers. 
+How might you collect that data and ingest it into 
+Elasticsearch?
+
+Kibana is an analytics and visualization platform 
+‒ manage the stack 
+‒ search, view and interact with your Elasticsearch data 
+‒ visualize your data in a variety of charts, tables, and maps
+ 
+6. You want to monitor all of your networks’ traffic. How 
+might you collect that data and ingest it into Elasticsearch?
+
+Ingesting the Log Data
+• The log events are in log files 
+‒ can be easily ingested using Filebeat, which tails the log files
+
+Jawaban Yang Benar :
+
+1. True
+2. scalable search, and to make it easy to use from any
+programming language
+3. somewhat static data, and time-series data
+4. Logstash would work well for that
+5. Metricbeat would be a great option
+6. Packetbeat is great for ingesting network traffic details
+
+Chapter 2 Getting Started Elastic Search
+
+What is Elastic Search
+Component of Elastic Database
+Elasticsearch Communication 
+Securing Elasticsearch
+
+[root@fedora 13:30:40 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ [root@fedora 13:30:40 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ dnf search openjdk                                                           dnf search openjdk
+Last metadata expiration check: 1:18:04 ago on Wed 26 Jan 2022 12:18:13 PM WIB.
+============================================================= Name & Summary Matched: openjdk ==============================================================java-1.8.0-openjdk.x86_64 : OpenJDK 8 Runtime Environment
+java-1.8.0-openjdk-demo.x86_64 : OpenJDK 8 Demos
+java-1.8.0-openjdk-demo-fastdebug.x86_64 : OpenJDK 8 Demos optimised with full debugging on
+java-1.8.0-openjdk-demo-slowdebug.x86_64 : OpenJDK 8 Demos unoptimised with full debugging on
+java-1.8.0-openjdk-devel.x86_64 : OpenJDK 8 Development Environment
+java-1.8.0-openjdk-devel-fastdebug.x86_64 : OpenJDK 8 Development Environment optimised with full debugging on
+java-1.8.0-openjdk-devel-slowdebug.x86_64 : OpenJDK 8 Development Environment unoptimised with full debugging on
+java-1.8.0-openjdk-fastdebug.x86_64 : OpenJDK 8 Runtime Environment optimised with full debugging on
+java-1.8.0-openjdk-headless.x86_64 : OpenJDK 8 Headless Runtime Environment
+java-1.8.0-openjdk-headless-fastdebug.x86_64 : OpenJDK 8 Runtime Environment optimised with full debugging on
+java-1.8.0-openjdk-headless-slowdebug.x86_64 : OpenJDK 8 Runtime Environment unoptimised with full debugging on
+java-1.8.0-openjdk-javadoc.noarch : OpenJDK 8 API documentation
+java-1.8.0-openjdk-javadoc-zip.noarch : OpenJDK 8 API documentation compressed in a single archive
+java-1.8.0-openjdk-openjfx.x86_64 : OpenJDK x OpenJFX connector. This package adds symliks finishing Java FX integration to java-1.8.0-openjdk
+java-1.8.0-openjdk-openjfx-devel.i686 : OpenJDK x OpenJFX connector for FX developers. This package adds symliks finishing Java FX integration to
+                                      : java-1.8.0-openjdk-devel
+java-1.8.0-openjdk-openjfx-devel.x86_64 : OpenJDK x OpenJFX connector for FX developers. This package adds symliks finishing Java FX integration to
+                                        : java-1.8.0-openjdk-devel
+java-1.8.0-openjdk-openjfx-devel-fastdebug.x86_64 : OpenJDK x OpenJFX connector for FX developers for packages with debugging on and optimisation. This
+                                                  : package adds symliks finishing Java FX integration to java-1.8.0-openjdk-devel-slowdebug
+java-1.8.0-openjdk-openjfx-devel-slowdebug.x86_64 : OpenJDK x OpenJFX connector for FX developers for packages with debugging on and no optimisation. This
+                                                  : package adds symliks finishing Java FX integration to java-1.8.0-openjdk-devel-slowdebug
+java-1.8.0-openjdk-openjfx-fastdebug.x86_64 : OpenJDK x OpenJFX connector for packages with debugging on and optimisation. his package adds symliks
+                                            : finishing Java FX integration to java-1.8.0-openjdk-fastdebug
+java-1.8.0-openjdk-openjfx-slowdebug.x86_64 : OpenJDK x OpenJFX connector for packages with debugging on and no optimisation. his package adds symliks
+                                            : finishing Java FX integration to java-1.8.0-openjdk-slowdebug
+java-1.8.0-openjdk-slowdebug.x86_64 : OpenJDK 8 Runtime Environment unoptimised with full debugging on
+java-1.8.0-openjdk-src.x86_64 : OpenJDK 8 Source Bundle
+java-1.8.0-openjdk-src-fastdebug.x86_64 : OpenJDK 8 Source Bundle for packages with debugging on and optimisation
+java-1.8.0-openjdk-src-slowdebug.x86_64 : OpenJDK 8 Source Bundle for packages with debugging on and no optimisation
+java-11-openjdk.i686 : OpenJDK 11 Runtime Environment
+java-11-openjdk.x86_64 : OpenJDK 11 Runtime Environment
+java-11-openjdk-demo.x86_64 : OpenJDK 11 Demos
+java-11-openjdk-demo-fastdebug.x86_64 : OpenJDK 11 Demos optimised with full debugging on
+java-11-openjdk-demo-slowdebug.x86_64 : OpenJDK 11 Demos unoptimised with full debugging on
+java-11-openjdk-devel.i686 : OpenJDK 11 Development Environment
+java-11-openjdk-devel.x86_64 : OpenJDK 11 Development Environment
+java-11-openjdk-devel-fastdebug.x86_64 : OpenJDK 11 Development Environment optimised with full debugging on
+java-11-openjdk-devel-slowdebug.x86_64 : OpenJDK 11 Development Environment unoptimised with full debugging on
+java-11-openjdk-fastdebug.x86_64 : OpenJDK 11 Runtime Environment optimised with full debugging on
+java-11-openjdk-headless.i686 : OpenJDK 11 Headless Runtime Environment
+java-11-openjdk-headless.x86_64 : OpenJDK 11 Headless Runtime Environment
+java-11-openjdk-headless-fastdebug.x86_64 : OpenJDK 11 Runtime Environment optimised with full debugging on
+java-11-openjdk-headless-slowdebug.i686 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-headless-slowdebug.x86_64 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-javadoc.x86_64 : OpenJDK 11 API documentation
+java-11-openjdk-javadoc-zip.x86_64 : OpenJDK 11 API documentation compressed in a single archive
+java-11-openjdk-jmods.x86_64 : JMods for OpenJDK 11
+java-11-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 11 optimised with full debugging on
+java-11-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 11 unoptimised with full debugging on
+java-11-openjdk-slowdebug.x86_64 : OpenJDK 11 Runtime Environment unoptimised with full debugging on
+java-11-openjdk-src.x86_64 : OpenJDK 11 Source Bundle
+java-11-openjdk-src-fastdebug.x86_64 : OpenJDK 11 Source Bundle for packages with debugging on and optimisation
+java-11-openjdk-src-slowdebug.x86_64 : OpenJDK 11 Source Bundle for packages with debugging on and no optimisation
+java-11-openjdk-static-libs.x86_64 : OpenJDK 11 libraries for static linking
+java-11-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 11 libraries for static linking optimised with full debugging on
+java-11-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 11 libraries for static linking unoptimised with full debugging on
+java-17-openjdk.i686 : OpenJDK 17 Runtime Environment
+java-17-openjdk.x86_64 : OpenJDK 17 Runtime Environment
+java-17-openjdk-demo.x86_64 : OpenJDK 17 Demos
+java-17-openjdk-demo-fastdebug.x86_64 : OpenJDK 17 Demos optimised with full debugging on
+java-17-openjdk-demo-slowdebug.x86_64 : OpenJDK 17 Demos unoptimised with full debugging on
+java-17-openjdk-devel.i686 : OpenJDK 17 Development Environment
+java-17-openjdk-devel.x86_64 : OpenJDK 17 Development Environment
+java-17-openjdk-devel-fastdebug.x86_64 : OpenJDK 17 Development Environment optimised with full debugging on
+java-17-openjdk-devel-slowdebug.x86_64 : OpenJDK 17 Development Environment unoptimised with full debugging on
+java-17-openjdk-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-17-openjdk-headless.i686 : OpenJDK 17 Headless Runtime Environment
+java-17-openjdk-headless.x86_64 : OpenJDK 17 Headless Runtime Environment
+java-17-openjdk-headless-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-17-openjdk-headless-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-17-openjdk-javadoc.x86_64 : OpenJDK 17 API documentation
+java-17-openjdk-javadoc-zip.x86_64 : OpenJDK 17 API documentation compressed in a single archive
+java-17-openjdk-jmods.x86_64 : JMods for OpenJDK 17
+java-17-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 17 optimised with full debugging on
+java-17-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 17 unoptimised with full debugging on
+java-17-openjdk-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-17-openjdk-src.x86_64 : OpenJDK 17 Source Bundle
+java-17-openjdk-src-fastdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and optimisation
+java-17-openjdk-src-slowdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and no optimisation
+java-17-openjdk-static-libs.x86_64 : OpenJDK 17 libraries for static linking
+java-17-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 17 libraries for static linking optimised with full debugging on
+java-17-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 17 libraries for static linking unoptimised with full debugging on
+java-latest-openjdk.i686 : OpenJDK 17 Runtime Environment
+java-latest-openjdk.x86_64 : OpenJDK 17 Runtime Environment
+java-latest-openjdk-demo.x86_64 : OpenJDK 17 Demos
+java-latest-openjdk-demo-fastdebug.x86_64 : OpenJDK 17 Demos optimised with full debugging on
+java-latest-openjdk-demo-slowdebug.x86_64 : OpenJDK 17 Demos unoptimised with full debugging on
+java-latest-openjdk-devel.i686 : OpenJDK 17 Development Environment
+java-latest-openjdk-devel.x86_64 : OpenJDK 17 Development Environment
+java-latest-openjdk-devel-fastdebug.x86_64 : OpenJDK 17 Development Environment optimised with full debugging on
+java-latest-openjdk-devel-slowdebug.x86_64 : OpenJDK 17 Development Environment unoptimised with full debugging on
+java-latest-openjdk-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-latest-openjdk-headless.i686 : OpenJDK 17 Headless Runtime Environment
+java-latest-openjdk-headless.x86_64 : OpenJDK 17 Headless Runtime Environment
+java-latest-openjdk-headless-fastdebug.x86_64 : OpenJDK 17 Runtime Environment optimised with full debugging on
+java-latest-openjdk-headless-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-latest-openjdk-javadoc.x86_64 : OpenJDK 17 API documentation
+java-latest-openjdk-javadoc-zip.x86_64 : OpenJDK 17 API documentation compressed in a single archive
+java-latest-openjdk-jmods.x86_64 : JMods for OpenJDK 17
+java-latest-openjdk-jmods-fastdebug.x86_64 : JMods for OpenJDK 17 optimised with full debugging on
+java-latest-openjdk-jmods-slowdebug.x86_64 : JMods for OpenJDK 17 unoptimised with full debugging on
+java-latest-openjdk-slowdebug.x86_64 : OpenJDK 17 Runtime Environment unoptimised with full debugging on
+java-latest-openjdk-src.x86_64 : OpenJDK 17 Source Bundle
+java-latest-openjdk-src-fastdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and optimisation
+java-latest-openjdk-src-slowdebug.x86_64 : OpenJDK 17 Source Bundle for packages with debugging on and no optimisation
+java-latest-openjdk-static-libs.x86_64 : OpenJDK 17 libraries for static linking
+java-latest-openjdk-static-libs-fastdebug.x86_64 : OpenJDK 17 libraries for static linking optimised with full debugging on
+java-latest-openjdk-static-libs-slowdebug.x86_64 : OpenJDK 17 libraries for static linking unoptimised with full debugging on
+maven-local-openjdk8.noarch : OpenJDK 8 toolchain for XMvn
+maven-openjdk11.noarch : OpenJDK 11 binding for Maven
+maven-openjdk17.noarch : OpenJDK 17 binding for Maven
+maven-openjdk8.noarch : OpenJDK 8 binding for Maven
+openjdk-asmtools-javadoc.noarch : Javadoc for openjdk-asmtools
+================================================================== Name Matched: openjdk ===================================================================openjdk-asmtools.noarch : To develop tools create proper & improper Java '.class' files
+================================================================= Summary Matched: openjdk =================================================================icedtea-web.x86_64 : Additional Java components for OpenJDK - Java Web Start implementation
+[root@fedora 13:36:18 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo dnf install java-latest-openjdk.x86_64
+Last metadata expiration check: 1:18:47 ago on Wed 26 Jan 2022 12:18:13 PM WIB.
+Dependencies resolved.
+============================================================================================================================================================ Package                                        Architecture             Version                                            Repository                 Size
+============================================================================================================================================================Installing:
+ java-latest-openjdk                            x86_64                   1:17.0.1.0.12-13.rolling.fc35                      updates                   230 k
+Installing dependencies:
+ copy-jdk-configs                               noarch                   4.0-2.fc35                                         fedora                     27 k
+ java-latest-openjdk-headless                   x86_64                   1:17.0.1.0.12-13.rolling.fc35                      updates                    40 M
+ javapackages-filesystem                        noarch                   6.0.0-1.fc35                                       fedora                     12 k
+ libfontenc                                     x86_64                   1.1.3-16.fc35                                      fedora                     30 k
+ lksctp-tools                                   x86_64                   1.0.18-11.fc35                                     fedora                     91 k
+ lua                                            x86_64                   5.4.3-2.fc35                                       fedora                    188 k
+ lua-posix                                      x86_64                   35.0-4.fc35                                        fedora                    128 k
+ mkfontscale                                    x86_64                   1.2.1-3.fc35                                       fedora                     31 k
+ ttmkfdir                                       x86_64                   3.0.9-64.fc35                                      fedora                     52 k
+ tzdata-java                                    noarch                   2021e-1.fc35                                       updates                   155 k
+ xorg-x11-fonts-Type1                           noarch                   7.5-32.fc35                                        fedora                    500 k
+
+Transaction Summary
+============================================================================================================================================================Install  12 Packages
+
+Total download size: 41 M
+Installed size: 191 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/12): javapackages-filesystem-6.0.0-1.fc35.noarch.rpm                                                                      84 kB/s |  12 kB     00:00
+(2/12): copy-jdk-configs-4.0-2.fc35.noarch.rpm                                                                              158 kB/s |  27 kB     00:00
+(3/12): libfontenc-1.1.3-16.fc35.x86_64.rpm                                                                                 167 kB/s |  30 kB     00:00
+(4/12): lksctp-tools-1.0.18-11.fc35.x86_64.rpm                                                                              1.0 MB/s |  91 kB     00:00
+(5/12): mkfontscale-1.2.1-3.fc35.x86_64.rpm                                                                                 648 kB/s |  31 kB     00:00
+(6/12): lua-5.4.3-2.fc35.x86_64.rpm                                                                                         1.2 MB/s | 188 kB     00:00
+(7/12): lua-posix-35.0-4.fc35.x86_64.rpm                                                                                    528 kB/s | 128 kB     00:00
+(8/12): ttmkfdir-3.0.9-64.fc35.x86_64.rpm                                                                                   138 kB/s |  52 kB     00:00
+(9/12): java-latest-openjdk-17.0.1.0.12-13.rolling.fc35.x86_64.rpm                                                          139 kB/s | 230 kB     00:01
+(10/12): tzdata-java-2021e-1.fc35.noarch.rpm                                                                                259 kB/s | 155 kB     00:00
+(11/12): xorg-x11-fonts-Type1-7.5-32.fc35.noarch.rpm                                                                        174 kB/s | 500 kB     00:02
+(12/12): java-latest-openjdk-headless-17.0.1.0.12-13.rolling.fc35.x86_64.rpm                                                304 kB/s |  40 MB     02:13
+------------------------------------------------------------------------------------------------------------------------------------------------------------Total                                                                                                                       311 kB/s |  41 MB     02:15
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Running scriptlet: copy-jdk-configs-4.0-2.fc35.noarch                                                                                                 1/1
+  Running scriptlet: java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                  1/1
+  Preparing        :                                                                                                                                    1/1
+  Installing       : tzdata-java-2021e-1.fc35.noarch                                                                                                   1/12
+  Installing       : ttmkfdir-3.0.9-64.fc35.x86_64                                                                                                     2/12
+  Installing       : lua-posix-35.0-4.fc35.x86_64                                                                                                      3/12
+  Installing       : lua-5.4.3-2.fc35.x86_64                                                                                                           4/12
+  Installing       : copy-jdk-configs-4.0-2.fc35.noarch                                                                                                5/12
+  Installing       : lksctp-tools-1.0.18-11.fc35.x86_64                                                                                                6/12
+  Installing       : libfontenc-1.1.3-16.fc35.x86_64                                                                                                   7/12
+  Installing       : mkfontscale-1.2.1-3.fc35.x86_64                                                                                                   8/12
+  Installing       : xorg-x11-fonts-Type1-7.5-32.fc35.noarch                                                                                           9/12
+  Running scriptlet: xorg-x11-fonts-Type1-7.5-32.fc35.noarch                                                                                           9/12
+  Installing       : javapackages-filesystem-6.0.0-1.fc35.noarch                                                                                      10/12
+  Installing       : java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                11/12
+  Running scriptlet: java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                11/12
+  Installing       : java-latest-openjdk-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                         12/12
+  Running scriptlet: java-latest-openjdk-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                         12/12
+  Running scriptlet: copy-jdk-configs-4.0-2.fc35.noarch                                                                                               12/12
+  Running scriptlet: java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                12/12
+  Running scriptlet: java-latest-openjdk-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                         12/12
+  Verifying        : copy-jdk-configs-4.0-2.fc35.noarch                                                                                                1/12
+  Verifying        : javapackages-filesystem-6.0.0-1.fc35.noarch                                                                                       2/12
+  Verifying        : libfontenc-1.1.3-16.fc35.x86_64                                                                                                   3/12
+  Verifying        : lksctp-tools-1.0.18-11.fc35.x86_64                                                                                                4/12
+  Verifying        : lua-5.4.3-2.fc35.x86_64                                                                                                           5/12
+  Verifying        : lua-posix-35.0-4.fc35.x86_64                                                                                                      6/12
+  Verifying        : mkfontscale-1.2.1-3.fc35.x86_64                                                                                                   7/12
+  Verifying        : ttmkfdir-3.0.9-64.fc35.x86_64                                                                                                     8/12
+  Verifying        : xorg-x11-fonts-Type1-7.5-32.fc35.noarch                                                                                           9/12
+  Verifying        : java-latest-openjdk-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                         10/12
+  Verifying        : java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                                                                11/12
+  Verifying        : tzdata-java-2021e-1.fc35.noarch                                                                                                  12/12
+
+Installed:
+  copy-jdk-configs-4.0-2.fc35.noarch                                                java-latest-openjdk-1:17.0.1.0.12-13.rolling.fc35.x86_64
+  java-latest-openjdk-headless-1:17.0.1.0.12-13.rolling.fc35.x86_64                 javapackages-filesystem-6.0.0-1.fc35.noarch
+  libfontenc-1.1.3-16.fc35.x86_64                                                   lksctp-tools-1.0.18-11.fc35.x86_64
+  lua-5.4.3-2.fc35.x86_64                                                           lua-posix-35.0-4.fc35.x86_64
+  mkfontscale-1.2.1-3.fc35.x86_64                                                   ttmkfdir-3.0.9-64.fc35.x86_64
+  tzdata-java-2021e-1.fc35.noarch                                                   xorg-x11-fonts-Type1-7.5-32.fc35.noarch
+
+Complete!
+[root@fedora 13:39:25 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ java --version
+openjdk 17.0.1 2021-10-19
+OpenJDK Runtime Environment 21.9 (build 17.0.1+12)
+OpenJDK 64-Bit Server VM 21.9 (build 17.0.1+12, mixed mode, sharing)
+[root@fedora 13:42:24 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo alternatives --config java
+
+There is 1 program that provides 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           java-latest-openjdk.x86_64 (/usr/lib/jvm/java-17-openjdk-17.0.1.0.12-13.rolling.fc35.x86_64/bin/java)
+
+Enter to keep the current selection[+], or type selection number: 1
+[root@fedora 13:42:49 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ java --version
+openjdk 17.0.1 2021-10-19
+OpenJDK Runtime Environment 21.9 (build 17.0.1+12)
+OpenJDK 64-Bit Server VM 21.9 (build 17.0.1+12, mixed mode, sharing)
+[root@fedora 13:42:51 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ elastic --version
+bash: elastic: command not found
+[root@fedora 13:43:05 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ elasticsearch --version
+bash: elasticsearch: command not found
+[root@fedora 13:43:25 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ps -p 1
+    PID TTY          TIME CMD
+      1 ?        00:00:02 systemd
+[root@fedora 13:44:07 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo chkconfig --add elasticsearch
+[root@fedora 13:44:13 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo -i service elasticsearch start
+Starting elasticsearch (via systemctl):  systemctl daemon-reload
+                                                           [  OK  ]
+[root@fedora 13:45:03 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl daemon-reload
+[root@fedora 13:45:05 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo -i service elasticsearch stop
+Stopping elasticsearch (via systemctl):  syste             [  OK  ]
+[root@fedora 13:45:15 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo /bin/systemctl dae[root@fedora 13:45:15 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo /bin/systemctl daemon-reload
+client_loop: send disconnect: Connection reset
+PS D:\> ssh ctambunan@192.168.231.130
+ctambunan@192.168.231.130's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Wed Jan 26 13:14:47 2022 from 192.168.231.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+Sorry, try again.
+[sudo] password for ctambunan:
+[root@fedora 14:16:31 /home/ctambunan]$ ls -la
+total 136
+drwx------. 14 ctambunan ctambunan  4096 Jan 13 16:05 .
+drwxr-xr-x. 10 root      root        146 Jan 19 23:15 ..
+-rw-------.  1 ctambunan ctambunan  1252 Jan 21 20:31 .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021 .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021 .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021 .bashrc
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09 charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42 charles_tambunan
+-rw-r--r--.  1 root      root        583 Jan  7 13:11 charles.tar
+-rw-r--r--.  1 root      root        583 Jan  7 13:10 charles.tar.gz
+-rw-r--r--.  1 root      root         20 Jan 13 16:05 cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04 dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02 history
+-rw-r--r--.  1 root      root          0 Jan  5 06:55 konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57 .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38 man
+-rw-r--r--.  1 root      root          0 Jan 12 17:34 my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30 myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15 my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22 output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22 output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04 output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43 passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00 .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16 TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20 TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18 TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53 TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 26 13:28 TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52 TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41 TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05 TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47 TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00 tea.txt
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05 .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32 zcat
+[root@fedora 14:16:32 /home/ctambunan]$ cd TambunanShellScripting/
+[root@fedora 14:16:40 /home/ctambunan/TambunanShellScripting]$ ls -la
+total 4824
+drwxrwxrwx. 15 root      root         8192 Jan 26 13:28 .
+drwx------. 14 ctambunan ctambunan    4096 Jan 13 16:05 ..
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 1
+-rw-r--r--.  1 root      root           41 Jan 10 11:08 andidori.sh
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 echo
+drwxr-xr-x.  2 root      root          182 Jan 26 13:29 ElasticSearch01
+drwxr-xr-x.  2 root      root            6 Jan 10 15:36 ElasticSearch02
+drwxr-xr-x.  2 root      root            6 Jan 10 15:36 ElasticSearch03
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43 ElasticSearch04
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43 ElasticSearch05
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43 ElasticSearch06
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01 ElasticSearch07
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01 ElasticSearch08
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01 ElasticSearch09
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01 ElasticSearch10
+-rwxr-xr-x.  1 root      root          414 Jan 10 11:04 firstscript.sh
+-rw-r--r--.  1 root      root           79 Jan 10 17:36 FiveScript.sh
+-rw-r--r--.  1 root      root          121 Jan 10 16:45 FourthScript.sh
+-rw-r--r--.  1 root      root            0 Jan 24 09:08 History_of_Redhat_Fedora_Server100.txt
+-rw-r--r--.  1 root      root        14442 Jan 10 11:31 History_of_Redhat_Fedora_Server_41.txt
+-rw-r--r--.  1 root      root        15355 Jan 10 11:43 History_of_Redhat_Fedora_Server_42.txt
+-rw-r--r--.  1 root      root        16385 Jan 10 12:40 History_of_Redhat_Fedora_Server_43.txt
+-rw-r--r--.  1 root      root        19270 Jan 10 17:37 History_of_Redhat_Fedora_Server_44.txt
+-rw-r--r--.  1 root      root        32338 Jan 19 20:04 History_of_Redhat_Fedora_Server_45.txt
+-rw-r--r--.  1 root      root        32379 Jan 19 20:04 History_of_Redhat_Fedora_Server_46.txt
+-rw-r--r--.  1 root      root        32422 Jan 19 20:04 History_of_Redhat_Fedora_Server_47.txt
+-rw-r--r--.  1 root      root        32458 Jan 19 20:04 History_of_Redhat_Fedora_Server_48.txt
+-rw-r--r--.  1 root      root        32501 Jan 19 20:04 History_of_Redhat_Fedora_Server_49.txt
+-rw-r--r--.  1 root      root        32546 Jan 19 20:04 History_of_Redhat_Fedora_Server_50.txt
+-rw-r--r--.  1 root      root        20450 Jan 11 18:29 History_of_Redhat_Fedora_Server51.txt
+-rw-r--r--.  1 root      root      2553981 Jan 12 09:34 History_of_Redhat_Fedora_Server52.txt
+-rw-r--r--.  1 root      root        25250 Jan 12 10:56 History_of_Redhat_Fedora_Server53.txt
+-rw-r--r--.  1 root      root          745 Jan 12 11:25 History_of_Redhat_Fedora_Server54.txt
+-rw-r--r--.  1 root      root        26304 Jan 12 11:59 History_of_Redhat_Fedora_Server55.txt
+-rw-r--r--.  1 root      root          491 Jan 12 18:35 History_of_Redhat_Fedora_Server56.txt
+-rw-r--r--.  1 root      root          525 Jan 12 18:35 History_of_Redhat_Fedora_Server57.txt
+-rw-r--r--.  1 root      root        28194 Jan 12 18:52 History_of_Redhat_Fedora_Server58.txt
+-rw-r--r--.  1 root      root        29026 Jan 13 10:29 History_of_Redhat_Fedora_Server59.txt
+-rw-r--r--.  1 root      root          823 Jan 13 11:37 History_of_Redhat_Fedora_Server60.txt
+-rw-r--r--.  1 root      root        30594 Jan 13 11:47 History_of_Redhat_Fedora_Server61.txt
+-rw-r--r--.  1 root      root        31069 Jan 13 12:46 History_of_Redhat_Fedora_Server62.txt
+-rw-r--r--.  1 root      root        31533 Jan 14 10:26 History_of_Redhat_Fedora_Server63.txt
+-rw-r--r--.  1 root      root        31146 Jan 14 16:23 History_of_Redhat_Fedora_Server64.txt
+-rw-r--r--.  1 root      root        31622 Jan 14 18:15 History_of_Redhat_Fedora_Server65.txt
+-rw-r--r--.  1 root      root        31441 Jan 17 13:15 History_of_Redhat_Fedora_Server66.txt
+-rw-r--r--.  1 root      root        31459 Jan 17 16:04 History_of_Redhat_Fedora_Server67.txt
+-rw-r--r--.  1 root      root        31586 Jan 17 16:26 History_of_Redhat_Fedora_Server68.txt
+-rw-r--r--.  1 root      root        31468 Jan 17 16:31 History_of_Redhat_Fedora_Server69.txt
+-rw-r--r--.  1 root      root        31532 Jan 17 16:38 History_of_Redhat_Fedora_Server70.txt
+-rw-r--r--.  1 root      root         3364 Jan 12 18:13 History_of_Redhat_Fedora_Server71.txt
+-rw-r--r--.  1 root      root        31793 Jan 17 16:56 History_of_Redhat_Fedora_Server72.txt
+-rw-r--r--.  1 root      root        32467 Jan 17 17:07 History_of_Redhat_Fedora_Server73.txt
+-rwxrwxrwx.  1 root      root        32635 Jan 19 23:33 History_of_Redhat_Fedora_Server74.txt
+-rwxrwxrwx.  1 root      root        32494 Jan 19 23:33 History_of_Redhat_Fedora_Server75.txt
+-rwxrwxrwx.  1 root      root        32361 Jan 19 19:57 History_of_Redhat_Fedora_Server76.txt
+-rwxrwxrwx.  1 root      root        32316 Jan 20 00:16 History_of_Redhat_Fedora_Server77.txt
+-rwxrwxrwx.  1 root      root        32370 Jan 20 17:56 History_of_Redhat_Fedora_Server78.txt
+-rwxrwxrwx.  1 root      root        32579 Jan 21 02:30 History_of_Redhat_Fedora_Server79.txt
+-rwxrwxrwx.  1 root      root        32468 Jan 21 02:49 History_of_Redhat_Fedora_Server80.txt
+-rw-rw-r--.  1 ctambunan ctambunan   67148 Jan 24 17:39 History_of_Redhat_Fedora_Server81.txt
+-rw-rw-r--.  1 ctambunan ctambunan    2193 Jan 24 17:39 History_of_Redhat_Fedora_Server82.txt
+-rw-rw-r--.  1 ctambunan ctambunan   71306 Jan 24 17:39 History_of_Redhat_Fedora_Server83.txt
+-rw-rw-r--.  1 ctambunan ctambunan     585 Jan 24 17:39 History_of_Redhat_Fedora_Server84.txt
+-rw-rw-r--.  1 ctambunan ctambunan     817 Jan 24 17:39 History_of_Redhat_Fedora_Server85.txt
+-rw-rw-r--.  1 ctambunan ctambunan  315105 Jan 24 17:39 History_of_Redhat_Fedora_Server86.txt
+-rw-rw-r--.  1 ctambunan ctambunan  130137 Jan 24 17:39 History_of_Redhat_Fedora_Server87.txt
+-rw-rw-r--.  1 ctambunan ctambunan   41512 Jan 24 17:39 History_of_Redhat_Fedora_Server88.txt
+-rw-rw-r--.  1 ctambunan ctambunan   94413 Jan 24 17:39 History_of_Redhat_Fedora_Server89.txt
+-rw-rw-r--.  1 ctambunan ctambunan  114124 Jan 24 17:39 History_of_Redhat_Fedora_Server90.txt
+-rwxrwxrwx.  1 root      root         7369 Jan 21 20:11 History_of_Redhat_Fedora_Server91.txt
+-rwxrwxrwx+  1 root      root         4082 Jan 21 20:12 History_of_Redhat_Fedora_Server92.txt
+-rwxrwxrwx.  1 root      root        63932 Jan 24 08:54 History_of_Redhat_Fedora_Server93.txt
+-rwxrwxrwx.  1 root      root         8911 Jan 24 08:52 History_of_Redhat_Fedora_Server94.txt
+-rwxrwxrwx.  1 root      root        19487 Jan 24 08:52 History_of_Redhat_Fedora_Server95.txt
+-rw-r--r--.  1 root      root        33030 Jan 24 09:29 History_of_Redhat_Fedora_Server96.txt
+-rw-r--r--.  1 root      root        33131 Jan 24 10:17 History_of_Redhat_Fedora_Server97.txt
+-rw-r--r--.  1 root      root        32938 Jan 24 13:56 History_of_Redhat_Fedora_Server98.txt
+-rw-r--r--.  1 root      root       205911 Jan 24 17:24 History_of_Redhat_Fedora_Server99.txt
+-rw-r--r--.  1 root      root          111 Jan 10 12:38 SecondScript.sh
+drwxr-xr-x.  2 root      root          108 Jan 14 16:13 tambunan
+-rw-r--r--.  1 root      root          384 Jan 10 17:56 ThirdScript.sh
+[root@fedora 14:16:43 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch01/
+[root@fedora 14:17:07 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ls -la
+total 48
+drwxr-xr-x.  2 root root   182 Jan 26 13:29 .
+drwxrwxrwx. 15 root root  8192 Jan 26 13:28 ..
+-rw-r--r--.  1 root root     0 Jan 26 13:29 History
+-rw-r--r--.  1 root root 33116 Jan 26 13:29 IntroductionElasticSearchDB01.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael1.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael2.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael3.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael4.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael5.txt
+[root@fedora 14:17:09 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ touch IntroductionElasticSearchDB02.txt
+[root@fedora 14:17:21 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo /bin/systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+Created symlink /etc/systemd/system/multi-user.target.wants/elasticsearch.service → /usr/lib/systemd/system/elasticsearch.service.
+[root@fedora 14:17:28 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo systemctl start elasticsearch.service
+
+[root@fedora 14:18:27 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$
+[root@fedora 14:18:27 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo systemctl stop elasticsearch.service
+[root@fedora 14:18:44 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo journalctl -f
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora sudo[5142]: pam_unix(sudo:session): session closed for user root
+Jan 26 14:18:44 fedora audit[5142]: CRED_DISP pid=5142 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:setcred grantors=pam_env,pam_fprintd acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/1 res=success'
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+Jan 26 14:19:00 fedora audit[5160]: USER_ACCT pid=5160 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:accounting grantors=pam_unix,pam_localuser acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/1 res=success'
+Jan 26 14:19:00 fedora audit[5160]: USER_CMD pid=5160 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='cwd="/home/ctambunan/TambunanShellScripting/ElasticSearch01" cmd=6A6F75726E616C63746C202D66 exe="/usr/bin/sudo" terminal=pts/1 res=success'
+Jan 26 14:19:00 fedora sudo[5160]:     root : TTY=pts/1 ; PWD=/home/ctambunan/TambunanShellScripting/ElasticSearch01 ; USER=root ; COMMAND=/usr/bin/journalctl -f
+Jan 26 14:19:00 fedora audit[5160]: CRED_REFR pid=5160 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:setcred grantors=pam_env,pam_fprintd acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/1 res=success'
+Jan 26 14:19:00 fedora sudo[5160]: pam_unix(sudo:session): session opened for user root(uid=0) by ctambunan(uid=0)
+Jan 26 14:19:00 fedora audit[5160]: USER_START pid=5160 uid=0 auid=1000 ses=3 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:session_open grantors=pam_keyinit,pam_limits,pam_keyinit,pam_limits,pam_systemd,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/1 res=success'
+
+^C
+[root@fedora 14:19:04 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo journalctl --unit elasticsearch
+Jan 26 13:44:19 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 13:45:03 fedora systemd[1]: Started Elasticsearch.
+
+Jan 26 13:45:12 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 13:45:15 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Consumed 45.995s CPU time.
+Jan 26 14:17:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:18:27 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:18:42 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+[root@fedora 14:19:13 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+Jan 26 13:44:19 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 13:45:03 fedora systemd[1]: Started Elasticsearch.
+Jan 26 13:45:12 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 13:45:15 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Consumed 45.995s CPU time.
+Jan 26 14:17:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:18:27 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:18:42 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+[root@fedora 14:19:18 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ls -la
+total 52
+drwxr-xr-x.  2 root root  4096 Jan 26 14:17 .
+drwxrwxrwx. 15 root root  8192 Jan 26 13:28 ..
+-rw-r--r--.  1 root root     0 Jan 26 13:29 History
+-rw-r--r--.  1 root root 33116 Jan 26 13:29 IntroductionElasticSearchDB01.txt
+-rw-r--r--.  1 root root     0 Jan 26 14:17 IntroductionElasticSearchDB02.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael1.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael2.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael3.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael4.txt
+-rw-r--r--.  1 root root     0 Jan 10 15:50 sean_gelael5.txt
+[root@fedora 14:19:46 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ nano IntroductionElasticSearchDB02.txt
+[root@fedora 14:20:10 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$
+
+[root@fedora 14:20:10 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ nano IntroductionElasticSearchDB02.txt
+[root@fedora 14:20:20 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ touch IntroductionElasticSearchDB03.txt
+[root@fedora 14:20:34 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+Jan 26 13:44:19 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 13:45:03 fedora systemd[1]: Started Elasticsearch.
+Jan 26 13:45:12 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 13:45:15 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Consumed 45.995s CPU time.
+Jan 26 14:17:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:18:27 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:18:42 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+[root@fedora 14:20:40 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ curl -X GET "localhost:9200/?pretty"
+curl: (7) Failed to connect to localhost port 9200 after 0 ms: Connection refused
+[root@fedora 14:21:07 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ GET /
+bash: GET: command not found
+[root@fedora 14:21:41 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ curl -X GET "localhost:9200
+>
+>
+>
+>
+>
+> /?pretty"
+curl: (3) URL using bad/illegal format or missing URL
+[root@fedora 14:22:01 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ curl -X GET "localhost:9200/?pretty"
+curl: (7) Failed to connect to localhost port 9200 after 0 ms: Connection refused
+[root@fedora 14:22:05 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ./bin/elasticsearch
+bash: ./bin/elasticsearch: No such file or directory
+[root@fedora 14:24:19 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ./bin/elasticsearch -d -p elastic.pid
+bash: ./bin/elasticsearch: No such file or directory
+[root@fedora 14:24:33 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl status elasticsearch.service
+
+○ elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: inactive (dead) since Wed 2022-01-26 14:18:44 WIB; 5min ago
+       Docs: https://www.elastic.co
+    Process: 4933 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=143)
+   Main PID: 4933 (code=exited, status=143)
+        CPU: 48.190s
+
+Jan 26 14:17:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:18:27 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:18:42 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+[root@fedora 14:24:42 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+[root@fedora 14:24:52 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl restart elasticsearch.service
+[root@fedora 14:25:43 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+[root@fedora 14:28:06 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-01-26 14:25:43 WIB; 2min 25s ago
+       Docs: https://www.elastic.co
+   Main PID: 5243 (java)
+      Tasks: 59 (limit: 2269)
+     Memory: 1.3G
+        CPU: 49.522s
+     CGroup: /system.slice/elasticsearch.service
+             ├─5243 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+Alwa>
+             └─5769 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Jan 26 14:25:01 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:25:43 fedora systemd[1]: Started Elasticsearch.
+lines 1-14/14 (END)
+^C
+[root@fedora 14:28:37 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 14:28:57 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ curl -X GET "localhost:9200/?pretty"
+{
+  "name" : "fedora",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "cari7MNDTkKnVMHu-u7GNg",
+  "version" : {
+    "number" : "7.16.3",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "4e6e4eab2297e949ec994e688dad46290d018022",
+    "build_date" : "2022-01-06T23:43:02.825887787Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.10.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+[root@fedora 14:29:12 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ls -la
+total 272
+drwxr-xr-x.  2 root root   4096 Jan 26 14:20 .
+drwxrwxrwx. 15 root root   8192 Jan 26 13:28 ..
+-rw-r--r--.  1 root root      0 Jan 26 13:29 History
+-rw-r--r--.  1 root root  33116 Jan 26 13:29 IntroductionElasticSearchDB01.txt
+-rw-r--r--.  1 root root 222477 Jan 26 14:20 IntroductionElasticSearchDB02.txt
+-rw-r--r--.  1 root root      0 Jan 26 14:20 IntroductionElasticSearchDB03.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 sean_gelael1.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 sean_gelael2.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 sean_gelael3.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 sean_gelael4.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 sean_gelael5.txt
+[root@fedora 14:29:32 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv sean_gelael1.txt IntroductionElasticSearchDB04.txt
+[root@fedora 14:30:03 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv sean_gelael2.txt IntroductionElasticSearchDB05.txt
+[root@fedora 14:30:11 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv sean_gelael3.txt IntroductionElasticSearchDB06.txt
+[root@fedora 14:30:18 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv sean_gelael4.txt IntroductionElasticSearchDB07.txt
+[root@fedora 14:30:25 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv sean_gelael5.txt IntroductionElasticSearchDB08.txt
+[root@fedora 14:30:33 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$
+
+[root@fedora 14:30:33 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ls -la
+total 272
+drwxr-xr-x.  2 root root   4096 Jan 26 14:30 .
+drwxrwxrwx. 15 root root   8192 Jan 26 13:28 ..
+-rw-r--r--.  1 root root      0 Jan 26 13:29 History
+-rw-r--r--.  1 root root  33116 Jan 26 13:29 IntroductionElasticSearchDB01.txt
+-rw-r--r--.  1 root root 222477 Jan 26 14:20 IntroductionElasticSearchDB02.txt
+-rw-r--r--.  1 root root      0 Jan 26 14:20 IntroductionElasticSearchDB03.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB04.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB05.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB06.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB07.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB08.txt
+[root@fedora 14:31:26 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ nano IntroductionElasticSearchDB03.txt
+[root@fedora 14:31:48 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ ls -la
+total 388
+drwxr-xr-x.  2 root root   4096 Jan 26 14:30 .
+drwxrwxrwx. 15 root root   8192 Jan 26 13:28 ..
+-rw-r--r--.  1 root root      0 Jan 26 13:29 History
+-rw-r--r--.  1 root root  33116 Jan 26 13:29 IntroductionElasticSearchDB01.txt
+-rw-r--r--.  1 root root 222477 Jan 26 14:20 IntroductionElasticSearchDB02.txt
+-rw-r--r--.  1 root root 117762 Jan 26 14:31 IntroductionElasticSearchDB03.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB04.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB05.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB06.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB07.txt
+-rw-r--r--.  1 root root      0 Jan 10 15:50 IntroductionElasticSearchDB08.txt
+[root@fedora 14:31:51 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ mv History /home/ctambunan/
+[root@fedora 14:32:09 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ poweroff
+[root@fedora 14:33:41 /home/ctambunan/TambunanShellScripting/ElasticSearch01]$ Connection to 192.168.231.130 closed by remote host.
+Connection to 192.168.231.130 closed.
+PS D:\>
+
+Cara Install Elastic Stack :
+
+1. Pertama, Install Elastic Search : 
+
+Contoh Command : 
+
+  921  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  922  nano /etc/yum.repos.d/
+  923  nano /etc/yum.repos.d/elasticsearch.repo
+  924  sudo dnf install --enablerepo=elasticsearch elasticsearch
+  925  ls -la
+  926  cd TambunanLogFiles/
+  927  ls -la
+  928  cd ..
+  929  ls -la
+  930  cd TambunanShellScripting/
+  931  ls -la
+  932  mv sean_gelael* ElasticDB{1..10}/
+  933  ls -la
+  934  mv sean_gelael01 ElasticSearch01
+  935  mv sean_gelael02 ElasticSearch02
+  936  mv sean_gelael03 ElasticSearch03
+  937  mv sean_gelael04 ElasticSearch04
+  938  mv sean_gelael05 ElasticSearch05
+  939  mv sean_gelael06 ElasticSearch06
+  940  mv sean_gelael07 ElasticSearch07
+  941  mv sean_gelael08 ElasticSearch08
+  942  mv sean_gelael09 ElasticSearch09
+  943  mv sean_gelael10 ElasticSearch10
+  944  ls -la
+  945  cd ElasticSearch01/
+  946  touch History >> IntroductionElasticSearchDB01.txt
+  947  nano IntroductionElasticSearchDB01.txt
+  948  history >> IntroductionElasticSearchDB01.txt
+  949  nano IntroductionElasticSearchDB01.txt
+  950  dnf search openjdk
+  951  sudo dnf install java-latest-openjdk.x86_64
+  952  java --version
+  953  sudo alternatives --config java
+  954  java --version
+  955  elastic --version
+  956  elasticsearch --version
+  957  ps -p 1
+  958  sudo chkconfig --add elasticsearch
+  959  sudo -i service elasticsearch start
+  960  systemctl daemon-reload
+  961  sudo -i service elasticsearch stop
+  962  ls -la
+  963  cd TambunanShellScripting/
+  964  ls -la
+  965  cd ElasticSearch01/
+  966  ls -la
+  967  nano IntroductionElasticSearchDB04.txt
+  968  ip a
+  969  cd ..
+  970  history >> History_of_Redhat_Fedora_Server100.txt
+  971  ls -la
+  972  curl -X GET "localhost:9200/?pretty"
+  973  exit
+  974  ls -la
+  975  exit
+  976  history
+  977  history
+  978  ls -la
+  979  cd TambunanShellScripting/
+  980  ls -la
+  981  cd ElasticSearch01/
+  982  ls -la
+  983  ls -la
+  984  history
+  985  curl -XGET 'http://localhost:9200/_nodes'
+  986  curl -XGET 'http://localhost:9200/
+  987  '
+  988  curl -XGET 'http://localhost:9200/'
+  989  history
+  990  systemctl start elasticsearch.service
+  991  systemctl enable elasticsearch.service
+  992  systemctl status elasticsearch.service
+
+
+2. Kedua, Install Elastic Kibana : Download and install the public signing key:
+	
+   Contoh Install Logstash :
+     949  curl http://127.0.0.1:9200
+  950  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  951  sudo dnf install kibana
+  952  sudo yum install kibana
+  953  nano /etc/yum.repos.d/kibana.repo
+  954  sudo dnf install kibana
+  955  history
+  956  systemctl status kibana
+  957  systemctl enable kibana
+  958  systemctl start kibana
+  959  systemctl status kibana
+  960  ip a
+  961  ./bin/elasticsearch
+  962  cd /bin/elasticsearch
+  963  cd /bin/
+  964  ls -la
+  965  cd /bin/elasticsearch
+  966  ip a
+  967  history
+  968  cd /etc/elasticsearch/
+  969  ls -la
+  970  nano elasticsearch.yml
+
+   - rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+   Buat Repository Elastic Kibana : 
+
+   - nano /etc/zypp/repos.d/kibana.repo
+
+	[kibana-7.x]
+	name=Kibana repository for 7.x packages
+	baseurl=https://artifacts.elastic.co/packages/7.x/yum
+	gpgcheck=1
+	gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+	enabled=1
+	autorefresh=1
+	type=rpm-md
+
+  setelah itu installasi dengan menggunakan Repository Elastic Kibana :
+  - sudo dnf install kibana 
+
+3. Ketiga Install ELastic Logstash 
+
+Command Install Logstash :
+
+ 1000  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+ 1001  nano /etc/yum.repos.d/logstash.repo
+ 1002  sudo yum install logstash
+ 1003  systemctl enable logstash.service
+ 1004  systemctl enable start.service
+ 1005  systemctl enable start logstash.service
+ 1006  systemctl start logstash.service
+ 1007  systemctl status logstash.service
+ 1008  systemctl enable kibana.service
+ 1009  systemctl start kibana.service
+ 1010  systemctl status kibana.service
+ 1011  nano /etc/kibana/kibana.yml
+ 1012  ip a
+ 1013  nano /etc/kibana/kibana.yml
+ 1014  systemctl stop kibana.service
+ 1015  firewall-cmd --add-port=5601/tcp --permanent; firewall-cmd --reload; firewall-cmd --list-all
+ 1016  systemctl start kibana.service
+ 1017  systemctl status kibana.service
+ 1018  history
+
+
+Summary
+• Installing Elasticsearch can be as easy as unzipping a file! 
+• Elasticsearch uses two network communication mechanisms: 
+HTTP for REST clients; and transport for inter-node 
+communication 
+• A node is an instance of Elasticsearch 
+• A cluster is one or multiple nodes working together in a 
+distributed manner 
+• Elastic Security provides a complete solution for securing 
+Elasticsearch Make sure to secure your cluster 
+• Secure your cluster!
+
+Quiz
+1. What are the three files you will find in the Elasticsearch 
+config folder? 
+
+Jawaban :
+Config files location
+
+Elasticsearch has three configuration files:
+
+* elasticsearch.yml for configuring Elasticsearch
+* jvm.options for configuring Elasticsearch JVM settings
+* log4j2.properties for configuring Elasticsearch logging
+
+2. How do nodes in a cluster communicate with each other?
+Jawaban : 
+
+Elasticsearch uses two network communication mechanisms: 
+HTTP for REST clients; and transport for inter-node 
+communication
+
+3. How does a new node joining a cluster find the cluster? 
+Jawaban : 
+To add a node to a cluster:
+Set up a new Elasticsearch instance.
+Specify the name of the cluster in its cluster.name attribute. 
+For example, to add a node to the logging-prod cluster, set cluster.name: "logging-prod" in elasticsearch.yml.
+Start Elasticsearch. The node automatically discovers and joins the specified cluster.
+
+4. What is the result of setting network.host to _site_?
+Jawaban : 
+Errors in browser console (if relevant):
+
+root@neutron-kibana:~# su - kibana
+No directory, logging in with HOME=/
+$ kibana
+FATAL { [ValidationError: child "server" fails because [child "host" fails because ["host" must be a valid hostname]]]
+  name: 'ValidationError',
+  details:
+   [ { message: '"host" must be a valid hostname',
+       path: 'server.host',
+       type: 'string.hostname',
+       context: [Object] } ],
+  _object:
+   { pkg:
+      { version: '4.5.3',
+        buildNum: 9910,
+        buildSha: 'f40c28c2644639c34c2845c432c81be3c0c7955e' },
+     pid: { exclusive: false },
+     server: { port: 80, host: '_site_' } },
+  annotate: [Function] }
+Describe the feature:
+
+Allow _site_ option to be set for server.host in kibana.yml
+
+Jawabannya akan error ketika mereplace sesuatu folder network.host di dalam kibana.yml 
+ 
+5. True or False: An Elasticsearch cluster comes with security 
+available by default. 
+
+Jawaban : True
+
+Security is free, starting in versions 6.8.0 and 7.1.0
+For a change this important, we wanted to make sure that it was available to as many people as possible, so today we are releasing versions 6.8.0 and 7.1.0 of the Elastic Stack. These versions do not contain new features; they simply make the following core security features free in the default distribution of the Elastic Stack:
+
+TLS for encrypted communications
+File and native realm for creating and managing users
+Role-based access control for controlling user access to cluster APIs and indexes; also allows multi-tenancy for Kibana with security for Kibana Spaces
+
+6. Explain three options to secure your cluster.
+
+Jawaban :
+1. Defining Users and Roles
+• Users, roles, privileges and permissions can be defined in 
+Kibana:
+
+2. Defining Roles and Privileges
+• Roles and privileges can be defined at a very fine-grained 
+level
+
+3.X-Pack <6.3
+Before following the steps discussed in the previous slides, 
+install the x-pack plugin in
+ 
+ElasticSearch : 
+./elasticsearch/bin/elasticsearch-plugin install x-pack
+Kibana :
+./kibana/bin/kibana-plugin install x-pack
+
+Jawaban Benar Dari Chapter 2 :
+
+1. elasticsearch.yml, jvm.options, and log4j2.properties
+2. Using the transport protocol, on port 9300 by default
+3. The new node pings the servers listed in the
+discovery.zen.ping.unicast.hosts property
+4. The node will bind to the IP address of the local machine,
+allowing it to be reachable by the outside world
+5. False
+6. Proxy, Firewall, Elastic Security
+
+
+Contoh Running ELK (Elastic,Logstash,Kibana):
+
+1.Elastic 
+
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+cluster.name: charles_tambunan
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+node.name: charles_01_Node_001
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+path.data: /var/lib/elasticsearch
+#
+# Path to log files:
+#
+path.logs: /var/log/elasticsearch
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# By default Elasticsearch is only accessible on localhost. Set a different
+# address here to expose this node on the network:
+#
+network.host: 0.0.0.0
+#
+# By default Elasticsearch listens for HTTP traffic on the first free port it
+# finds starting at 9200. Set a specific HTTP port here:
+#
+http.port: 9200
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when this node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+#discovery.seed_hosts: ["host1", "host2"]
+discovery.seed_hosts: []
+#
+# Bootstrap the cluster using an initial set of master-eligible nodes:
+#
+#cluster.initial_master_nodes: ["node-1", "node-2"]
+#
+# For more information, consult the discovery and cluster formation module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
+#
+# ---------------------------------- Security ----------------------------------
+#
+#                                 * WARNING *
+#
+# Elasticsearch security features are not enabled by default.
+# These features are free, but require configuration changes to enable them.
+# This means that users don’t have to provide credentials and can get full access
+# to the cluster. Network connections are also not encrypted.
+#
+# To protect your data, we strongly encourage you to enable the Elasticsearch security features. 
+# Refer to the following documentation for instructions.
+#
+# https://www.elastic.co/guide/en/elasticsearch/reference/7.16/configuring-stack-security.html
+
+2. Logstash
+
+# Settings file in YAML
+#
+# Settings can be specified either in hierarchical form, e.g.:
+#
+#   pipeline:
+#     batch:
+#       size: 125
+#       delay: 5
+#
+# Or as flat keys:
+#
+#   pipeline.batch.size: 125
+#   pipeline.batch.delay: 5
+#
+# ------------  Node identity ------------
+#
+# Use a descriptive name for the node:
+#
+# node.name: test
+#
+# If omitted the node name will default to the machine's host name
+#
+# ------------ Data path ------------------
+#
+# Which directory should be used by logstash and its plugins
+# for any persistent needs. Defaults to LOGSTASH_HOME/data
+#
+path.data: /var/lib/logstash
+#
+# ------------ Pipeline Settings --------------
+#
+# The ID of the pipeline.
+#
+# pipeline.id: main
+#
+# Set the number of workers that will, in parallel, execute the filters+outputs
+# stage of the pipeline.
+#
+# This defaults to the number of the host's CPU cores.
+#
+# pipeline.workers: 2
+#
+# How many events to retrieve from inputs before sending to filters+workers
+#
+# pipeline.batch.size: 125
+#
+# How long to wait in milliseconds while polling for the next event
+# before dispatching an undersized batch to filters+outputs
+#
+# pipeline.batch.delay: 50
+#
+# Force Logstash to exit during shutdown even if there are still inflight
+# events in memory. By default, logstash will refuse to quit until all
+# received events have been pushed to the outputs.
+#
+# WARNING: enabling this can lead to data loss during shutdown
+#
+# pipeline.unsafe_shutdown: false
+#
+# Set the pipeline event ordering. Options are "auto" (the default), "true" or "false".
+# "auto" will  automatically enable ordering if the 'pipeline.workers' setting
+# is also set to '1'.
+# "true" will enforce ordering on the pipeline and prevent logstash from starting
+# if there are multiple workers.
+# "false" will disable any extra processing necessary for preserving ordering.
+#
+# pipeline.ordered: auto
+#
+# Sets the pipeline's default value for `ecs_compatibility`, a setting that is
+# available to plugins that implement an ECS Compatibility mode for use with
+# the Elastic Common Schema.
+# Possible values are:
+# - disabled (default)
+# - v1
+# - v8
+# The default value will be `v8` in Logstash 8, making ECS on-by-default. To ensure a
+# migrated pipeline continues to operate as it did before your upgrade, opt-OUT
+# of ECS for the individual pipeline in its `pipelines.yml` definition. Setting
+# it here will set the default for _all_ pipelines, including new ones.
+#
+# pipeline.ecs_compatibility: disabled
+#
+# ------------ Pipeline Configuration Settings --------------
+#
+# Where to fetch the pipeline configuration for the main pipeline
+#
+# path.config:
+#
+# Pipeline configuration string for the main pipeline
+#
+# config.string:
+#
+# At startup, test if the configuration is valid and exit (dry run)
+#
+# config.test_and_exit: false
+#
+# Periodically check if the configuration has changed and reload the pipeline
+# This can also be triggered manually through the SIGHUP signal
+#
+# config.reload.automatic: false
+#
+# How often to check if the pipeline configuration has changed (in seconds)
+# Note that the unit value (s) is required. Values without a qualifier (e.g. 60) 
+# are treated as nanoseconds.
+# Setting the interval this way is not recommended and might change in later versions.
+#
+# config.reload.interval: 3s
+#
+# Show fully compiled configuration as debug log message
+# NOTE: --log.level must be 'debug'
+#
+# config.debug: false
+#
+# When enabled, process escaped characters such as \n and \" in strings in the
+# pipeline configuration files.
+#
+# config.support_escapes: false
+#
+# ------------ API Settings -------------
+# Define settings related to the HTTP API here.
+#
+# The HTTP API is enabled by default. It can be disabled, but features that rely
+# on it will not work as intended.
+#
+# api.enabled: true
+#
+# By default, the HTTP API is not secured and is therefore bound to only the
+# host's loopback interface, ensuring that it is not accessible to the rest of
+# the network.
+# When secured with SSL and Basic Auth, the API is bound to _all_ interfaces
+# unless configured otherwise.
+#
+# api.http.host: 127.0.0.1
+#
+# The HTTP API web server will listen on an available port from the given range.
+# Values can be specified as a single port (e.g., `9600`), or an inclusive range
+# of ports (e.g., `9600-9700`).
+#
+# api.http.port: 9600-9700
+#
+# The HTTP API includes a customizable "environment" value in its response,
+# which can be configured here.
+#
+# api.environment: "production"
+#
+# The HTTP API can be secured with SSL (TLS). To do so, you will need to provide
+# the path to a password-protected keystore in p12 or jks format, along with credentials.
+#
+# api.ssl.enabled: false
+# api.ssl.keystore.path: /path/to/keystore.jks
+# api.ssl.keystore.password: "y0uRp4$$w0rD"
+#
+# The HTTP API can be configured to require authentication. Acceptable values are
+#  - `none`:  no auth is required (default)
+#  - `basic`: clients must authenticate with HTTP Basic auth, as configured
+#             with `api.auth.basic.*` options below
+# api.auth.type: none
+#
+# When configured with `api.auth.type` `basic`, you must provide the credentials
+# that requests will be validated against. Usage of Environment or Keystore
+# variable replacements is encouraged (such as the value `"${HTTP_PASS}"`, which
+# resolves to the value stored in the keystore's `HTTP_PASS` variable if present
+# or the same variable from the environment)
+#
+# api.auth.basic.username: "logstash-user"
+# api.auth.basic.password: "s3cUreP4$$w0rD"
+#
+# ------------ Module Settings ---------------
+# Define modules here.  Modules definitions must be defined as an array.
+# The simple way to see this is to prepend each `name` with a `-`, and keep
+# all associated variables under the `name` they are associated with, and
+# above the next, like this:
+#
+# modules:
+#   - name: MODULE_NAME
+#     var.PLUGINTYPE1.PLUGINNAME1.KEY1: VALUE
+#     var.PLUGINTYPE1.PLUGINNAME1.KEY2: VALUE
+#     var.PLUGINTYPE2.PLUGINNAME1.KEY1: VALUE
+#     var.PLUGINTYPE3.PLUGINNAME3.KEY1: VALUE
+#
+# Module variable names must be in the format of
+#
+# var.PLUGIN_TYPE.PLUGIN_NAME.KEY
+#
+# modules:
+#
+# ------------ Cloud Settings ---------------
+# Define Elastic Cloud settings here.
+# Format of cloud.id is a base64 value e.g. dXMtZWFzdC0xLmF3cy5mb3VuZC5pbyRub3RhcmVhbCRpZGVudGlmaWVy
+# and it may have an label prefix e.g. staging:dXMtZ...
+# This will overwrite 'var.elasticsearch.hosts' and 'var.kibana.host'
+# cloud.id: <identifier>
+#
+# Format of cloud.auth is: <user>:<pass>
+# This is optional
+# If supplied this will overwrite 'var.elasticsearch.username' and 'var.elasticsearch.password'
+# If supplied this will overwrite 'var.kibana.username' and 'var.kibana.password'
+# cloud.auth: elastic:<password>
+#
+# ------------ Queuing Settings --------------
+#
+# Internal queuing model, "memory" for legacy in-memory based queuing and
+# "persisted" for disk-based acked queueing. Defaults is memory
+#
+# queue.type: memory
+#
+# If using queue.type: persisted, the directory path where the data files will be stored.
+# Default is path.data/queue
+#
+# path.queue:
+#
+# If using queue.type: persisted, the page data files size. The queue data consists of
+# append-only data files separated into pages. Default is 64mb
+#
+# queue.page_capacity: 64mb
+#
+# If using queue.type: persisted, the maximum number of unread events in the queue.
+# Default is 0 (unlimited)
+#
+# queue.max_events: 0
+#
+# If using queue.type: persisted, the total capacity of the queue in number of bytes.
+# If you would like more unacked events to be buffered in Logstash, you can increase the
+# capacity using this setting. Please make sure your disk drive has capacity greater than
+# the size specified here. If both max_bytes and max_events are specified, Logstash will pick
+# whichever criteria is reached first
+# Default is 1024mb or 1gb
+#
+# queue.max_bytes: 1024mb
+#
+# If using queue.type: persisted, the maximum number of acked events before forcing a checkpoint
+# Default is 1024, 0 for unlimited
+#
+# queue.checkpoint.acks: 1024
+#
+# If using queue.type: persisted, the maximum number of written events before forcing a checkpoint
+# Default is 1024, 0 for unlimited
+#
+# queue.checkpoint.writes: 1024
+#
+# If using queue.type: persisted, the interval in milliseconds when a checkpoint is forced on the head page
+# Default is 1000, 0 for no periodic checkpoint.
+#
+# queue.checkpoint.interval: 1000
+#
+# ------------ Dead-Letter Queue Settings --------------
+# Flag to turn on dead-letter queue.
+#
+# dead_letter_queue.enable: false
+
+# If using dead_letter_queue.enable: true, the maximum size of each dead letter queue. Entries
+# will be dropped if they would increase the size of the dead letter queue beyond this setting.
+# Default is 1024mb
+# dead_letter_queue.max_bytes: 1024mb
+
+# If using dead_letter_queue.enable: true, the interval in milliseconds where if no further events eligible for the DLQ
+# have been created, a dead letter queue file will be written. A low value here will mean that more, smaller, queue files
+# may be written, while a larger value will introduce more latency between items being "written" to the dead letter queue, and
+# being available to be read by the dead_letter_queue input when items are are written infrequently.
+# Default is 5000.
+#
+# dead_letter_queue.flush_interval: 5000
+
+# If using dead_letter_queue.enable: true, the directory path where the data files will be stored.
+# Default is path.data/dead_letter_queue
+#
+# path.dead_letter_queue:
+#
+# ------------ Debugging Settings --------------
+#
+# Options for log.level:
+#   * fatal
+#   * error
+#   * warn
+#   * info (default)
+#   * debug
+#   * trace
+#
+# log.level: info
+path.logs: /var/log/logstash
+#
+# ------------ Other Settings --------------
+#
+# Where to find custom plugins
+# path.plugins: []
+#
+# Flag to output log lines of each pipeline in its separate log file. Each log filename contains the pipeline.name
+# Default is false
+# pipeline.separate_logs: false
+#
+# ------------ X-Pack Settings (not applicable for OSS build)--------------
+#
+# X-Pack Monitoring
+# https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html
+#xpack.monitoring.enabled: false
+#xpack.monitoring.elasticsearch.username: logstash_system
+#xpack.monitoring.elasticsearch.password: password
+#xpack.monitoring.elasticsearch.proxy: ["http://proxy:port"]
+#xpack.monitoring.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+#xpack.monitoring.elasticsearch.cloud_id: monitoring_cluster_id:xxxxxxxxxx
+#xpack.monitoring.elasticsearch.cloud_auth: logstash_system:password
+# another authentication alternative is to use an Elasticsearch API key
+#xpack.monitoring.elasticsearch.api_key: "id:api_key"
+#xpack.monitoring.elasticsearch.ssl.certificate_authority: [ "/path/to/ca.crt" ]
+#xpack.monitoring.elasticsearch.ssl.truststore.path: path/to/file
+#xpack.monitoring.elasticsearch.ssl.truststore.password: password
+#xpack.monitoring.elasticsearch.ssl.keystore.path: /path/to/file
+#xpack.monitoring.elasticsearch.ssl.keystore.password: password
+#xpack.monitoring.elasticsearch.ssl.verification_mode: certificate
+#xpack.monitoring.elasticsearch.sniffing: false
+#xpack.monitoring.collection.interval: 10s
+#xpack.monitoring.collection.pipeline.details.enabled: true
+#
+# X-Pack Management
+# https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
+#xpack.management.enabled: false
+#xpack.management.pipeline.id: ["main", "apache_logs"]
+#xpack.management.elasticsearch.username: logstash_admin_user
+#xpack.management.elasticsearch.password: password
+#xpack.management.elasticsearch.proxy: ["http://proxy:port"]
+#xpack.management.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+#xpack.management.elasticsearch.cloud_id: management_cluster_id:xxxxxxxxxx
+#xpack.management.elasticsearch.cloud_auth: logstash_admin_user:password
+# another authentication alternative is to use an Elasticsearch API key
+#xpack.management.elasticsearch.api_key: "id:api_key"
+#xpack.management.elasticsearch.ssl.certificate_authority: [ "/path/to/ca.crt" ]
+#xpack.management.elasticsearch.ssl.truststore.path: /path/to/file
+#xpack.management.elasticsearch.ssl.truststore.password: password
+#xpack.management.elasticsearch.ssl.keystore.path: /path/to/file
+#xpack.management.elasticsearch.ssl.keystore.password: password
+#xpack.management.elasticsearch.ssl.verification_mode: certificate
+#xpack.management.elasticsearch.sniffing: false
+#xpack.management.logstash.poll_interval: 5s
+
+# X-Pack GeoIP plugin
+# https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html#plugins-filters-geoip-manage_update
+#xpack.geoip.download.endpoint: "https://geoip.elastic.co/v1/database"
+
+
+3. Kibana
+
+# Kibana is served by a back end server. This setting specifies the port to use.
+server.port: 5601
+
+# Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
+# The default is 'localhost', which usually means remote machines will not be able to connect.
+# To allow connections from remote users, set this parameter to a non-loopback address.
+server.host: 192.168.86.130
+
+# Enables you to specify a path to mount Kibana at if you are running behind a proxy.
+# Use the `server.rewriteBasePath` setting to tell Kibana if it should remove the basePath
+# from requests it receives, and to prevent a deprecation warning at startup.
+# This setting cannot end in a slash.
+#server.basePath: ""
+
+# Specifies whether Kibana should rewrite requests that are prefixed with
+# `server.basePath` or require that they are rewritten by your reverse proxy.
+# This setting was effectively always `false` before Kibana 6.3 and will
+# default to `true` starting in Kibana 7.0.
+#server.rewriteBasePath: false
+
+# Specifies the public URL at which Kibana is available for end users. If
+# `server.basePath` is configured this URL should end with the same basePath.
+#server.publicBaseUrl: ""
+
+# The maximum payload size in bytes for incoming server requests.
+#server.maxPayload: 1048576
+
+# The Kibana server's name.  This is used for display purposes.
+server.name: "kibana.server.com"
+
+# The URLs of the Elasticsearch instances to use for all your queries.
+elasticsearch.hosts: ["http://0.0.0.0:9200"]
+
+# Kibana uses an index in Elasticsearch to store saved searches, visualizations and
+# dashboards. Kibana creates a new index if the index doesn't already exist.
+#kibana.index: ".kibana"
+
+# The default application to load.
+#kibana.defaultAppId: "home"
+
+# If your Elasticsearch is protected with basic authentication, these settings provide
+# the username and password that the Kibana server uses to perform maintenance on the Kibana
+# index at startup. Your Kibana users still need to authenticate with Elasticsearch, which
+# is proxied through the Kibana server.
+#elasticsearch.username: "kibana_system"
+#elasticsearch.password: "pass"
+
+# Kibana can also authenticate to Elasticsearch via "service account tokens".
+# If may use this token instead of a username/password.
+# elasticsearch.serviceAccountToken: "my_token"
+
+# Enables SSL and paths to the PEM-format SSL certificate and SSL key files, respectively.
+# These settings enable SSL for outgoing requests from the Kibana server to the browser.
+#server.ssl.enabled: false
+#server.ssl.certificate: /path/to/your/server.crt
+#server.ssl.key: /path/to/your/server.key
+
+# Optional settings that provide the paths to the PEM-format SSL certificate and key files.
+# These files are used to verify the identity of Kibana to Elasticsearch and are required when
+# xpack.security.http.ssl.client_authentication in Elasticsearch is set to required.
+#elasticsearch.ssl.certificate: /path/to/your/client.crt
+#elasticsearch.ssl.key: /path/to/your/client.key
+
+# Optional setting that enables you to specify a path to the PEM file for the certificate
+# authority for your Elasticsearch instance.
+elasticsearch.ssl.certificateAuthorities: [ "/path/to/your/CA.pem" ]
+
+# To disregard the validity of SSL certificates, change this setting's value to 'none'.
+elasticsearch.ssl.verificationMode: full
+
+# Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
+# the elasticsearch.requestTimeout setting.
+elasticsearch.pingTimeout: 1500
+
+# Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
+# must be a positive integer.
+elasticsearch.requestTimeout: 30000
+
+# List of Kibana client-side headers to send to Elasticsearch. To send *no* client-side
+# headers, set this value to [] (an empty list).
+#elasticsearch.requestHeadersWhitelist: [ authorization ]
+
+# Header names and values that are sent to Elasticsearch. Any custom headers cannot be overwritten
+# by client-side headers, regardless of the elasticsearch.requestHeadersWhitelist configuration.
+#elasticsearch.customHeaders: {}
+
+# Time in milliseconds for Elasticsearch to wait for responses from shards. Set to 0 to disable.
+#elasticsearch.shardTimeout: 30000
+
+# Logs queries sent to Elasticsearch. Requires logging.verbose set to true.
+#elasticsearch.logQueries: false
+
+# Specifies the path where Kibana creates the process ID file.
+pid.file: /run/kibana/kibana.pid
+
+# Enables you to specify a file where Kibana stores log output.
+#logging.dest: stdout
+
+# Set the value of this setting to true to suppress all logging output.
+#logging.silent: false
+
+# Set the value of this setting to true to suppress all logging output other than error messages.
+#logging.quiet: false
+
+# Set the value of this setting to true to log all events, including system usage information
+# and all requests.
+#logging.verbose: false
+
+# Set the interval in milliseconds to sample system and process performance
+# metrics. Minimum is 100ms. Defaults to 5000.
+#ops.interval: 5000
+
+# Specifies locale to be used for all localizable strings, dates and number formats.
+# Supported languages are the following: English - en , by default , Chinese - zh-CN .
+#i18n.locale: "en"
+
+4. Monitoring Pakai Prometheus
+
+1. Download and unpack Metricbeat
+
+YUM
+
+To add the Beats repository for YUM:
+
+Download and install the public signing key:
+
+sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+Create a file with a .repo extension (for example, elastic.repo) in your /etc/yum.repos.d/ directory and add the following lines:
+
+[elastic-7.x]
+name=Elastic repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+The package is free to use under the Elastic license. An alternative package which contains only features that are available under the Apache 2.0 license is also available. To install it, use the following baseurl in your .repo file:
+
+baseurl=https://artifacts.elastic.co/packages/oss-7.x/yum
+Your repository is ready to use. For example, you can install Metricbeat by running:
+
+sudo yum install metricbeat
+To configure Metricbeat to start automatically during boot, run:
+
+sudo systemctl enable metricbeat
+If your system does not use systemd then run:
+
+sudo chkconfig --add metricbeat
+
+Feb 02 12:14:47 fedora systemd-entrypoint[10035]: ERROR: [1] bootstrap checks failed. You must address the points described in the following [1] lines before starting Elasticsearch.
+Feb 02 12:14:47 fedora systemd-entrypoint[10035]: bootstrap check failure [1] of [1]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
+Feb 02 12:14:47 fedora systemd-entrypoint[10035]: ERROR: Elasticsearch did not exit normally - check the logs at /var/log/elasticsearch/my-application.log
+Feb 02 12:14:47 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=78/CONFIG
+
+
+Chapter 3 CRUD Operations
+
+Topics covered:
+• Getting Data In 
+
+  129  firewall-cmd --permanent --allow-port=5601/tcp
+  130  firewall-cmd --permanent --add-port=5601/tcp
+  131  firewall-cmd --list-port
+  132  firewall-cmd --reload
+  133  ip a
+  134  firewall-cmd --list-port
+  135  nano /etc/kibana/kibana.yml
+  136  ip a
+  137  nano /etc/kibana/kibana.yml
+  138  systemctl restart kibana.service
+  139  systemctl status kibana.service
+  140  ip a
+  141  history
+
+ firewall-cmd --permanent --add-port=5601/tcp
+
+• Cheaper in Bulk 
+
+{
+  "name": "Error",
+  "body": {
+    "message": "exception: Security must be explicitly enabled when using a [basic] license. Enable security by setting [xpack.security.enabled] to [true] in the elasticsearch.yml file and restart the node.",
+    "status_code": 500
+  },
+  "message": "Internal Server Error",
+  "stack": "Error: Internal Server Error\n    at fetch_Fetch.fetchResponse (http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:56906)\n    at async http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:55074\n    at async http://192.168.86.128:5601/46336/bundles/core/core.entry.js:8:55031"
+}
+
+• Getting Data Out
+
+Steps :
+
+
+vi /etc/elasticsearch/elasticsearch.yml
+xpack.security.enabled: true
+
+vi /etc/kibana/kibana.yml
+server.host: "174.138.21.x"
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "test3210"
+
+/usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+Enter password for [elastic]: kibana 123
+
+systemctl restart kibana
+systemctl restart elasticsearch
+
+Cara Membuat Login ELK Database :
+
+Contoh Node 1 Database Server Elastic Search : 
+
+1.   1015  nano /etc/elasticsearch/elasticsearch.yml
+
+Masukin Script Sebagai Berikut :
+
+xpack.security.enabled: true
+
+2.   1016  nano /etc/kibana/kibana.yml
+
+Masukin Script Sebagai Berikut :
+
+server.host: "192.168.86.128"
+# If your Elasticsearch is protected with basic authentication, these settings provide
+# the username and password that the Kibana server uses to perform maintenance on the Kibana
+# index at startup. Your Kibana users still need to authenticate with Elasticsearch, which
+# is proxied through the Kibana server.
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "kibana123"
+
+9.   1023  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+Lalu Masukkan Password yang sudah sesuai dengan settingan username dan password di kibana :
+Initiating the setup of passwords for reserved users elastic,apm_system,kibana,kibana_system,logstash_system,beats_system,remote_monitoring_user.
+You will be prompted to enter passwords as the process progresses.
+Please confirm that you would like to continue [y/N]y
+
+Enter password for [elastic]: kibana123
+Reenter password for [elastic]: kibana123
+Enter password for [apm_system]: kibana123
+Reenter password for [apm_system]: kibana123
+Enter password for [kibana_system]: kibana123
+Reenter password for [kibana_system]: kibana123
+Enter password for [logstash_system]: kibana123
+Reenter password for [logstash_system]: kibana123
+Enter password for [beats_system]: kibana123 
+Reenter password for [beats_system]: kibana123
+Enter password for [remote_monitoring_user]: kibana123
+Reenter password for [remote_monitoring_user]: kibana123
+Changed password for user [apm_system] : kibana123
+Changed password for user [kibana_system] : kibana123
+Changed password for user [kibana] : kibana123
+Changed password for user [logstash_system] : kibana123
+Changed password for user [beats_system] : kibana123
+Changed password for user [remote_monitoring_user] : kibana123
+Changed password for user [elastic] : kibana123
+
+
+10.  1024  ls -la
+11.  1025  cd ..
+12.  1026  cd ElasticSearch02/
+13.  1027  ls -la
+
+
+CRUD Operations
+
+Index
+
+PUT my_blogs/_doc/4
+{
+"title" : "Elasticsearch released",
+"category": "Releases"
+}
+
+POST my_blogs/_doc
+{
+"title" : "Elasticsearch released",
+"category": "Releases"
+}
+
+Create
+
+PUT my_blogs/_doc/4/_create
+{
+"title" : "Elasticsearch released",
+"category": "Releases"
+}
+Read GET my_blogs/_doc/4
+
+Update
+
+POST my_blogs/_doc/4/_update
+{
+"doc" : {
+"title" : "Elasticsearch 6.2 released"
+}
+}
+
+Delete DELETE my_blogs/_doc/4
+
+Search GET my_blogs/_search
+
+• A document is a serialized JSON object that is stored in
+Elasticsearch under a unique ID
+• An index in Elasticsearch is a logical way of grouping data
+• The Bulk API makes it possible to perform many write
+operations in a single API call, greatly increases the
+indexing speed
+
+Quiz
+1. How is an index distributed across a cluster?
+
+Indeks dapat terdistribusi di cluster apabila satu server database menampung satu node jadi 
+
+2. True or False: If an index does not exist when indexing a
+document, Elasticsearch will automatically create the index
+for you. True
+
+3.What is the default number of hits that a query returns? Indeks 200
+
+4.What happens if you index a document and the _id already
+appears in the index? 400 - Bad Request
+
+5. True or False: Using the Bulk API is more efficient than
+sending multiple, separate requests. True 
+
+Jawaban Chapter 3 :
+
+1. An index is a collection of shards that are distributed across
+nodes in the cluster
+2. By default, this is true, but this behavior can be turned off
+(recommended for production clusters)
+3. 10
+4. The existing document is deleted, and the new document is
+indexed
+5. True
+
+
+Contoh Node 2 Database Server Elastic Search : 
+
+elasticsearch.username: "kibana_system" / elastic
+elasticsearch.password: "kibana124"
+
+Contoh QUery CRUD Di Elastic Search :
+
+# index a doc
+PUT index/_doc/1
+{
+  "name":"Charles",
+  "angka": "90",
+  "_id":"100"
+}
+
+# Create  a database
+PUT my_blogs/_doc/4/_create
+{
+"title"   : "Play For Freedom",
+"category": "Database 1",
+"jenis"   : "database 2"
+}
+
+# Read Database
+GET my_blogs/_doc/4
+
+# Update a database
+POST my_blogs/_doc/4/_update
+{
+"doc" : {
+"title" : "Elasticsearch 6.2 released"
+  }
+}
+
+DELETE my_blogs/_doc/4
+
+GET my_blogs/_search
+
+Chapter 4 Querying Data  
+
+• Relevance
+Contoh Script Database :
+GET my_blogs/_search
+{
+"query": {
+"match": {
+"FIELD": "TEXT"
+}
+}
+}
+
+Hasil :
+
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+• Searching for Terms
+Contoh Script Database :
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": {
+"query": "ingest nodes logstash",
+"minimum_should_match": 2
+}
+}
+}
+}
+
+Hasil :
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+• Scoring
+Contoh Script Database :
+
+GET blogs/_search
+{
+"query": {
+"match_phrase": {
+"content": {
+"query":"open data",
+"slop": 1
+}
+}
+}
+}
+
+GET blogs/_search?q=content:"open data"~1
+
+• Searching for Phrases
+Contoh Script Database :
+
+GET blogs/_search
+{
+"query": {
+"range": {
+"publish_date": {
+"gte": "now-3M"
+}
+}
+}
+}
+
+Output :
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+• Searching within Date Ranges
+Contoh Script Database :
+
+GET blogs/_search
+{
+"query": {
+"range": {
+"publish_date": {
+"gte": "2017-12-01",
+"lt": "2018-01-01"
+}
+}
+}
+}
+
+Contoh :
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+• Combining Searches
+Contoh Script Database :
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {
+"match": {
+"content": "logstash"
+}
+},
+"must_not": {
+"match": {
+"category": "releases"
+}
+}
+}
+}
+}
+
+
+• Filtering Searches
+Contoh Script Database :
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {
+"match_phrase": {
+"content": "elastic stack"
+}
+},
+"should": {
+"match_phrase": {
+"author": "shay banon"
+}
+}
+}
+}
+}
+
+Contoh : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+
+
+
+• Improving Relevancy
+Contoh Script Database :
+
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": [
+{"match": {"title": "elastic"}}
+],
+"should": [
+{"match": {"title": "stack"}},
+{"match": {"title": "query"}},
+{"match": {"title": "speed"}}
+]
+}
+}
+}
+
+Contoh :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+Summary
+• Precision refers to how many irrelevant results are returned
+in addition to the relevant results
+• Recall refers to how many relevant results are not returned
+• Query DSL (Domain Specific Language) allows you to write
+queries in a JSON format
+• The match query is a simple but powerful search for fields
+that are text, numerical values, or dates
+• The match_phrase query is for searching text when you
+want to find terms that are near each other
+• The range query is for finding documents with fields that fall
+in a given range
+• The bool query allows you to combine queries using Boolean
+logic
+
+Quiz
+1. Explain the difference between match and match_phrase.
+Bedanya adalah Match Berarti kita mencocokan dengan data yang ingin dicari sedangkan match_phrase lebih mencocokan pencarian dengan filter yang direstriksi dengan alfabet.
+
+2. If you want to add some flexibility into match_phrase, you
+can configure a bool property.
+
+3. How could you improve the precision of a match query that
+consists of 5 terms?
+Cara Improve Precision of a match query :
+1.Precision = relevant documents retrieved / retrieved documents
+2.Recall = relevant documents retrieved / relevant documents
+3.Query DSL
+4.Total Recall
+5.KISS
+
+4. A user searches our blogs for “scripting” and checks the
+box that only displays blogs from the “Engineering”
+category. How would you implement this query?
+
+Contoh : 
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"should": [
+{"match": {"title": "Scripting"}}
+]
+}
+}
+}
+
+5. True or False: If a document matches a filter clause, the
+score is increased by a factor of 2.
+
+Contoh : True
+
+Jawaban Chapter 4 :
+
+1. Multiple match terms use “and” or “or”, while multiple terms
+in match_phrase are “and” and position matters
+2. Slop
+3. You could use either the “and” operator, of specify a
+“minimum_should_match” value
+4. You could use a bool query with a must match query for
+“scripting” in the content field and a filter for the
+“Engineering” category
+5. False. A filter clause has no effect on a document’s score
+
+
+Chapter 5 Text Analysis and Mappings
+
+• What is a Mapping?
+
+Contoh :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+Hasil Script : 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 2,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 1,
+  "_primary_term" : 1
+}
+
+• Analysis and the Inverted Index
+
+Contoh :
+
+{
+  "_index" : "comments",
+  "_type" : "_doc",
+  "_id" : "20",
+  "_version" : 1,
+  "result" : "created",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 0,
+  "_primary_term" : 1
+}
+
+Hasil :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+• Multi-Fields
+
+Contoh Script :
+
+PUT comments/_doc/20
+{
+"comment": "I like Elasticsearch!"
+}
+
+Hasil :
+
+{
+  "_index" : "comments",
+  "_type" : "_doc",
+  "_id" : "20",
+  "_version" : 1,
+  "result" : "created",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 0,
+  "_primary_term" : 1
+}
+
+• Analyzers
+
+Contoh Script :
+
+GET _analyze
+{
+"analyzer": "simple",
+"text": "How to configure ingest nodes?"
+}
+
+Hasil : 
+
+{
+  "tokens" : [
+    {
+      "token" : "how",
+      "start_offset" : 0,
+      "end_offset" : 3,
+      "type" : "word",
+      "position" : 0
+    },
+    {
+      "token" : "to",
+      "start_offset" : 4,
+      "end_offset" : 6,
+      "type" : "word",
+      "position" : 1
+    },
+    {
+      "token" : "configure",
+      "start_offset" : 7,
+      "end_offset" : 16,
+      "type" : "word",
+      "position" : 2
+    },
+    {
+      "token" : "ingest",
+      "start_offset" : 17,
+      "end_offset" : 23,
+      "type" : "word",
+      "position" : 3
+    },
+    {
+      "token" : "nodes",
+      "start_offset" : 24,
+      "end_offset" : 29,
+      "type" : "word",
+      "position" : 4
+    }
+  ]
+}
+
+Summary
+• Analysis is the process of converting full text into terms for
+the inverted index
+• Every type has a mapping that defines a document’s fields and
+their data types
+• Mappings are created dynamically, or you can define your
+own
+• Multi-fields allow a field to be indexed in multiple ways
+
+Quiz
+1. The process of converting full text into terms for the
+inverted index is called Analysis.
+
+2.What data type would “value” : 300 get mapped to
+dynamically? Number or Integer
+
+3.What data type would “value”: “January” get mapped to
+dynamically? Date
+
+4. True or False: You can change a field’s data type from
+“integer” to “long” because those two types are
+compatible. True if the number is same.
+
+5.What are the three components that make up an analyzer?
+
+By text field, index, or query
+For index or search time
+
+Chapter 6 Custom Mappings
+
+• Defining a Custom Analyzer
+
+Contoh Query Database NoSQL :
+PUT blogs_test2
+{
+"settings": {
+"analysis": {
+"filter": {
+"my_stopwords": {
+"type": "stop",
+"stopwords": ["to", "and", "or", "is", "the"]
+}
+},
+"analyzer": {
+"my_content_analyzer": {
+"type": "custom",
+"char_filter": [],
+"tokenizer": "standard",
+"filter": ["lowercase","my_stopwords"]
+}
+}
+}
+}
+}
+
+Hasil :
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "blogs_test2"
+}
+
+
+• Improving the Blogs Mapping
+
+Contoh Query Database NoSQL :
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"id": "1"
+}
+}
+}
+GET blogs/_search
+{
+"query": {
+"bool": {
+"filter": {
+"match": {
+"author.keyword": "Charles"
+}
+}
+}
+}
+}
+
+
+Hasil Eksekusi : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+• Defining Explicit Mappings
+
+Contoh Query Database NoSQL :
+
+PUT blogs_temp/_doc/1
+{
+"date": "December 22, 2017",
+"author": "Firstname Lastname",
+"title": "Elastic Advent Calendar 2017, Week 3",
+"seo_title": "A Good SEO Title",
+"url": "/blog/some-url",
+"content": "blog content",
+"locales": "ja-jp",
+"@timestamp": "2017-12-22T07:00:00.000Z",
+"category": "Engineering"
+}
+
+
+Hasil Eksekusi : 
+
+{
+  "_index" : "blogs_temp",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 2,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 1,
+  "_primary_term" : 1
+}
+
+Output di Di Samping NoSQL Queries :
+{
+  "blogs_temp" : {
+    "mappings" : {
+      "properties" : {
+        "@timestamp" : {
+          "type" : "date"
+        },
+        "author" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "category" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "content" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "date" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "locales" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "seo_title" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "title" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "url" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+Summary
+• Use the _analyze API to test an analyzer (or the
+components individually)
+
+• In most use cases, you will need to define your own
+mappings
+
+• A useful trick to create a custom mapping is to index a
+document in a dummy index and to use the default mapping
+as a base for the new mapping
+
+Quiz
+1. True or False: When defining an analyzer, token filters are
+applied in the order they are listed. Jawaban : True
+
+2. True or False: A custom analyzer needs to be defined in
+the settings of an index. Jawaban : True
+ 
+3. True or False: It is possible to define multiple tokenizers in
+an analyzer. Jawaban : True
+
+
+Chapter 7 Node Types
+
+• Node Roles
+
+There are several roles a node can have:
+‒ Master eligible
+‒ Data
+‒ Ingest
+‒ Coordinating
+‒ Machine Learning
+• Nodes can take on multiple roles at the same time
+‒ or they can be dedicated nodes that only take on a single role
+‒ ingest and coordinating only nodes are covered in detail in the
+Engineer II course
+
+GET _cluster/state
+
+{
+"cluster_name": "elasticsearch",
+"compressed_size_in_bytes": 1920,
+"version": 10,
+"state_uuid": "rPiUZXbURICvkPl8GxQXUA",
+"master_node": "O4cNlHDuTyWdDhq7vhJE7g"
+}
+
+• Cluster State and Master Nodes
+
+Contoh Database NoSQL :
+
+GET _cluster/state
+
+{
+"cluster_name": "elasticsearch",
+"compressed_size_in_bytes": 1920,
+"version": 10,
+"state_uuid": "rPiUZXbURICvkPl8GxQXUA",
+"master_node": "O4cNlHDuTyWdDhq7vhJE7g"
+}
+
+Results :
+
+{
+  "cluster_name" : "charles_2",
+  "cluster_uuid" : "zKGnr6GvRiCStK9V6-7_aw",
+  "version" : 393,
+  "state_uuid" : "EOmkPE7CTCagzH-SMlxAJA",
+  "master_node" : "gTWmGuTtQq6wi8S9nwmdng",
+  "blocks" : {
+    "indices" : {
+      ".kibana_7.16.3_001" : {
+        "8" : {
+          "description" : "index write (api)",
+          "retryable" : false,
+          "levels" : [
+            "write"
+          ]
+        }
+      },
+      ".kibana_task_manager_7.16.3_001" : {
+        "8" : {
+          "description" : "index write (api)",
+          "retryable" : false,
+          "levels" : [
+            "write"
+          ]
+        }
+      }
+    }
+  }
+
+• Data Nodes
+
+Contoh Database NoSQL : 
+
+Dedicated Master and Data Nodes
+• You can configure a node to be just a data or mastereligible
+node
+‒ by setting node.master or node.data to false
+‒ provides a nice separation of the master and data roles
+
+• Sample Architectures
+
+3-5 Node Cluster
+• Suppose you have a small production cluster
+‒ where it is difficult to have dedicated types
+• It is always preferred to have 3 master eligible nodes,
+‒ and set minimum_master_nodes = 2
+
+Summary
+• The details of a cluster are maintained in the cluster state
+• Every cluster has one node designated as the master
+• A master-eligible node needs at least minimum_master_nodes
+votes to win an election
+• Data nodes hold shards and execute data-related operations like
+CRUD, search, and aggregations
+
+Quiz
+1. If you have three master-eligible nodes in your cluster, what
+should you set minimum_master_nodes to? 2 nodes
+
+2. If you have two master-eligible nodes in your cluster, what
+should you set minimum_master_nodes to? 2 master nodes
+
+3. How would you configure a node to be a dedicated
+master-eligible node? Must have Larger Clusters and nodes to control
+
+Chapter 8 Understanding Shards
+
+• Understanding Shards
+Contoh Query Database ELK :
+PUT blogs/_doc/551
+{
+"title": "Bagaimana Cara Sharding",
+"category": "Physics"
+}
+
+Hasilnya 200 - OK :
+
+{
+  "_index" : "blogs",
+  "_type" : "_doc",
+  "_id" : "551",
+  "_version" : 3,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 2,
+  "_primary_term" : 1
+}
+
+
+• Anatomy of a Write Operation
+Contoh :
+{
+  "_index" : "blogs",
+  "_type" : "_doc",
+  "_id" : "551",
+  "_version" : 6,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 5,
+  "_primary_term" : 1
+}
+
+Hasil Query Database : 
+{"statusCode":400,"error":"Bad Request","message":
+"[request query.method]: Method must be one of, case insensitive ['HEAD', 'GET', 'POST', 'PUT', 'DELETE']. Received 'shard'."}
+
+
+• Anatomy of a Search
+
+Contoh Query Database : 
+
+GET blogs/_search?search_type=dfs_query_then_fetch
+
+Hasil Query Database :
+
+{
+  "took" : 667,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "blogs",
+        "_type" : "_doc",
+        "_id" : "551",
+        "_score" : 1.0,
+        "_source" : { }
+      }
+    ]
+  }
+}
+
+
+• Number of Shards
+
+It depends!
+• Heavy indexing?
+
+‒ Use a higher number of primary shards so as to scale the
+indexing across more nodes
+
+• Heavy search traffic?
+
+‒ Increase the number of replicas (and add more nodes if
+necessary)
+
+• Large dataset?
+‒ Allow for enough primary shards to keep each shard under
+10-40GB
+
+• Small dataset?
+‒ Nothing wrong with a one-shard index!
+
+
+Create User 1 :
+Nama : Charles
+Email : charlestambunan2020@gmail.com
+password: charles123
+Habis itu Setting Privilleges untuk memberikan akses dan permissions.
+
+Create User 2 :
+Nama : Charles_2
+Email : charlestambunan2020@gmail.com
+password : charles124
+Habis itu Setting Privilleges untuk memberikan akses dan permissions.
+
+
+Summary
+• Elasticsearch subdivides the data of your index into multiple
+pieces called shards
+• Each shard has one (and only one) primary and zero or more
+replicas
+• A search consists of a query phase and a fetch phase
+
+Quiz
+1. If number_of_shards for an index is 4, and
+number_of_replicas is 2, how many total shards will exist for
+this index? 8 shards
+
+2. True or False: The nodes where shards are allocated are
+decided by the coordinating node. True
+
+3. True or False: By default, the size of a document is
+considered when determining which shard of the index to
+route the document to.True
+
+4. True or False: An index operation has to be executed on the
+primary shard first before being synced to replicas. True
+
+
+Chapter 9 Troubleshooting Elasticsearch
+
+
+• Understanding Configuration Settings
+
+Contoh Query Database Elastic :
+
+PUT my_tweets
+{
+"settings": {
+"number_of_shards": 3
+}
+}
+
+PUT /_cluster/settings 
+  {
+"transient" : {
+"logger.org.elasticsearch.transport.TransportService.tracer" : "TRACE"
+  }
+}
+
+
+Hasil Query Database Elastic :
+
+200 - OK
+
+
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "my_tweets"
+}
+
+
+#! [xpack.monitoring.collection.enabled] setting was deprecated in Elasticsearch and will be removed in a future release! See the breaking changes documentation for the next major version.
+{
+  "acknowledged" : true,
+  "persistent" : { },
+  "transient" : {
+    "logger" : {
+      "org" : {
+        "elasticsearch" : {
+          "transport" : {
+            "TransportService" : {
+              "tracer" : "TRACE"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+• Elasticsearch Responses
+
+Contoh Query Database Elastic :
+
+PUT test/_doc/1
+{
+"test":"test"
+}
+
+Hasil Query Database Elastic :
+
+201 - Created
+
+{
+  "_index" : "test",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 1,
+  "result" : "created",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 0,
+  "_primary_term" : 1
+}
+
+
+
+• Cluster Health and Shard Allocation
+
+Contoh Query Database Elastic :
+
+GET _cluster/health
+
+Hasil Query Database Elastic :
+
+200 - OK
+
+{
+  "cluster_name" : "charles_2",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 49,
+  "active_shards" : 49,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 18,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 73.13432835820896
+}
+
+• Diagnosing Health Issues
+
+Contoh Query Database Elastic :
+
+GET _cluster/health?wait_for_status=yellow
+
+Hasil Query Database Elastic :
+
+{
+  "cluster_name" : "charles_2",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 49,
+  "active_shards" : 49,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 18,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 73.13432835820896
+}
+
+
+Cara Konfigurasi Logstash di ELK :
+
+logtash.yml
+
+pipeline.yml
+
+Summary
+• Transient settings take precedence over persistent settings,
+which take precedence over command-line settings, which
+take precedence over elasticsearch.yml settings
+
+• Shard allocation is the process of assigning a shard to a node in
+the cluster
+
+• A cluster has a health that contains various statistics and
+the status of the cluster
+
+• A cluster’s health status is either green, yellow, or red,
+depending on the current shard allocation
+
+• A cluster’s routing table contains which nodes are hosting
+which indices and shards
+
+• Elasticsearch provides the Cluster Allocation API to help
+you locate any UNASSIGNED shards
+
+
+Quiz
+1. True or False: A transient setting survives a cluster restart. True
+
+2. Why should you bother checking the “_shards” section of a
+response? Because is the process of assigning a shard to a node in
+the cluster
+
+3. What are the 4 states of a shard?
+
+‒ UNASSIGNED
+‒ INITIALIZING
+‒ STARTED
+‒ RELOCATING
+
+4. True or False: A cluster with a yellow status is missing
+indexed documents. True
+
+5. If your cluster has an unassigned primary shard, what is the
+cluster’s health status?
+"cannot allocate because allocation is not permitted to any of the nodes”
+
+
+Chapter 10 Improving Search Results
+
+
+Topics covered:
+• Our blog search application is missing some features that
+users would expect in any good search application, like:
+
+‒ the ability to page through a large result set
+‒ changing the sort order of the results
+‒ having the search terms highlighted in the response
+‒ recognizing search terms that are spelled incorrectly
+‒ searching for the title or author of a blog
+
+• In this chapter, we will discuss how to provide some of
+these common (and expected) search features
+
+Contoh Query Improving Search Results menggunakan Logstash :
+
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "shay banon",
+"fields": [
+"title",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "shay banon",
+"fields": [
+"title^2",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"multi_match": {
+"query": "elasticsearch training",
+"fields": [
+"title^2",
+"content",
+"author"
+],
+"type": "best_fields"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "shard"
+}
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": {
+"query": "shark",
+"fuzziness": 1
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": {
+"query": "monitering datu",
+"fuzziness": 1
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"size": 100,
+"_source": "author",
+"query": {
+"match": {
+"author": {
+"query": "hi world",
+"fuzziness": 2
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category": "Brewing in Beats"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {
+"match": {
+"content": "filebeat"
+}
+},
+"filter": {
+"match": {
+"category.keyword": "Brewing in Beats"
+}
+}
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "security"
+}
+},
+"sort": [
+{
+"publish_date": {
+"order": "desc"
+}
+}
+]
+}
+
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"must": {"match": {"content": "security"}},
+"must_not": {"match": {"author.keyword": ""}}
+}
+},
+"sort": [
+{
+"author.keyword": {
+"order": "asc"
+}
+},
+{
+"publish_date": {
+"order": "desc"
+}
+}
+]
+}
+
+GET blogs/_search
+{
+"size": 10,
+"query": {
+"match": {
+"content": "elasticsearch"
+}
+},
+"sort": [
+{"_score": {"order": "desc"}},
+{"_id": {"order":"asc"}}
+]
+}
+
+GET blogs/_search
+{
+"query": {
+"match_phrase": {
+"title": "kibana"
+}
+},
+"highlight": {
+"fields": {
+"title": {}
+},
+"pre_tags": ["<es-hit>"],
+"post_tags": ["</es-hit>"]
+}
+}
+
+
+
+Summary
+• The multi_match query provides a convenient shorthand
+for running a match query against multiple fields
+• Fuzzy matching treats two words that are “fuzzily” similar
+as if they were the same word
+• If you need searches for exact text, we typically index the
+text as keyword
+• Use the sort clause for sorting by a field, _score or _doc
+• Use “from” and “size” parameters to implement pagination
+• A common use case for search results is to highlight the
+matched terms, which can be accomplished by adding a
+“highlight” clause to a query
+
+Quiz
+
+1.What is the behavior of “best_fields” in a “multi_match”
+query?
+
+multi_match query provides a convenient shorthand
+for running a match query against multiple fields
+
+2.What is the “fuzziness” edit distance from “the beatles”
+and “te beetles” (assuming standard analyzed text)?
+
+Fuzziness is a treats two words that are “fuzzily” similar as if they were the same word
+
+3. What two parameters are used to implement paging of
+search results?
+
+4. How do the following two queries behave differently?
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category": "User Stories"
+}
+}
+}
+
+Hasil Query dari Case Diatas :
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"category.keyword": "User Stories"
+}
+}
+}
+
+Hasilnya Query dari Case Diatas :
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+
+Chapter 11 Aggregating Data
+
+Topics covered:
+• This chapter discusses aggregations and how they are
+used to analyze and visualize your data
+
+What are Aggregations?
+
+Contoh Query Database Elastic :
+
+GET logs_server*/_search
+{
+"aggs": {
+"average_response_size": {
+"avg": {
+"field": "response_size"
+}
+}
+}
+}
+
+Contoh Hasilnya Query Database Elastic di Kibana :
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+Buckets and Metrics
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"runtime_histogram": {
+"histogram": {
+"field": "runtime_ms",
+"interval": 100,
+"min_doc_count": 1000
+},
+"aggs": {
+"average_runtime": {
+"avg": {
+"field": "runtime_ms"
+}
+}
+}
+}
+}
+}
+
+Contoh Hasil Buckets and Metrics :
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+The terms Aggregation Contoh :
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"logs_by_month": {
+"date_histogram": {
+"field": "@timestamp",
+"interval": "month",
+"order": {
+"average_runtime": "asc"
+}
+},
+"aggs": {
+"average_runtime": {
+"avg": {
+"field": "runtime_ms"
+}
+}
+}
+}
+}
+}
+
+Hasil dari Terms Aggregation :
+
+200 - OK
+
+#! [interval] on [date_histogram] is deprecated, use [fixed_interval] or [calendar_interval] in the future.
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+
+Summary
+• You have two new tools in your Elasticsearch toolbox:
+‒ Metrics Aggregations like min, max, avg, stats
+‒ Bucket Aggregations like date_histogram and terms
+• Metrics compute numeric values based on your dataset
+• A bucket is a collection of documents that meet a criterion
+• An aggregation can be thought of as a unit-of-work that builds analytic information over a set of documents
+• Aggregations can be nested within other aggregations
+• The terms aggregation dynamically creates buckets for every unique term it encounters of a specified field
+
+Quiz
+1. Query or Aggregation: “What is the box office revenue of
+all movies directed by Steven Spielberg?” Aggregation
+
+2. Query or Aggregation: “What are the nearby restaurants
+that serve pizza?” Aggregation
+
+3.What aggregation would you use to put logging events into
+buckets by log level (“error”, “warn”, “info”, etc.)?
+
+• Metrics compute numeric values based on your dataset
+‒ Either from fields
+‒ Or from values generated by custom scripts
+• Most metrics are mathematical operations that output a
+single value:
+‒ avg, sum, min, max, cardinality
+• Some metrics output multiple values:
+‒ stats, percentiles, percentile_ranks
+
+
+4. How can you increase the accuracy of a terms
+aggregation?
+
+To get more accurate results, the terms agg fetches more than the top size terms from each shard. It fetches the top shard_size terms, which defaults to size * 1.5 + 10.
+
+This is to handle the case when one term has many documents on one shard but is just below the size threshold on all other shards. 
+
+5. What aggregation(s) would you use to answer the question
+“How many unique visitors came to our website today?” Average
+
+
+
+Chapter 12 Best Practices
+
+• Index Aliases
+
+Contoh Index Aliases :
+
+PUT _template/logs_template
+{
+"index_patterns": "logs-*",
+"order": 1,
+"settings": {
+"number_of_shards": 4,
+"number_of_replicas": 1
+},
+"mappings": {
+"_doc": {
+"properties": {
+"@timestamp": {
+"type": "date"
+}
+}
+}
+}
+}
+
+Hasil Query Index Aliases :
+
+PUT _template/logs_template
+{
+"index_patterns": "logs-*",
+"order": 1,
+"settings": {
+"number_of_shards": 4,
+"number_of_replicas": 1
+},
+"mappings": {
+"_doc": {
+"properties": {
+"@timestamp": {
+"type": "date"
+}
+}
+}
+}
+}
+
+
+POST _aliases
+{
+"actions": [
+{
+"add": {
+"index": "blogs_v1",
+"alias": "blogs_engineering",
+"filter": {
+"match": {
+"category": "Engineering"
+}
+}
+}
+}
+]
+}
+
+Hasil Query Database Elastic : 
+
+404 - Not Found
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs_v1]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs_v1",
+        "index_uuid" : "_na_",
+        "index" : "blogs_v1"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs_v1]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs_v1",
+    "index_uuid" : "_na_",
+    "index" : "blogs_v1"
+  },
+  "status" : 404
+}
+
+• Index Templates
+
+Contoh Query Database Index Templates :
+
+PUT _template/logs_template
+{
+"index_patterns": "logs-*",
+"order": 1,
+"settings": {
+"number_of_shards": 4,
+"number_of_replicas": 1
+},
+"mappings": {
+"_doc": {
+"properties": {
+"@timestamp": {
+"type": "date"
+}
+}
+}
+}
+}
+
+Hasil Query Database Index Templates :
+
+503 - Service Unavailable
+
+{"statusCode":503,"error":"Service Unavailable","message":"License is not available."}
+
+• Scroll Searches
+
+Contoh Query Database Scroll Searches :
+
+PUT _template/logs_2022_template
+{
+"index_patterns": "logs-2018*",
+"order": 5,
+"settings": {
+"number_of_shards": 6,
+"number_of_replicas": 2
+}
+}
+
+Hasil Query Database Scroll Searches :
+
+503 - Service Unavailable
+
+{"statusCode":503,"error":"Service Unavailable","message":"License is not available."}
+
+
+• Cluster Backups
+
+Contoh Query Database Cluster Backups:
+
+PUT _snapshot/my_repo
+{
+"type": "fs",
+"settings": {
+"location": "/mnt/mantap",
+"compress": true,
+"max_restore_bytes_per_sec": "40mb",
+"max_snapshot_bytes_per_sec": "40mb"
+}
+}
+
+Hasil Query Database Cluster Backups:
+
+{"statusCode":503,"error":"Service Unavailable","message":"License is not available."}
+
+
+Summary
+• The Index Aliases API allows you to define an alias for an
+index
+
+
+• Index templates allow you to define mappings and settings
+that will automatically be applied to newly-created indices
+
+• The Scroll API allows you to take a snapshot of a large
+number of results from a single search request
+
+
+• The Snapshot and Restore API provides a cluster backup
+mechanism
+
+Quiz
+1. True or False: It is considered a best practice to use
+aliases for all of your production indexes. True
+
+2. True or False: A template of order 1 overrides the settings
+of a template of order 5. True
+
+3. True or False: Configuring all indices to have 2 or more
+replicas provides a reliable backup mechanism for a cluster. Trues
+
+4. True or False: You can take a snapshot of your entire
+cluster in a single REST request. True
+!
+
+Resources
+• https://www.elastic.co/learn
+‒ https://www.elastic.co/training
+‒ https://www.elastic.co/community
+‒ https://www.elastic.co/docs
+• https://discuss.elastic.co
