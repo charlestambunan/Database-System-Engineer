@@ -1,0 +1,1000 @@
+    1  cd ~
+    2  setfacl -Rm g:andi:rwX shares/content
+    3  setfacl -Rm u:operator1:rwX shares/content
+    4  setfacl -Rm u:andi:- /shares/content
+    5  setfacl -Rm u:andi:- shares/content
+    6  setfacl -m d:g:operator1:rwx /shares/content
+    7  setfacl -m d:g:operator1:rwx shares/content
+    8  setfacl -m d:u:andi:- /shares/content
+    9  setfacl -m d:u:andi:- shares/content
+   10  su operator2
+   11  su - andi
+   12  cd shares/content
+   13  ls -la
+   14   cat serverb-loadavg.txt
+   15   touch serverb-loadavg.txt
+   16  passwd operator1
+   17  su - operator1
+   18  touch loadavg.sh
+   19  yum install glances
+   20  glances
+   21  glances >> loadavg.sh
+   22  ls -la
+   23  cat loadavg.sh 
+   24  vim loadavg.sh 
+   25  touch loadavg2.sh
+   26  vim loadavg2.sh
+   27  mv loadavg2.sh loadavg.sh 
+   28  cat loadavg.sh 
+   29  vim loadavg.sh 
+   30  rm loadavg.sh 
+   31  cat loadavg2.sh 
+   32  ls -la
+   33  cp loadavg2.sh loadavg1.sh 
+   34  ls -la
+   35  sh loadavg2.sh 
+   36  mkdir reports
+   37  echo "Test Reports" > reports/test.txt
+   38  exit
+   39  ls -la
+   40  history
+   41  ip a
+   42  history
+   43  yum update
+   44  ps axZ
+   45  systemctl start httpd.socket 
+   46  systemctl start httpd
+   47  ps -zC httpd
+   48  ps -ZC httpd
+   49  ls -Z /home
+   50  ls -z /var/www
+   51  ls -Z /var/www
+   52  getenforce
+   53  setenforce
+   54  setenenforce
+   55  setenforce
+   56  setenforce 0
+   57  getenforce 
+   58  setenforce Enforcing
+   59  getenforce
+   60  ls -la
+   61  history
+   62  poweroff
+   63  ip a
+   64  getenforce
+   65  vim /etc/selinux/config 
+   66  systemctl reboot
+   67  getenforce
+   68  vim /etc/selinux/config 
+   69  grep '^SELINUX' /etc/selinux/config 
+   70  setenforce 1
+   71  getenforce 
+   72  exit
+   73  sudo -
+   74  sudo -i
+   75  history
+   76  cd TambunanShellScripting/
+   77  ls -la
+   78  cat History_of_Redhat_Fedora_Server66.txt 
+   79  cat History_of_Redhat_Fedora_Server65.txt 
+   80  history >> History_of_Redhat_Fedora_Server66.txt 
+   81  ip a
+   82  history
+   83  poweroff
+   84  mkdir /custom
+   85  echo 'This is SERVERA. ' > /custom/index.html
+   86  vim /etc/httpd/conf/httpd.conf 
+   87  nano /etc/httpd/conf/httpd.conf 
+   88  vim /etc/httpd/conf/httpd.conf 
+   89  grep custom /etc/httpd/conf/httpd.conf 
+   90  vim /etc/httpd/conf/httpd.conf 
+   91  grep custom /etc/httpd/conf/httpd.conf 
+   92  systemctl enable --now httpd
+   93  systemctl status httpd
+   94  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+   95  restorecon -Rv /custom
+   96  exit
+   97  sudo -i
+   98  ls -la
+   99  history
+  100  cd ~
+  101  history
+  102  exit
+  103  vim /etc/httpd/conf.d/userdir.conf 
+  104  grep '#UserDir' /etc/httpd/conf.d/userdir.conf 
+  105  grep '^ *UserDir' /etc/httpd/conf.d/userdir.conf 
+  106  systemctl enable --now httpd
+  107  mkdir ~/public_html
+  108  echo 'This is student content on Servera.' > \ ~/public_html/index.html
+  109  echo 'This is student content on SERVERA.' > \~/public_html/index.html
+  110  echo 'This is student content on SERVERA.' > ~/public_html/index.html
+  111  chmod 711 ~
+  112  getsebool -a | grep home
+  113  setsebool -P httpd_enable_homedirs on
+  114  ls -la
+  115  cd public_html/
+  116  ls -la
+  117  cat index.html 
+  118  cd ..
+  119  history
+  120  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt 
+  121  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt 
+  122  less /var/log/messages
+  123  sealert -l b1c9cc8f-a953-4625-b79b-82c4f4f1fee3
+  124  SELinux is preventing /usr/sbin/httpd from getattr access on the file /custom/index.html.
+  125  less /var/log/messages
+  126  ausearch -m AVC -ts recent
+  127  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  128  exit
+  129  su -i
+  130  su i
+  131  su -i
+  132  history
+  133  cd TambunanShellScripting/
+  134  ls -la
+  135  cat History_of_Redhat_Fedora_Server67.txt 
+  136  history >> History_of_Redhat_Fedora_Server67.txt 
+  137  getsebool -a
+  138  setsebool httpd_enable_homedirs 
+  139  getsebool httpd_enable_homedirs 
+  140  setsebool httpd_enable_homedirs on
+  141  sudo setsebool httpd_enable_homedirs on
+  142  sudo semanage boolean -l | grep httpd_enable_homedirs
+  143  getsebool httpd_enable_homedirs 
+  144  setsebool -P httpd_enable_homedirs on
+  145  sudo semanage boolean -l | grep httpd_enable_homedirs
+  146  sudo semanage boolean -l -C
+  147  sudo -i
+  148  history
+  149  cat History_of_Redhat_Fedora_Server69.txt 
+  150  history >> History_of_Redhat_Fedora_Server69.txt 
+  151  ip a
+  152  netstat -tunlp
+  153  systemctl start apache
+  154  systemctl restart apache
+  155  systemctl start httpd
+  156  netstat -tunlp
+  157  cat History_of_Redhat_Fedora_Server67.txt 
+  158  cat History_of_Redhat_Fedora_Server68.txt 
+  159  cat History_of_Redhat_Fedora_Server69.txt 
+  160  cat History_of_Redhat_Fedora_Server70.txt 
+  161  ls -la
+  162  history >> History_of_Redhat_Fedora_Server70.txt 
+  163  cat History_of_Redhat_Fedora_Server70.txt 
+  164  cat History_of_Redhat_Fedora_Server71.txt 
+  165  touch History_of_Redhat_Fedora_Server{72..80}.txt 
+  166  ls -la
+  167  parted /dev/vda print
+  168  ls /dev/
+  169  parted /dev/
+  170  ls /dev/
+  171  ls /dev/disk/
+  172  ls /dev/disk/by-label
+  173  ls /dev/disk/by-partuuid
+  174  parted /dev/nvme0 print
+  175  parted /dev/vcsa3
+  176  parted /dev/vcs1
+  177  parted /dev/vda
+  178  clear
+  179  history
+  180  cat History_of_Redhat_Fedora_Server72.txt 
+  181  history >> History_of_Redhat_Fedora_Server72.txt 
+  182  df
+  183  exit
+  184  ls -la
+  185  history
+  186  poweroff
+  187  history
+  188  ip a
+  189  ls -la
+  190  history
+  191  poweroff
+  192  ls -la
+  193  history
+  194  ip a
+  195  poweroff
+  196  history
+  197  ls
+  198  ip a
+  199  vgs
+  200  lvcreate -n lv_testing -L 5G fedora_fedora
+  201  lvs
+  202  lvdisplay 
+  203  mkfs.ext4 /dev/fedora_fedora/lv_testing
+  204  mkdir /test
+  205  mount /dev/fedora_fedora/lv_testing /test
+  206  df -H
+  207  vi /etc/fstab 
+  208  umount /test 
+  209  df -H
+  210  mount -H
+  211  mount -a
+  212  df -H
+  213  vgs
+  214  history
+  215  ls -la
+  216  cd TambunanShellScripting/
+  217  ls -la
+  218  history >> History_of_Redhat_Fedora_Server76.txt 
+  219  ls -la
+  220  history >> History_of_Redhat_Fedora_Server_45.txt
+  221  history >> History_of_Redhat_Fedora_Server_46.txt
+  222  history >> History_of_Redhat_Fedora_Server_47.txt
+  223  history >> History_of_Redhat_Fedora_Server_48.txt
+  224  history >> History_of_Redhat_Fedora_Server_49.txt
+  225  history >> History_of_Redhat_Fedora_Server_50.txt
+  226  ls -la
+  227  poweroff
+  228  cd TambunanShellScripting/
+  229  ls -la
+  230  mv sean_gelael sean_gelael01
+  231  mv sean_gelael2 sean_gelael02
+  232  mv sean_gelael3 sean_gelael03
+  233  mv sean_gelael4 sean_gelael04
+  234  mv sean_gelael5 sean_gelael05
+  235  mv sean_gelael6 sean_gelael06
+  236  mkdir sean_gelael{07..10}
+  237  ls -la
+  238  mv sean_gelael*.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  239  mv sean_gelael1.txt History_of_Redhat_Fedora_Server91.txt
+  240  mv sean_gelael2.txt History_of_Redhat_Fedora_Server92.txt
+  241  mv sean_gelael3.txt History_of_Redhat_Fedora_Server93.txt
+  242  mv sean_gelael4.txt History_of_Redhat_Fedora_Server94.txt
+  243  mv sean_gelael5.txt History_of_Redhat_Fedora_Server95.txt
+  244  history
+  245  ls -la
+  246  poweroff
+  247  history
+  248  cd TambunanShellScripting/
+  249  ls -la
+  250  ip a
+  251  cd TambunanShellScripting/
+  252  ls -la
+  253  ip a
+  254  poweroff
+  255  poweroff
+  256  history
+  257   mv sean_gelael01 ElasticSearch01
+  258  cd TambunanShellScripting/
+  259  mv sean_gelael01 ElasticSearch01
+  260   mv sean_gelael02 ElasticSearch02
+  261  mv sean_gelael03 ElasticSearch03
+  262  mv sean_gelael04 ElasticSearch04
+  263  mv sean_gelael05 ElasticSearch05
+  264  mv sean_gelael06 ElasticSearch06
+  265  mv sean_gelael07 ElasticSearch07
+  266  mv sean_gelael08 ElasticSearch08
+  267  mv sean_gelael09 ElasticSearch09
+  268  mv sean_gelael10 ElasticSearch10
+  269  ls -la
+  270  cd ..
+  271  chmod 777 TambunanShellScripting/
+  272  cd TambunanShellScripting/
+  273  ls -la
+  274  cd ElasticSearch01/
+  275  ls -la
+  276  cd ..
+  277  cd ElasticSearch02/
+  278  ls -la
+  279  cd ..
+  280  cd ElasticSearch01/
+  281  ls -la
+  282  mv sean_gelael01 IntroductionElasticSearchDB01.txt
+  283  mv sean_gelael01.txt IntroductionElasticSearchDB01.txt
+  284  mv sean_gelael1.txt IntroductionElasticSearchDB01.txt
+  285  mv sean_gelael2.txt IntroductionElasticSearchDB02.txt
+  286  mv sean_gelael3.txt IntroductionElasticSearchDB03.txt
+  287  mv sean_gelael4.txt IntroductionElasticSearchDB04.txt
+  288  mv sean_gelael5.txt IntroductionElasticSearchDB05.txt
+  289  ls -la
+  290  chmod 777 IntroductionElasticSearchDB01.txt 
+  291  chmod 777 IntroductionElasticSearchDB02.txt 
+  292  chmod 777 IntroductionElasticSearchDB03.txt 
+  293  chmod 777 IntroductionElasticSearchDB04.txt 
+  294  chmod 777 IntroductionElasticSearchDB05.txt 
+  295  ls -la
+  296  ls -la
+  297  exit
+  298  ls -la
+  299  cd TambunanShellScripting/
+  300  ls -la
+  301  chmod 777 ElasticSearch01/
+  302  ls -la ElasticSearch01/
+  303  exit
+  304  history
+  305  ls -la
+  306  cd TambunanShellScripting/
+  307  ls -la
+  308  ip a
+  309  poweroff
+  310  ls -la
+  311  sudo dnf install java-latest-openjdk.x86_64
+  312  sudo alternatives --config java
+  313  java --version
+  314  nano /etc/yum.repos.d/elasticsearch.repo
+  315  sudo dnf install --enablerepo=elasticsearch elasticsearch 
+  316  sudo chkconfig --add elasticsearch
+  317  sudo -i service elasticsearch start
+  318  sudo -i service elasticsearch stop
+  319  sudo /bin/systemctl daemon-reload
+  320  sudo /bin/systemctl enable elasticsearch.service
+  321  sudo systemctl start elasticsearch.service
+  322  systemctl status elasticsearch.service 
+  323  curl -X GET "localhost:9200/?pretty"
+  324  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  325  nano /etc/yum.repos.d/kibana.repo
+  326  sudo dnf install kibana 
+  327  ps -p 1
+  328  sudo chkconfig --add kibana
+  329  sudo -i service kibana start
+  330  sudo -i service kibana stop
+  331  sudo /bin/systemctl daemon-reload
+  332  sudo /bin/systemctl enable kibana.service
+  333  sudo systemctl start kibana.service
+  334  bin/elasticsearch
+  335  http://localhost:5601
+  336  nano /etc/elasticsearch/elasticsearch.yml 
+  337  ES_PATH_CONF=/etc/elasticsearch
+  338  ES_PATH_CONF=/path/to/my/config ./bin/elasticsearch
+  339  nano /etc/elasticsearch/elasticsearch.yml 
+  340  sudo systemctl stop kibana.service 
+  341  sudo systemctl enable kibana.service 
+  342  sudo systemctl start kibana.service 
+  343  sudo systemctl status kibana.service 
+  344  curl -X GET "localhost:9200/?pretty"
+  345  KBN_PATH_CONF=/home/kibana/config ./bin/kibana
+  346  nano /etc/kibana/kibana.yml 
+  347  systemctl stop kibana.service 
+  348  systemctl enable kibana.service 
+  349  systemctl start kibana.service 
+  350  systemctl status kibana.service 
+  351  http://localhost:5601
+  352  http://192.168.86.130:5601
+  353  systemctl status elasticsearch.service 
+  354  nano /etc/elasticsearch/elasticsearch.yml 
+  355  poweroff
+  356   http://localhost:5601
+  357  poweroff
+  358  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  359  nano /etc/yum.repos.d/logstash.repo
+  360  sudo yum install logstash
+  361  systemctl enable logstash.service 
+  362  systemctl enable start.service 
+  363  systemctl enable start logstash.service 
+  364  systemctl start logstash.service 
+  365  systemctl status logstash.service 
+  366  systemctl enable kibana.service 
+  367  systemctl start kibana.service 
+  368  systemctl status kibana.service 
+  369  nano /etc/kibana/kibana.yml 
+  370  ip a
+  371  nano /etc/kibana/kibana.yml 
+  372  systemctl stop kibana.service 
+  373  firewall-cmd --add-port=5601/tcp --permanent; firewall-cmd --reload; firewall-cmd --list-all
+  374  systemctl start kibana.service 
+  375  systemctl status kibana.service 
+  376  history
+  377  cd ..
+  378  cd ..
+  379  cd /home/ctambunan/
+  380  ls -la
+  381  cd TambunanShellScripting/
+  382  ls -la
+  383  cd ElasticSearch02/
+  384  ls -lA
+  385  ls -la
+  386  cd ..
+  387  cd ElasticSearch01/
+  388  ls -la
+  389  ip a
+  390  cd..
+  391  cd ..
+  392  chmod 777 ElasticSearch02/
+  393  nano /etc/logstash/logstash.yml 
+  394  cd ElasticSearch02/
+  395  ls -la
+  396  nano ConfigurationElasticSearch+KibanaDB11.txt 
+  397  touch ConfigurationElasticSearch+Kibana+Logstash13.txt
+  398  touch ConfigurationElasticSearch+Kibana+Logstash14.txt
+  399  cp /etc/logstash/logstash.yml ConfigurationElasticSearch+Kibana+Logstash14.txt
+  400  cp /etc/kibana/kibana.yml ConfigurationElasticSearch+Kibana+Logstash13.txt
+  401  cp /etc/elasticsearch/elasticsearch.yml ConfigurationElasticSearch+Kibana+Logstash15.txt
+  402  ls -la
+  403  chmod 777 ConfigurationElasticSearch+Kibana+Logstash15.txt 
+  404  curl -XGET 'http://ip_nodex:9200/_cluster/state?pretty
+  405  curl -X GET "localhost:9200/?pretty"
+  406  systemctl enable elasticsearch.service 
+  407  systemctl start elasticsearch.service 
+  408  nano /etc/elasticsearch/elasticsearch.yml 
+  409  nano /etc/logstash/logstash.yml 
+  410  nano /etc/kibana/kibana.yml 
+  411  systemctl enable elasticsearch.service 
+  412  systemctl start elasticsearch.service 
+  413  sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+  414  nano /etc/yum.repos.d/metricbeat.repo
+  415  sudo yum install metricbeat
+  416  nano /etc/metricbeat/metricbeat.yml
+  417  metricbeat modules list
+  418  metricbeat modules enable nginx
+  419  nano /etc/metricbeat/metricbeat.yml
+  420  systemctl enable metricbeat.service 
+  421  systemctl start metricbeat.service 
+  422  systemctl status metricbeat.service 
+  423  nano /etc/elasticsearch/elasticsearch.yml 
+  424  systemctl status elasticsearch.service 
+  425  nano /usr/lib/systemd/system/elasticsearch.service
+  426  journalctl -u elasticsearch.service -xe
+  427  touch ElastiSearch.txt
+  428  journalctl -u elasticsearch.service -xe >> ElastiSearch.txt 
+  429  cat ElastiSearch.txt 
+  430  journalctl -u elasticsearch.service -xe
+  431  nano /etc/elasticsearch/elasticsearch.yml 
+  432  systemctl enable elastic.service
+  433  systemctl enable elasticsearch.service 
+  434  systemctl start  elasticsearch.service 
+  435  journalctl -xeu
+  436  journalctl -xeu elasticsearch.service
+  437  nano /etc/elasticsearch/elasticsearch.yml 
+  438  nano /etc/elasticsearch/elasticsearch.yml 
+  439  systemctl start  elasticsearch.service 
+  440  nano /etc/elasticsearch/elasticsearch.yml 
+  441  ip a
+  442  systemctl start  elasticsearch.service 
+  443  journalctl -xeu elasticsearch.service
+  444  nano /var/log/elasticsearch/my-application.log 
+  445  nano /etc/elasticsearch/elasticsearch.yml 
+  446  systemctl enable elasticsearch.service 
+  447  systemctl start elasticsearch.service 
+  448  curl -X GET "localhost:9200"
+  449  sudo vim /etc/kibana/kibana.yml 
+  450  sudo nano /etc/kibana/kibana.yml 
+  451  systemctl start kibana.service 
+  452  systemctl status kibana.service 
+  453  firewall-cmd --add-port=5601/tcp --permanent
+  454  firewall-cmd --reload
+  455  http://localhost:5601
+  456  ip a
+  457  nano /etc/elasticsearch/elasticsearch.yml 
+  458  history
+  459  ip a
+  460  cd TambunanShellScripting/
+  461  ls -la
+  462  chmod 777 ElasticSearch02/
+  463  nano /etc/elasticsearch/elasticsearch.yml 
+  464  nano /etc/elasticsearch/elasticsearch.yml 
+  465  cd /etc/elasticsearch/
+  466  ls -la
+  467  nano roles.yml 
+  468  ls -la
+  469  nano jvm.options
+  470  ls -la
+  471  nano elasticsearch-plugins.example.yml 
+  472  ls -la
+  473  cd jvm.options.d/
+  474  ls -la
+  475  cd ..
+  476  ls -la
+  477  nano jvm.options
+  478  nano jvm.options
+  479  nano jvm.options
+  480  systemctl stop elasticsearch.service 
+  481  systemctl start elasticsearch.service 
+  482  systemctl status elasticsearch.service 
+  483  nano jvm.options
+  484  systemctl start elasticsearch.service 
+  485  systemctl status elasticsearch.service 
+  486  nano jvm.options
+  487  systemctl status elasticsearch.service 
+  488  systemctl start elasticsearch.service 
+  489  systemctl status elasticsearch.service 
+  490  systemctl status kibana.service 
+  491  systemctl start kibana.service 
+  492  systemctl status kibana.service 
+  493  systemctl restart logstash.service 
+  494  poweroff
+  495  poweroff
+  496  poweroff
+  497  history
+  498   firewall-cmd --add-port=5601/tcp --permanent
+  499  firewall-cmd --reload
+  500  ip a
+  501  exit
+  502  ls -la
+  503  history
+  504   firewall-cmd --add-port=5601/tcp --permanent
+  505  firewall-cmd --reload 
+  506  firewall-cmd --list-ports 
+  507  ip a
+  508   firewall-cmd --add-port=5601/tcp --permanent
+  509  firewall-cmd --list-ports 
+  510  exit
+  511  nano /etc/elasticsearch/elasticsearch.yml
+  512  nano /etc/kibana/kibana.yml
+  513  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  514  nano /etc/elasticsearch/elasticsearch.yml
+  515  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  516  nano /etc/elasticsearch/elasticsearch.yml
+  517  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  518  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  519  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  520  nano /etc/metricbeat/metricbeat.yml
+  521  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.3-x86_64.rpm
+  522   systemctl status elasticsearch.service
+  523   systemctl restart elasticsearch.service
+  524  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  525  {
+  526    "persistent": {
+  527      "cluster.routing.allocation.exclude._name": "target-node-name"
+  528    }
+  529  }
+  530  '
+  531   1010  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  532  {
+  533    "persistent": {
+  534      "cluster.routing.allocation.exclude._name": null
+  535    }
+  536  }
+  537  '
+  538  systemctl restart kibana.service 
+  539  systemctl status kibana.service 
+  540  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  541  cd /home/ctambunan/TambunanShellScripting/ElasticSearch03/
+  542  ls -la
+  543  cd ..
+  544  chmod 777 ElasticSearch03/
+  545  ip a
+  546  firewall-cmd --permanent --add-port=5601/tcp
+  547  firewall-cmd --list-port
+  548  nano /etc/elasticsearch/elasticsearch.yml 
+  549  nano /etc/kibana/kibana.yml 
+  550  firewall-cmd --permanent --add-port=5700/tcp
+  551  firewall-cmd --reload 
+  552  firewall-cmd --list-port
+  553  systemctl restart kibana.service 
+  554  systemctl restart logstash.service 
+  555  systemctl restart elasticsearch.service 
+  556  systemctl status elasticsearch.service 
+  557  ip a
+  558  firewall-cmd --reload '
+  559  firewall-cmd --reload
+  560  firewall-cmd --list-port
+  561  exit
+  562  ls -la
+  563  cd TambunanShellScripting/
+  564  ls -la
+  565  firewall-cmd --reload
+  566  firewall-cmd --list-port
+  567  nano /etc/kibana/kibana.yml 
+  568  ip a
+  569  nano /etc/kibana/kibana.yml 
+  570  nano /etc/kibana/kibana.yml 
+  571  systemctl stop kibana.service
+  572  systemctl restart kibana.service
+  573  systemctl status kibana.service
+  574  firewall-cmd --reload
+  575  firewall-cmd --list-port
+  576  firewall-cmd --permanent --add-port=5700/tcp
+  577  systemctl status kibana.service'
+  578  systemctl status kibana.service
+  579  systemctl restart kibana.service
+  580  cd /usr/share/kibana/
+  581  sudo touch kibanalog.txt
+  582  sudo chown kibana:kibana kibanalog.txt
+  583  logging.dest: "/usr/share/kibana/kibanalog.txt"
+  584  sudo systemctl restart kibana
+  585  netstat -plntu
+  586  systemctl status kibana.service
+  587  exit
+  588  nano /etc/kibana/kibana.yml 
+  589  systemctl status kibana.service
+  590  history
+  591  firewall-cmd --permanent --add-port=5601/tcp
+  592  firewall-cmd --reload 
+  593  firewall-cmd --list-ports 
+  594  netstat -anp|grep "5700"
+  595  lsof -n -i :'5700' | grep LISTEN
+  596  sudo fuser -k 5700/tcp
+  597  firewall-cmd  --list-ports 
+  598  sudo fuser -k 5700/tcp
+  599  firewall-cmd --reload 
+  600  firewall-cmd  --list-ports 
+  601  firewall-cmd --list-all
+  602  firewall-cmd --get-services
+  603  firewall-cmd --get-zones
+  604  firewall-cmd --zone=public --permanent --remove-port 5700
+  605  firewall-cmd --zone=public --permanent --remove-port 5700/tcp
+  606  firewall-cmd --reload
+  607  firewall-cmd --list-all
+  608  nano /etc/kibana/kibana.yml 
+  609  nano /etc/kibana/kibana.yml 
+  610  systemctl restart kibana.service 
+  611  systemctl restart logstash.service 
+  612  systemctl restart elasticsearch.service 
+  613  ls TambunanShellScripting/ElasticSearch03/
+  614  history >> TambunanShellScripting/ElasticSearch03/ConfigurationElasticSearch+Kibana+Logstash21.txt
+  615  cat TambunanShellScripting/ElasticSearch03/ConfigurationElasticSearch+Kibana+Logstash21.txt 
+  616  exit
+  617  ls -la
+  618  nano /etc/kibana/kibana.yml 
+  619  ip a
+  620  nano /etc/kibana/kibana.yml 
+  621  ip a
+  622  systemctl enable kibana.service
+  623  systemctl start kibana.service
+  624  systemctl status kibana.service
+  625  systemctl start elasticsearch.service
+  626  systemctl status elasticsearch.service
+  627  nano /etc/kibana/kibana.yml 
+  628  ip a
+  629  exit
+  630  ls -la
+  631  ip a
+  632  poweroff
+  633  ip a
+  634  history
+  635  systemctl status kibana.service 
+  636  systemctl status elasticsearch.service 
+  637  poweroff
+  638  systemctl status elasticsearch.service 
+  639  systemctl status kibana.service 
+  640  systemctl status logstash.service 
+  641  DELETE my_blogs/_doc/1
+  642  ip a
+  643  nano /etc/elasticsearch/elasticsearch.yml 
+  644  nano /etc/kibana/kibana.yml 
+  645  curl -XPUT "http://localhost:9200/playground/equipment/1" -d ' { "type": "slide", "quantity": 2 }'
+  646  curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/indexname/typename/optionalUniqueId" -d "{ \"field\" : \"value\"}"
+  647  curl -u elastic:changeme localhost:9200
+  648  history
+  649  ip a
+  650  poweroff
+  651  ip a
+  652  exit
+  653  exit
+  654  exit
+  655  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.17.0-x86_64.rpm
+  656  sudo rpm -vi filebeat-7.17.0-x86_64.rpm
+  657  nano /etc/filebeat/filebeat.yml 
+  658  nano /etc/filebeat/filebeat.yml 
+  659  nano /etc/filebeat/filebeat.yml 
+  660  sudo filebeat modules enable elasticsearch
+  661  nano /etc/filebeat/modules.d/elasticsearch.yml
+  662  sudo filebeat setup
+  663  sudo service filebeat start
+  664  nano /etc/filebeat/filebeat.yml 
+  665  sudo filebeat setup
+  666  sudo service filebeat start
+  667  sudo firewall-cmd --add-port=9200/tcp
+  668  sudo firewall-cmd --reload 
+  669  nano /etc/elasticsearch/elasticsearch.yml 
+  670  systemctl status elasticsearch.service 
+  671  sudo filebeat setup
+  672  ip a
+  673  nano /etc/elasticsearch/elasticsearch.yml 
+  674  systemctl restart elasticsearch.service 
+  675  systemctl status elasticsearch.service 
+  676  nano /etc/elasticsearch/elasticsearch.yml 
+  677  systemctl reload elasticsearch.service
+  678  systemctl restart elasticsearch.service
+  679  systemctl status elasticsearch.service
+  680  nano /etc/elasticsearch/elasticsearch.yml 
+  681  systemctl status elasticsearch.service
+  682  systemctl stop elasticsearch.service
+  683  systemctl start elasticsearch.service
+  684  systemctl status elasticsearch.service
+  685  nano /etc/elasticsearch/elasticsearch.yml 
+  686  nano /etc/elasticsearch/elasticsearch.yml 
+  687  systemctl start elasticsearch.service
+  688  systemctl status elasticsearch.service
+  689  systemctl status kiban.service
+  690  systemctl status kibana.service
+  691  nano /etc/elasticsearch/elasticsearch.yml 
+  692  systemctl start elasticsearch.service
+  693  systemctl status kibana.service
+  694  systemctl status elasticsearch.service
+  695  systemctl status kibana.service
+  696  systemctl status kibana.service
+  697  nano /etc/elasticsearch/elasticsearch.yml 
+  698  systemctl restart elasticsearch.service 
+  699  systemctl status elasticsearch.service
+  700  metricbeat modules enable elasticsearch-xpack
+  701  sudo service metricbeat start
+  702  service metricbeat start
+  703  systemctl start metricbeat
+  704  nano /etc/metricbeat/metricbeat.yml 
+  705  systemctl restart metricbeat
+  706  systemctl status metricbeat.service 
+  707  curl -X GET "localhost:9200/_cluster/settings?pretty"
+  708  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  709  {
+  710    "persistent": {
+  711      "xpack.monitoring.collection.enabled": true
+  712    }
+  713  }
+  714  '
+  715  nano modules.d/elasticsearch-xpack.yml
+  716  ls /etc/
+  717  ls -la /
+  718  ls -la /etc/modules-load.d/
+  719  exit
+  720  nano /etc/elasticsearch/elasticsearch.yml 
+  721  systemctl status elasticsearch.service 
+  722  systemctl restart elasticsearch.service 
+  723  systemctl status elasticsearch.service 
+  724  history >> TambunanShellScripting/ElasticSearch04/ConfigurationElastic+Logstash+Kibana22.txt
+  725  cd TambunanShellScripting/ElasticSearch03/
+  726  ls -la
+  727  exit
+  728  input {
+  729    file {
+  730      path => "/elastic/samplelog/001-checkuser.csv"
+  731      start_position => "beginning"
+  732      sincedb_path => "/dev/null"
+  733      add_field => {
+  734          "template_name" => "user_check"
+  735          "task_name" => "checkuser"
+  736      }
+  737    }
+  738  }
+  739  history
+  740  exit
+  741  systemctl status logstash.service 
+  742  ls -la
+  743  poweroff
+  744  input {
+  745    file {
+  746      path => "/elastic/samplelog/001-checkuser.csv"
+  747      start_position => "beginning"
+  748      sincedb_path => "/dev/null"
+  749      add_field => {
+  750          "template_name" => "user_check"
+  751          "task_name" => "checkuser"
+  752      }
+  753    }
+  754  }
+  755  filter {
+  756    if [task_name] == "checkuser" {;    csv {;         autodetect_column_names => "true";         separator => ",";         skip_header => true;         }
+  757      }
+  758   date {
+  759          match => ["LAST LOGON", "dd/MM/yyyy HH:mm:ss"]
+  760    }
+  761  }
+  762  output {
+  763    elasticsearch {
+  764      hosts => ["http://192.168.19.135:9200"]
+  765      index => "ansible-%{template_name}"
+  766    }
+  767  }
+  768  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.17.0-linux-x86_64.tar.gz
+  769  tar xzvf metricbeat-7.17.0-linux-x86_64.tar.gz
+  770  ls -la
+  771  ./metricbeat modules enable system
+  772  ./metricbeat setup -e
+  773  ./metricbeat -e
+  774  sudo service metricbeat start
+  775  systemctl start metricbeat
+  776  systemctl status metricbeat
+  777  GET _nodes/stats
+  778  exit
+  779  ip a
+  780  poweroff
+  781  ls -la
+  782  cd TambunanShellScripting/
+  783  cd ElasticSearch04/
+  784  ls -la
+  785  nano ConfigurationElastic+Logstash+Kibana23.txt
+  786  ls -la
+  787  cd ..
+  788  cd ..
+  789  ls -la
+  790  mv *tar.gz TambunanShellScripting/ElasticSearch04/
+  791  mv *rpm TambunanShellScripting/ElasticSearch04/
+  792  mv *tar TambunanShellScripting/ElasticSearch04/
+  793  ls -la
+  794  mv '[LAST LOGON,' Mantap.txt
+  795  mv ansible-%\{template_name\} Mantap2.txt
+  796  nano /etc/logstash/logstash.yml 
+  797  ip a
+  798  nano /etc/logstash/logstash.yml 
+  799  nano /etc/logstash/logstash.yml 
+  800  nano /etc/logstash/pipelines.yml 
+  801  nano /etc/logstash/pipelines.yml 
+  802  nano /etc/logstash/pipelines.yml 
+  803  ls -la /etc/logstash/
+  804  nano /etc/logstash/pipelines.yml 
+  805  nano /etc/logstash/pipelines.yml 
+  806  ls -la /etc/logstash/conf.d/
+  807  nano /etc/logstash/conf.d/test.conf
+  808  nano /etc/logstash/conf.d/test.conf
+  809  ip a
+  810  nano /etc/logstash/conf.d/test.conf
+  811  nano /etc/elasticsearch/elasticsearch.yml 
+  812  systemctl stop logstash.service 
+  813  nano TambunanShellScripting/ElasticSearch04/
+  814  nano TambunanShellScripting/ElasticSearch04/ConfigurationElastic+Logstash+Kibana25.txt
+  815  systemctl status logstash.service 
+  816  systemctl start logstash.service 
+  817  systemctl status logstash.service 
+  818  systemctl start logstash.service 
+  819  exit
+  820  systemctl status logstash.service 
+  821  systemctl start logstash.service 
+  822  systemctl enable logstash.service 
+  823  systemctl restart logstash.service 
+  824  systemctl status logstash.service 
+  825  cd /etc/logstash/
+  826  ls -la
+  827  cd ..
+  828  cd ..
+  829  cd /usr/
+  830  ls -la
+  831  cd /usr/lib/logstash
+  832  cd /usr/share/logstash/
+  833  ls -l
+  834  ./bin/logstash
+  835  cd /usr/share/logstash/
+  836  ls -la
+  837  cd modules/
+  838  ls -la
+  839  cd ..
+  840  cd ..
+  841  cd ..
+  842  cd ..
+  843  cd /etc/logstash/logstash.yml
+  844  nano /etc/logstash/logstash.yml
+  845  cd /var/lib/logstash/
+  846  ls -la
+  847  cd ..
+  848  nano /etc/logstash/pipelines.yml 
+  849  cd /usr/bin/
+  850  ls -la
+  851  cd ..
+  852  cd ..
+  853  history
+  854    cd /usr/lib/logstash
+  855  cd /usr/share/logstash/
+  856  ./bin/logstash -f /etc/logstash/pipelines.yml 
+  857  systemctl status logstash.service 
+  858  rpm -qa elastic
+  859  elastic -version
+  860  elasticsearch -version
+  861  elasticsearch --version
+  862  rpm -qa | grep elastic
+  863  rpm -qa | grep kibana
+  864  rpm -qa | grep logstash
+  865  cd /etc/logstash/conf.d/
+  866  ls -la
+  867  nano test.conf 
+  868  chmod 777 /home/ctambunan/TambunanShellScripting/ElasticSearch05/
+  869  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana26.txt
+  870  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana27.txt
+  871  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana28.txt
+  872  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana28.txt
+  873  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana29.txt
+  874  exit
+  875  ls -la
+  876  poweroff
+  877  ls -la
+  878  nano /etc/elasticsearch/elasticsearch.yml 
+  879  systemctl restart elasticsearch.service 
+  880  systemctl status elasticsearch.service 
+  881  nano /etc/elasticsearch/elasticsearch.yml 
+  882  systemctl status logstash.service 
+  883  exit
+  884  systemctl status elasticsearch.service
+  885  systemctl status kibana.service
+  886  ip a
+  887  systemctl status elasticsearch.service
+  888  ip a
+  889  systemctl status kibana.service 
+  890  systemctl status elasticsearch.service 
+  891  systemctl start elasticsearch.service
+  892  systemctl status elasticsearch.service 
+  893  systemctl logstash elasticsearch.service 
+  894  systemctl status logstash.service 
+  895  systemctl status elasticsearch.service 
+  896  nano /etc/elasticsearch/elasticsearch.yml 
+  897  cd /etc/elasticsearch/
+  898  ls -la
+  899  nano jvm.options
+  900  systemctl start elasticsearch.service
+  901  systemctl status elasticsearch.service 
+  902  ls -la
+  903  ls -la
+  904  systemctl status elasticsearch.service 
+  905  systemctl restart elasticsearch.service 
+  906  systemctl status elasticsearch.service 
+  907  cd /home/ctambunan/TambunanShellScripting/ElasticSearch06/
+  908  cd ..
+  909  ls -la ElasticSearch05/
+  910  history >> ElasticSearch06/ConfigurationElasticLogstashKibana30.txt
+  911  history >> ElasticSearch06/ConfigurationElasticLogstashKibana31.txt
+  912  history >> ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+  913  history
+  914  poweroff
+  915  poweroff
+  916  history >> TambunanShellScripting/ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+  917  cd TambunanShellScripting/ElasticSearch06/
+  918  ls -la
+  919  poweroff
+  920  ls -la
+  921  ip a
+  922  systemctl status elasticsearch.service 
+  923  systemctl status kibana.service 
+  924  ip a
+  925  ls -la
+  926  systemctl status elasticsearch.service 
+  927  systemctl status kibana.service 
+  928  poweroff
+  929  poweroff
+  930  systemctl status kibana.service 
+  931  systemctl status elasticsearch.service 
+  932  systemctl restart kibana.service 
+  933  systemctl status kibana.service 
+  934  nano /etc/kibana/kibana.yml 
+  935  history >> TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt
+  936  nano /etc/kibana/kibana.yml 
+  937  systemctl restart kibana.service 
+  938  poweroff
+  939  ls -la
+  940  systemctl status kibana.service 
+  941  journalctl -u kibana | egrep -i "error"
+  942  systemctl status elasticsearch -l
+  943  egrep -i "error" /var/log/elasticsearch/elasticsearch.log  
+  944  ls -la
+  945  systemctl status elasticsearch.service 
+  946  systemctl status kibana.service 
+  947  systemctl status logstash.service 
+  948  nano /etc/elasticsearch/elasticsearch.yml 
+  949  systemctl restart elasticsearch.service 
+  950  systemctl status elasticsearch.service 
+  951  nano /etc/kibana/kibana.yml 
+  952  cd /bin/
+  953  nano /etc/elasticsearch/elasticsearch.yml 
+  954  systemctl restart elasticsearch.service 
+  955  ls -la
+  956  history
+  957  systemctl status elasticsearch -l
+  958  ls -la TambunanShellScripting/ElasticSearch07/
+  959  ls -la TambunanShellScripting/ElasticSearch06/
+  960  mv TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt ConfigurationElasticLogstasgKibana35.txt
+  961  mv TambunanShellScripting/ElasticSearch07/ConfigurationElasticLogstasgKibana35.txt ConfigurationElasticLogstashKibana35.txt
+  962  cd TambunanShellScripting/ElasticSearch07/
+  963  ls -la
+  964  cd ..
+  965  ls -la
+  966  cd ElasticSearch06/
+  967  ls -la
+  968  cd ..
+  969  cd ElasticSearch07/
+  970  ls -la
+  971  cd TambunanShellScripting/ElasticSearch07/ls -la Conf
+  972  cd TambunanShellScripting/ElasticSearch07/ls -la Conf.txt
+  973  mv TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt ConfigurationElasticLogstasgKibana35.txt
+  974  cd ..
+  975  ls -la
+  976  history >> ElasticSearch07/ConfigurationElasticLogstashKibana35.txt
+  977  nano ElasticSearch07/ConfigurationElasticLogstashKibana36.txt
+  978  reboot
+  979  ls -la
+  980  systemctl start kibana.service
+  981  systemctl status kibana.service
+  982  history >> TambunanShellScripting/ElasticSearch07/ConfigurationElasticLogstashKibana37.txt
+  983  chmod 777 TambunanShellScripting/ElasticSearch07/
+  984  poweroff
+  985  systemctl status kibana
+  986  systemctl status kibana
+  987  systemctl status elasticsearch.service 
+  988  nano /etc/elasticsearch/elasticsearch.yml 
+  989  nano /etc/elasticsearch/elasticsearch.yml 
+  990  systemctl reload elasticsearch
+  991  systemctl restart elasticsearch.service 
+  992  systemctl start kibana
+  993  systemctl status kibana.service 
+  994  poweroff
+  995  nano /etc/elasticsearch/elasticsearch.yml 
+  996  systemctl restart elasticsearch.service 
+  997  nano /etc/elasticsearch/elasticsearch.yml 
+  998  nano /etc/elasticsearch/jvm.options
+  999  systemctl restart elasticsearch.service 
+ 1000  history >> TambunanShellScripting/ElasticSearch08/ConfigurationElasticLogstashKibana38.txt

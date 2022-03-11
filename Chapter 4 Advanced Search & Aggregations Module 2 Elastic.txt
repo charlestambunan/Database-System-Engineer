@@ -1,0 +1,134 @@
+GET blogs/_search
+{
+"query": {
+"regexp" : {
+"title.keyword": ".*5\\.[0-2]\\.[0-9].*"
+}
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"exists": {
+"field": "locales"
+}
+}
+}
+
+GET logs_server*/_search
+{
+"query": {
+"bool": {
+"must_not": {
+"exists": {
+"field": "geoip"
+}
+}
+}
+}
+}
+
+POST /_scripts/painless/_execute
+{
+"script": {
+"source": "doc['locales'].size() > 1"
+},
+"context": "filter",
+"context_setup": {
+"index": "blogs_fixed",
+"document": {
+"locales": ["fr-fr", "de-de"]
+}
+}
+}
+
+
+GET blogs_fixed/_search
+{
+"_source": [],
+"script_fields": {
+"day_of_week": {
+"script": {
+"source": """
+def d = new Date(doc['publish_date'].value.millis);
+return d.toString().substring(0,3);
+"""
+}
+}
+}
+}
+
+
+POST _scripts/blogs_webform_search
+{
+"script": {
+"lang": "mustache",
+"source": {
+"query": {
+"bool": {
+"must": {
+"multi_match": {
+"query": "{{blog_query}}",
+"fields": ["title","title.*","content","content.*"],
+"operator": "and",
+"type": "most_fields"
+}
+},
+"should": {
+"multi_match": {
+"query": "{{blog_query}}",
+"fields": ["title","title.*","content","content.*"],
+"type": "phrase"
+}
+}
+}
+}
+}
+}
+}
+
+
+GET logs_server*/_search
+{
+"size" : 0,
+"aggs": {
+"runtime_quintiles": {
+"percentiles": {
+"field": "runtime_ms",
+"percents": [
+20,
+40,
+60,
+80,
+100
+]
+}
+}
+}
+}
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"logs_by_month": {
+"date_histogram": {
+"field": "@timestamp",
+"interval": "month"
+},
+"aggs": {
+"monthly_sum_response": {
+"sum": {
+"field": "response_size"
+}
+},
+"cumulative_sum_response": {
+"cumulative_sum": {
+"buckets_path": "monthly_sum_response"
+}
+}
+}
+}
+}
+}

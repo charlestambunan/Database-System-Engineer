@@ -1,0 +1,1274 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> D:
+PS D:\> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Wed Mar  2 20:51:47 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 20:57:45 /home/ctambunan]$ ls -la
+total 132
+drwx------. 15 ctambunan ctambunan  4096 Feb 18 10:27  .
+drwxr-xr-x.  9 root      root        130 Jan 12 11:13  ..
+-rw-r--r--.  1 root      root          0 Feb 17 17:45 '{'
+-rw-------.  1 ctambunan ctambunan  1463 Mar  2 17:39  .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021  .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021  .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021  .bashrc
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  beginning
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09  charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42  charles_tambunan
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  checkuser
+-rw-r--r--.  1 root      root         20 Jan 13 16:05  cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04  dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02  history
+-rw-r--r--.  1 root      root          0 Jan  5 06:55  konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57  .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38  man
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap2.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap.txt
+drwxr-xr-x.  5 root      root       4096 Feb 17 17:49  metricbeat-7.17.0-linux-x86_64
+-rw-r--r--.  1 root      root          0 Jan 12 17:34  my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30  myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15  my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22  output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22  output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04  output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43  passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00  .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16  TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20  TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18  TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53  TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 27 11:49  TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52  TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41  TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05  TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47  TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00  tea.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  user_check
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05  .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32  zcat
+[root@fedora 20:57:46 /home/ctambunan]$ history
+    1  ls -l my_first_cron_job.txt
+    2  mv santy_oktavia.c my_second_cron_job.txt
+    3  ls -la
+    4  getfacl .
+    5  ls -la /run/log/journal/
+    6  getfacl /run/log/journal/
+    7  ls -la /dev/
+    8  ls -la /dev/sr0
+    9  getfacl /dev/sr0
+   10  ls -la
+   11  history
+   12  ls -la
+   13  setfacl -m u:name:rX my_second_cron_job.txt
+   14  setfacl -m u:name:rw my_second_cron_job.txt
+   15  setfacl -m g:name:rw my_second_cron_job.txt
+   16  cd ~
+   17  setfacl -m u:name:rX /home/andi/
+   18  setfacl -m u:name:rX /home/andi
+   19  setfacl -m u:name:rX /home/andi/
+   20  setfacl -m u:name:rX file
+   21  ls -la
+   22  poweroff
+   23  ip a
+   24  history
+   25  ls -la
+   26  mkdir -p shares/content
+   27  ls -la
+   28  setfacl -Rm g:consultants:rwX shares/content
+   29  setfacl -Rm u:andi:rwX shares/content
+   30  setfacl -Rm g:andi:rwX shares/content
+   31  setfacl -m d:g:andi:rwx shares/content
+   32  setfacl -m d:u:andi:- shares/content
+   33  history
+   34  cd ..
+   35  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server63.txt
+   36  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+   37  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+   38  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+   39  su - andi
+   40  history
+   41  cd /home/
+   42  ls -la
+   43  cd andi/
+   44  ls -la
+   45  cd user
+   46  cd ..
+   47  cd ctambunan/
+   48  lsa -la
+   49  ls
+   50  history
+   51   setfacl -Rm g:andi:rwX shares/content
+   52  cd ~
+   53  setfacl -Rm g:andi:rwX shares/content
+   54  setfacl -Rm u:operator1:rwX shares/content
+   55  setfacl -Rm u:andi:- /shares/content
+   56  setfacl -Rm u:andi:- shares/content
+   57  setfacl -m d:g:operator1:rwx /shares/content
+   58  setfacl -m d:g:operator1:rwx shares/content
+   59  setfacl -m d:u:andi:- /shares/content
+   60  setfacl -m d:u:andi:- shares/content
+   61  su operator2
+   62  su - andi
+   63  cd shares/content
+   64  ls -la
+   65   cat serverb-loadavg.txt
+   66   touch serverb-loadavg.txt
+   67  passwd operator1
+   68  su - operator1
+   69  touch loadavg.sh
+   70  yum install glances
+   71  glances
+   72  glances >> loadavg.sh
+   73  ls -la
+   74  cat loadavg.sh
+   75  vim loadavg.sh
+   76  touch loadavg2.sh
+   77  vim loadavg2.sh
+   78  mv loadavg2.sh loadavg.sh
+   79  cat loadavg.sh
+   80  vim loadavg.sh
+   81  rm loadavg.sh
+   82  cat loadavg2.sh
+   83  ls -la
+   84  cp loadavg2.sh loadavg1.sh
+   85  ls -la
+   86  sh loadavg2.sh
+   87  mkdir reports
+   88  echo "Test Reports" > reports/test.txt
+   89  exit
+   90  ls -la
+   91  history
+   92  ip a
+   93  history
+   94  yum update
+   95  ps axZ
+   96  systemctl start httpd.socket
+   97  systemctl start httpd
+   98  ps -zC httpd
+   99  ps -ZC httpd
+  100  ls -Z /home
+  101  ls -z /var/www
+  102  ls -Z /var/www
+  103  getenforce
+  104  setenforce
+  105  setenenforce
+  106  setenforce
+  107  setenforce 0
+  108  getenforce
+  109  setenforce Enforcing
+  110  getenforce
+  111  ls -la
+  112  history
+  113  poweroff
+  114  ip a
+  115  getenforce
+  116  vim /etc/selinux/config
+  117  systemctl reboot
+  118  getenforce
+  119  vim /etc/selinux/config
+  120  grep '^SELINUX' /etc/selinux/config
+  121  setenforce 1
+  122  getenforce
+  123  exit
+  124  sudo -
+  125  sudo -i
+  126  history
+  127  cd TambunanShellScripting/
+  128  ls -la
+  129  cat History_of_Redhat_Fedora_Server66.txt
+  130  cat History_of_Redhat_Fedora_Server65.txt
+  131  history >> History_of_Redhat_Fedora_Server66.txt
+  132  ip a
+  133  history
+  134  poweroff
+  135  mkdir /custom
+  136  echo 'This is SERVERA. ' > /custom/index.html
+  137  vim /etc/httpd/conf/httpd.conf
+  138  nano /etc/httpd/conf/httpd.conf
+  139  vim /etc/httpd/conf/httpd.conf
+  140  grep custom /etc/httpd/conf/httpd.conf
+  141  vim /etc/httpd/conf/httpd.conf
+  142  grep custom /etc/httpd/conf/httpd.conf
+  143  systemctl enable --now httpd
+  144  systemctl status httpd
+  145  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  146  restorecon -Rv /custom
+  147  exit
+  148  sudo -i
+  149  ls -la
+  150  history
+  151  cd ~
+  152  history
+  153  exit
+  154  vim /etc/httpd/conf.d/userdir.conf
+  155  grep '#UserDir' /etc/httpd/conf.d/userdir.conf
+  156  grep '^ *UserDir' /etc/httpd/conf.d/userdir.conf
+  157  systemctl enable --now httpd
+  158  mkdir ~/public_html
+  159  echo 'This is student content on Servera.' > \ ~/public_html/index.html
+  160  echo 'This is student content on SERVERA.' > \~/public_html/index.html
+  161  echo 'This is student content on SERVERA.' > ~/public_html/index.html
+  162  chmod 711 ~
+  163  getsebool -a | grep home
+  164  setsebool -P httpd_enable_homedirs on
+  165  ls -la
+  166  cd public_html/
+  167  ls -la
+  168  cat index.html
+  169  cd ..
+  170  history
+  171  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  172  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  173  less /var/log/messages
+  174  sealert -l b1c9cc8f-a953-4625-b79b-82c4f4f1fee3
+  175  SELinux is preventing /usr/sbin/httpd from getattr access on the file /custom/index.html.
+  176  less /var/log/messages
+  177  ausearch -m AVC -ts recent
+  178  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  179  exit
+  180  su -i
+  181  su i
+  182  su -i
+  183  history
+  184  cd TambunanShellScripting/
+  185  ls -la
+  186  cat History_of_Redhat_Fedora_Server67.txt
+  187  history >> History_of_Redhat_Fedora_Server67.txt
+  188  getsebool -a
+  189  setsebool httpd_enable_homedirs
+  190  getsebool httpd_enable_homedirs
+  191  setsebool httpd_enable_homedirs on
+  192  sudo setsebool httpd_enable_homedirs on
+  193  sudo semanage boolean -l | grep httpd_enable_homedirs
+  194  getsebool httpd_enable_homedirs
+  195  setsebool -P httpd_enable_homedirs on
+  196  sudo semanage boolean -l | grep httpd_enable_homedirs
+  197  sudo semanage boolean -l -C
+  198  sudo -i
+  199  history
+  200  cat History_of_Redhat_Fedora_Server69.txt
+  201  history >> History_of_Redhat_Fedora_Server69.txt
+  202  ip a
+  203  netstat -tunlp
+  204  systemctl start apache
+  205  systemctl restart apache
+  206  systemctl start httpd
+  207  netstat -tunlp
+  208  cat History_of_Redhat_Fedora_Server67.txt
+  209  cat History_of_Redhat_Fedora_Server68.txt
+  210  cat History_of_Redhat_Fedora_Server69.txt
+  211  cat History_of_Redhat_Fedora_Server70.txt
+  212  ls -la
+  213  history >> History_of_Redhat_Fedora_Server70.txt
+  214  cat History_of_Redhat_Fedora_Server70.txt
+  215  cat History_of_Redhat_Fedora_Server71.txt
+  216  touch History_of_Redhat_Fedora_Server{72..80}.txt
+  217  ls -la
+  218  parted /dev/vda print
+  219  ls /dev/
+  220  parted /dev/
+  221  ls /dev/
+  222  ls /dev/disk/
+  223  ls /dev/disk/by-label
+  224  ls /dev/disk/by-partuuid
+  225  parted /dev/nvme0 print
+  226  parted /dev/vcsa3
+  227  parted /dev/vcs1
+  228  parted /dev/vda
+  229  clear
+  230  history
+  231  cat History_of_Redhat_Fedora_Server72.txt
+  232  history >> History_of_Redhat_Fedora_Server72.txt
+  233  df
+  234  exit
+  235  ls -la
+  236  history
+  237  poweroff
+  238  history
+  239  ip a
+  240  ls -la
+  241  history
+  242  poweroff
+  243  ls -la
+  244  history
+  245  ip a
+  246  poweroff
+  247  history
+  248  ls
+  249  ip a
+  250  vgs
+  251  lvcreate -n lv_testing -L 5G fedora_fedora
+  252  lvs
+  253  lvdisplay
+  254  mkfs.ext4 /dev/fedora_fedora/lv_testing
+  255  mkdir /test
+  256  mount /dev/fedora_fedora/lv_testing /test
+  257  df -H
+  258  vi /etc/fstab
+  259  umount /test
+  260  df -H
+  261  mount -H
+  262  mount -a
+  263  df -H
+  264  vgs
+  265  history
+  266  ls -la
+  267  cd TambunanShellScripting/
+  268  ls -la
+  269  history >> History_of_Redhat_Fedora_Server76.txt
+  270  ls -la
+  271  history >> History_of_Redhat_Fedora_Server_45.txt
+  272  history >> History_of_Redhat_Fedora_Server_46.txt
+  273  history >> History_of_Redhat_Fedora_Server_47.txt
+  274  history >> History_of_Redhat_Fedora_Server_48.txt
+  275  history >> History_of_Redhat_Fedora_Server_49.txt
+  276  history >> History_of_Redhat_Fedora_Server_50.txt
+  277  ls -la
+  278  poweroff
+  279  cd TambunanShellScripting/
+  280  ls -la
+  281  mv sean_gelael sean_gelael01
+  282  mv sean_gelael2 sean_gelael02
+  283  mv sean_gelael3 sean_gelael03
+  284  mv sean_gelael4 sean_gelael04
+  285  mv sean_gelael5 sean_gelael05
+  286  mv sean_gelael6 sean_gelael06
+  287  mkdir sean_gelael{07..10}
+  288  ls -la
+  289  mv sean_gelael*.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  290  mv sean_gelael1.txt History_of_Redhat_Fedora_Server91.txt
+  291  mv sean_gelael2.txt History_of_Redhat_Fedora_Server92.txt
+  292  mv sean_gelael3.txt History_of_Redhat_Fedora_Server93.txt
+  293  mv sean_gelael4.txt History_of_Redhat_Fedora_Server94.txt
+  294  mv sean_gelael5.txt History_of_Redhat_Fedora_Server95.txt
+  295  history
+  296  ls -la
+  297  poweroff
+  298  history
+  299  cd TambunanShellScripting/
+  300  ls -la
+  301  ip a
+  302  cd TambunanShellScripting/
+  303  ls -la
+  304  ip a
+  305  poweroff
+  306  poweroff
+  307  history
+  308   mv sean_gelael01 ElasticSearch01
+  309  cd TambunanShellScripting/
+  310  mv sean_gelael01 ElasticSearch01
+  311   mv sean_gelael02 ElasticSearch02
+  312  mv sean_gelael03 ElasticSearch03
+  313  mv sean_gelael04 ElasticSearch04
+  314  mv sean_gelael05 ElasticSearch05
+  315  mv sean_gelael06 ElasticSearch06
+  316  mv sean_gelael07 ElasticSearch07
+  317  mv sean_gelael08 ElasticSearch08
+  318  mv sean_gelael09 ElasticSearch09
+  319  mv sean_gelael10 ElasticSearch10
+  320  ls -la
+  321  cd ..
+  322  chmod 777 TambunanShellScripting/
+  323  cd TambunanShellScripting/
+  324  ls -la
+  325  cd ElasticSearch01/
+  326  ls -la
+  327  cd ..
+  328  cd ElasticSearch02/
+  329  ls -la
+  330  cd ..
+  331  cd ElasticSearch01/
+  332  ls -la
+  333  mv sean_gelael01 IntroductionElasticSearchDB01.txt
+  334  mv sean_gelael01.txt IntroductionElasticSearchDB01.txt
+  335  mv sean_gelael1.txt IntroductionElasticSearchDB01.txt
+  336  mv sean_gelael2.txt IntroductionElasticSearchDB02.txt
+  337  mv sean_gelael3.txt IntroductionElasticSearchDB03.txt
+  338  mv sean_gelael4.txt IntroductionElasticSearchDB04.txt
+  339  mv sean_gelael5.txt IntroductionElasticSearchDB05.txt
+  340  ls -la
+  341  chmod 777 IntroductionElasticSearchDB01.txt
+  342  chmod 777 IntroductionElasticSearchDB02.txt
+  343  chmod 777 IntroductionElasticSearchDB03.txt
+  344  chmod 777 IntroductionElasticSearchDB04.txt
+  345  chmod 777 IntroductionElasticSearchDB05.txt
+  346  ls -la
+  347  ls -la
+  348  exit
+  349  ls -la
+  350  cd TambunanShellScripting/
+  351  ls -la
+  352  chmod 777 ElasticSearch01/
+  353  ls -la ElasticSearch01/
+  354  exit
+  355  history
+  356  ls -la
+  357  cd TambunanShellScripting/
+  358  ls -la
+  359  ip a
+  360  poweroff
+  361  ls -la
+  362  sudo dnf install java-latest-openjdk.x86_64
+  363  sudo alternatives --config java
+  364  java --version
+  365  nano /etc/yum.repos.d/elasticsearch.repo
+  366  sudo dnf install --enablerepo=elasticsearch elasticsearch
+  367  sudo chkconfig --add elasticsearch
+  368  sudo -i service elasticsearch start
+  369  sudo -i service elasticsearch stop
+  370  sudo /bin/systemctl daemon-reload
+  371  sudo /bin/systemctl enable elasticsearch.service
+  372  sudo systemctl start elasticsearch.service
+  373  systemctl status elasticsearch.service
+  374  curl -X GET "localhost:9200/?pretty"
+  375  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  376  nano /etc/yum.repos.d/kibana.repo
+  377  sudo dnf install kibana
+  378  ps -p 1
+  379  sudo chkconfig --add kibana
+  380  sudo -i service kibana start
+  381  sudo -i service kibana stop
+  382  sudo /bin/systemctl daemon-reload
+  383  sudo /bin/systemctl enable kibana.service
+  384  sudo systemctl start kibana.service
+  385  bin/elasticsearch
+  386  http://localhost:5601
+  387  nano /etc/elasticsearch/elasticsearch.yml
+  388  ES_PATH_CONF=/etc/elasticsearch
+  389  ES_PATH_CONF=/path/to/my/config ./bin/elasticsearch
+  390  nano /etc/elasticsearch/elasticsearch.yml
+  391  sudo systemctl stop kibana.service
+  392  sudo systemctl enable kibana.service
+  393  sudo systemctl start kibana.service
+  394  sudo systemctl status kibana.service
+  395  curl -X GET "localhost:9200/?pretty"
+  396  KBN_PATH_CONF=/home/kibana/config ./bin/kibana
+  397  nano /etc/kibana/kibana.yml
+  398  systemctl stop kibana.service
+  399  systemctl enable kibana.service
+  400  systemctl start kibana.service
+  401  systemctl status kibana.service
+  402  http://localhost:5601
+  403  http://192.168.86.130:5601
+  404  systemctl status elasticsearch.service
+  405  nano /etc/elasticsearch/elasticsearch.yml
+  406  poweroff
+  407   http://localhost:5601
+  408  poweroff
+  409  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  410  nano /etc/yum.repos.d/logstash.repo
+  411  sudo yum install logstash
+  412  systemctl enable logstash.service
+  413  systemctl enable start.service
+  414  systemctl enable start logstash.service
+  415  systemctl start logstash.service
+  416  systemctl status logstash.service
+  417  systemctl enable kibana.service
+  418  systemctl start kibana.service
+  419  systemctl status kibana.service
+  420  nano /etc/kibana/kibana.yml
+  421  ip a
+  422  nano /etc/kibana/kibana.yml
+  423  systemctl stop kibana.service
+  424  firewall-cmd --add-port=5601/tcp --permanent; firewall-cmd --reload; firewall-cmd --list-all
+  425  systemctl start kibana.service
+  426  systemctl status kibana.service
+  427  history
+  428  cd ..
+  429  cd ..
+  430  cd /home/ctambunan/
+  431  ls -la
+  432  cd TambunanShellScripting/
+  433  ls -la
+  434  cd ElasticSearch02/
+  435  ls -lA
+  436  ls -la
+  437  cd ..
+  438  cd ElasticSearch01/
+  439  ls -la
+  440  ip a
+  441  cd..
+  442  cd ..
+  443  chmod 777 ElasticSearch02/
+  444  nano /etc/logstash/logstash.yml
+  445  cd ElasticSearch02/
+  446  ls -la
+  447  nano ConfigurationElasticSearch+KibanaDB11.txt
+  448  touch ConfigurationElasticSearch+Kibana+Logstash13.txt
+  449  touch ConfigurationElasticSearch+Kibana+Logstash14.txt
+  450  cp /etc/logstash/logstash.yml ConfigurationElasticSearch+Kibana+Logstash14.txt
+  451  cp /etc/kibana/kibana.yml ConfigurationElasticSearch+Kibana+Logstash13.txt
+  452  cp /etc/elasticsearch/elasticsearch.yml ConfigurationElasticSearch+Kibana+Logstash15.txt
+  453  ls -la
+  454  chmod 777 ConfigurationElasticSearch+Kibana+Logstash15.txt
+  455  curl -XGET 'http://ip_nodex:9200/_cluster/state?pretty
+  456  curl -X GET "localhost:9200/?pretty"
+  457  systemctl enable elasticsearch.service
+  458  systemctl start elasticsearch.service
+  459  nano /etc/elasticsearch/elasticsearch.yml
+  460  nano /etc/logstash/logstash.yml
+  461  nano /etc/kibana/kibana.yml
+  462  systemctl enable elasticsearch.service
+  463  systemctl start elasticsearch.service
+  464  sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+  465  nano /etc/yum.repos.d/metricbeat.repo
+  466  sudo yum install metricbeat
+  467  nano /etc/metricbeat/metricbeat.yml
+  468  metricbeat modules list
+  469  metricbeat modules enable nginx
+  470  nano /etc/metricbeat/metricbeat.yml
+  471  systemctl enable metricbeat.service
+  472  systemctl start metricbeat.service
+  473  systemctl status metricbeat.service
+  474  nano /etc/elasticsearch/elasticsearch.yml
+  475  systemctl status elasticsearch.service
+  476  nano /usr/lib/systemd/system/elasticsearch.service
+  477  journalctl -u elasticsearch.service -xe
+  478  touch ElastiSearch.txt
+  479  journalctl -u elasticsearch.service -xe >> ElastiSearch.txt
+  480  cat ElastiSearch.txt
+  481  journalctl -u elasticsearch.service -xe
+  482  nano /etc/elasticsearch/elasticsearch.yml
+  483  systemctl enable elastic.service
+  484  systemctl enable elasticsearch.service
+  485  systemctl start  elasticsearch.service
+  486  journalctl -xeu
+  487  journalctl -xeu elasticsearch.service
+  488  nano /etc/elasticsearch/elasticsearch.yml
+  489  nano /etc/elasticsearch/elasticsearch.yml
+  490  systemctl start  elasticsearch.service
+  491  nano /etc/elasticsearch/elasticsearch.yml
+  492  ip a
+  493  systemctl start  elasticsearch.service
+  494  journalctl -xeu elasticsearch.service
+  495  nano /var/log/elasticsearch/my-application.log
+  496  nano /etc/elasticsearch/elasticsearch.yml
+  497  systemctl enable elasticsearch.service
+  498  systemctl start elasticsearch.service
+  499  curl -X GET "localhost:9200"
+  500  sudo vim /etc/kibana/kibana.yml
+  501  sudo nano /etc/kibana/kibana.yml
+  502  systemctl start kibana.service
+  503  systemctl status kibana.service
+  504  firewall-cmd --add-port=5601/tcp --permanent
+  505  firewall-cmd --reload
+  506  http://localhost:5601
+  507  ip a
+  508  nano /etc/elasticsearch/elasticsearch.yml
+  509  history
+  510  ip a
+  511  cd TambunanShellScripting/
+  512  ls -la
+  513  chmod 777 ElasticSearch02/
+  514  nano /etc/elasticsearch/elasticsearch.yml
+  515  nano /etc/elasticsearch/elasticsearch.yml
+  516  cd /etc/elasticsearch/
+  517  ls -la
+  518  nano roles.yml
+  519  ls -la
+  520  nano jvm.options
+  521  ls -la
+  522  nano elasticsearch-plugins.example.yml
+  523  ls -la
+  524  cd jvm.options.d/
+  525  ls -la
+  526  cd ..
+  527  ls -la
+  528  nano jvm.options
+  529  nano jvm.options
+  530  nano jvm.options
+  531  systemctl stop elasticsearch.service
+  532  systemctl start elasticsearch.service
+  533  systemctl status elasticsearch.service
+  534  nano jvm.options
+  535  systemctl start elasticsearch.service
+  536  systemctl status elasticsearch.service
+  537  nano jvm.options
+  538  systemctl status elasticsearch.service
+  539  systemctl start elasticsearch.service
+  540  systemctl status elasticsearch.service
+  541  systemctl status kibana.service
+  542  systemctl start kibana.service
+  543  systemctl status kibana.service
+  544  systemctl restart logstash.service
+  545  poweroff
+  546  poweroff
+  547  poweroff
+  548  history
+  549   firewall-cmd --add-port=5601/tcp --permanent
+  550  firewall-cmd --reload
+  551  ip a
+  552  exit
+  553  ls -la
+  554  history
+  555   firewall-cmd --add-port=5601/tcp --permanent
+  556  firewall-cmd --reload
+  557  firewall-cmd --list-ports
+  558  ip a
+  559   firewall-cmd --add-port=5601/tcp --permanent
+  560  firewall-cmd --list-ports
+  561  exit
+  562  nano /etc/elasticsearch/elasticsearch.yml
+  563  nano /etc/kibana/kibana.yml
+  564  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  565  nano /etc/elasticsearch/elasticsearch.yml
+  566  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  567  nano /etc/elasticsearch/elasticsearch.yml
+  568  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  569  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'  570  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'  571  nano /etc/metricbeat/metricbeat.yml
+  572  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.3-x86_64.rpm
+  573   systemctl status elasticsearch.service
+  574   systemctl restart elasticsearch.service
+  575  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'  576  {
+  577    "persistent": {
+  578      "cluster.routing.allocation.exclude._name": "target-node-name"
+  579    }
+  580  }
+  581  '
+  582   1010  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  583  {
+  584    "persistent": {
+  585      "cluster.routing.allocation.exclude._name": null
+  586    }
+  587  }
+  588  '
+  589  systemctl restart kibana.service
+  590  systemctl status kibana.service
+  591  /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+  592  cd /home/ctambunan/TambunanShellScripting/ElasticSearch03/
+  593  ls -la
+  594  cd ..
+  595  chmod 777 ElasticSearch03/
+  596  ip a
+  597  firewall-cmd --permanent --add-port=5601/tcp
+  598  firewall-cmd --list-port
+  599  nano /etc/elasticsearch/elasticsearch.yml
+  600  nano /etc/kibana/kibana.yml
+  601  firewall-cmd --permanent --add-port=5700/tcp
+  602  firewall-cmd --reload
+  603  firewall-cmd --list-port
+  604  systemctl restart kibana.service
+  605  systemctl restart logstash.service
+  606  systemctl restart elasticsearch.service
+  607  systemctl status elasticsearch.service
+  608  ip a
+  609  firewall-cmd --reload '
+  610  firewall-cmd --reload
+  611  firewall-cmd --list-port
+  612  exit
+  613  ls -la
+  614  cd TambunanShellScripting/
+  615  ls -la
+  616  firewall-cmd --reload
+  617  firewall-cmd --list-port
+  618  nano /etc/kibana/kibana.yml
+  619  ip a
+  620  nano /etc/kibana/kibana.yml
+  621  nano /etc/kibana/kibana.yml
+  622  systemctl stop kibana.service
+  623  systemctl restart kibana.service
+  624  systemctl status kibana.service
+  625  firewall-cmd --reload
+  626  firewall-cmd --list-port
+  627  firewall-cmd --permanent --add-port=5700/tcp
+  628  systemctl status kibana.service'
+  629  systemctl status kibana.service
+  630  systemctl restart kibana.service
+  631  cd /usr/share/kibana/
+  632  sudo touch kibanalog.txt
+  633  sudo chown kibana:kibana kibanalog.txt
+  634  logging.dest: "/usr/share/kibana/kibanalog.txt"
+  635  sudo systemctl restart kibana
+  636  netstat -plntu
+  637  systemctl status kibana.service
+  638  exit
+  639  nano /etc/kibana/kibana.yml
+  640  systemctl status kibana.service
+  641  history
+  642  firewall-cmd --permanent --add-port=5601/tcp
+  643  firewall-cmd --reload
+  644  firewall-cmd --list-ports
+  645  netstat -anp|grep "5700"
+  646  lsof -n -i :'5700' | grep LISTEN
+  647  sudo fuser -k 5700/tcp
+  648  firewall-cmd  --list-ports
+  649  sudo fuser -k 5700/tcp
+  650  firewall-cmd --reload
+  651  firewall-cmd  --list-ports
+  652  firewall-cmd --list-all
+  653  firewall-cmd --get-services
+  654  firewall-cmd --get-zones
+  655  firewall-cmd --zone=public --permanent --remove-port 5700
+  656  firewall-cmd --zone=public --permanent --remove-port 5700/tcp
+  657  firewall-cmd --reload
+  658  firewall-cmd --list-all
+  659  nano /etc/kibana/kibana.yml
+  660  nano /etc/kibana/kibana.yml
+  661  systemctl restart kibana.service
+  662  systemctl restart logstash.service
+  663  systemctl restart elasticsearch.service
+  664  ls TambunanShellScripting/ElasticSearch03/
+  665  history >> TambunanShellScripting/ElasticSearch03/ConfigurationElasticSearch+Kibana+Logstash21.txt
+  666  cat TambunanShellScripting/ElasticSearch03/ConfigurationElasticSearch+Kibana+Logstash21.txt
+  667  exit
+  668  ls -la
+  669  nano /etc/kibana/kibana.yml
+  670  ip a
+  671  nano /etc/kibana/kibana.yml
+  672  ip a
+  673  systemctl enable kibana.service
+  674  systemctl start kibana.service
+  675  systemctl status kibana.service
+  676  systemctl start elasticsearch.service
+  677  systemctl status elasticsearch.service
+  678  nano /etc/kibana/kibana.yml
+  679  ip a
+  680  exit
+  681  ls -la
+  682  ip a
+  683  poweroff
+  684  ip a
+  685  history
+  686  systemctl status kibana.service
+  687  systemctl status elasticsearch.service
+  688  poweroff
+  689  systemctl status elasticsearch.service
+  690  systemctl status kibana.service
+  691  systemctl status logstash.service
+  692  DELETE my_blogs/_doc/1
+  693  ip a
+  694  nano /etc/elasticsearch/elasticsearch.yml
+  695  nano /etc/kibana/kibana.yml
+  696  curl -XPUT "http://localhost:9200/playground/equipment/1" -d ' { "type": "slide", "quantity": 2 }'
+  697  curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/indexname/typename/optionalUniqueId" -d "{ \"field\" : \"value\"}"
+  698  curl -u elastic:changeme localhost:9200
+  699  history
+  700  ip a
+  701  poweroff
+  702  ip a
+  703  exit
+  704  exit
+  705  exit
+  706  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.17.0-x86_64.rpm
+  707  sudo rpm -vi filebeat-7.17.0-x86_64.rpm
+  708  nano /etc/filebeat/filebeat.yml
+  709  nano /etc/filebeat/filebeat.yml
+  710  nano /etc/filebeat/filebeat.yml
+  711  sudo filebeat modules enable elasticsearch
+  712  nano /etc/filebeat/modules.d/elasticsearch.yml
+  713  sudo filebeat setup
+  714  sudo service filebeat start
+  715  nano /etc/filebeat/filebeat.yml
+  716  sudo filebeat setup
+  717  sudo service filebeat start
+  718  sudo firewall-cmd --add-port=9200/tcp
+  719  sudo firewall-cmd --reload
+  720  nano /etc/elasticsearch/elasticsearch.yml
+  721  systemctl status elasticsearch.service
+  722  sudo filebeat setup
+  723  ip a
+  724  nano /etc/elasticsearch/elasticsearch.yml
+  725  systemctl restart elasticsearch.service
+  726  systemctl status elasticsearch.service
+  727  nano /etc/elasticsearch/elasticsearch.yml
+  728  systemctl reload elasticsearch.service
+  729  systemctl restart elasticsearch.service
+  730  systemctl status elasticsearch.service
+  731  nano /etc/elasticsearch/elasticsearch.yml
+  732  systemctl status elasticsearch.service
+  733  systemctl stop elasticsearch.service
+  734  systemctl start elasticsearch.service
+  735  systemctl status elasticsearch.service
+  736  nano /etc/elasticsearch/elasticsearch.yml
+  737  nano /etc/elasticsearch/elasticsearch.yml
+  738  systemctl start elasticsearch.service
+  739  systemctl status elasticsearch.service
+  740  systemctl status kiban.service
+  741  systemctl status kibana.service
+  742  nano /etc/elasticsearch/elasticsearch.yml
+  743  systemctl start elasticsearch.service
+  744  systemctl status kibana.service
+  745  systemctl status elasticsearch.service
+  746  systemctl status kibana.service
+  747  systemctl status kibana.service
+  748  nano /etc/elasticsearch/elasticsearch.yml
+  749  systemctl restart elasticsearch.service
+  750  systemctl status elasticsearch.service
+  751  metricbeat modules enable elasticsearch-xpack
+  752  sudo service metricbeat start
+  753  service metricbeat start
+  754  systemctl start metricbeat
+  755  nano /etc/metricbeat/metricbeat.yml
+  756  systemctl restart metricbeat
+  757  systemctl status metricbeat.service
+  758  curl -X GET "localhost:9200/_cluster/settings?pretty"
+  759  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'  760  {
+  761    "persistent": {
+  762      "xpack.monitoring.collection.enabled": true
+  763    }
+  764  }
+  765  '
+  766  nano modules.d/elasticsearch-xpack.yml
+  767  ls /etc/
+  768  ls -la /
+  769  ls -la /etc/modules-load.d/
+  770  exit
+  771  nano /etc/elasticsearch/elasticsearch.yml
+  772  systemctl status elasticsearch.service
+  773  systemctl restart elasticsearch.service
+  774  systemctl status elasticsearch.service
+  775  history >> TambunanShellScripting/ElasticSearch04/ConfigurationElastic+Logstash+Kibana22.txt
+  776  cd TambunanShellScripting/ElasticSearch03/
+  777  ls -la
+  778  exit
+  779  input {
+  780    file {
+  781      path => "/elastic/samplelog/001-checkuser.csv"
+  782      start_position => "beginning"
+  783      sincedb_path => "/dev/null"
+  784      add_field => {
+  785          "template_name" => "user_check"
+  786          "task_name" => "checkuser"
+  787      }
+  788    }
+  789  }
+  790  history
+  791  exit
+  792  systemctl status logstash.service
+  793  ls -la
+  794  poweroff
+  795  input {
+  796    file {
+  797      path => "/elastic/samplelog/001-checkuser.csv"
+  798      start_position => "beginning"
+  799      sincedb_path => "/dev/null"
+  800      add_field => {
+  801          "template_name" => "user_check"
+  802          "task_name" => "checkuser"
+  803      }
+  804    }
+  805  }
+  806  filter {
+  807    if [task_name] == "checkuser" {;    csv {;         autodetect_column_names => "true";         separator => ",";         skip_header => true;         }
+  808      }
+  809   date {
+  810          match => ["LAST LOGON", "dd/MM/yyyy HH:mm:ss"]
+  811    }
+  812  }
+  813  output {
+  814    elasticsearch {
+  815      hosts => ["http://192.168.19.135:9200"]
+  816      index => "ansible-%{template_name}"
+  817    }
+  818  }
+  819  curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.17.0-linux-x86_64.tar.gz
+  820  tar xzvf metricbeat-7.17.0-linux-x86_64.tar.gz
+  821  ls -la
+  822  ./metricbeat modules enable system
+  823  ./metricbeat setup -e
+  824  ./metricbeat -e
+  825  sudo service metricbeat start
+  826  systemctl start metricbeat
+  827  systemctl status metricbeat
+  828  GET _nodes/stats
+  829  exit
+  830  ip a
+  831  poweroff
+  832  ls -la
+  833  cd TambunanShellScripting/
+  834  cd ElasticSearch04/
+  835  ls -la
+  836  nano ConfigurationElastic+Logstash+Kibana23.txt
+  837  ls -la
+  838  cd ..
+  839  cd ..
+  840  ls -la
+  841  mv *tar.gz TambunanShellScripting/ElasticSearch04/
+  842  mv *rpm TambunanShellScripting/ElasticSearch04/
+  843  mv *tar TambunanShellScripting/ElasticSearch04/
+  844  ls -la
+  845  mv '[LAST LOGON,' Mantap.txt
+  846  mv ansible-%\{template_name\} Mantap2.txt
+  847  nano /etc/logstash/logstash.yml
+  848  ip a
+  849  nano /etc/logstash/logstash.yml
+  850  nano /etc/logstash/logstash.yml
+  851  nano /etc/logstash/pipelines.yml
+  852  nano /etc/logstash/pipelines.yml
+  853  nano /etc/logstash/pipelines.yml
+  854  ls -la /etc/logstash/
+  855  nano /etc/logstash/pipelines.yml
+  856  nano /etc/logstash/pipelines.yml
+  857  ls -la /etc/logstash/conf.d/
+  858  nano /etc/logstash/conf.d/test.conf
+  859  nano /etc/logstash/conf.d/test.conf
+  860  ip a
+  861  nano /etc/logstash/conf.d/test.conf
+  862  nano /etc/elasticsearch/elasticsearch.yml
+  863  systemctl stop logstash.service
+  864  nano TambunanShellScripting/ElasticSearch04/
+  865  nano TambunanShellScripting/ElasticSearch04/ConfigurationElastic+Logstash+Kibana25.txt
+  866  systemctl status logstash.service
+  867  systemctl start logstash.service
+  868  systemctl status logstash.service
+  869  systemctl start logstash.service
+  870  exit
+  871  systemctl status logstash.service
+  872  systemctl start logstash.service
+  873  systemctl enable logstash.service
+  874  systemctl restart logstash.service
+  875  systemctl status logstash.service
+  876  cd /etc/logstash/
+  877  ls -la
+  878  cd ..
+  879  cd ..
+  880  cd /usr/
+  881  ls -la
+  882  cd /usr/lib/logstash
+  883  cd /usr/share/logstash/
+  884  ls -l
+  885  ./bin/logstash
+  886  cd /usr/share/logstash/
+  887  ls -la
+  888  cd modules/
+  889  ls -la
+  890  cd ..
+  891  cd ..
+  892  cd ..
+  893  cd ..
+  894  cd /etc/logstash/logstash.yml
+  895  nano /etc/logstash/logstash.yml
+  896  cd /var/lib/logstash/
+  897  ls -la
+  898  cd ..
+  899  nano /etc/logstash/pipelines.yml
+  900  cd /usr/bin/
+  901  ls -la
+  902  cd ..
+  903  cd ..
+  904  history
+  905    cd /usr/lib/logstash
+  906  cd /usr/share/logstash/
+  907  ./bin/logstash -f /etc/logstash/pipelines.yml
+  908  systemctl status logstash.service
+  909  rpm -qa elastic
+  910  elastic -version
+  911  elasticsearch -version
+  912  elasticsearch --version
+  913  rpm -qa | grep elastic
+  914  rpm -qa | grep kibana
+  915  rpm -qa | grep logstash
+  916  cd /etc/logstash/conf.d/
+  917  ls -la
+  918  nano test.conf
+  919  chmod 777 /home/ctambunan/TambunanShellScripting/ElasticSearch05/
+  920  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana26.txt
+  921  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana27.txt
+  922  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana28.txt
+  923  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana28.txt
+  924  nano /home/ctambunan/TambunanShellScripting/ElasticSearch05/ConfigurationElasticLogstashKibana29.txt
+  925  exit
+  926  ls -la
+  927  poweroff
+  928  ls -la
+  929  nano /etc/elasticsearch/elasticsearch.yml
+  930  systemctl restart elasticsearch.service
+  931  systemctl status elasticsearch.service
+  932  nano /etc/elasticsearch/elasticsearch.yml
+  933  systemctl status logstash.service
+  934  exit
+  935  systemctl status elasticsearch.service
+  936  systemctl status kibana.service
+  937  ip a
+  938  systemctl status elasticsearch.service
+  939  ip a
+  940  systemctl status kibana.service
+  941  systemctl status elasticsearch.service
+  942  systemctl start elasticsearch.service
+  943  systemctl status elasticsearch.service
+  944  systemctl logstash elasticsearch.service
+  945  systemctl status logstash.service
+  946  systemctl status elasticsearch.service
+  947  nano /etc/elasticsearch/elasticsearch.yml
+  948  cd /etc/elasticsearch/
+  949  ls -la
+  950  nano jvm.options
+  951  systemctl start elasticsearch.service
+  952  systemctl status elasticsearch.service
+  953  ls -la
+  954  ls -la
+  955  systemctl status elasticsearch.service
+  956  systemctl restart elasticsearch.service
+  957  systemctl status elasticsearch.service
+  958  cd /home/ctambunan/TambunanShellScripting/ElasticSearch06/
+  959  cd ..
+  960  ls -la ElasticSearch05/
+  961  history >> ElasticSearch06/ConfigurationElasticLogstashKibana30.txt
+  962  history >> ElasticSearch06/ConfigurationElasticLogstashKibana31.txt
+  963  history >> ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+  964  history
+  965  poweroff
+  966  poweroff
+  967  history >> TambunanShellScripting/ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+  968  cd TambunanShellScripting/ElasticSearch06/
+  969  ls -la
+  970  poweroff
+  971  ls -la
+  972  ip a
+  973  systemctl status elasticsearch.service
+  974  systemctl status kibana.service
+  975  ip a
+  976  ls -la
+  977  systemctl status elasticsearch.service
+  978  systemctl status kibana.service
+  979  poweroff
+  980  poweroff
+  981  systemctl status kibana.service
+  982  systemctl status elasticsearch.service
+  983  systemctl restart kibana.service
+  984  systemctl status kibana.service
+  985  nano /etc/kibana/kibana.yml
+  986  history >> TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt
+  987  nano /etc/kibana/kibana.yml
+  988  systemctl restart kibana.service
+  989  poweroff
+  990  ls -la
+  991  systemctl status kibana.service
+  992  journalctl -u kibana | egrep -i "error"
+  993  systemctl status elasticsearch -l
+  994  egrep -i "error" /var/log/elasticsearch/elasticsearch.log
+  995  ls -la
+  996  history
+[root@fedora 20:58:00 /home/ctambunan]$ systemctl status elasticsearch -l
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disable>     Active: active (running) since Wed 2022-03-02 20:57:39 WIB; 31s ago
+       Docs: https://www.elastic.co
+   Main PID: 5087 (java)
+      Tasks: 90 (limit: 3475)
+     Memory: 1.2G
+        CPU: 54.134s
+     CGroup: /system.slice/elasticsearch.service
+             ├─5087 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.tt>             └─5283 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Mar 02 20:57:18 fedora systemd[1]: Starting Elasticsearch...
+Mar 02 20:57:39 fedora systemd[1]: Started Elasticsearch.
+lines 1-14/14 (END)
+^C
+[root@fedora 20:58:13 /home/ctambunan]$ ls -la TambunanShellScripting/ElasticSearch07/
+total 48
+drwxr-xr-x.  2 root root    45 Mar  2 17:34 .
+drwxrwxrwx. 15 root root  8192 Jan 27 11:49 ..
+-rw-r--r--.  1 root root 34529 Mar  2 17:34 ConfigurationELK2Database33.txt
+[root@fedora 20:58:24 /home/ctambunan]$ ls -la TambunanShellScripting/ElasticSearch06/
+total 156
+drwxr-xr-x.  2 root root   150 Feb 23 10:40 .
+drwxrwxrwx. 15 root root  8192 Jan 27 11:49 ..
+-rw-r--r--.  1 root root 34844 Feb 23 10:40 ConfigurationElasticLogstashKibana30.txt
+-rw-r--r--.  1 root root 34887 Feb 23 10:40 ConfigurationElasticLogstashKibana31.txt
+-rw-r--r--.  1 root root 69639 Feb 25 10:51 ConfigurationElasticLogstashKibana32.txt
+[root@fedora 20:58:37 /home/ctambunan]$ mv TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt ConfigurationElasticLogstasgKibana35.txt
+[root@fedora 20:59:11 /home/ctambunan]$ mv TambunanShellScripting/ElasticSearch07/ConfigurationElasticLogstasgKibana35.txt ConfigurationElasticLogstashKibana35.txt
+mv: cannot stat 'TambunanShellScripting/ElasticSearch07/ConfigurationElasticLogstasgKibana35.txt': No such file or directory
+[root@fedora 21:00:07 /home/ctambunan]$ cd TambunanShellScripting/ElasticSearch07/
+[root@fedora 21:00:19 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ ls -la
+total 12
+drwxr-xr-x.  2 root root    6 Mar  2 20:59 .
+drwxrwxrwx. 15 root root 8192 Jan 27 11:49 ..
+[root@fedora 21:00:21 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ cd ..
+[root@fedora 21:00:37 /home/ctambunan/TambunanShellScripting]$ ls -la
+total 4876
+drwxrwxrwx. 15 root      root         8192 Jan 27 11:49 .
+drwx------. 15 ctambunan ctambunan    4096 Mar  2 20:59 ..
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 1
+-rw-r--r--.  1 root      root           41 Jan 10 11:08 andidori.sh
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 echo
+drwxrwxrwx.  2 root      root         4096 Feb  2 11:10 ElasticSearch01
+drwxrwxrwx.  2 root      root         4096 Feb 16 11:15 ElasticSearch02
+drwxrwxrwx.  2 root      root         4096 Feb  9 21:54 ElasticSearch03
+drwxr-xr-x.  2 root      root         4096 Feb 18 16:20 ElasticSearch04
+drwxrwxrwx.  2 root      root         4096 Feb 18 19:57 ElasticSearch05
+drwxr-xr-x.  2 root      root          150 Feb 23 10:40 ElasticSearch06
+drwxr-xr-x.  2 root      root            6 Mar  2 20:59 ElasticSearch07
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch08
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch09
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch10
+-rwxr-xr-x.  1 root      root          414 Jan 10 11:04 firstscript.sh
+-rw-r--r--.  1 root      root           79 Jan 10 17:36 FiveScript.sh
+-rw-r--r--.  1 root      root          121 Jan 10 16:45 FourthScript.sh
+-rw-rw-r--.  1 ctambunan ctambunan   32683 Jan 27 11:49 History_of_Redhat_Fedora_Server100.txt
+-rw-r--r--.  1 root      root        14442 Jan 10 11:31 History_of_Redhat_Fedora_Server_41.txt
+-rw-r--r--.  1 root      root        15355 Jan 10 11:43 History_of_Redhat_Fedora_Server_42.txt
+-rw-r--r--.  1 root      root        16385 Jan 10 12:40 History_of_Redhat_Fedora_Server_43.txt
+-rw-r--r--.  1 root      root        19270 Jan 10 17:37 History_of_Redhat_Fedora_Server_44.txt
+-rw-r--r--.  1 root      root        32338 Jan 19 20:04 History_of_Redhat_Fedora_Server_45.txt
+-rw-r--r--.  1 root      root        32379 Jan 19 20:04 History_of_Redhat_Fedora_Server_46.txt
+-rw-r--r--.  1 root      root        32422 Jan 19 20:04 History_of_Redhat_Fedora_Server_47.txt
+-rw-r--r--.  1 root      root        32458 Jan 19 20:04 History_of_Redhat_Fedora_Server_48.txt
+-rw-r--r--.  1 root      root        32501 Jan 19 20:04 History_of_Redhat_Fedora_Server_49.txt
+-rw-r--r--.  1 root      root        32546 Jan 19 20:04 History_of_Redhat_Fedora_Server_50.txt
+-rw-r--r--.  1 root      root        20450 Jan 11 18:29 History_of_Redhat_Fedora_Server51.txt
+-rw-r--r--.  1 root      root      2553981 Jan 12 09:34 History_of_Redhat_Fedora_Server52.txt
+-rw-r--r--.  1 root      root        25250 Jan 12 10:56 History_of_Redhat_Fedora_Server53.txt
+-rw-r--r--.  1 root      root          745 Jan 12 11:25 History_of_Redhat_Fedora_Server54.txt
+-rw-r--r--.  1 root      root        26304 Jan 12 11:59 History_of_Redhat_Fedora_Server55.txt
+-rw-r--r--.  1 root      root          491 Jan 12 18:35 History_of_Redhat_Fedora_Server56.txt
+-rw-r--r--.  1 root      root          525 Jan 12 18:35 History_of_Redhat_Fedora_Server57.txt
+-rw-r--r--.  1 root      root        28194 Jan 12 18:52 History_of_Redhat_Fedora_Server58.txt
+-rw-r--r--.  1 root      root        29026 Jan 13 10:29 History_of_Redhat_Fedora_Server59.txt
+-rw-r--r--.  1 root      root          823 Jan 13 11:37 History_of_Redhat_Fedora_Server60.txt
+-rw-r--r--.  1 root      root        30594 Jan 13 11:47 History_of_Redhat_Fedora_Server61.txt
+-rw-r--r--.  1 root      root        31069 Jan 13 12:46 History_of_Redhat_Fedora_Server62.txt
+-rw-r--r--.  1 root      root        31533 Jan 14 10:26 History_of_Redhat_Fedora_Server63.txt
+-rw-r--r--.  1 root      root        31146 Jan 14 16:23 History_of_Redhat_Fedora_Server64.txt
+-rw-r--r--.  1 root      root        31622 Jan 14 18:15 History_of_Redhat_Fedora_Server65.txt
+-rw-r--r--.  1 root      root        31441 Jan 17 13:15 History_of_Redhat_Fedora_Server66.txt
+-rw-r--r--.  1 root      root        31459 Jan 17 16:04 History_of_Redhat_Fedora_Server67.txt
+-rw-r--r--.  1 root      root        31586 Jan 17 16:26 History_of_Redhat_Fedora_Server68.txt
+-rw-r--r--.  1 root      root        31468 Jan 17 16:31 History_of_Redhat_Fedora_Server69.txt
+-rw-r--r--.  1 root      root        31532 Jan 17 16:38 History_of_Redhat_Fedora_Server70.txt
+-rw-r--r--.  1 root      root         3364 Jan 12 18:13 History_of_Redhat_Fedora_Server71.txt
+-rw-r--r--.  1 root      root        31793 Jan 17 16:56 History_of_Redhat_Fedora_Server72.txt
+-rw-r--r--.  1 root      root        32467 Jan 17 17:07 History_of_Redhat_Fedora_Server73.txt
+-rwxrwxrwx.  1 root      root        32635 Jan 19 11:02 History_of_Redhat_Fedora_Server74.txt
+-rwxrwxrwx.  1 root      root        32494 Jan 19 11:02 History_of_Redhat_Fedora_Server75.txt
+-rwxrwxrwx.  1 root      root        32361 Jan 21 03:06 History_of_Redhat_Fedora_Server76.txt
+-rwxrwxrwx.  1 root      root        32316 Jan 21 03:06 History_of_Redhat_Fedora_Server77.txt
+-rwxrwxrwx.  1 root      root        32370 Jan 21 03:06 History_of_Redhat_Fedora_Server78.txt
+-rwxrwxrwx.  1 root      root        32579 Jan 21 03:05 History_of_Redhat_Fedora_Server79.txt
+-rwxrwxrwx.  1 root      root        32468 Jan 21 03:05 History_of_Redhat_Fedora_Server80.txt
+-rwxrwxrwx.  1 root      root        67148 Jan 22 23:51 History_of_Redhat_Fedora_Server81.txt
+-rwxrwxrwx.  1 root      root         2193 Jan 22 23:51 History_of_Redhat_Fedora_Server82.txt
+-rwxrwxrwx.  1 root      root        71306 Jan 22 23:51 History_of_Redhat_Fedora_Server83.txt
+-rwxrwxrwx.  1 root      root          585 Jan 22 23:51 History_of_Redhat_Fedora_Server84.txt
+-rwxrwxrwx.  1 root      root          817 Jan 22 23:51 History_of_Redhat_Fedora_Server85.txt
+-rw-rw-r--.  1 ctambunan ctambunan  315105 Jan 24 17:35 History_of_Redhat_Fedora_Server86.txt
+-rw-rw-r--.  1 ctambunan ctambunan  130137 Jan 24 17:35 History_of_Redhat_Fedora_Server87.txt
+-rw-rw-r--.  1 ctambunan ctambunan   41512 Jan 24 17:29 History_of_Redhat_Fedora_Server88.txt
+-rw-rw-r--.  1 ctambunan ctambunan   94413 Jan 24 17:29 History_of_Redhat_Fedora_Server89.txt
+-rw-rw-r--.  1 ctambunan ctambunan  114124 Jan 24 17:29 History_of_Redhat_Fedora_Server90.txt
+-rwxrwxrwx.  1 root      root         7369 Jan 22 23:49 History_of_Redhat_Fedora_Server91.txt
+-rwxrwxrwx+  1 root      root         4082 Jan 22 23:49 History_of_Redhat_Fedora_Server92.txt
+-rwxrwxrwx.  1 root      root        63932 Jan 24 17:37 History_of_Redhat_Fedora_Server93.txt
+-rwxrwxrwx.  1 root      root         8911 Jan 22 23:49 History_of_Redhat_Fedora_Server94.txt
+-rwxrwxrwx.  1 root      root        19487 Jan 22 23:49 History_of_Redhat_Fedora_Server95.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33030 Jan 27 11:47 History_of_Redhat_Fedora_Server96.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33131 Jan 27 11:47 History_of_Redhat_Fedora_Server97.txt
+-rw-rw-r--.  1 ctambunan ctambunan   32938 Jan 27 11:47 History_of_Redhat_Fedora_Server98.txt
+-rw-rw-r--.  1 ctambunan ctambunan  205911 Jan 27 11:47 History_of_Redhat_Fedora_Server99.txt
+-rw-r--r--.  1 root      root          111 Jan 10 12:38 SecondScript.sh
+drwxr-xr-x.  2 root      root          108 Jan 14 16:13 tambunan
+-rw-r--r--.  1 root      root          384 Jan 10 17:56 ThirdScript.sh
+[root@fedora 21:00:38 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch06/
+[root@fedora 21:00:51 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ ls -la
+total 156
+drwxr-xr-x.  2 root root   150 Feb 23 10:40 .
+drwxrwxrwx. 15 root root  8192 Jan 27 11:49 ..
+-rw-r--r--.  1 root root 34844 Feb 23 10:40 ConfigurationElasticLogstashKibana30.txt
+-rw-r--r--.  1 root root 34887 Feb 23 10:40 ConfigurationElasticLogstashKibana31.txt
+-rw-r--r--.  1 root root 69639 Feb 25 10:51 ConfigurationElasticLogstashKibana32.txt
+[root@fedora 21:00:52 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ cd ..
+[root@fedora 21:00:53 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch07/
+[root@fedora 21:01:01 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ ls -la
+total 12
+drwxr-xr-x.  2 root root    6 Mar  2 20:59 .
+drwxrwxrwx. 15 root root 8192 Jan 27 11:49 ..
+[root@fedora 21:01:30 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ cd TambunanShellScripting/ElasticSearch07/ls -la Conf
+bash: cd: too many arguments
+[root@fedora 21:01:54 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ cd TambunanShellScripting/ElasticSearch07/ls -la Conf.txt
+bash: cd: too many arguments
+[root@fedora 21:01:58 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ mv TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt ConfigurationElasticLogstasgKibana35.txt
+mv: cannot stat 'TambunanShellScripting/ElasticSearch07/ConfigurationELK2Database33.txt': No such file or directory
+[root@fedora 21:02:07 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ cd ..
+[root@fedora 21:02:21 /home/ctambunan/TambunanShellScripting]$ ls -la
+total 4876
+drwxrwxrwx. 15 root      root         8192 Jan 27 11:49 .
+drwx------. 15 ctambunan ctambunan    4096 Mar  2 20:59 ..
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 1
+-rw-r--r--.  1 root      root           41 Jan 10 11:08 andidori.sh
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 echo
+drwxrwxrwx.  2 root      root         4096 Feb  2 11:10 ElasticSearch01
+drwxrwxrwx.  2 root      root         4096 Feb 16 11:15 ElasticSearch02
+drwxrwxrwx.  2 root      root         4096 Feb  9 21:54 ElasticSearch03
+drwxr-xr-x.  2 root      root         4096 Feb 18 16:20 ElasticSearch04
+drwxrwxrwx.  2 root      root         4096 Feb 18 19:57 ElasticSearch05
+drwxr-xr-x.  2 root      root          150 Feb 23 10:40 ElasticSearch06
+drwxr-xr-x.  2 root      root            6 Mar  2 20:59 ElasticSearch07
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch08
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch09
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch10
+-rwxr-xr-x.  1 root      root          414 Jan 10 11:04 firstscript.sh
+-rw-r--r--.  1 root      root           79 Jan 10 17:36 FiveScript.sh
+-rw-r--r--.  1 root      root          121 Jan 10 16:45 FourthScript.sh
+-rw-rw-r--.  1 ctambunan ctambunan   32683 Jan 27 11:49 History_of_Redhat_Fedora_Server100.txt
+-rw-r--r--.  1 root      root        14442 Jan 10 11:31 History_of_Redhat_Fedora_Server_41.txt
+-rw-r--r--.  1 root      root        15355 Jan 10 11:43 History_of_Redhat_Fedora_Server_42.txt
+-rw-r--r--.  1 root      root        16385 Jan 10 12:40 History_of_Redhat_Fedora_Server_43.txt
+-rw-r--r--.  1 root      root        19270 Jan 10 17:37 History_of_Redhat_Fedora_Server_44.txt
+-rw-r--r--.  1 root      root        32338 Jan 19 20:04 History_of_Redhat_Fedora_Server_45.txt
+-rw-r--r--.  1 root      root        32379 Jan 19 20:04 History_of_Redhat_Fedora_Server_46.txt
+-rw-r--r--.  1 root      root        32422 Jan 19 20:04 History_of_Redhat_Fedora_Server_47.txt
+-rw-r--r--.  1 root      root        32458 Jan 19 20:04 History_of_Redhat_Fedora_Server_48.txt
+-rw-r--r--.  1 root      root        32501 Jan 19 20:04 History_of_Redhat_Fedora_Server_49.txt
+-rw-r--r--.  1 root      root        32546 Jan 19 20:04 History_of_Redhat_Fedora_Server_50.txt
+-rw-r--r--.  1 root      root        20450 Jan 11 18:29 History_of_Redhat_Fedora_Server51.txt
+-rw-r--r--.  1 root      root      2553981 Jan 12 09:34 History_of_Redhat_Fedora_Server52.txt
+-rw-r--r--.  1 root      root        25250 Jan 12 10:56 History_of_Redhat_Fedora_Server53.txt
+-rw-r--r--.  1 root      root          745 Jan 12 11:25 History_of_Redhat_Fedora_Server54.txt
+-rw-r--r--.  1 root      root        26304 Jan 12 11:59 History_of_Redhat_Fedora_Server55.txt
+-rw-r--r--.  1 root      root          491 Jan 12 18:35 History_of_Redhat_Fedora_Server56.txt
+-rw-r--r--.  1 root      root          525 Jan 12 18:35 History_of_Redhat_Fedora_Server57.txt
+-rw-r--r--.  1 root      root        28194 Jan 12 18:52 History_of_Redhat_Fedora_Server58.txt
+-rw-r--r--.  1 root      root        29026 Jan 13 10:29 History_of_Redhat_Fedora_Server59.txt
+-rw-r--r--.  1 root      root          823 Jan 13 11:37 History_of_Redhat_Fedora_Server60.txt
+-rw-r--r--.  1 root      root        30594 Jan 13 11:47 History_of_Redhat_Fedora_Server61.txt
+-rw-r--r--.  1 root      root        31069 Jan 13 12:46 History_of_Redhat_Fedora_Server62.txt
+-rw-r--r--.  1 root      root        31533 Jan 14 10:26 History_of_Redhat_Fedora_Server63.txt
+-rw-r--r--.  1 root      root        31146 Jan 14 16:23 History_of_Redhat_Fedora_Server64.txt
+-rw-r--r--.  1 root      root        31622 Jan 14 18:15 History_of_Redhat_Fedora_Server65.txt
+-rw-r--r--.  1 root      root        31441 Jan 17 13:15 History_of_Redhat_Fedora_Server66.txt
+-rw-r--r--.  1 root      root        31459 Jan 17 16:04 History_of_Redhat_Fedora_Server67.txt
+-rw-r--r--.  1 root      root        31586 Jan 17 16:26 History_of_Redhat_Fedora_Server68.txt
+-rw-r--r--.  1 root      root        31468 Jan 17 16:31 History_of_Redhat_Fedora_Server69.txt
+-rw-r--r--.  1 root      root        31532 Jan 17 16:38 History_of_Redhat_Fedora_Server70.txt
+-rw-r--r--.  1 root      root         3364 Jan 12 18:13 History_of_Redhat_Fedora_Server71.txt
+-rw-r--r--.  1 root      root        31793 Jan 17 16:56 History_of_Redhat_Fedora_Server72.txt
+-rw-r--r--.  1 root      root        32467 Jan 17 17:07 History_of_Redhat_Fedora_Server73.txt
+-rwxrwxrwx.  1 root      root        32635 Jan 19 11:02 History_of_Redhat_Fedora_Server74.txt
+-rwxrwxrwx.  1 root      root        32494 Jan 19 11:02 History_of_Redhat_Fedora_Server75.txt
+-rwxrwxrwx.  1 root      root        32361 Jan 21 03:06 History_of_Redhat_Fedora_Server76.txt
+-rwxrwxrwx.  1 root      root        32316 Jan 21 03:06 History_of_Redhat_Fedora_Server77.txt
+-rwxrwxrwx.  1 root      root        32370 Jan 21 03:06 History_of_Redhat_Fedora_Server78.txt
+-rwxrwxrwx.  1 root      root        32579 Jan 21 03:05 History_of_Redhat_Fedora_Server79.txt
+-rwxrwxrwx.  1 root      root        32468 Jan 21 03:05 History_of_Redhat_Fedora_Server80.txt
+-rwxrwxrwx.  1 root      root        67148 Jan 22 23:51 History_of_Redhat_Fedora_Server81.txt
+-rwxrwxrwx.  1 root      root         2193 Jan 22 23:51 History_of_Redhat_Fedora_Server82.txt
+-rwxrwxrwx.  1 root      root        71306 Jan 22 23:51 History_of_Redhat_Fedora_Server83.txt
+-rwxrwxrwx.  1 root      root          585 Jan 22 23:51 History_of_Redhat_Fedora_Server84.txt
+-rwxrwxrwx.  1 root      root          817 Jan 22 23:51 History_of_Redhat_Fedora_Server85.txt
+-rw-rw-r--.  1 ctambunan ctambunan  315105 Jan 24 17:35 History_of_Redhat_Fedora_Server86.txt
+-rw-rw-r--.  1 ctambunan ctambunan  130137 Jan 24 17:35 History_of_Redhat_Fedora_Server87.txt
+-rw-rw-r--.  1 ctambunan ctambunan   41512 Jan 24 17:29 History_of_Redhat_Fedora_Server88.txt
+-rw-rw-r--.  1 ctambunan ctambunan   94413 Jan 24 17:29 History_of_Redhat_Fedora_Server89.txt
+-rw-rw-r--.  1 ctambunan ctambunan  114124 Jan 24 17:29 History_of_Redhat_Fedora_Server90.txt
+-rwxrwxrwx.  1 root      root         7369 Jan 22 23:49 History_of_Redhat_Fedora_Server91.txt
+-rwxrwxrwx+  1 root      root         4082 Jan 22 23:49 History_of_Redhat_Fedora_Server92.txt
+-rwxrwxrwx.  1 root      root        63932 Jan 24 17:37 History_of_Redhat_Fedora_Server93.txt
+-rwxrwxrwx.  1 root      root         8911 Jan 22 23:49 History_of_Redhat_Fedora_Server94.txt
+-rwxrwxrwx.  1 root      root        19487 Jan 22 23:49 History_of_Redhat_Fedora_Server95.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33030 Jan 27 11:47 History_of_Redhat_Fedora_Server96.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33131 Jan 27 11:47 History_of_Redhat_Fedora_Server97.txt
+-rw-rw-r--.  1 ctambunan ctambunan   32938 Jan 27 11:47 History_of_Redhat_Fedora_Server98.txt
+-rw-rw-r--.  1 ctambunan ctambunan  205911 Jan 27 11:47 History_of_Redhat_Fedora_Server99.txt
+-rw-r--r--.  1 root      root          111 Jan 10 12:38 SecondScript.sh
+drwxr-xr-x.  2 root      root          108 Jan 14 16:13 tambunan
+-rw-r--r--.  1 root      root          384 Jan 10 17:56 ThirdScript.sh
+[root@fedora 21:02:22 /home/ctambunan/TambunanShellScripting]$ history >> ElasticSearch07/ConfigurationElasticLogstashKibana35.txt
