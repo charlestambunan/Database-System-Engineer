@@ -1,0 +1,3381 @@
+Elastic Search Database Engineer 2 25 January 2022
+
+Chapter 1 : Elasticsearch Internals
+
+• Lucene Indexing
+
+Contoh Query Lucene Indexing : 
+
+PUT blogs/_doc/551
+{
+"title": "A History of Logstash Output Workers",
+"category": "Engineering"
+}
+
+PUT my_index/_settings
+{
+"refresh_interval": "30s"
+}
+
+PUT my_index/_doc/102/?refresh=wait_for
+{
+"firstname" : "James",
+"lastname" : "Brown",
+"address" : "6011 Downtown Lane",
+"city" : "Detroit"
+}
+
+PUT my_index/_doc/27
+{
+"author": "Charles",
+"category": "Releases",
+"title": "Business Management"
+}
+
+PUT my_index/_doc/14
+{
+"author": "Russia",
+"category": "Releases",
+"title": "Ukraine War with Russia"
+}
+
+POST blogs/_forcemerge
+
+POST my_index/_flush
+
+
+• Understanding Segments
+
+Contoh Query Database Elastic :
+
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> ssh git@gitlab.com 2fa_recovery_codes
+git@gitlab.com: Permission denied (publickey,keyboard-interactive).
+PS C:\Users\Charles Tambunan> ssh git@charles_tambunan 2fa_recovery_codes
+ssh: Could not resolve hostname charles_tambunan: No such host is known.
+PS C:\Users\Charles Tambunan> ssh git@gitlab.com:charles_tambunan 2fa_recovery_codes
+ssh: Could not resolve hostname gitlab.com:charles_tambunan: No such host is known.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Fri Feb 25 10:47:53 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 10:51:08 /home/ctambunan]$ history >> TambunanShellScripting/ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+[root@fedora 10:51:40 /home/ctambunan]$ cd TambunanShellScripting/ElasticSearch06/
+[root@fedora 10:51:48 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ ls -la
+total 156
+drwxr-xr-x.  2 root root   150 Feb 23 10:40 .
+drwxrwxrwx. 15 root root  8192 Jan 27 11:49 ..
+-rw-r--r--.  1 root root 34844 Feb 23 10:40 ConfigurationElasticLogstashKibana30.txt
+-rw-r--r--.  1 root root 34887 Feb 23 10:40 ConfigurationElasticLogstashKibana31.txt
+-rw-r--r--.  1 root root 69639 Feb 25 10:51 ConfigurationElasticLogstashKibana32.txt
+[root@fedora 10:51:49 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ client_loop: send disconnect: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Fri Feb 25 10:51:03 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 15:20:40 /home/ctambunan]$ poweroff
+Connection to 192.168.86.130 closed by remote host.
+Connection to 192.168.86.130 closed.
+PS C:\Users\Charles Tambunan>
+
+PUT my_index/_doc/27
+{
+"author": "Uri",
+"category": "Releases",
+"title": "Elastic Cloud Enterprise Beta"
+}
+
+PUT my_index/_doc/14
+{
+"author": "Rasmus",
+"category": "Releases",
+"title": "Elastic APM enters beta-1.1"
+}
+
+Hasil Query Database Elastic (200 - OK) :
+
+Answer 1 : 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "27",
+  "_version" : 5,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 9,
+  "_primary_term" : 16
+}
+
+Answer 2 : 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "14",
+  "_version" : 2,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 8,
+  "_primary_term" : 16
+}
+
+• Segment Merges
+
+Contoh Query Database Elastic :
+
+POST blogs/_forcemerge
+
+Results Query Database Elastic ( 200 - OK ) :
+
+{
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  }
+}
+
+• Elasticsearch Indexing
+
+Contoh Query Database Elasticsearch Indexing :
+
+POST my_index/_flush
+
+Contoh Hasil Query Database Elasticsearch Indexing :
+
+200 - OK
+
+{
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  }
+}
+
+
+• Doc Values
+
+Contoh Query Doc Values :
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "new releases"
+}
+},
+"sort": {
+"author.keyword": {
+"order": "abc"
+}
+}
+}
+
+Hasil Query Doc Values 400 - Bad Request :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "x_content_parse_exception",
+        "reason" : "[9:10] [field_sort] failed to parse field [order]"
+      }
+    ],
+    "type" : "x_content_parse_exception",
+    "reason" : "[9:10] [field_sort] failed to parse field [order]",
+    "caused_by" : {
+      "type" : "illegal_argument_exception",
+      "reason" : "No enum constant org.elasticsearch.search.sort.SortOrder.ABC"
+    }
+  },
+  "status" : 400
+}
+
+• Caching
+
+Contoh Query Caching di Elastic Search :
+
+GET blogs_csv/_search
+{
+"query": {
+"bool": {
+"filter": {
+"range": {
+"publish_date": {
+"gte": 2017,
+"lte": 2018
+} } } } } }
+
+GET /blogs/_search?request_cache=true
+{
+"query": {
+"query_string": {
+"query": "*_source*"
+}
+}
+}
+
+Hasil Query Caching Elasticsearch 404 - Not Found :
+
+
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs_csv]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs_csv",
+        "index_uuid" : "_na_",
+        "index" : "blogs_csv"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs_csv]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs_csv",
+    "index_uuid" : "_na_",
+    "index" : "blogs_csv"
+  },
+  "status" : 404
+}
+
+Hasil Query Caching Elasticsearch 200 - OK :
+
+{
+  "took" : 10,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+Summary
+• A shard is a single instance of Lucene that consists of segments
+• A segment is a package of many different data structures
+representing an inverted index for each field
+• Any document write operation is written to the transaction log
+after being processed by the internal Lucene index
+• During indexing, a segment is created every 1 second (by default)
+• Sort and Aggregation of strings should be performed on keyword
+fields (uses doc_values).
+• A query in a filter context can be cached by Elasticsearch to
+improve performance
+
+Quiz
+1. True or False: Increasing the refresh_interval value (ex:
+30s) is a good practice before indexing a lot of documents. True
+
+2. Name three things that a segment stores? 
+Field names, term dictionary, term frequency, term
+proximity, deleted documents, stored fields, normalization
+factors
+
+3. True or False: You should occasionally invoke _forcemerge
+if you are indexing a lot of documents continuously. False
+
+4. True or False: After an index operation documents might not
+be searchable up to 1 second. True
+
+5.What happens if you use ?refresh=wait_for in an index
+request. Explain one use case that benefits from it?
+
+Keep in mind you should rarely worry about invoking
+_forcemerge manually
+
+If you use it, make sure to only use _forcemerge on indices
+that will never have write operations executed in the future
+
+6. True or False: Every write operation is recorded in the
+translog and the translog is fsynced to disk. True
+
+7.When should you run a synced flush?
+
+Flush happens automatically depending on how many operations
+get added to the transaction log, how big they are, and when the
+last flush happened
+
+Chapter 2 : Field Modeling
+
+
+• The Need for Modeling
+
+Contoh Query Database Elastic  The Need for Modeling :
+
+GET /blogs/_search?request_cache=true
+{
+"query": {
+"query_string": {
+"query": "*_source*",
+"status_code": {
+"type": "short"
+},
+"properties": {
+"@timestamp": {
+"type": "date"
+  }
+},
+"mantap":{
+  "tipe_binatang":"mamalia",
+  "nama_hewan":"wolesin"
+},
+"language": {
+"code": "fr-fr"
+}
+    }
+  }
+}
+
+Hasil Query Database Elastic The Need Modelling :
+
+400 - Bad Request
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "parsing_exception",
+        "reason" : "[query_string] unknown token [START_OBJECT] after [status_code]",
+        "line" : 5,
+        "col" : 16
+      }
+    ],
+    "type" : "parsing_exception",
+    "reason" : "[query_string] unknown token [START_OBJECT] after [status_code]",
+    "line" : 5,
+    "col" : 16
+  },
+  "status" : 400
+}
+
+• Modeling Granular Fields
+
+Contoh Granular Fields Query Database :
+
+GET my_range_index/_search
+{
+"query": {
+"range": {
+"author_age_range": {
+"gte": 23,
+"lte": 43,
+"relation": "intersects"
+}
+}
+}
+}
+
+Hasil Query Database Granular Fields 200 - OK : 
+
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+
+• Modeling Ranges
+
+Contoh Modeling Ranges Query Database : 
+
+PUT test_ranges
+{
+"mappings": {
+"_doc": {
+"properties": {
+"publish_range": {
+"type": "date_range"
+}
+}
+}
+}
+}
+
+PUT test_ranges/_doc/1
+{
+"publish_range": {
+"gte": "2019-11-10",
+"lt": "2021-11-10"
+}
+}
+
+GET test_ranges/_search
+{
+"query":  {
+"range":    {
+"publish_range": {
+"gte": "2019-11-01"
+        }
+    } 
+  }
+}
+
+Hasil Query Database Modelling Ranges (400 - Bad Request): 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+  },
+  "status" : 400
+}
+
+GET my_range_index/_search
+{
+"query":  {
+"range":    {
+"author_age_range": {
+"gte": 23,
+"lte": 43,
+"relation": "intersects"
+          }
+      }
+    }
+}
+
+Hasil Query Database Modelling Ranges (200 - OK): 
+
+{
+  "_index" : "test_ranges",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 2,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 1,
+  "_primary_term" : 1
+}
+
+Hasil Query Database Modelling Ranges (200 - OK): 
+
+
+  "took" : 324,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+Hasil Query Database Modelling Ranges (200 - OK): 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [my_range_index]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "my_range_index",
+        "index_uuid" : "_na_",
+        "index" : "my_range_index"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [my_range_index]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "my_range_index",
+    "index_uuid" : "_na_",
+    "index" : "my_range_index"
+  },
+  "status" : 404
+}
+
+
+• Mapping Parameters
+
+Contoh Query Mapping Parameters : 
+
+PUT my_logs/doc/_mapping
+{
+"properties": {
+"url": {
+"enabled": false
+}
+}
+}
+
+Hasil Query Mapping Parameters 400 - Bad Request :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+  },
+  "status" : 400
+}
+
+• Dynamic Templates
+
+Contoh Query Dynamic Templates :
+
+POST test2/_doc/
+{
+"f_avg_response_time": "34.8"
+}
+
+
+Hasil Query Dynamic Templates 201 - Created :
+
+{
+  "_index" : "test2",
+  "_type" : "_doc",
+  "_id" : "TRrFRn8BS92Q5zX25Ufe",
+  "_version" : 1,
+  "result" : "created",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 0,
+  "_primary_term" : 1
+}
+
+• Controlling Dynamic Fields
+
+Contoh Query Controlling Dynamic Fields :
+
+PUT blogs/_doc/_mapping
+{
+"properties": {
+"some_other_field": {
+"type": "text"
+}
+}
+}
+
+Hasil Query Controlling Dynamic Fields :
+
+
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+  },
+  "status" : 400
+}
+
+Summary
+• Adding a level of granularity can make it easier to answer
+questions about a field
+
+• Range data types allow you to define a field using a lower and
+upper bound
+
+• Setting “index” to false disables indexing, but its value is still
+stored and available for aggregations
+
+• Setting “enabled” to false completely disables a field so that it is
+not indexed or available for searches or aggs
+
+• Use the “null_value” parameter to assign a value to a field if it is
+null
+
+• Using dynamic templates, you can define a field’s mapping based
+on its name or datatype
+
+• You can control the effect of new fields added to a mapping using
+the “dynamic” property
+
+Quiz : 
+
+1. How might the following field be modeled more effectively
+for searching and aggregating dev environments?
+
+Jawaban : 
+
+The field would produce better search results if the
+individual developer environments were split apart and
+stored in an array, instead of as a delimited string
+
+2. How might the following field be modeled more effectively?
+
+Jawaban : 
+
+It is a numeric value but it is stored as a string, so any
+situation that requires its value would require parsing and
+be tedious. This would be much better modeled as a float
+
+3. How would you map a field that you never need to use for
+searches or aggregations?
+
+Jawaban :
+
+Disable the field by setting “enabled” to false
+
+4. How would you configure an index so that it rejects
+documents that contain fields not defined in its mapping?
+
+Jawaban : 
+
+Set "dynamic” to "strict"
+
+5.What is the default value of the “relation” parameter in a
+range query?
+
+Jawaban :
+
+"intersect"
+
+Chapter 3 Fixing Data
+
+• Tools for Fixing Data
+
+Contoh Query Database Fixing Data Tools :
+
+PUT my_index/_doc/1
+{
+"blog_id": "h81CKmIBCLh5xF6i7Y2f",
+"num_of_views": 3
+}
+
+
+POST my_index/_doc/1/_update
+{
+"script": {
+"source": "ctx._source.num_of_views += params.new_views",
+"params": {
+"new_views": 2
+}
+}
+}
+
+
+
+Hasil Query Database Elastic Fixing Data Tools  200 - OK: 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 3,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 2,
+  "_primary_term" : 1
+}
+
+Hasil Query Database Elastic Fixing Data Tools  200 - OK: 
+
+#! [types removal] Specifying types in document update requests is deprecated, use the endpoint /{index}/_update/{id} instead.
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "1",
+  "_version" : 4,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 3,
+  "_primary_term" : 1
+}
+
+
+
+• Fixing Mappings
+
+Contoh Fixing Mappings : 
+
+POST _reindex
+{
+"source": {
+"index": "my_source_index",
+"query": {
+}
+},
+"dest": {
+"index": "my_destination_index"
+}
+}
+
+Hasil Query Database Elastic Fixing Data Tools 400 - Bad Request :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "x_content_parse_exception",
+        "reason" : "[6:1] [reindex] failed to parse field [source]"
+      }
+    ],
+    "type" : "x_content_parse_exception",
+    "reason" : "[6:1] [reindex] failed to parse field [source]",
+    "caused_by" : {
+      "type" : "illegal_argument_exception",
+      "reason" : "query malformed, empty clause found at [1:11]"
+    }
+  },
+  "status" : 400
+}
+
+• Reindexing Tips
+
+Contoh Reindexing Tips :
+
+POST _reindex
+{
+"source": {
+"index": "blogs"
+},
+"dest": {
+"index": "blogs_fixed",
+"version_type": "external"
+},
+"conflicts": "proceed"
+}
+
+Hasil Query Database Elastic Reindexing Tips 404 - Not Found :
+
+
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+• Picking Up Mapping Changes
+
+Contoh Picking Up Mapping Changes : 
+
+PUT blogs_fixed/_mapping/_doc
+{
+"properties": {
+"content": {
+"type": "text",
+"fields": {
+"english": {
+"type": "text",
+"analyzer": "english"
+}
+}
+}
+}
+}
+
+Hasil Picking of Mapping Changes 400 - Bad Request :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "Types cannot be provided in put mapping requests, unless the include_type_name parameter is set to true."
+  },
+  "status" : 400
+}
+
+
+• Fixing Fields
+
+Contoh Fixing Fields : 
+
+PUT _ingest/pipeline/my_pipeline
+{
+"processors": [
+{
+"set": {
+"field": "number_of_views",
+"value": 0
+}
+}
+]
+}
+
+Hasil Fixing Fields :
+
+{
+  "acknowledged" : true
+}
+
+Summary
+• Painless is a scripting language designed specifically for use
+with Elasticsearch
+• Painless scripts can be defined inline or stored in the cluster
+• The first time Elasticsearch sees a new script, it compiles it and
+stores the compiled version in a cache
+• You can copy documents from one index to another using the
+Reindex API
+• The Update By Query API allows you to reindex a collection of
+documents into the same index
+• Ingest nodes provide the ability to pre-process a document right
+before it gets indexed
+• A pipeline is a set of processors that are executed by an ingest
+node when a document is indexed
+
+
+Quiz
+1. True or False: The Painless scripting language was developed
+just for Elasticsearch. Jawabannya : True
+
+2. True or False: Adding a field to a mapping automatically adds
+that field to all the documents already indexed Jawabannya : False. Only documents indexed after the mapping change
+will pick up the new field
+
+3. In a _reindex request, what is the effect of setting
+“version_type” to “external”? Jawabannya : Documents in the source index that have changed (have a
+higher _version number) will overwrite older documents in
+the destination
+
+4. How many documents are updated in the following request? Jawaban : All of the the documents in the index! It is a match_all
+query, so all documents are hits
+
+
+
+5. What is the effect of the following pipeline?
+POST messages/_update_by_query
+"processors" : [
+{
+"script" : {
+"source" : "ctx._index=ctx.clientip.country_iso_code.toLowerCase()"
+}
+}
+]
+
+Jawaban :
+
+The document will be indexed into the index named
+clientip.country_iso_code
+
+
+
+
+
+
+Chapter 4 Advanced Search & Aggregations
+
+• Searching for Patterns
+
+Contoh Query Database Searching Patterns : 
+
+GET blogs/_search
+{
+"query": {
+"regexp" : {
+"title.keyword": ".*5\\.[0-2]\\.[0-9].*"
+}
+}
+}
+
+Hasil Query Database Searching Patterns (404 - Not Found) :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+• Dealing with null Values
+
+Contoh Query Database Dealing with null Values :
+
+GET blogs/_search
+{
+"query": {
+"exists": {
+"field": "locales"
+}
+}
+}
+
+
+GET logs_server*/_search
+{
+"query": {
+"bool": {
+"must_not": {
+"exists": {
+"field": "geoip"
+}
+}
+}
+}
+}
+
+Hasil Query Database Dealing with null Values (404 - Not Found) : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+Hasil Query Database Dealing with null Values (200 - OK) : 
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+
+• Scripted Searches
+
+Contoh Query Database Scripted Searches : 
+
+POST /_scripts/painless/_execute
+{
+"script": {
+"source": "doc['locales'].size() > 1"
+},
+"context": "filter",
+"context_setup": {
+"index": "blogs_fixed",
+"document": {
+"locales": ["fr-fr", "de-de"]
+}
+}
+}
+
+
+Contoh Query Database Scripted Searches 2 : 
+
+GET blogs_fixed/_search
+{
+"_source": [],
+"script_fields": {
+"day_of_week": {
+"script": {
+"source": """
+def d = new Date(doc['publish_date'].value.millis);
+return d.toString().substring(0,3);
+"""
+}
+}
+}
+}
+
+Hasil Query Database Scripted Searches 404 - Not Found : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs_fixed]",
+        "resource.type" : "index_expression",
+        "resource.id" : "blogs_fixed",
+        "index_uuid" : "_na_",
+        "index" : "blogs_fixed"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs_fixed]",
+    "resource.type" : "index_expression",
+    "resource.id" : "blogs_fixed",
+    "index_uuid" : "_na_",
+    "index" : "blogs_fixed"
+  },
+  "status" : 404
+}
+
+
+Hasil Query Database Scripted Searches 404 - Not Found 2 : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs_fixed]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs_fixed",
+        "index_uuid" : "_na_",
+        "index" : "blogs_fixed"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs_fixed]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs_fixed",
+    "index_uuid" : "_na_",
+    "index" : "blogs_fixed"
+  },
+  "status" : 404
+}
+
+
+• Search Templates
+
+Contoh Query Database Search Templates Elastic : 
+
+POST _scripts/blogs_webform_search
+{
+"script": {
+"lang": "mustache",
+"source": {
+"query": {
+"bool": {
+"must": {
+"multi_match": {
+"query": "{{blog_query}}",
+"fields": ["title","title.*","content","content.*"],
+"operator": "and",
+"type": "most_fields"
+}
+},
+"should": {
+"multi_match": {
+"query": "{{blog_query}}",
+"fields": ["title","title.*","content","content.*"],
+"type": "phrase"
+}
+}
+}
+}
+}
+}
+}
+
+Hasil Query Database Search Templates Elastic (200 - OK) : 
+
+{
+  "acknowledged" : true
+}
+
+
+
+• Aggregations
+
+Contoh Query Database Aggregations : 
+
+GET logs_server*/_search
+{
+"size" : 0,
+"aggs": {
+"runtime_quintiles": {
+"percentiles": {
+"field": "runtime_ms",
+"percents": [
+20,
+40,
+60,
+80,
+100
+]
+}
+}
+}
+}
+
+Hasil Query Database Aggregations ( 200 - OK ) : 
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+
+
+• Pipeline Aggregations
+
+Contoh Query Database Pipeline Aggregations :
+
+GET logs_server*/_search
+{
+"size": 0,
+"aggs": {
+"logs_by_month": {
+"date_histogram": {
+"field": "@timestamp",
+"interval": "month"
+},
+"aggs": {
+"monthly_sum_response": {
+"sum": {
+"field": "response_size"
+}
+},
+"cumulative_sum_response": {
+"cumulative_sum": {
+"buckets_path": "monthly_sum_response"
+}
+}
+}
+}
+}
+}
+
+Hasil Query Database Pipeline Aggregations (200 - OK) :
+
+#! [interval] on [date_histogram] is deprecated, use [fixed_interval] or [calendar_interval] in the future.
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+Summary
+• Use script_fields to add fields to a query response that
+are generated in a script
+
+• Search templates allow you to define a query with
+parameters that can be defined at execution time
+
+• The percentiles aggregation calculates percentiles over a
+numeric field
+
+• The top_hits aggregation keeps track of the most relevant
+documents being aggregated over
+
+• A pipeline aggregation performs computations on the
+results of other aggregations
+
+Quiz
+1. True or False: Wildcards are powerful and should be used
+often. Jawaban : False. They are powerful, but expensive and should NOT be
+used often
+
+2. How would you check how many documents do not have a
+specific field? Jawaban : Using the exist query inside a must_not
+
+3. True or False: Scripts can be used to query, to aggregate
+and to return new calculated values. Jawaban : True
+
+4.Why would you use search templates? Jawaban : Lots of reasons, including to avoid repeating code in multiple
+places, to minimize mistakes, make it easier to test and
+execute your queries, share queries between applications,
+and allow users to only execute a few predefined queries
+
+5. In pipeline aggregations, when do you use the ‘>’ symbol?
+
+Jawaban : In buckets_path, when a pipeline agg is defined at a higher
+level then the sub-aggregation it needs to refer to
+
+6. True or False: The input of a pipeline aggregation is the
+output of another aggregation.
+
+Jawaban : True
+
+7. In our logs_server* indices, how could you verify that 95%
+of web requests are executed in less than 100ms?
+
+Jawaban : Use a percentile aggregation
+
+
+
+
+Chapter 5 Cluster Management
+
+• Elasticsearch Architecture Recap
+
+An Elasticsearch Cluster
+• The largest unit of scale in Elasticsearch is a cluster
+• A cluster is made up out of one or more nodes
+• Each node is a running Elasticsearch process and typically
+there is a 1x1 relationship between a server and a node
+
+Indexes and Shards
+• In your cluster, you create one or more indices
+• Each index is sharded and its shards are distributed over
+the nodes
+• Elasticsearch automatically distributes the shards evenly
+across the nodes
+
+
+• Dedicated Nodes
+
+Node Roles
+• There are several roles a node can have:
+‒ Master eligible
+‒ Data
+‒ Ingest
+‒ Machine Learning
+‒ Coordinating
+• Nodes can be dedicated nodes that only take on a single
+role...
+
+Why Use Dedicated Nodes?
+
+• Machines can be selected for specific purposes
+
+• Dedicated master eligible nodes
+‒ can focus on the cluster state
+‒ machines with low CPU, RAM, and disk resources
+
+• Dedicated data nodes
+‒ can focus on data storage and processing client requests
+‒ machines with high CPU, RAM, and disk resources
+
+• Dedicated ingest nodes
+‒ can focus on data processing
+‒ machines with low disk, medium RAM, and high CPU resources
+
+
+• Hot/Warm Architecture
+
+Contoh Query Database Hot / Warm Achitecture : 
+
+GET tweets*/_search
+{
+"query": {
+"match": {
+"tweet": "elastic"
+}
+}
+}
+
+Hasil Query Database Hot / Warm Architecture 200 - OK: 
+
+{
+  "took" : 13,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+
+
+• Shard Filtering
+
+Contoh Query Shard Filtering : 
+
+PUT logs-2017-03
+{
+"settings": {
+"index.routing.allocation.require.my_temp" : "hot"
+}
+}
+
+PUT logs-2017-02/_settings
+{
+"index.routing.allocation.require.my_temp" : "warm"
+}
+
+Hasil Query Database Shard Filtering 404 - Not Found : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "cannot create index with name [logs-2017-03], because it matches with template [logs] that creates data streams only, use create data stream api instead"
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "cannot create index with name [logs-2017-03], because it matches with template [logs] that creates data streams only, use create data stream api instead"
+  },
+  "status" : 400
+}
+
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [logs-2017-02]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "logs-2017-02",
+        "index_uuid" : "_na_",
+        "index" : "logs-2017-02"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [logs-2017-02]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "logs-2017-02",
+    "index_uuid" : "_na_",
+    "index" : "logs-2017-02"
+  },
+  "status" : 404
+}
+
+• Shard Filtering for Hardware
+
+Contoh Query Database Shard Filtering for Hardware : 
+
+PUT my_index1
+{
+"settings": {
+"number_of_shards": 2,
+"number_of_replicas": 1,
+"index.routing.allocation.include.my_server" : "medium",
+"index.routing.allocation.require.my_temp" : "hot"
+}
+}
+
+PUT my_index2
+{
+"settings": {
+"number_of_shards": 1,
+"number_of_replicas": 1,
+"index.routing.allocation.include.my_server" : "medium,small",
+"index.routing.allocation.exclude.my_temp" : "hot"
+}
+}
+
+Hasil Query Database Shard Filtering for Hardware 400 - Bad Request :
+
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [my_index1/AmSTmIeOQcyAcSOs6BKpKA] already exists",
+        "index_uuid" : "AmSTmIeOQcyAcSOs6BKpKA",
+        "index" : "my_index1"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [my_index1/AmSTmIeOQcyAcSOs6BKpKA] already exists",
+    "index_uuid" : "AmSTmIeOQcyAcSOs6BKpKA",
+    "index" : "my_index1"
+  },
+  "status" : 400
+}
+
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [my_index2/wwnlvIJMRCeJVTo6Z--SKQ] already exists",
+        "index_uuid" : "wwnlvIJMRCeJVTo6Z--SKQ",
+        "index" : "my_index2"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [my_index2/wwnlvIJMRCeJVTo6Z--SKQ] already exists",
+    "index_uuid" : "wwnlvIJMRCeJVTo6Z--SKQ",
+    "index" : "my_index2"
+  },
+  "status" : 400
+}
+
+
+• Shard Allocation Awareness
+
+Contoh Query Database Shard Allocation Awareness : 
+
+PUT _cluster/settings
+{
+"persistent": {
+"cluster.routing.allocation.awareness.attributes": "my_rack_id"
+}
+}
+
+Hasil Query Database Shard Allocation Awareness : 
+
+
+#! searches will not be routed based on awareness attributes starting in version 8.0.0; to opt into this behaviour now please set the system property [es.search.ignore_awareness_attributes] to [true]
+{
+  "acknowledged" : true,
+  "persistent" : {
+    "cluster" : {
+      "routing" : {
+        "allocation" : {
+          "awareness" : {
+            "attributes" : "my_rack_id"
+          }
+        }
+      }
+    }
+  },
+  "transient" : { }
+}
+
+
+• Forced Awareness
+
+Contoh Query Database Forced Awareness : 
+
+PUT _cluster/settings
+{
+"persistent": {
+"cluster": {
+"routing": {
+"allocation.awareness.attributes": "my_rack_id",
+"allocation.awareness.force.my_rack_id.values": "rack1,rack2"
+}
+}
+}
+}
+
+Hasil Query Database Forced Awareness 200 - OK : 
+
+{
+  "acknowledged" : true,
+  "persistent" : {
+    "cluster" : {
+      "routing" : {
+        "allocation" : {
+          "awareness" : {
+            "attributes" : "my_rack_id",
+            "force" : {
+              "my_rack_id" : {
+                "values" : "rack1,rack2"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "transient" : { }
+}
+
+Summary
+
+• Dedicated nodes can help you to better utilize hardware
+
+• Coordinating-only nodes lightens the load on data nodes in
+some use cases
+
+• You can use shard filtering to configure a hot/warm
+architecture for your cluster
+
+• Shard filtering refers to the ability to control to which nodes an
+index is allocated
+
+• You can make Elasticsearch aware of the physical configuration
+of your hardware using cluster.routing.allocation.awareness
+
+• You can configure forced awareness to avoid overwhelming a
+rack or zone of servers
+
+Quiz
+1. Suppose you created a new index every day for that day’s log
+files. How could this scenario benefit from a hot/warm
+architecture?
+
+Jawaban : 
+The current day’s index could be a hot node handling
+indexing and queries, while all previous indices could be on
+warm nodes (assuming they do not get queried as often)
+
+2.What happens if you configure an index’s shard filtering with
+a scenario that is impossible for the cluster to implement?
+
+Jawaban : 
+The index will be defined, but all of its shards will be
+unallocated and the cluster will go into a red status
+
+3.Why configure shard allocation awareness if you have
+already configured shard allocation filtering?
+
+Jawaban : 
+Filtering is not “aware” of the physical configuration of your
+hardware. Awareness ensures that shards are distributed
+across “zones” that you define
+
+4.What is the benefit of forced awareness over simply
+configuring shard allocation awareness?
+
+Jawaban : 
+Forced awareness never allows copies of the same shard
+to be in the same zone - shard allocation awareness does
+
+
+Lab Cluster Architecture
+
+Node 	Server 	Type Tags
+node1 	server1 dedicated master-eligible none
+node2 	server2 data and ingest hot, rack1
+node3 	server3 dedicated data warm, rack1
+node4 	server4 data and ingest hot, rack2
+node5 	server5 dedicated data warm, rack2
+
+
+
+Chapter 6 Capacity Planning
+
+• Designing for Scale
+
+Contoh Query Database Designing for Scale :
+
+PUT my_index
+{
+"settings": {
+"number_of_shards": 1,
+"number_of_replicas": 0
+}
+}
+
+Hasil Query Database Designing for Scale :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [my_index/fGRyCdZkQmG3cVZEuvCCvg] already exists",
+        "index_uuid" : "fGRyCdZkQmG3cVZEuvCCvg",
+        "index" : "my_index"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [my_index/fGRyCdZkQmG3cVZEuvCCvg] already exists",
+    "index_uuid" : "fGRyCdZkQmG3cVZEuvCCvg",
+    "index" : "my_index"
+  },
+  "status" : 400
+}
+
+• Capacity Planning
+
+• Before trying to determine your capacity, you need to
+determine your SLA(s):
+‒ How many docs/second do you need to index?
+‒ How many queries/second do you need to process?
+‒ What is the maximum response time for queries?
+• Get some production data
+‒ actual documents you are going to index
+‒ actual queries you are going to run in production
+‒ actual mappings you are going to use
+
+• Scaling with Replicas
+
+Contoh Query Database Scaling with Replicas :
+
+PUT my_index/_settings
+{
+"number_of_replicas": 1
+}
+
+Hasil Query Database Scaling with Replicas :
+
+{
+  "acknowledged" : true
+}
+
+
+• Scaling with Indices
+
+Contoh Query Database Scaling with Indices :
+
+PUT my_index1
+{
+"settings": {
+"number_of_shards": 2
+}
+}
+
+
+PUT my_index2
+{
+"settings": {
+"number_of_shards": 2
+}
+}
+
+Hasil Query Database Scaling with Indices :
+
+
+# PUT my_index1
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [my_index1/AmSTmIeOQcyAcSOs6BKpKA] already exists",
+        "index_uuid" : "AmSTmIeOQcyAcSOs6BKpKA",
+        "index" : "my_index1"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [my_index1/AmSTmIeOQcyAcSOs6BKpKA] already exists",
+    "index_uuid" : "AmSTmIeOQcyAcSOs6BKpKA",
+    "index" : "my_index1"
+  },
+  "status" : 400
+}
+
+# PUT my_index2
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [my_index2/wwnlvIJMRCeJVTo6Z--SKQ] already exists",
+        "index_uuid" : "wwnlvIJMRCeJVTo6Z--SKQ",
+        "index" : "my_index2"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [my_index2/wwnlvIJMRCeJVTo6Z--SKQ] already exists",
+    "index_uuid" : "wwnlvIJMRCeJVTo6Z--SKQ",
+    "index" : "my_index2"
+  },
+  "status" : 400
+}
+
+• Capacity Planning Use Cases
+
+Capacity Planning Use Cases
+
+• When planning your cluster and designing indices, it is
+important to understand:
+‒ what your data looks like
+‒ how that data is going to be searched
+
+
+
+• Two very common use cases are:
+‒ searching fixed-size data: searching a large dataset that may
+grow slowly
+
+Contoh Query Database Capacity Planning Use Cases : 
+
+PUT hotels
+{
+"settings": {
+"number_of_shards": 4,
+"number_of_replicas": 1
+}
+}
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "resource_already_exists_exception",
+        "reason" : "index [hotels/jYL3c5fiQmyqXGs4J6yZGw] already exists",
+        "index_uuid" : "jYL3c5fiQmyqXGs4J6yZGw",
+        "index" : "hotels"
+      }
+    ],
+    "type" : "resource_already_exists_exception",
+    "reason" : "index [hotels/jYL3c5fiQmyqXGs4J6yZGw] already exists",
+    "index_uuid" : "jYL3c5fiQmyqXGs4J6yZGw",
+    "index" : "hotels"
+  },
+  "status" : 400
+}
+
+‒ time-based data: data that grows rapidly, like log files
+
+Hasil Query Database Capacity Planning Use Cases : 
+
+GET tweets-2017-02*/_search
+
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+
+Summary
+• If you are expecting your cluster to grow, then it is good to plan
+for that by overallocating shards
+
+• A little overallocation is good. A “kagillion” shards is not
+
+• You can attempt to calculate the maximum shard size for your
+particular use case by pushing the limits of your index using one
+primary shard on a one-node cluster
+
+• You can scale the query workload of your cluster by adding more
+nodes and increasing the number of replicas of your indices
+
+• You can similarly provide scaling by distributing your documents
+across multiple indices
+
+
+Quiz
+1. True or False: The number of primary shards of an index is
+fixed at the time the index is created.
+
+Jawaban : True
+
+2. Is it more optimal to search over 1 index with 10 primary
+shards, or 10 indices with 1 primary shard each?
+
+Jawaban :In terms of searching, it would essentially be equivalent
+
+3. If you have a two node cluster, why would you ever create an
+index with more than two primary shards?
+
+Jawaban : Overallocate! It allows for future scaling of the cluster
+
+4. True or False: Creating an index with only one primary shard
+is not a good design.
+
+Jawaban : False. There are many scenarios where 1 shard might
+actually be optimal, especially if the data all fits in a single
+shard
+
+5. Suppose you calculated the max shard size for your dataset
+to be about 100,000 documents. How many shards should
+you use for a relatively fixed-size dataset of 900,000
+documents?
+
+Jawaban :  9 or 10, depending upon if you want some extra buffer
+room. And that depending up on other requirements it may
+be a single index or multiple indices that total the 9 or 10
+shards
+
+
+
+Chapter 7 Document Modeling
+
+• The Need for Document Modeling
+
+It’s all about relationship and sometimes relationships matter
+
+• If you come from the SQL world, you will likely need to
+change your thought process for modeling data for
+Elasticsearch
+
+‒ In SQL, you typically normalize your data
+
+• Search requires different considerations
+
+‒ In Elasticsearch, you typically denormalize your data!
+
+• A flat world has its advantages
+
+‒ Indexing and searching is fast
+‒ No need to join tables or lock rows
+
+There are times when relationships matter
+‒ We need to bridge the gap between normal and flat
+
+• Four common techniques for managing relational data in
+Elasticsearch
+
+‒ Denormalizing: flatten your data (typically the best solution)
+‒ Application-side joins: run multiple queries on normalized data
+‒ Nested objects: for working with arrays of objects
+‒ Parent/child relationships
+
+
+• Denormalization
+
+• Denormalizing your data refers to “flattening” your data
+‒ storing redundant copies of data in each document, instead of
+using some type of relationship
+‒ _source is compressed which reduces the disk "waste"
+• Denormalization provides the best performance out of
+Elasticsearch
+‒ no need to perform expensive joins
+
+Contoh Query Database Denormalization : 
+
+GET tweets/_search
+{
+"query": {
+"bool": {
+"must": [
+{"match": {"body": "movie"}},
+{"match": {"user.username": "harrison"}}
+]
+}
+}
+}
+
+Hasil Query Database Denormalization : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "no_shard_available_action_exception",
+        "reason" : null,
+        "index_uuid" : "y2nLowPqQPGa_bxL99Adtw",
+        "shard" : "0",
+        "index" : "tweets"
+      }
+    ],
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "tweets",
+        "node" : null,
+        "reason" : {
+          "type" : "no_shard_available_action_exception",
+          "reason" : null,
+          "index_uuid" : "y2nLowPqQPGa_bxL99Adtw",
+          "shard" : "0",
+          "index" : "tweets"
+        }
+      }
+    ]
+  },
+  "status" : 503
+}
+
+
+• The Need for Nested Types
+
+Contoh Query Database The Need For Nested Types : 
+
+PUT photos/_doc/1
+{
+"filename": "img1.jpg",
+"tags": [
+{"key": "event", "value": "Christmas"},
+{"key": "folder", "value": "December2017"}
+]
+}
+
+PUT photos/_doc/2
+{
+"filename": "img2.jpg",
+"tags": [
+{"key": "event", "value": "vacation"},
+{"key": "holiday", "value": "Christmas"}
+]
+}
+
+Hasil Query Database The Need For Nested Types 502 - Bad Gateway :
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+
+• Nested Types
+
+Contoh Query Database Nested Types : 
+
+PUT photos
+{
+"mappings": {
+"_doc": {
+"properties": {
+"filename": {
+"type": "keyword"
+},
+"tags": {
+"type": "nested",
+"properties": {
+"key": {
+"type": "keyword"
+},
+"value": {
+"type": "text"
+}
+}
+}
+}
+}
+}
+}
+
+Hasil Query Database Nested Types : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+  },
+  "status" : 400
+}
+
+
+• Querying a Nested Type
+
+Contoh Query Database Querying a Nested Type :
+
+GET photos/_search
+{
+"query": {
+"nested": {
+"path": "tags",
+"query": {
+"bool": {
+"must": [
+{"match": {"tags.key": "event"}},
+{"match": {"tags.value": "Christmas"}}
+]
+}
+}
+}
+}
+}
+
+Hasil Query Database Querying a Nested Type :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "no_shard_available_action_exception",
+        "reason" : null,
+        "index_uuid" : "fYOUCSR_RWyysJS9-fvwmA",
+        "shard" : "0",
+        "index" : "photos"
+      }
+    ],
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "photos",
+        "node" : null,
+        "reason" : {
+          "type" : "no_shard_available_action_exception",
+          "reason" : null,
+          "index_uuid" : "fYOUCSR_RWyysJS9-fvwmA",
+          "shard" : "0",
+          "index" : "photos"
+        }
+      }
+    ]
+  },
+  "status" : 503
+}
+
+
+• The Nested Aggregation
+
+Contoh Query Database Nested Aggregation : 
+
+GET photos/_search
+{
+"size": 0,
+"aggs": {
+"my_tags": {
+"nested": {
+"path": "tags"
+},
+"aggs": {
+"tag_terms": {
+"terms": {
+"field": "tags.key",
+"size": 10
+}
+}
+}
+}
+}
+}
+
+Hasil Query Database Nested Aggregation : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "no_shard_available_action_exception",
+        "reason" : null,
+        "index_uuid" : "fYOUCSR_RWyysJS9-fvwmA",
+        "shard" : "0",
+        "index" : "photos"
+      }
+    ],
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "photos",
+        "node" : null,
+        "reason" : {
+          "type" : "no_shard_available_action_exception",
+          "reason" : null,
+          "index_uuid" : "fYOUCSR_RWyysJS9-fvwmA",
+          "shard" : "0",
+          "index" : "photos"
+        }
+      }
+    ]
+  },
+  "status" : 503
+}
+
+
+• Parent/Child Relationship
+
+Contoh Query Database Parent Relationship : 
+
+PUT companies
+{
+"mappings": {
+"_doc" : {
+"properties": {
+"my_join_relation": {
+"type": "join",
+"relations": {
+"company": "employee"
+}
+}
+}
+}
+}
+}
+
+PUT companies/_doc/c1
+{
+"company_name" : "Stark Enterprises",
+"my_join_relation": {
+"name": "company"
+}
+}
+
+PUT companies/_doc/c2
+{
+"company_name" : "NBC Universal",
+"my_join_relation": {
+"name": "company"
+}
+}
+
+PUT companies/_doc/emp1?routing=c1
+{
+"first_name" : "Tony",
+"last_name" : "Stark",
+"my_join_relation": {
+"name": "employee",
+"parent": "c1"
+}
+}
+
+PUT companies/_doc/emp1?routing=c2
+{
+"first_name" : "Dongan",
+"last_name" : "Haporseaon",
+"my_join_relation": {
+"name": "employee",
+"parent": "c1"
+}
+}
+
+Hasil Query Database Parent Relationship (502 - Bad Gateway dan 400 - Bad Request) : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "The mapping definition cannot be nested under a type [_doc] unless include_type_name is set to true."
+  },
+  "status" : 400
+}
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+{"statusCode":502,"error":"Bad Gateway","message":"Client request timeout"}
+
+
+• The has_child Query
+
+Contoh Query Database The has_child Query :
+
+GET companies/_search
+{
+"query": {
+"has_child": {
+"type": "employee",
+"query": {
+"match": {
+"last_name": "Stark"
+}
+}
+}
+}
+}
+
+Hasil Query Database The has_child Query (502 - Bad Gateway) :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "no_shard_available_action_exception",
+        "reason" : null,
+        "index_uuid" : "alHiER34QsWogN6fbWq6Zg",
+        "shard" : "0",
+        "index" : "companies"
+      }
+    ],
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "companies",
+        "node" : null,
+        "reason" : {
+          "type" : "no_shard_available_action_exception",
+          "reason" : null,
+          "index_uuid" : "alHiER34QsWogN6fbWq6Zg",
+          "shard" : "0",
+          "index" : "companies"
+        }
+      }
+    ]
+  },
+  "status" : 503
+}
+
+
+• The has_parent Query
+
+Contoh Query Database has_parent Query : 
+
+GET companies/_search
+{
+"query": {
+"has_parent": {
+"parent_type": "company",
+"query": {
+"match": {
+"company_name": "NBC"
+}
+}
+}
+}
+}
+
+Hasil Query Database has_parent Query (502 - Bad Gateway) : 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "no_shard_available_action_exception",
+        "reason" : null,
+        "index_uuid" : "alHiER34QsWogN6fbWq6Zg",
+        "shard" : "0",
+        "index" : "companies"
+      }
+    ],
+    "type" : "search_phase_execution_exception",
+    "reason" : "all shards failed",
+    "phase" : "query",
+    "grouped" : true,
+    "failed_shards" : [
+      {
+        "shard" : 0,
+        "index" : "companies",
+        "node" : null,
+        "reason" : {
+          "type" : "no_shard_available_action_exception",
+          "reason" : null,
+          "index_uuid" : "alHiER34QsWogN6fbWq6Zg",
+          "shard" : "0",
+          "index" : "companies"
+        }
+      }
+    ]
+  },
+  "status" : 503
+}
+
+Choosing Techniques
+
+Denormalize
+your data!
+1. You docs contains arrays of objects and yourqueries test morethan 1 property whenmatching objects in these arrays -> Consider nested docs
+2. All related items do not fit in a single JSON doc -> Consider nested docs
+3. Your docs are updated frequently -> Consider parent/child
+
+Kibana Considerations
+
+• Kibana currently has very limited support for nested types
+or parent/child relationships
+‒ important to consider this limitation if you are using your indices
+for dashboards and visualizations in Kibana
+
+• Kibana may better support these relationships in the future
+‒ but for now, you will have to decide which is more important:
+using nested or parent/child relationships, or being able to
+visualize your data in Kibana
+
+Summary
+• Denormalizing your data refers to “flattening” your data,
+and typically provides the best performance in terms of how
+your data is modeled
+
+• The nested type allows arrays of objects to be indexed and
+queried independently of each other
+
+• Updating a nested object requires a complete reindexing of
+the root object AND all other of its nested objects
+
+• Using a parent/child data type, you can completely
+separate two objects while maintaining their relationship
+
+• One of the key benefits of a parent/child relationship is the
+ability to modify a child object independently of the parent
+
+• When modeling your documents, prefer denormalization
+whenever possible
+
+Quiz
+1. True or False: Updating a nested inner object causes the
+root object and all other nested objects to be reindexed. Jawaban : True
+
+2. True or False: Deleting a child object causes the parent
+object and all other siblings to be reindexed. Jawaban : False
+
+3. Why not just use a parent/child relationship all the time (as
+opposed to nested types) when dealing with relational
+objects? Jawaban : There is an overhead to parent/child - they are separate
+documents that must be joined. The join is fast, but nested
+objects are all a single document which will always be
+faster for searches (but more expensive for updates)
+
+4. True or False: Child objects must be routed to the same
+shard as its parent object. Jawaban : True
+
+5. True or False: Deleting a parent object causes all child
+objects to be deleted. Jawaban : False
+
+6. True or False: You can index a child object whose parent
+does not exist. Jawaban : True
+
+Chapter 8 Monitoring and Alerting
+
+• Monitoring Options
+
+Monitoring Options
+• Elasticsearch has several APIs for monitoring:
+
+‒ Node Stats: _nodes/stats
+‒ Cluster Stats: _cluster/stats
+‒ Index Stats: my_index/_stats
+‒ Pending Cluster Tasks API: _cluster/pending_tasks
+
+• The above APIs return JSON objects (no surprise)
+‒ cat API: a human-readable alternative to the JSON APIs above
+‒ similar results, just formatted differently
+
+• The Stats APIs
+
+Contoh Query Database Stats API di Elastic :
+
+GET _cluster/stats
+
+Hasil Query Database Stats API di Elastic (OK -200) :
+
+{
+  "_nodes" : {
+    "total" : 1,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "cluster_name" : "charles_2",
+  "cluster_uuid" : "zKGnr6GvRiCStK9V6-7_aw",
+  "timestamp" : 1646468549914,
+  "status" : "red",
+  "indices" : {
+    "count" : 36,
+    "shards" : {
+      "total" : 39,
+      "primaries" : 39,
+      "replication" : 0.0,
+      "index" : {
+        "shards" : {
+          "min" : 1,
+          "max" : 4,
+          "avg" : 1.0833333333333333
+        },
+        "primaries" : {
+          "min" : 1,
+          "max" : 4,
+          "avg" : 1.0833333333333333
+        },
+        "replication" : {
+          "min" : 0.0,
+          "max" : 0.0,
+          "avg" : 0.0
+        }
+      }
+    },
+    "docs" : {
+      "count" : 14634,
+      "deleted" : 13980
+    },
+    "store" : {
+      "size_in_bytes" : 63562736,
+      "total_data_set_size_in_bytes" : 63562736,
+      "reserved_in_bytes" : 0
+    },
+    "fielddata" : {
+      "memory_size_in_bytes" : 0,
+      "evictions" : 0
+    },
+    "query_cache" : {
+      "memory_size_in_bytes" : 0,
+      "total_count" : 274,
+      "hit_count" : 0,
+      "miss_count" : 274,
+      "cache_size" : 0,
+      "cache_count" : 0,
+      "evictions" : 0
+    },
+    "completion" : {
+      "size_in_bytes" : 0
+    },
+    "segments" : {
+      "count" : 126,
+      "memory_in_bytes" : 455000,
+      "terms_memory_in_bytes" : 342720,
+      "stored_fields_memory_in_bytes" : 62304,
+      "term_vectors_memory_in_bytes" : 0,
+      "norms_memory_in_bytes" : 12416,
+      "points_memory_in_bytes" : 0,
+      "doc_values_memory_in_bytes" : 37560,
+      "index_writer_memory_in_bytes" : 0,
+      "version_map_memory_in_bytes" : 0,
+      "fixed_bit_set_memory_in_bytes" : 3608,
+      "max_unsafe_auto_id_timestamp" : 1646453444328,
+      "file_sizes" : { }
+    },
+    "mappings" : {
+      "field_types" : [
+        {
+          "name" : "alias",
+          "count" : 94,
+          "index_count" : 2,
+          "script_count" : 0
+        },
+        {
+          "name" : "boolean",
+          "count" : 37,
+          "index_count" : 9,
+          "script_count" : 0
+        },
+        {
+          "name" : "constant_keyword",
+          "count" : 27,
+          "index_count" : 9,
+          "script_count" : 0
+        },
+        {
+          "name" : "date",
+          "count" : 102,
+          "index_count" : 16,
+          "script_count" : 0
+        },
+        {
+          "name" : "double",
+          "count" : 6,
+          "index_count" : 1,
+          "script_count" : 0
+        },
+        {
+          "name" : "flattened",
+          "count" : 8,
+          "index_count" : 1,
+          "script_count" : 0
+        },
+        {
+          "name" : "float",
+          "count" : 16,
+          "index_count" : 4,
+          "script_count" : 0
+        },
+        {
+          "name" : "geo_point",
+          "count" : 8,
+          "index_count" : 1,
+          "script_count" : 0
+        },
+        {
+          "name" : "integer",
+          "count" : 6,
+          "index_count" : 2,
+          "script_count" : 0
+        },
+        {
+          "name" : "ip",
+          "count" : 23,
+          "index_count" : 10,
+          "script_count" : 0
+        },
+        {
+          "name" : "keyword",
+          "count" : 1348,
+          "index_count" : 17,
+          "script_count" : 0
+        },
+        {
+          "name" : "long",
+          "count" : 302,
+          "index_count" : 11,
+          "script_count" : 0
+        },
+        {
+          "name" : "nested",
+          "count" : 12,
+          "index_count" : 4,
+          "script_count" : 0
+        },
+        {
+          "name" : "object",
+          "count" : 571,
+          "index_count" : 15,
+          "script_count" : 0
+        },
+        {
+          "name" : "scaled_float",
+          "count" : 1,
+          "index_count" : 1,
+          "script_count" : 0
+        },
+        {
+          "name" : "short",
+          "count" : 3,
+          "index_count" : 1,
+          "script_count" : 0
+        },
+        {
+          "name" : "text",
+          "count" : 104,
+          "index_count" : 17,
+          "script_count" : 0
+        },
+        {
+          "name" : "version",
+          "count" : 3,
+          "index_count" : 3,
+          "script_count" : 0
+        }
+      ],
+      "runtime_field_types" : [ ]
+    },
+    "analysis" : {
+      "char_filter_types" : [ ],
+      "tokenizer_types" : [ ],
+      "filter_types" : [ ],
+      "analyzer_types" : [ ],
+      "built_in_char_filters" : [ ],
+      "built_in_tokenizers" : [ ],
+      "built_in_filters" : [ ],
+      "built_in_analyzers" : [ ]
+    },
+    "versions" : [
+      {
+        "version" : "7.16.3",
+        "index_count" : 9,
+        "primary_shard_count" : 9,
+        "total_primary_bytes" : 47451702
+      },
+      {
+        "version" : "7.17.0",
+        "index_count" : 32,
+        "primary_shard_count" : 36,
+        "total_primary_bytes" : 16111034
+      }
+    ]
+  },
+  "nodes" : {
+    "count" : {
+      "total" : 1,
+      "coordinating_only" : 0,
+      "data" : 1,
+      "data_cold" : 1,
+      "data_content" : 1,
+      "data_frozen" : 1,
+      "data_hot" : 1,
+      "data_warm" : 1,
+      "ingest" : 1,
+      "master" : 1,
+      "ml" : 1,
+      "remote_cluster_client" : 1,
+      "transform" : 1,
+      "voting_only" : 0
+    },
+    "versions" : [
+      "7.17.0"
+    ],
+    "os" : {
+      "available_processors" : 4,
+      "allocated_processors" : 4,
+      "names" : [
+        {
+          "name" : "Linux",
+          "count" : 1
+        }
+      ],
+      "pretty_names" : [
+        {
+          "pretty_name" : "Fedora Linux 35 (Server Edition)",
+          "count" : 1
+        }
+      ],
+      "architectures" : [
+        {
+          "arch" : "amd64",
+          "count" : 1
+        }
+      ],
+      "mem" : {
+        "total_in_bytes" : 4067704832,
+        "free_in_bytes" : 120983552,
+        "used_in_bytes" : 3946721280,
+        "free_percent" : 3,
+        "used_percent" : 97
+      }
+    },
+    "process" : {
+      "cpu" : {
+        "percent" : 0
+      },
+      "open_file_descriptors" : {
+        "min" : 585,
+        "max" : 585,
+        "avg" : 585
+      }
+    },
+    "jvm" : {
+      "max_uptime_in_millis" : 10413680,
+      "versions" : [
+        {
+          "version" : "17.0.1",
+          "vm_name" : "OpenJDK 64-Bit Server VM",
+          "vm_version" : "17.0.1+12",
+          "vm_vendor" : "Eclipse Adoptium",
+          "bundled_jdk" : true,
+          "using_bundled_jdk" : true,
+          "count" : 1
+        }
+      ],
+      "mem" : {
+        "heap_used_in_bytes" : 382645936,
+        "heap_max_in_bytes" : 2034237440
+      },
+      "threads" : 76
+    },
+    "fs" : {
+      "total_in_bytes" : 16095641600,
+      "free_in_bytes" : 7204257792,
+      "available_in_bytes" : 7204257792
+    },
+    "plugins" : [ ],
+    "network_types" : {
+      "transport_types" : {
+        "security4" : 1
+      },
+      "http_types" : {
+        "security4" : 1
+      }
+    },
+    "discovery_types" : {
+      "zen" : 1
+    },
+    "packaging_types" : [
+      {
+        "flavor" : "default",
+        "type" : "rpm",
+        "count" : 1
+      }
+    ],
+    "ingest" : {
+      "number_of_pipelines" : 21,
+      "processor_stats" : {
+        "conditional" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "convert" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "geoip" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "grok" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "gsub" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "remove" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "rename" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "script" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "set" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        },
+        "set_security_user" : {
+          "count" : 0,
+          "failed" : 0,
+          "current" : 0,
+          "time_in_millis" : 0
+        }
+      }
+    }
+  }
+}
+
+
+• Task Monitoring
+
+Contoh Query Database Task Monitoring : 
+
+GET _cluster/pending_tasks
+
+Hasil Query Database Task Monitoring (Ok-200) : 
+
+{
+  "tasks" : [ ]
+}
+
+
+• The cat API
+
+Contoh Query Database Cat API : 
+
+GET _cat/nodes?v&h=name,disk.avail,search.query_total,heap.percent
+
+Hasil Query Database Cat API : 
+
+name      disk.avail search.query_total heap.percent
+charles_2      6.7gb              29551           42
+
+
+• Diagnosing Performance Issues
+
+Contoh Query Database Diagnosing Performance Issues (Ok-200): 
+
+PUT my_index/_settings
+{
+"index.search.slowlog": {
+"threshold": {
+"query": {
+"info": "5s"
+},
+"fetch": {
+"info": "800ms"
+}
+},
+"level": "info"
+}
+}
+
+Hasil Query Database Diagnosing Performance Issues (Ok - 200) : 
+
+#! [index.search.slowlog.level] setting was deprecated in Elasticsearch and will be removed in a future release! See the breaking changes documentation for the next major version.
+{
+  "acknowledged" : true
+}
+
+
+• The Elastic Monitoring Component
+
+Configuring Monitoring
+
+• Here are a few common Monitoring settings
+
+‒ which can be configured in elasticsearch.yml:
+
+• The complete list of Monitoring settings is at
+‒ https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoringsettings.
+html
+
+Tambahin di ElasticSearch.yml
+
+xpack.monitoring.collection.indices The indices to collect data from.
+Defaults to all indices, but can be a
+comma-separated list.
+
+xpack.monitoring.collection.interval How often data samples are
+collected. Defaults to 10s
+
+
+xpack.monitoring.history.duration
+How long before indices created by
+Monitoring are automatically deleted.
+
+• The Monitoring UI
+
+Configure Alerts
+• You should use some type of monitoring tool to fire alerts
+for unexpected or extreme situations
+
+‒ send an alert, email, page, etc.
+
+‒ Nagios is a popular tool
+
+‒ third-party tools available
+
+• Or you can use Elastic Alerting
+
+‒ https://www.elastic.co/guide/en/elastic-stack-overview/current/
+xpack-alerting.html
+
+‒ part of the Gold Subscription
+
+Clusters Dashboard
+• The initial Monitoring page is the “Clusters” dashboard
+‒ shows all the clusters being monitored
+‒ notice it is monitoring your Kibana instances as well
+
+• Alerting
+
+Configure Alerts
+
+• You should use some type of monitoring tool to fire alerts
+for unexpected or extreme situations
+
+‒ send an alert, email, page, etc.
+
+‒ Nagios is a popular tool
+
+‒ third-party tools available
+• Or you can use Elastic Alerting
+
+‒ https://www.elastic.co/guide/en/elastic-stack-overview/current/
+xpack-alerting.html
+
+‒ part of the Gold Subscription
+
+Summary
+• Elasticsearch has Stats APIs for retrieving statistics about
+your cluster, nodes, indices and pending tasks
+
+• The cat API provides a human-readable wrapper around
+the Stats API (and other Elasticsearch APIs)
+
+• Slow logs, thread pools, and hot threads can help you
+diagnose performance issues.
+
+• The Elastic Monitoring component uses Elasticsearch to
+monitor Elasticsearch
+
+• Best practice is to use a dedicated cluster for Monitoring
+
+• Elastic Alerting (Gold license) allows you to create alerts
+based on different criteria
+
+• Watchers can be configured using JSON or the Watcher UI
+
+Quiz
+1. True or False: The Elastic Monitoring can monitor
+multiple clusters. Jawaban : True, but only the commercial version does. The free version
+can only monitor one
+
+2.What are the benefits of using a dedicated cluster for the
+Monitoring component? Jawaban : If a cluster fails, you will be able to view its history and perhaps
+diagnose the issue. There are also performance and security
+benefits.
+
+3. The default Monitoring collection interval is Jawaban : 10 seconds seconds.
+
+4. How would you check to see if the queue for the index
+thread pool was full? Jawaban : Look at the thread pool queues either with _nodes/
+thread_pool or _cat/thread_pool
+
+5. Name three of the five watch building blocks. Jawaban : Trigger, Input, Condition, Transform, Action
+
+6. True or False: Any user can create alerts using the
+Watcher UI. Jawaban : False. Only users with watcher_admin roles
+
+7. True or False: You can use Elastic Alerting to send an
+email if a node is running out of disk space? Jawaban : True, using Monitoring data. create a watch on `monitoringes*`
+in the `node_stats.fs.total.free_in_bytes` field
+
+Chapter 9 From Dev to Production
+
+• Disabling Dynamic Indexes
+
+Contoh Query Database Elastic Disabling Dynamic Indexes : 
+
+PUT _cluster/settings
+{
+"persistent": {
+"action.auto_create_index" : ".monitoring-es*,logstash-*"
+}
+}
+
+Hasil Query Database Elastic Disabling Dynamic Indexes (Ok - 200) : 
+
+{
+  "acknowledged" : true,
+  "persistent" : {
+    "action" : {
+      "auto_create_index" : ".monitoring-es*,logstash-*"
+    }
+  },
+  "transient" : { }
+}
+
+• Development vs. Production Mode
+
+Bootstrap Checks
+• Elasticsearch has bootstrap checks upon startup:
+‒ inspect a variety of Elasticsearch and system settings
+‒ compare them to values that are safe for the operation of
+Elasticsearch
+
+• Bootstrap checks behave differently depending on the
+mode:
+
+‒ development mode: any bootstrap checks that fail appear as
+warnings in the Elasticsearch log
+
+‒ production mode: any bootstrap checks that fail will cause
+Elasticsearch to refuse to start
+
+‒ https://www.elastic.co/guide/en/elasticsearch/reference/master/
+bootstrap-checks.html
+
+Bootstrap Checks
+• A node in production mode must pass all of the checks, or
+the node will not start
+‒ the bootstrap checks fit into two categories
+
+JVM Checks
+
+1. heap size
+2. disable swapping
+3. not use serial collector
+4. OnError and OnOutOfMemoryError
+5. server JVM
+
+Linux Checks
+
+1. maximum map count
+2. maximum size virtual memory
+3. maximum number of threads
+4. file descriptor
+5. system call filter
+
+• Best Practices
+
+Contoh Query Database Elastic Best Practices : 
+
+PUT _cluster/settings
+{
+"transient": {
+"cluster.routing.allocation.node_concurrent_recoveries": 2
+}
+}
+
+Hasil Query Database Elastic Best Practices (Ok - 200): 
+
+{
+  "acknowledged" : true,
+  "persistent" : { },
+  "transient" : {
+    "cluster" : {
+      "routing" : {
+        "allocation" : {
+          "node_concurrent_recoveries" : "2"
+        }
+      }
+    }
+  }
+}
+
+
+• JVM Settings
+
+JVM Heap Size
+• By default, the JVM heap size is 1 GB
+‒ likely not high enough for production
+‒ you can change it using Xms (min heap) and Xmx (max heap)
+
+• Some guidelines for configuring the heap size:
+‒ set Xms and Xmx to the same size (bootstrap check)
+‒ set Xmx to no more than 50% of your physical RAM
+
+• Rule of thumb for setting the JVM heap is:
+‒ do not exceed more than 30GB of memory (to not exceed the
+compressed ordinary object pointers limit)
+‒ https://www.elastic.co/blog/a-heap-of-trouble
+
+JVM Configuration
+
+• Since Elasticsearch 6.0, only 64-bit JVMs are supported
+
+• You can configure the Java Virtual Machine (JVM) two
+ways:
+
+‒ the config/jvm.options file (preferred)
+‒ setting the ES_JAVA_OPTS environment variable
+
+• Elasticsearch has very good JVM defaults
+‒ avoid and be careful when changing them
+
+ES_JAVA_OPTS="-Xms30g -Xmx30g" bin/elasticsearch
+
+Production JVM Settings
+
+1. JDKs have two modes of a JVM: client and server
+
+• server JVM is required in production mode
+
+2. Configure the JVM to disable swapping
+
+• by requesting the JVM to lock the heap in memory through
+mlockall (Unix) or virtual lock (Windows)
+
+• Common Causes of Poor Query Performance
+
+• Let’s take a look at some common mistakes developers make that can have a negative effect on query performance
+
+‒ and discuss better ways to write your search queries!
+
+Contoh Query Databases Elastic yang buruk ketika ingin insert data : 
+
+GET blogs/_search
+{
+"query": {
+"regexp": {
+"title.reversed": "krow.*"
+}
+}
+}
+
+Hasil Query Databases Elastic yang buruk ketika ingin insert data (502 - Bad Gateway): 
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+
+• Cross Cluster Search
+
+Contoh Query Databases Elastic Cross Cluster Search : 
+
+GET blogs,*:blogs/_search
+{
+"query": {
+"match": {
+"title": "network"
+}
+}
+}
+
+Hasil Query Databases Elastic Cross Cluster Search (502 - Bad Gateway) :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs",
+        "index_uuid" : "_na_",
+        "index" : "blogs"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs",
+    "index_uuid" : "_na_",
+    "index" : "blogs"
+  },
+  "status" : 404
+}
+
+• Overview of Upgrades
+
+Versions
+• Elasticsearch versions are denoted as X.Y.Z
+‒ X is the major version
+‒ Y is the minor version
+‒ Z is the patch level or maintenance release
+
+• Elasticsearch can use indices created in the previous major
+version, but older indices must be reindexed or deleted.
+‒ 6.x can use indices created in 5.x
+‒ 6.x cannot use indices created in 2.x or before
+‒ 5.x can use indices created in 2.x
+‒ 5.x cannot use indices created in 1.x or before
+
+Upgrading
+• Unfortunately, there are too many options and details in the
+Elastic upgrade process
+
+• It would be impossible to cover all possible combinations in
+a few minutes
+
+• Elastic created an upgrade guide in which
+
+‒ you answer a few questions
+‒ and we build a list of the steps you should follow
+‒ https://www.elastic.co/products/upgrade_guide
+
+• A cluster restart will be part of any list, so let's talk about it...
+
+• Cluster Restart
+
+Cluster Restart
+
+• Rolling restart
+
+‒ zero downtime
+‒ reads and writes continue to operate normally
+
+• Full cluster restart
+‒ cluster unavailable during update
+‒ updates are usually faster
+
+Steps for a Rolling Restart
+
+• A rolling restart allows the nodes in the cluster to be
+upgraded one at a time
+‒ by using a rolling restart
+
+• To perform a rolling restart:
+
+1. stop non-essential indexing (if possible)
+2. disable shard allocation
+3. stop and update one node
+4. start the node
+5. re-enable shard allocation and wait
+6. GOTO step 2 (until all nodes are updated)
+
+Contoh Query Database Cara Cek Versi dan Upgrade Elastic :
+
+PUT _cluster/settings
+{
+"transient": {
+"cluster.routing.allocation.enable" : "all"
+}
+}
+
+Hasil Query Database Cara Cek Versi dan Upgrade Elastic (Ok 200):
+
+{
+  "acknowledged" : true,
+  "persistent" : { },
+  "transient" : {
+    "cluster" : {
+      "routing" : {
+        "allocation" : {
+          "enable" : "all"
+        }
+      }
+    }
+  }
+}
+
+Full Cluster Restart
+
+• The cluster will be unavailable during the update
+
+• The steps are very similar to a rolling upgrade:
+
+1. stop indexing (e.g. disable writes, or make ES unreachable)
+2. disable shard allocation
+3. perform a synced flush
+4. shutdown and update all nodes
+5. start all dedicated master nodes
+6. start the other nodes
+7. wait for yellow
+8. reenable shard allocation
+
+Summary
+• A node in production mode must pass a series of checks,
+or the node will not start
+• For best performance, choose SSD over spinning disks
+• Local disks are preferred - the software provides HA
+• In general, choose medium machines over large
+machines
+• Cross cluster search allows you to search multiple clusters
+within the same request.
+• Upgrading to a new major version of Elasticsearch usually
+requires a full cluster restart, but can also be done with a
+rolling upgrade from 5.6 to 6.x
+• A rolling upgrade allows the nodes in the cluster to be
+restarted one at a time
+
+Quiz
+1. True or False: In production mode, if a bootstrap check
+fails then the node will not start. Jawaban : True
+
+2. True or False: SAN storage is preferred over local disks to
+provide high availability of data. Jawaban : False: SAN is not needed
+
+3. True or False: It is a good idea to separate the transport
+and HTTP traffic over different network interfaces. Jawaban : True
+
+4.Why would you use cross cluster search? Jawaban : To have a single view of the data spread across multiple
+clusters.
+
+5. True or False: You can search and index documents
+during a rolling restart. Jawaban : True. You can, but it slows down the recovery time
+
+6.What is the benefit of performing a synced flush right before
+a node restart? Jawaban : It greatly speeds up the recovery time of indices that have
+not changed while the node (or nodes) was down
+
+
+
+Resources
+• https://www.elastic.co/learn
+‒ https://www.elastic.co/training
+‒ https://www.elastic.co/community
+‒ https://www.elastic.co/docs
+• https://discuss.elastic.co
+
