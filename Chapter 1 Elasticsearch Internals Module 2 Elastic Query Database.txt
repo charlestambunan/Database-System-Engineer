@@ -1,0 +1,284 @@
+• Lucene Indexing
+
+Contoh Query Lucene Indexing : 
+
+PUT blogs/_doc/551
+{
+"title": "A History of Logstash Output Workers",
+"category": "Engineering"
+}
+
+PUT my_index/_settings
+{
+"refresh_interval": "30s"
+}
+
+PUT my_index/_doc/102/?refresh=wait_for
+{
+"firstname" : "James",
+"lastname" : "Brown",
+"address" : "6011 Downtown Lane",
+"city" : "Detroit"
+}
+
+PUT my_index/_doc/27
+{
+"author": "Charles",
+"category": "Releases",
+"title": "Business Management"
+}
+
+PUT my_index/_doc/14
+{
+"author": "Russia",
+"category": "Releases",
+"title": "Ukraine War with Russia"
+}
+
+POST blogs/_forcemerge
+
+POST my_index/_flush
+
+
+• Understanding Segments
+
+Contoh Query Database Elastic :
+
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> ssh git@gitlab.com 2fa_recovery_codes
+git@gitlab.com: Permission denied (publickey,keyboard-interactive).
+PS C:\Users\Charles Tambunan> ssh git@charles_tambunan 2fa_recovery_codes
+ssh: Could not resolve hostname charles_tambunan: No such host is known.
+PS C:\Users\Charles Tambunan> ssh git@gitlab.com:charles_tambunan 2fa_recovery_codes
+ssh: Could not resolve hostname gitlab.com:charles_tambunan: No such host is known.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.186.86.130
+kex_exchange_identification: read: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Fri Feb 25 10:47:53 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 10:51:08 /home/ctambunan]$ history >> TambunanShellScripting/ElasticSearch06/ConfigurationElasticLogstashKibana32.txt
+[root@fedora 10:51:40 /home/ctambunan]$ cd TambunanShellScripting/ElasticSearch06/
+[root@fedora 10:51:48 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ ls -la
+total 156
+drwxr-xr-x.  2 root root   150 Feb 23 10:40 .
+drwxrwxrwx. 15 root root  8192 Jan 27 11:49 ..
+-rw-r--r--.  1 root root 34844 Feb 23 10:40 ConfigurationElasticLogstashKibana30.txt
+-rw-r--r--.  1 root root 34887 Feb 23 10:40 ConfigurationElasticLogstashKibana31.txt
+-rw-r--r--.  1 root root 69639 Feb 25 10:51 ConfigurationElasticLogstashKibana32.txt
+[root@fedora 10:51:49 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ client_loop: send disconnect: Connection reset
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Fri Feb 25 10:51:03 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 15:20:40 /home/ctambunan]$ poweroff
+Connection to 192.168.86.130 closed by remote host.
+Connection to 192.168.86.130 closed.
+PS C:\Users\Charles Tambunan>
+
+PUT my_index/_doc/27
+{
+"author": "Uri",
+"category": "Releases",
+"title": "Elastic Cloud Enterprise Beta"
+}
+
+PUT my_index/_doc/14
+{
+"author": "Rasmus",
+"category": "Releases",
+"title": "Elastic APM enters beta-1.1"
+}
+
+Hasil Query Database Elastic (200 - OK) :
+
+Answer 1 : 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "27",
+  "_version" : 5,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 9,
+  "_primary_term" : 16
+}
+
+Answer 2 : 
+
+{
+  "_index" : "my_index",
+  "_type" : "_doc",
+  "_id" : "14",
+  "_version" : 2,
+  "result" : "updated",
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  },
+  "_seq_no" : 8,
+  "_primary_term" : 16
+}
+
+• Segment Merges
+
+Contoh Query Database Elastic :
+
+POST blogs/_forcemerge
+
+Results Query Database Elastic ( 200 - OK ) :
+
+{
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  }
+}
+
+• Elasticsearch Indexing
+
+Contoh Query Database Elasticsearch Indexing :
+
+POST my_index/_flush
+
+Contoh Hasil Query Database Elasticsearch Indexing :
+
+200 - OK
+
+{
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  }
+}
+
+
+• Doc Values
+
+Contoh Query Doc Values :
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "new releases"
+}
+},
+"sort": {
+"author.keyword": {
+"order": "abc"
+}
+}
+}
+
+Hasil Query Doc Values 400 - Bad Request :
+
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "x_content_parse_exception",
+        "reason" : "[9:10] [field_sort] failed to parse field [order]"
+      }
+    ],
+    "type" : "x_content_parse_exception",
+    "reason" : "[9:10] [field_sort] failed to parse field [order]",
+    "caused_by" : {
+      "type" : "illegal_argument_exception",
+      "reason" : "No enum constant org.elasticsearch.search.sort.SortOrder.ABC"
+    }
+  },
+  "status" : 400
+}
+
+• Caching
+
+Contoh Query Caching di Elastic Search :
+
+GET blogs_csv/_search
+{
+"query": {
+"bool": {
+"filter": {
+"range": {
+"publish_date": {
+"gte": 2017,
+"lte": 2018
+} } } } } }
+
+GET /blogs/_search?request_cache=true
+{
+"query": {
+"query_string": {
+"query": "*_source*"
+}
+}
+}
+
+Hasil Query Caching Elasticsearch 404 - Not Found :
+
+
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "index_not_found_exception",
+        "reason" : "no such index [blogs_csv]",
+        "resource.type" : "index_or_alias",
+        "resource.id" : "blogs_csv",
+        "index_uuid" : "_na_",
+        "index" : "blogs_csv"
+      }
+    ],
+    "type" : "index_not_found_exception",
+    "reason" : "no such index [blogs_csv]",
+    "resource.type" : "index_or_alias",
+    "resource.id" : "blogs_csv",
+    "index_uuid" : "_na_",
+    "index" : "blogs_csv"
+  },
+  "status" : 404
+}
+
+Hasil Query Caching Elasticsearch 200 - OK :
+
+{
+  "took" : 10,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}

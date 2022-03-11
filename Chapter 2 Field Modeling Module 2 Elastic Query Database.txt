@@ -1,0 +1,98 @@
+PUT blogs/_doc/1
+{
+"version": {
+"display_name": "6.2.1",
+"major": 6,
+"minor": 2,
+"bugfix": 1
+}
+}
+
+GET blogs/_search
+{
+"query": {
+"bool": {
+"filter": [
+{
+"match": {
+"version.major": 5
+}
+},
+{
+"match": {
+"version.minor": 4
+}
+}
+]
+}
+}
+}
+
+PUT test_ranges
+{
+"mappings": {
+"_doc": {
+"properties": {
+"publish_range": {
+"type": "date_range"
+}
+}
+}
+}
+}
+
+
+PUT test_ranges/_doc/1
+{
+"publish_range": {
+"gte": "2019-11-10",
+"lt": "2021-11-10"
+}
+}
+
+GET test_ranges/_search
+{
+"query":  {
+"range":    {
+"publish_range": {
+"gte": "2019-11-01"
+        }
+    } 
+  }
+}
+
+GET my_range_index/_search
+{
+"query":  {
+"range":    {
+"author_age_range": {
+"gte": 23,
+"lte": 43,
+"relation": "intersects"
+          }
+      }
+    }
+}
+
+PUT my_logs/doc/_mapping
+{
+"properties": {
+"url": {
+"enabled": false
+}
+}
+}
+
+POST test2/_doc/
+{
+"f_avg_response_time": "34.8"
+}
+
+PUT blogs/_doc/_mapping
+{
+"properties": {
+"some_other_field": {
+"type": "text"
+}
+}
+}

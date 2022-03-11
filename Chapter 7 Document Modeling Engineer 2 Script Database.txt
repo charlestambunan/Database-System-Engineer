@@ -1,0 +1,216 @@
+PUT tweets/_doc/123
+{
+"body" : "My favorite movie is Star Wars",
+"time" : "2017-09-24T02:32:27",
+"user": {
+"userid" : 1,
+"username" : "harrison",
+"city" : "Los Angeles",
+"state" : "California"
+}
+}
+
+GET tweets/_search
+{
+"query": {
+"bool": {
+"must": [
+{"match": {"body": "movie"}},
+{"match": {"user.username": "harrison"}}
+]
+}
+}
+}
+
+
+PUT my_index1
+{
+"settings": {
+"number_of_shards": 2
+}
+}
+
+PUT my_index2
+{
+"settings": {
+"number_of_shards": 2
+}
+}
+
+PUT photos/_doc/1
+{
+"filename": "img1.jpg",
+"tags": [
+{"key": "event", "value": "Christmas"},
+{"key": "folder", "value": "December2017"}
+]
+}
+
+PUT photos/_doc/2
+{
+"filename": "img2.jpg",
+"tags": [
+{"key": "event", "value": "vacation"},
+{"key": "holiday", "value": "Christmas"}
+]
+}
+
+PUT photos
+{
+"mappings": {
+"_doc": {
+"properties": {
+"filename": {
+"type": "keyword"
+},
+"tags": {
+"type": "nested",
+"properties": {
+"key": {
+"type": "keyword"
+},
+"value": {
+"type": "text"
+}
+}
+}
+}
+}
+}
+}
+
+GET photos/_search
+{
+"query": {
+"nested": {
+"path": "tags",
+"query": {
+"bool": {
+"must": [
+{"match": {"tags.key": "event"}},
+{"match": {"tags.value": "Christmas"}}
+]
+}
+}
+}
+}
+}
+
+GET photos/_search
+{
+"size": 0,
+"aggs": {
+"my_tags": {
+"nested": {
+"path": "tags"
+},
+"aggs": {
+"tag_terms": {
+"terms": {
+"field": "tags.key",
+"size": 10
+}
+}
+}
+}
+}
+}
+
+PUT companies
+{
+"mappings": {
+"_doc" : {
+"properties": {
+"my_join_relation": {
+"type": "join",
+"relations": {
+"company": "employee"
+}
+}
+}
+}
+}
+}
+
+PUT companies/_doc/c1
+{
+"company_name" : "Stark Enterprises",
+"my_join_relation": {
+"name": "company"
+}
+}
+
+PUT companies/_doc/c2
+{
+"company_name" : "NBC Universal",
+"my_join_relation": {
+"name": "company"
+}
+}
+
+PUT companies/_doc/emp1?routing=c1
+{
+"first_name" : "Tony",
+"last_name" : "Stark",
+"my_join_relation": {
+"name": "employee",
+"parent": "c1"
+}
+}
+
+PUT companies/_doc/emp1?routing=c2
+{
+"first_name" : "Dongan",
+"last_name" : "Haporseaon",
+"my_join_relation": {
+"name": "employee",
+"parent": "c1"
+}
+}
+
+
+
+GET companies/_search
+
+
+GET companies/_search
+{
+"query": {
+"has_child": {
+"type": "employee",
+"query": {
+"match": {
+"last_name": "Stark"
+}
+}
+}
+}
+}
+
+GET companies/_search
+{
+"query": {
+"has_parent": {
+"parent_type": "company",
+"query": {
+"match": {
+"company_name": "NBC"
+}
+}
+}
+}
+}
+
+GET companies/_search
+{
+"query": {
+"has_parent": {
+"parent_type": "company",
+"query": {
+"match": {
+"company_name": "NBC"
+}
+}
+}
+}
+}

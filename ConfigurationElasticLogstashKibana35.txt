@@ -1,0 +1,264 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> D:
+PS D:\> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Wed Mar  2 17:26:07 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 17:36:46 /home/ctambunan]$ ls -la
+total 132
+drwx------. 15 ctambunan ctambunan  4096 Feb 18 10:27  .
+drwxr-xr-x.  9 root      root        130 Jan 12 11:13  ..
+-rw-r--r--.  1 root      root          0 Feb 17 17:45 '{'
+-rw-------.  1 ctambunan ctambunan  1447 Mar  2 07:39  .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021  .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021  .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021  .bashrc
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  beginning
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09  charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42  charles_tambunan
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  checkuser
+-rw-r--r--.  1 root      root         20 Jan 13 16:05  cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04  dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02  history
+-rw-r--r--.  1 root      root          0 Jan  5 06:55  konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57  .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38  man
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap2.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap.txt
+drwxr-xr-x.  5 root      root       4096 Feb 17 17:49  metricbeat-7.17.0-linux-x86_64
+-rw-r--r--.  1 root      root          0 Jan 12 17:34  my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30  myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15  my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22  output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22  output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04  output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43  passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00  .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16  TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20  TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18  TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53  TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 27 11:49  TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52  TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41  TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05  TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47  TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00  tea.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  user_check
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05  .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32  zcat
+[root@fedora 17:36:48 /home/ctambunan]$ systemctl status kibana.service
+● kibana.service - Kibana
+     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-03-02 17:36:26 WIB; 33s ago
+       Docs: https://www.elastic.co
+   Main PID: 88433 (node)
+      Tasks: 11 (limit: 3475)
+     Memory: 418.0M
+        CPU: 12.261s
+     CGroup: /system.slice/kibana.service
+             └─88433 /usr/share/kibana/bin/../node/bin/node /usr/share/kibana/bin/../src/cli/dist ->
+Mar 02 17:36:26 fedora systemd[1]: Started Kibana.
+lines 1-12/12 (END)
+journalctl -u kibana | egrep -i "error"
+^C
+[root@fedora 17:38:27 /home/ctambunan]$ journalctl -u kibana | egrep -i "error"
+[root@fedora 17:38:28 /home/ctambunan]$ systemctl status elasticsearch -l
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disable>     Active: active (running) since Wed 2022-03-02 11:21:41 WIB; 6h ago
+       Docs: https://www.elastic.co
+   Main PID: 1167 (java)
+      Tasks: 79 (limit: 3475)
+     Memory: 1.0G
+        CPU: 5min 1.727s
+     CGroup: /system.slice/elasticsearch.service
+             ├─1167 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.tt>             └─2267 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Mar 02 11:21:02 fedora systemd[1]: Starting Elasticsearch...
+Mar 02 11:21:41 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 17:38:34 /home/ctambunan]$ egrep -i "error" /var/log/elasticsearch/elasticsearch.log
+[2022-01-31T08:46:41,659][INFO ][o.e.n.Node               ] [fedora] JVM arguments [-Xshare:auto, -Des.networkaddress.cache.ttl=60, -Des.networkaddress.cache.negative.ttl=10, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -XX:+ShowCodeDetailsInExceptionMessages, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dio.netty.allocator.numDirectArenas=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j2.formatMsgNoLookups=true, -Djava.locale.providers=SPI,COMPAT, --add-opens=java.base/java.io=ALL-UNNAMED, -XX:+UseG1GC, -Djava.io.tmpdir=/tmp/elasticsearch-4041347346896292540, -XX:+HeapDumpOnOutOfMemoryError, -XX:+ExitOnOutOfMemoryError, -XX:HeapDumpPath=/var/lib/elasticsearch, -XX:ErrorFile=/var/log/elasticsearch/hs_err_pid%p.log, -Xlog:gc*,gc+age=trace,safepoint:file=/var/log/elasticsearch/gc.log:utctime,pid,tags:filecount=32,filesize=64m, -Xms1939m, -Xmx1939m, -XX:MaxDirectMemorySize=1017118720, -XX:G1HeapRegionSize=4m, -XX:InitiatingHeapOccupancyPercent=30, -XX:G1ReservePercent=15, -Des.path.home=/usr/[root@fedora 17:38:38 /home/ctambunan]$
+[root@fedora 17:38:38 /home/ctambunan]$
+[root@fedora 17:38:38 /home/ctambunan]$ Connection to 192.168.86.130 closed by remote host.
+Connection to 192.168.86.130 closed.
+PS D:\> ssh ctambunan@192.168.86.138
+ctambunan@192.168.86.138's password:
+Web console: https://fedora:9090/ or https://192.168.86.138:9090/
+
+Last login: Wed Mar  2 17:39:46 2022
+[ctambunan@fedora ~]$ client_loop: send disconnect: Connection reset
+PS D:\> ssh ctambunan@192.168.86.138
+ctambunan@192.168.86.138's password:
+Permission denied, please try again.
+ctambunan@192.168.86.138's password:
+Web console: https://fedora:9090/ or https://192.168.86.138:9090/
+
+Last failed login: Wed Mar  2 20:21:30 WIB 2022 from 192.168.86.1 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Wed Mar  2 17:40:24 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 20:22:52 /home/ctambunan]$ ls -la
+total 128
+drwx------. 14 ctambunan ctambunan  4096 Feb 18 10:26  .
+drwxr-xr-x.  9 root      root        130 Jan 12 11:13  ..
+-rw-r--r--.  1 root      root          0 Feb 17 17:45 '{'
+-rw-------.  1 ctambunan ctambunan  1329 Mar  2 07:39  .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021  .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021  .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021  .bashrc
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  beginning
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09  charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42  charles_tambunan
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  checkuser
+-rw-r--r--.  1 root      root         20 Jan 13 16:05  cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04  dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02  history
+-rw-r--r--.  1 root      root          0 Jan  5 06:55  konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57  .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38  man
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap2.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  Mantap.txt
+-rw-r--r--.  1 root      root          0 Jan 12 17:34  my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30  myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15  my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22  output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22  output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04  output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43  passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00  .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16  TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20  TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18  TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53  TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 27 11:49  TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52  TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41  TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05  TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47  TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00  tea.txt
+-rw-r--r--.  1 root      root          0 Feb 17 17:45  user_check
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05  .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32  zcat
+[root@fedora 20:22:56 /home/ctambunan]$ cd TambunanShellScripting/
+[root@fedora 20:22:59 /home/ctambunan/TambunanShellScripting]$ ls -la
+total 4876
+drwxrwxrwx. 15 root      root         8192 Jan 27 11:49 .
+drwx------. 14 ctambunan ctambunan    4096 Feb 18 10:26 ..
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 1
+-rw-r--r--.  1 root      root           41 Jan 10 11:08 andidori.sh
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16 echo
+drwxrwxrwx.  2 root      root         4096 Feb  2 11:10 ElasticSearch01
+drwxrwxrwx.  2 root      root         4096 Feb  3 09:57 ElasticSearch02
+drwxrwxrwx.  2 root      root         4096 Feb 15 16:55 ElasticSearch03
+drwxrwxrwx.  2 root      root         4096 Feb 18 10:29 ElasticSearch04
+drwxrwxrwx.  2 root      root         4096 Feb 21 00:06 ElasticSearch05
+drwxrwxrwx.  2 root      root          169 Mar  1 22:55 ElasticSearch06
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch07
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch08
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch09
+drwxr-xr-x.  2 root      root            6 Jan 21 03:07 ElasticSearch10
+-rwxr-xr-x.  1 root      root          414 Jan 10 11:04 firstscript.sh
+-rw-r--r--.  1 root      root           79 Jan 10 17:36 FiveScript.sh
+-rw-r--r--.  1 root      root          121 Jan 10 16:45 FourthScript.sh
+-rw-rw-r--.  1 ctambunan ctambunan   32683 Jan 27 11:49 History_of_Redhat_Fedora_Server100.txt
+-rw-r--r--.  1 root      root        14442 Jan 10 11:31 History_of_Redhat_Fedora_Server_41.txt
+-rw-r--r--.  1 root      root        15355 Jan 10 11:43 History_of_Redhat_Fedora_Server_42.txt
+-rw-r--r--.  1 root      root        16385 Jan 10 12:40 History_of_Redhat_Fedora_Server_43.txt
+-rw-r--r--.  1 root      root        19270 Jan 10 17:37 History_of_Redhat_Fedora_Server_44.txt
+-rw-r--r--.  1 root      root        32338 Jan 19 20:04 History_of_Redhat_Fedora_Server_45.txt
+-rw-r--r--.  1 root      root        32379 Jan 19 20:04 History_of_Redhat_Fedora_Server_46.txt
+-rw-r--r--.  1 root      root        32422 Jan 19 20:04 History_of_Redhat_Fedora_Server_47.txt
+-rw-r--r--.  1 root      root        32458 Jan 19 20:04 History_of_Redhat_Fedora_Server_48.txt
+-rw-r--r--.  1 root      root        32501 Jan 19 20:04 History_of_Redhat_Fedora_Server_49.txt
+-rw-r--r--.  1 root      root        32546 Jan 19 20:04 History_of_Redhat_Fedora_Server_50.txt
+-rw-r--r--.  1 root      root        20450 Jan 11 18:29 History_of_Redhat_Fedora_Server51.txt
+-rw-r--r--.  1 root      root      2553981 Jan 12 09:34 History_of_Redhat_Fedora_Server52.txt
+-rw-r--r--.  1 root      root        25250 Jan 12 10:56 History_of_Redhat_Fedora_Server53.txt
+-rw-r--r--.  1 root      root          745 Jan 12 11:25 History_of_Redhat_Fedora_Server54.txt
+-rw-r--r--.  1 root      root        26304 Jan 12 11:59 History_of_Redhat_Fedora_Server55.txt
+-rw-r--r--.  1 root      root          491 Jan 12 18:35 History_of_Redhat_Fedora_Server56.txt
+-rw-r--r--.  1 root      root          525 Jan 12 18:35 History_of_Redhat_Fedora_Server57.txt
+-rw-r--r--.  1 root      root        28194 Jan 12 18:52 History_of_Redhat_Fedora_Server58.txt
+-rw-r--r--.  1 root      root        29026 Jan 13 10:29 History_of_Redhat_Fedora_Server59.txt
+-rw-r--r--.  1 root      root          823 Jan 13 11:37 History_of_Redhat_Fedora_Server60.txt
+-rw-r--r--.  1 root      root        30594 Jan 13 11:47 History_of_Redhat_Fedora_Server61.txt
+-rw-r--r--.  1 root      root        31069 Jan 13 12:46 History_of_Redhat_Fedora_Server62.txt
+-rw-r--r--.  1 root      root        31533 Jan 14 10:26 History_of_Redhat_Fedora_Server63.txt
+-rw-r--r--.  1 root      root        31146 Jan 14 16:23 History_of_Redhat_Fedora_Server64.txt
+-rw-r--r--.  1 root      root        31622 Jan 14 18:15 History_of_Redhat_Fedora_Server65.txt
+-rw-r--r--.  1 root      root        31441 Jan 17 13:15 History_of_Redhat_Fedora_Server66.txt
+-rw-r--r--.  1 root      root        31459 Jan 17 16:04 History_of_Redhat_Fedora_Server67.txt
+-rw-r--r--.  1 root      root        31586 Jan 17 16:26 History_of_Redhat_Fedora_Server68.txt
+-rw-r--r--.  1 root      root        31468 Jan 17 16:31 History_of_Redhat_Fedora_Server69.txt
+-rw-r--r--.  1 root      root        31532 Jan 17 16:38 History_of_Redhat_Fedora_Server70.txt
+-rw-r--r--.  1 root      root         3364 Jan 12 18:13 History_of_Redhat_Fedora_Server71.txt
+-rw-r--r--.  1 root      root        31793 Jan 17 16:56 History_of_Redhat_Fedora_Server72.txt
+-rw-r--r--.  1 root      root        32467 Jan 17 17:07 History_of_Redhat_Fedora_Server73.txt
+-rwxrwxrwx.  1 root      root        32635 Jan 19 11:02 History_of_Redhat_Fedora_Server74.txt
+-rwxrwxrwx.  1 root      root        32494 Jan 19 11:02 History_of_Redhat_Fedora_Server75.txt
+-rwxrwxrwx.  1 root      root        32361 Jan 21 03:06 History_of_Redhat_Fedora_Server76.txt
+-rwxrwxrwx.  1 root      root        32316 Jan 21 03:06 History_of_Redhat_Fedora_Server77.txt
+-rwxrwxrwx.  1 root      root        32370 Jan 21 03:06 History_of_Redhat_Fedora_Server78.txt
+-rwxrwxrwx.  1 root      root        32579 Jan 21 03:05 History_of_Redhat_Fedora_Server79.txt
+-rwxrwxrwx.  1 root      root        32468 Jan 21 03:05 History_of_Redhat_Fedora_Server80.txt
+-rwxrwxrwx.  1 root      root        67148 Jan 22 23:51 History_of_Redhat_Fedora_Server81.txt
+-rwxrwxrwx.  1 root      root         2193 Jan 22 23:51 History_of_Redhat_Fedora_Server82.txt
+-rwxrwxrwx.  1 root      root        71306 Jan 22 23:51 History_of_Redhat_Fedora_Server83.txt
+-rwxrwxrwx.  1 root      root          585 Jan 22 23:51 History_of_Redhat_Fedora_Server84.txt
+-rwxrwxrwx.  1 root      root          817 Jan 22 23:51 History_of_Redhat_Fedora_Server85.txt
+-rw-rw-r--.  1 ctambunan ctambunan  315105 Jan 24 17:35 History_of_Redhat_Fedora_Server86.txt
+
+-rw-rw-r--.  1 ctambunan ctambunan  130137 Jan 24 17:35 History_of_Redhat_Fedora_Server87.txt
+
+-rw-rw-r--.  1 ctambunan ctambunan   41512 Jan 24 17:29 History_of_Redhat_Fedora_Server88.txt
+-rw-rw-r--.  1 ctambunan ctambunan   94413 Jan 24 17:29 History_of_Redhat_Fedora_Server89.txt
+-rw-rw-r--.  1 ctambunan ctambunan  114124 Jan 24 17:29 History_of_Redhat_Fedora_Server90.txt
+-rwxrwxrwx.  1 root      root         7369 Jan 22 23:49 History_of_Redhat_Fedora_Server91.txt
+-rwxrwxrwx+  1 root      root         4082 Jan 22 23:49 History_of_Redhat_Fedora_Server92.txt
+-rwxrwxrwx.  1 root      root        63932 Jan 24 17:37 History_of_Redhat_Fedora_Server93.txt
+-rwxrwxrwx.  1 root      root         8911 Jan 22 23:49 History_of_Redhat_Fedora_Server94.txt
+-rwxrwxrwx.  1 root      root        19487 Jan 22 23:49 History_of_Redhat_Fedora_Server95.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33030 Jan 27 11:47 History_of_Redhat_Fedora_Server96.txt
+-rw-rw-r--.  1 ctambunan ctambunan   33131 Jan 27 11:47 History_of_Redhat_Fedora_Server97.txt
+-rw-rw-r--.  1 ctambunan ctambunan   32938 Jan 27 11:47 History_of_Redhat_Fedora_Server98.txt
+-rw-rw-r--.  1 ctambunan ctambunan  205911 Jan 27 11:47 History_of_Redhat_Fedora_Server99.txt
+-rw-r--r--.  1 root      root          111 Jan 10 12:38 SecondScript.sh
+drwxr-xr-x.  2 root      root          108 Jan 14 16:13 tambunan
+-rw-r--r--.  1 root      root          384 Jan 10 17:56 ThirdScript.sh
+[root@fedora 20:23:02 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch07/
+[root@fedora 20:23:06 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ ls -la
+total 12
+drwxr-xr-x.  2 root root    6 Jan 21 03:07 .
+drwxrwxrwx. 15 root root 8192 Jan 27 11:49 ..
+[root@fedora 20:23:08 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ cd ..
+[root@fedora 20:23:16 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch06/
+[root@fedora 20:23:21 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ ls -la
+total 124
+drwxrwxrwx.  2 root      root        169 Mar  1 22:55 .
+drwxrwxrwx. 15 root      root       8192 Jan 27 11:49 ..
+-rw-rw-r--.  1 ctambunan ctambunan 34844 Mar  1 22:55 ConfigurationElasticLogstashKibana30.txt
+-rw-rw-r--.  1 ctambunan ctambunan 34887 Mar  1 22:55 ConfigurationElasticLogstashKibana31.txt
+-rw-rw-r--.  1 ctambunan ctambunan 34937 Mar  1 22:55 ConfigurationElasticLogstashKibana32.txt
+-rw-rw-r--.  1 ctambunan ctambunan   244 Mar  1 22:55 desktop.ini
+[root@fedora 20:23:22 /home/ctambunan/TambunanShellScripting/ElasticSearch06]$ cd ..
+[root@fedora 20:23:30 /home/ctambunan/TambunanShellScripting]$ cd ElasticSearch07/
+[root@fedora 20:23:37 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ nano ConfigurationElasticLogstashKibana33.txt
+[root@fedora 20:24:04 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ nano ConfigurationElasticLogstashKibana34.txt
+[root@fedora 20:24:19 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ [root@fedora 20:24:19 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$
+[root@fedora 20:24:20 /home/ctambunan/TambunanShellScripting/ElasticSearch07]$ client_loop: send disconnect: Connection reset
+PS D:\> ssh ctambunan@192.168.86.138
+ctambunan@192.168.86.138's password:
+Web console: https://fedora:9090/ or https://192.168.86.138:9090/
+
+Last login: Wed Mar  2 20:21:34 2022 from 192.168.86.1
+[ctambunan@fedora ~]$

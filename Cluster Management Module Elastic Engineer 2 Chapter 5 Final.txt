@@ -1,0 +1,59 @@
+GET tweets*/_search
+{
+"query": {
+"match": {
+"tweet": "elastic"
+}
+}
+}
+
+PUT logs-2017-03
+{
+"settings": {
+"index.routing.allocation.require.my_temp" : "hot"
+}
+}
+
+PUT logs-2017-02/_settings
+{
+"index.routing.allocation.require.my_temp" : "warm"
+}
+
+PUT my_index1
+{
+"settings": {
+"number_of_shards": 2,
+"number_of_replicas": 1,
+"index.routing.allocation.include.my_server" : "medium",
+"index.routing.allocation.require.my_temp" : "hot"
+}
+}
+
+PUT my_index2
+{
+"settings": {
+"number_of_shards": 1,
+"number_of_replicas": 1,
+"index.routing.allocation.include.my_server" : "medium,small",
+"index.routing.allocation.exclude.my_temp" : "hot"
+}
+}
+
+PUT _cluster/settings
+{
+"persistent": {
+"cluster.routing.allocation.awareness.attributes": "my_rack_id"
+}
+}
+
+PUT _cluster/settings
+{
+"persistent": {
+"cluster": {
+"routing": {
+"allocation.awareness.attributes": "my_rack_id",
+"allocation.awareness.force.my_rack_id.values": "rack1,rack2"
+}
+}
+}
+}

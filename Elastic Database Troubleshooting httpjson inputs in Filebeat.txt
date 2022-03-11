@@ -1,0 +1,4 @@
+14:08:14 From  master kun  to  Everyone:
+	udh join laptop ama hp, sory lg di WH soalny, sinyal sdkit susah
+14:20:18 From  martin ITG  to  Everyone:
+	cd 'path'

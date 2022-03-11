@@ -1,0 +1,21 @@
+The message "Kibana server is not ready yet" usually appears when you just started Kibana. If this is not the case, it can also be caused by the following errors:
+    • Your service or Kibana configuration has some error that causes it to constantly reboot.
+    • Your elasticsearch service is not up or has some error.
+    • Host resources are insufficient. I recommend that at least to host the elasticsearch and kibana     service, you should dedicate 4 GB of RAM and 2 CPU cores. 
+
+If you have just started the kibana service, please wait a few minutes and try again. If this is not the case, then you will have to check the status of the elasticsearch and kibana services. Also check if the hardware resources are sufficient.
+
+- Check the status of the Kibana service 
+systemctl status kibana -l
+
+- Check the kibana logs:
+journalctl -u kibana | egrep -i "error"
+
+Check the status of the Elasticsearch service:
+systemctl status elasticsearch -l
+
+- Check the elasticsearch logs:
+egrep -i "error" /var/log/elasticsearch/elasticsearch.log  
+
+I hope it helps.
+Regards, Pedro Nicolas
