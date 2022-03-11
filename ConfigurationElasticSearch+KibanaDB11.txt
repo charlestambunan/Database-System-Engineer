@@ -1,0 +1,2627 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> D:
+PS D:\> ssh ctambunan@192.168.231.130
+ctambunan@192.168.231.130's password:
+Web console: https://fedora:9090/ or https://192.168.231.130:9090/
+
+Last login: Thu Jan 27 21:26:47 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 10:10:10 /home/ctambunan]$ ls -la
+total 136
+drwx------. 14 ctambunan ctambunan  4096 Jan 26 14:32 .
+drwxr-xr-x. 10 root      root        146 Jan 19 23:15 ..
+-rw-------.  1 ctambunan ctambunan  1574 Jan 27 18:38 .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021 .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021 .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021 .bashrc
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09 charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42 charles_tambunan
+-rw-r--r--.  1 root      root        583 Jan  7 13:11 charles.tar
+-rw-r--r--.  1 root      root        583 Jan  7 13:10 charles.tar.gz
+-rw-r--r--.  1 root      root         20 Jan 13 16:05 cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04 dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02 history
+-rw-r--r--.  1 root      root          0 Jan 26 13:29 History
+-rw-r--r--.  1 root      root          0 Jan  5 06:55 konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57 .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38 man
+-rw-r--r--.  1 root      root          0 Jan 12 17:34 my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30 myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15 my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22 output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22 output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04 output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43 passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00 .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16 TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20 TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18 TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53 TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 26 16:54 TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52 TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41 TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05 TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47 TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00 tea.txt
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05 .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32 zcat
+[root@fedora 10:10:11 /home/ctambunan]$ cd TambunanShellScripting/
+[root@fedora 10:10:48 /home/ctambunan/TambunanShellScripting]$ ls -la
+total 4908
+drwxrwxrwx. 15 root      root         8192 Jan 26 16:54  .
+drwx------. 14 ctambunan ctambunan    4096 Jan 26 14:32  ..
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16  1
+-rw-r--r--.  1 root      root           41 Jan 10 11:08  andidori.sh
+drwxr-xr-x.  2 root      root            6 Jan 10 15:16  echo
+drwxr-xr-x.  2 root      root         4096 Jan 26 14:32  ElasticSearch01
+drwxr-xr-x.  2 root      root            6 Jan 10 15:36  ElasticSearch02
+drwxr-xr-x.  2 root      root            6 Jan 10 15:36  ElasticSearch03
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43  ElasticSearch04
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43  ElasticSearch05
+drwxr-xr-x.  2 root      root            6 Jan 10 15:43  ElasticSearch06
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01  ElasticSearch07
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01  ElasticSearch08
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01  ElasticSearch09
+drwxr-xr-x.  2 root      root            6 Jan 21 03:01  ElasticSearch10
+-rwxr-xr-x.  1 root      root          414 Jan 10 11:04  firstscript.sh
+-rw-r--r--.  1 root      root           79 Jan 10 17:36  FiveScript.sh
+-rw-r--r--.  1 root      root          121 Jan 10 16:45  FourthScript.sh
+-rw-r--r--.  1 root      root        32683 Jan 26 16:33  History_of_Redhat_Fedora_Server100.txt
+-rw-r--r--.  1 root      root        14442 Jan 10 11:31  History_of_Redhat_Fedora_Server_41.txt
+-rw-r--r--.  1 root      root        15355 Jan 10 11:43  History_of_Redhat_Fedora_Server_42.txt
+-rw-r--r--.  1 root      root        16385 Jan 10 12:40  History_of_Redhat_Fedora_Server_43.txt
+-rw-r--r--.  1 root      root        19270 Jan 10 17:37  History_of_Redhat_Fedora_Server_44.txt
+-rw-r--r--.  1 root      root        32338 Jan 19 20:04  History_of_Redhat_Fedora_Server_45.txt
+-rw-r--r--.  1 root      root        32379 Jan 19 20:04  History_of_Redhat_Fedora_Server_46.txt
+-rw-r--r--.  1 root      root        32422 Jan 19 20:04  History_of_Redhat_Fedora_Server_47.txt
+-rw-r--r--.  1 root      root        32458 Jan 19 20:04  History_of_Redhat_Fedora_Server_48.txt
+-rw-r--r--.  1 root      root        32501 Jan 19 20:04  History_of_Redhat_Fedora_Server_49.txt
+-rw-r--r--.  1 root      root        32546 Jan 19 20:04  History_of_Redhat_Fedora_Server_50.txt
+-rw-r--r--.  1 root      root        20450 Jan 11 18:29  History_of_Redhat_Fedora_Server51.txt
+-rw-r--r--.  1 root      root      2553981 Jan 12 09:34  History_of_Redhat_Fedora_Server52.txt
+-rw-r--r--.  1 root      root        25250 Jan 12 10:56  History_of_Redhat_Fedora_Server53.txt
+-rw-r--r--.  1 root      root          745 Jan 12 11:25  History_of_Redhat_Fedora_Server54.txt
+-rw-r--r--.  1 root      root        26304 Jan 12 11:59  History_of_Redhat_Fedora_Server55.txt
+-rw-r--r--.  1 root      root          491 Jan 12 18:35  History_of_Redhat_Fedora_Server56.txt
+-rw-r--r--.  1 root      root          525 Jan 12 18:35  History_of_Redhat_Fedora_Server57.txt
+-rw-r--r--.  1 root      root        28194 Jan 12 18:52  History_of_Redhat_Fedora_Server58.txt
+-rw-r--r--.  1 root      root        29026 Jan 13 10:29  History_of_Redhat_Fedora_Server59.txt
+-rw-r--r--.  1 root      root          823 Jan 13 11:37  History_of_Redhat_Fedora_Server60.txt
+-rw-r--r--.  1 root      root        30594 Jan 13 11:47  History_of_Redhat_Fedora_Server61.txt
+-rw-r--r--.  1 root      root        31069 Jan 13 12:46  History_of_Redhat_Fedora_Server62.txt
+-rw-r--r--.  1 root      root        31533 Jan 14 10:26  History_of_Redhat_Fedora_Server63.txt
+-rw-r--r--.  1 root      root        31146 Jan 14 16:23  History_of_Redhat_Fedora_Server64.txt
+-rw-r--r--.  1 root      root        31622 Jan 14 18:15  History_of_Redhat_Fedora_Server65.txt
+-rw-r--r--.  1 root      root        31441 Jan 17 13:15  History_of_Redhat_Fedora_Server66.txt
+-rw-r--r--.  1 root      root        31459 Jan 17 16:04  History_of_Redhat_Fedora_Server67.txt
+-rw-r--r--.  1 root      root        31586 Jan 17 16:26  History_of_Redhat_Fedora_Server68.txt
+-rw-r--r--.  1 root      root        31468 Jan 17 16:31  History_of_Redhat_Fedora_Server69.txt
+-rw-r--r--.  1 root      root        31532 Jan 17 16:38  History_of_Redhat_Fedora_Server70.txt
+-rw-r--r--.  1 root      root         3364 Jan 12 18:13  History_of_Redhat_Fedora_Server71.txt
+-rw-r--r--.  1 root      root        31793 Jan 17 16:56  History_of_Redhat_Fedora_Server72.txt
+-rw-r--r--.  1 root      root        32467 Jan 17 17:07  History_of_Redhat_Fedora_Server73.txt
+-rwxrwxrwx.  1 root      root        32635 Jan 19 23:33  History_of_Redhat_Fedora_Server74.txt
+-rwxrwxrwx.  1 root      root        32494 Jan 19 23:33  History_of_Redhat_Fedora_Server75.txt
+-rwxrwxrwx.  1 root      root        32361 Jan 19 19:57  History_of_Redhat_Fedora_Server76.txt
+-rwxrwxrwx.  1 root      root        32316 Jan 20 00:16  History_of_Redhat_Fedora_Server77.txt
+-rwxrwxrwx.  1 root      root        32370 Jan 20 17:56  History_of_Redhat_Fedora_Server78.txt
+-rwxrwxrwx.  1 root      root        32579 Jan 21 02:30  History_of_Redhat_Fedora_Server79.txt
+-rwxrwxrwx.  1 root      root        32468 Jan 21 02:49  History_of_Redhat_Fedora_Server80.txt
+-rw-rw-r--.  1 ctambunan ctambunan   67148 Jan 24 17:39  History_of_Redhat_Fedora_Server81.txt
+-rw-rw-r--.  1 ctambunan ctambunan    2193 Jan 24 17:39  History_of_Redhat_Fedora_Server82.txt
+-rw-rw-r--.  1 ctambunan ctambunan   71306 Jan 24 17:39  History_of_Redhat_Fedora_Server83.txt
+-rw-rw-r--.  1 ctambunan ctambunan     585 Jan 24 17:39  History_of_Redhat_Fedora_Server84.txt
+-rw-rw-r--.  1 ctambunan ctambunan     817 Jan 24 17:39  History_of_Redhat_Fedora_Server85.txt
+-rw-rw-r--.  1 ctambunan ctambunan  315105 Jan 24 17:39  History_of_Redhat_Fedora_Server86.txt
+-rw-rw-r--.  1 ctambunan ctambunan  130137 Jan 24 17:39  History_of_Redhat_Fedora_Server87.txt
+-rw-rw-r--.  1 ctambunan ctambunan   41512 Jan 24 17:39  History_of_Redhat_Fedora_Server88.txt
+-rw-rw-r--.  1 ctambunan ctambunan   94413 Jan 24 17:39  History_of_Redhat_Fedora_Server89.txt
+-rw-rw-r--.  1 ctambunan ctambunan  114124 Jan 24 17:39  History_of_Redhat_Fedora_Server90.txt
+-rwxrwxrwx.  1 root      root         7369 Jan 21 20:11  History_of_Redhat_Fedora_Server91.txt
+-rwxrwxrwx+  1 root      root         4082 Jan 21 20:12  History_of_Redhat_Fedora_Server92.txt
+-rwxrwxrwx.  1 root      root        63932 Jan 24 08:54  History_of_Redhat_Fedora_Server93.txt
+-rwxrwxrwx.  1 root      root         8911 Jan 24 08:52  History_of_Redhat_Fedora_Server94.txt
+-rwxrwxrwx.  1 root      root        19487 Jan 24 08:52  History_of_Redhat_Fedora_Server95.txt
+-rw-r--r--.  1 root      root        33030 Jan 24 09:29  History_of_Redhat_Fedora_Server96.txt
+-rw-r--r--.  1 root      root        33131 Jan 24 10:17  History_of_Redhat_Fedora_Server97.txt
+-rw-r--r--.  1 root      root        32938 Jan 24 13:56  History_of_Redhat_Fedora_Server98.txt
+-rw-r--r--.  1 root      root       205911 Jan 24 17:24  History_of_Redhat_Fedora_Server99.txt
+-rw-r--r--.  1 root      root          111 Jan 10 12:38  SecondScript.sh
+-rw-rw-r--.  1 ctambunan ctambunan   47944 Jan 26 16:54 'Stratis Storage.png'
+drwxr-xr-x.  2 root      root          108 Jan 14 16:13  tambunan
+-rw-r--r--.  1 root      root          384 Jan 10 17:56  ThirdScript.sh
+[root@fedora 10:10:50 /home/ctambunan/TambunanShellScripting]$ history
+    1  ls -la
+    2  cat FouthScript.sh
+    3  sh FouthScript.sh
+    4  vim FouthScript.sh
+    5  sh FouthScript.sh
+    6  ls -la
+    7  ls -la sean_gelael
+    8  vim FouthScript.sh
+    9  mv FouthScript.sh FourthScript.sh
+   10  ls -la
+   11  touch FiveScript.sh
+   12  vim FiveScript.sh
+   13  sh FiveScript.sh
+   14  vim FiveScript.sh
+   15  sh FiveScript.sh
+   16  vim FiveScript.sh
+   17  vim FourthScript.sh
+   18  cat FiveScript.sh
+   19  vim FiveScript.sh
+   20  sh FiveScript.sh
+   21  vim FiveScript.sh
+   22  history
+   23  ls -la
+   24  touch History_of_Redhat_Fedora_Server_44.txt
+   25  history >> History_of_Redhat_Fedora_Server_44.txt
+   26  cat History_of_Redhat_Fedora_Server_44.txt
+   27  ls -la
+   28  cat ThirdScript.sh
+   29  sh ThirdScript.sh
+   30  vim ThirdScript.sh
+   31  for i in {1..6}; do touch test$i.txt ; done
+   32  ls -la
+   33  ls History_of_Redhat_Fedora_Server_41.txt
+   34  ls History_of_Redhat_Fedora_Server_*
+   35  ls History_of_Redhat_Fedora_Server_??.txt
+   36  ls History_of_Redhat_Fedora_Server_?3.txt
+   37  grep History_of_Redhat_Fedora_Server_4?.txt
+   38  cat "Redhat"
+   39  echo "Redhat"
+   40  echo "Redhat" > test1.txt
+   41  cat test1.txt
+   42  echo "CentOS"
+   43  echo "CentOS" > test1.txt
+   44  cat test1.txt
+   45  echo "Redhat" >> test1.txt
+   46  CAT test1.txt
+   47  cat test1.txt
+   48  man sed
+   49  history
+   50  ls -la
+   51  ls -la
+   52  cat make_the_choice.txt
+   53  ls
+   54  ls -R
+   55  ls -lh
+   56  ls -h
+   57  ls -H
+   58  lh
+   59  ls -lh
+   60  history
+   61  history >> test2.txt
+   62  ls -la
+   63  man sed
+   64  cat History_of_Redhat_Fedora_Server_?4.txt
+   65  poweroff
+   66  ls -la
+   67  scp charlestambunan@192.168.37.133:/home/charlestambunan/charles.h /Music
+   68  history
+   69  ls -la
+   70  ls -lh TambunanShellScripting/
+   71  touch TambunanShellScripting/History_Redhat_Fedora_Server{45..50}.txt
+   72  ls -la TambunanShellScripting/
+   73  mv TambunanShellScripting/History_Redhat_Fedora_Server4*.txt History_of_Redhat_Fedora_Server{46...49}.txt
+   74  mv TambunanShellScripting/History_Redhat_Fedora_Server4*.txt History_of_Redhat_Fedora_Server46.txt
+   75  cd TambunanShellScripting/
+   76  ls -la
+   77  mv History_Redhat_Fedora_Server45.txt History_of_Redhat_Fedora_Server_45.txt
+   78  mv History_Redhat_Fedora_Server46.txt History_of_Redhat_Fedora_Server_46.txt
+   79  mv History_Redhat_Fedora_Server47.txt History_of_Redhat_Fedora_Server_48.txt
+   80  mv History_Redhat_Fedora_Server48.txt History_of_Redhat_Fedora_Server_48.txt
+   81  mv History_Redhat_Fedora_Server47.txt History_of_Redhat_Fedora_Server_47.txt
+   82  ls -la
+   83  mv History_of_Redhat_Fedora_Server_48.txt History_of_Redhat_Fedora_Server_47.txt
+   84  mv History_Redhat_Fedora_Server_48.txt History_of_Redhat_Fedora_Server_48.txt
+   85  mv History_Redhat_Fedora_Server_49.txt History_of_Redhat_Fedora_Server_49.txt
+   86  ls -la
+   87  mv History_Redhat_Fedora_Server48.txt History_of_Redhat_Fedora_Server_48.txt
+   88  mv History_Redhat_Fedora_Server49.txt History_of_Redhat_Fedora_Server_49.txt
+   89  mv History_Redhat_Fedora_Server50.txt History_of_Redhat_Fedora_Server_50.txt
+   90  ls -la
+   91  ls History_of_Redhat_Fedora_Server_4*.txt
+   92  ls -la History_of_Redhat_Fedora_Server_4*.txt
+   93  ls -lh History_of_Redhat_Fedora_Server_4*.txt
+   94  ls -lh History_of_Redhat_Fedora_Server_**.txt
+   95  grep ^s
+   96  ip a
+   97  ip a
+   98  history
+   99  ls -la
+  100  touch History_Redhat_Fedora_Server51.txt
+  101  history >> History_Redhat_Fedora_Server51.txt
+  102  cat History_Redhat_Fedora_Server51.txt
+  103  poweroff
+  104  ls -la
+  105  history
+  106  cat /etc/ethertypes
+  107  ls -la
+  108  history
+  109  cat
+  110  less /var/log/messages
+  111  ls -la
+  112  ls -la TambunanG/
+  113  ls -la TambunanShellScripting/
+  114  mv History_Redhat_Fedora_Server5*.txt TambunanShellScripting/
+  115  ls -la
+  116  ls -la TambunanShellScripting/
+  117  mv TambunanShellScripting/History_Redhat_Fedora_Server51.txt History_of_Redhat_Fedora_Server51.txt
+  118  ls -la TambunanShellScripting/
+  119  ls -la
+  120  mv History_of_Redhat_Fedora_Server51.txt TambunanShellScripting/
+  121  ls -la TambunanShellScripting/
+  122  touch TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  123  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{53...60}.txt
+  124  ls -la TambunanShellScripting/
+  125  rm TambunanShellScripting/History_of_Redhat_Fedora_Server{53..60}.txt
+  126  ls -la TambunanShellScripting/
+  127  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{53..60}.txt
+  128  ls -la TambunanShellScripting/
+  129  less /var/log/messages >> TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  130  cat >> TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  131  vim TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  132  sudo dnf -y update
+  133  sudo dnf -y install vim bash-completion curl wget telnet
+  134  sudo sestatus
+  135  sudo setenforce 0
+  136  sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+  137  cat /etc/selinux/config | grep SELINUX =
+  138  cat /etc/selinux/config | grep SELINUX=
+  139  sudo dnf -y install httpd
+  140  sudo dnf -y install httpd
+  141  vim /etc/httpd/conf/httpd.conf
+  142  nano /etc/httpd/conf/httpd.conf
+  143  nano /etc/httpd/conf/httpd.conf
+  144  nano /etc/httpd/conf/httpd.conf
+  145  sudo systemctl start httpd
+  146  sudo systemctl enable httpd
+  147  sudo firewall-cmd --add-service={http,https} --permanent
+  148  sudo firewall-cmd --reload
+  149  sudo dnf -y install php php-cli php-php-gettext php-mbstring php-mcrypt php-mysqlnd php-pear php-curl php-gd php-xml php-bcmath php-zip
+  150  php -v
+  151  php -m
+  152  vim /etc/php.ini
+  153  nano /etc/php.ini
+  154  sudo dnf install mariadb-server
+  155  sudo vim /etc/my.cnf.d/mariadb-server.cnf
+  156  sudo systemctl start mariadb
+  157  sudo systemctl enable mariadb
+  158  sudo mysql_secure_installation
+  159  mysql -u root -p
+  160  ls -la
+  161  history
+  162  sudo firewall-cmd --add-service=mysql --permanent
+  163  sudo firewall-cmd --reload
+  164  nano /var/www/html/phpinfo.php
+  165  sudo systemctl restart httpd
+  166  ip a
+  167  date
+  168  grep '^Mar 22 08:2.*GID' /var/log/secure
+  169   grep 'postfix' /var/log/maillog | head -n 2
+  170  grep -i 'queue' /etc/postfix/main.cf
+  171  ps aux | grep postfix
+  172  grep -e qmgr -e pickup -e cleanup /etc/postfix/master.cf
+  173  exit
+  174  ls -la
+  175  history
+  176  history
+  177  ls -la
+  178  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server53.txt
+  179  cat history TambunanShellScripting/History_of_Redhat_Fedora_Server53.txt
+  180  mkdir -p /home/student/bin/bash-lab
+  181  vim /home/student/bin/bash-lab/
+  182  vim /home/student/bin/bash-lab
+  183  rm /home/student/bin/bash-lab
+  184  rm -d /home/student/bin/bash-lab
+  185  ls -la
+  186  mkdir -p /home/student/bin
+  187  vim /home/student/bin/bash-lab.sh
+  188  chmod a+x /home/student/bin/bash-lab.sh
+  189  vim /home/student/bin/bash-lab.sh
+  190  sh /home/student/bin/bash-lab.sh
+  191  vim /home/student/bin/bash-lab.sh
+  192  sh /home/student/bin/bash-lab.sh
+  193  ip a
+  194  ls -la /home/
+  195  ls -la /home/ctambunan/
+  196  ls -la /home/ctambunan/output-servera
+  197  cat /home/ctambunan/output-servera
+  198  cat /home/ctambunan/output-serverb
+  199  cat /home/ctambunan/output-serverb
+  200  history
+  201  ls -la
+  202  cd TambunanShellScripting/
+  203  ls -la
+  204  vim History_of_Redhat_Fedora_Server54.txt
+  205  cat History_of_Redhat_Fedora_Server54.txt
+  206  history >> History_of_Redhat_Fedora_Server55.txt
+  207  poweroff
+  208  ls -la
+  209  history
+  210  atq
+  211  echo "date >> myjob.txt" | at now
+  212  atq
+  213  watch atq
+  214  cat myjob.txt
+  215  at -q g teatime
+  216  at -q b 16:05
+  217  atq
+  218  at c -2
+  219  at -c 2
+  220  at -c 3
+  221  atq
+  222  history
+  223  crontab -e
+  224  crontab -e
+  225  exit
+  226  vi /etc/cron.daily/usercount
+  227  chmod +x /etc/cron.daily/usercount
+  228  yum install syststat
+  229  yum install sysstat
+  230  history
+  231  cp /usr/lib/systemd/system/sysstat-collect.timer /etc/systemd/system/sysstat-collect.timer
+  232  vim /etc/systemd/system/sysstat-collect.timer
+  233  systemctl daemon-reload
+  234  systemctl enable --now sysstat-collect.timer
+  235  while [ $(ls /var/log/sa | wc -l) -eq 0 ]; do sleep 1s; done
+  236  ls -l /var/log/sa
+  237  ls -l /var/log
+  238  ls -l /var/log/sa
+  239  date
+  240  exit
+  241  cp /usr/lib/tmpfiles.d/tmp.conf /etc/tmpfiles.d/tmp.conf
+  242  vi /etc/tmpfiles.d/tmp.conf
+  243  systemd-tmpfiles --clean /etc/tmpfiles.d/tmp.conf
+  244  vim /etc/tmpfiles.d/momentary.conf
+  245  systemd-tmpfiles --create /etc/tmpfiles.d/momentary.conf
+  246  ls -ld /run/momentary
+  247  touch /run/momentary/testfile
+  248  sleep 30
+  249  systemd-tmpfiles --clean /etc/tmpfiles.d/momentary.conf
+  250  ls -l /run/momentary/testfile
+  251  ls -l /run/momentary/
+  252  ls -l /run/momentary/testfile
+  253  history
+  254  cd ..
+  255  ls -la
+  256  cd /home/ctambunan/TambunanShellScripting/
+  257  ls -la
+  258  vim History_of_Redhat_Fedora_Server56.txt
+  259  vim History_of_Redhat_Fedora_Server57.txt
+  260  cat History_of_Redhat_Fedora_Server57.txt
+  261  history
+  262  ls -la
+  263  cat History_of_Redhat_Fedora_Server58.txt
+  264  vim History_of_Redhat_Fedora_Server58.txt
+  265  cat History_of_Redhat_Fedora_Server57.txt
+  266  history >> History_of_Redhat_Fedora_Server58.txt
+  267  cat History_of_Redhat_Fedora_Server58.txt
+  268  ip a
+  269  history
+  270  poweroff
+  271  ls -la
+  272  history
+  273  ls -la
+  274  yum install tuned
+  275  systemctl enable --now tuned
+  276  tuned-adm active
+  277  tuned-adm list
+  278  tuned-adm profile throughput-performance
+  279  tuned-adm active
+  280  tuned-adm recommend
+  281  tuned-adm off
+  282  tuned-adm active
+  283  yum list tuned
+  284  systemctl is-enabled tuned.service ; systemctl is-active tuned.service
+  285  sudo tuned-adm list
+  286  sudo tuned-adm profile powersave
+  287  sudo tuned-adm active
+  288  history
+  289  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  290  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  291  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  292  ip a
+  293  ls -la
+  294  ps axo pid, comm, nice,cls --sort=-nice
+  295  ps axo pid,comm,nice,cls --sort=-nice
+  296  sha1sum /dev/zero & [1] 3480
+  297  sha1sum /dev/zero &
+  298  ps -o pid,comm,nice 3480
+  299  nice sha1sum /dev/zero &
+  300  ps -o pid,comm,nice 3517
+  301  nice -n 15 sha1sum &
+  302  ps -o pid,comm,nice 3521
+  303  renice -n 19 3521
+  304  renice -n 19 58645
+  305  lab tuning-procsheduling start
+  306  grep -c '^processor' /proc/cpuinfo
+  307  for i in $(seq 1 4); do sha1sum /dev/zero & done
+  308  jobs
+  309  ps u $(pgrep sha1sum)
+  310  pkill sha1sum
+  311  for i in $(seq 1 3); do sha1sum /dev/zero & done
+  312  nice -n 10 sha1sum /dev/zero &
+  313  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+  314  sudo renice -n 5 58645
+  315  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+  316  history
+  317  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  318  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  319  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  320  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  321  nano TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  322  touch man
+  323  man touch
+  324  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{61..70}.txt
+  325  ls -la TambunanShellScripting/
+  326  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  327  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  328  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  329  ls -la
+  330  ls -la TambunanShellScripting/
+  331  mv History_Redhat_Fedora_Server1*.txt TambunanShellScripting/sean_gelael/
+  332  ls -R TambunanShellScripting/sean_gelael/
+  333  ls -R
+  334  mv TambunanShellScripting/sean_gelael/History_Redhat_Fedora_Server1*.txt TambunanW/
+  335  ls -R TambunanW/
+  336  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  337  ip a
+  338  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server62.txt
+  339  poweroff
+  340  history
+  341  ip a
+  342  history
+  343  getfacl reports.txt
+  344  ls -la
+  345  getfacl my_first_cron_job.txt
+  346  ls -l my_first_cron_job.txt
+  347  mv santy_oktavia.c my_second_cron_job.txt
+  348  ls -la
+  349  getfacl .
+  350  ls -la /run/log/journal/
+  351  getfacl /run/log/journal/
+  352  ls -la /dev/
+  353  ls -la /dev/sr0
+  354  getfacl /dev/sr0
+  355  ls -la
+  356  history
+  357  ls -la
+  358  setfacl -m u:name:rX my_second_cron_job.txt
+  359  setfacl -m u:name:rw my_second_cron_job.txt
+  360  setfacl -m g:name:rw my_second_cron_job.txt
+  361  cd ~
+  362  setfacl -m u:name:rX /home/andi/
+  363  setfacl -m u:name:rX /home/andi
+  364  setfacl -m u:name:rX /home/andi/
+  365  setfacl -m u:name:rX file
+  366  ls -la
+  367  poweroff
+  368  ip a
+  369  history
+  370  ls -la
+  371  mkdir -p shares/content
+  372  ls -la
+  373  setfacl -Rm g:consultants:rwX shares/content
+  374  setfacl -Rm u:andi:rwX shares/content
+  375  setfacl -Rm g:andi:rwX shares/content
+  376  setfacl -m d:g:andi:rwx shares/content
+  377  setfacl -m d:u:andi:- shares/content
+  378  history
+  379  cd ..
+  380  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server63.txt
+  381  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  382  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  383  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  384  su - andi
+  385  history
+  386  cd /home/
+  387  ls -la
+  388  cd andi/
+  389  ls -la
+  390  cd user
+  391  cd ..
+  392  cd ctambunan/
+  393  lsa -la
+  394  ls
+  395  history
+  396   setfacl -Rm g:andi:rwX shares/content
+  397  cd ~
+  398  setfacl -Rm g:andi:rwX shares/content
+  399  setfacl -Rm u:operator1:rwX shares/content
+  400  setfacl -Rm u:andi:- /shares/content
+  401  setfacl -Rm u:andi:- shares/content
+  402  setfacl -m d:g:operator1:rwx /shares/content
+  403  setfacl -m d:g:operator1:rwx shares/content
+  404  setfacl -m d:u:andi:- /shares/content
+  405  setfacl -m d:u:andi:- shares/content
+  406  su operator2
+  407  su - andi
+  408  cd shares/content
+  409  ls -la
+  410   cat serverb-loadavg.txt
+  411   touch serverb-loadavg.txt
+  412  passwd operator1
+  413  su - operator1
+  414  touch loadavg.sh
+  415  yum install glances
+  416  glances
+  417  glances >> loadavg.sh
+  418  ls -la
+  419  cat loadavg.sh
+  420  vim loadavg.sh
+  421  touch loadavg2.sh
+  422  vim loadavg2.sh
+  423  mv loadavg2.sh loadavg.sh
+  424  cat loadavg.sh
+  425  vim loadavg.sh
+  426  rm loadavg.sh
+  427  cat loadavg2.sh
+  428  ls -la
+  429  cp loadavg2.sh loadavg1.sh
+  430  ls -la
+  431  sh loadavg2.sh
+  432  mkdir reports
+  433  echo "Test Reports" > reports/test.txt
+  434  exit
+  435  ls -la
+  436  history
+  437  ip a
+  438  history
+  439  yum update
+  440  ps axZ
+  441  systemctl start httpd.socket
+  442  systemctl start httpd
+  443  ps -zC httpd
+  444  ps -ZC httpd
+  445  ls -Z /home
+  446  ls -z /var/www
+  447  ls -Z /var/www
+  448  getenforce
+  449  setenforce
+  450  setenenforce
+  451  setenforce
+  452  setenforce 0
+  453  getenforce
+  454  setenforce Enforcing
+  455  getenforce
+  456  ls -la
+  457  history
+  458  poweroff
+  459  ip a
+  460  getenforce
+  461  vim /etc/selinux/config
+  462  systemctl reboot
+  463  getenforce
+  464  vim /etc/selinux/config
+  465  grep '^SELINUX' /etc/selinux/config
+  466  setenforce 1
+  467  getenforce
+  468  exit
+  469  sudo -
+  470  sudo -i
+  471  history
+  472  cd TambunanShellScripting/
+  473  ls -la
+  474  cat History_of_Redhat_Fedora_Server66.txt
+  475  cat History_of_Redhat_Fedora_Server65.txt
+  476  history >> History_of_Redhat_Fedora_Server66.txt
+  477  ip a
+  478  history
+  479  poweroff
+  480  mkdir /custom
+  481  echo 'This is SERVERA. ' > /custom/index.html
+  482  vim /etc/httpd/conf/httpd.conf
+  483  nano /etc/httpd/conf/httpd.conf
+  484  vim /etc/httpd/conf/httpd.conf
+  485  grep custom /etc/httpd/conf/httpd.conf
+  486  vim /etc/httpd/conf/httpd.conf
+  487  grep custom /etc/httpd/conf/httpd.conf
+  488  systemctl enable --now httpd
+  489  systemctl status httpd
+  490  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  491  restorecon -Rv /custom
+  492  exit
+  493  sudo -i
+  494  ls -la
+  495  history
+  496  cd ~
+  497  history
+  498  exit
+  499  vim /etc/httpd/conf.d/userdir.conf
+  500  grep '#UserDir' /etc/httpd/conf.d/userdir.conf
+  501  grep '^ *UserDir' /etc/httpd/conf.d/userdir.conf
+  502  systemctl enable --now httpd
+  503  mkdir ~/public_html
+  504  echo 'This is student content on Servera.' > \ ~/public_html/index.html
+  505  echo 'This is student content on SERVERA.' > \~/public_html/index.html
+  506  echo 'This is student content on SERVERA.' > ~/public_html/index.html
+  507  chmod 711 ~
+  508  getsebool -a | grep home
+  509  setsebool -P httpd_enable_homedirs on
+  510  ls -la
+  511  cd public_html/
+  512  ls -la
+  513  cat index.html
+  514  cd ..
+  515  history
+  516  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  517  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  518  less /var/log/messages
+  519  sealert -l b1c9cc8f-a953-4625-b79b-82c4f4f1fee3
+  520  SELinux is preventing /usr/sbin/httpd from getattr access on the file /custom/index.html.
+  521  less /var/log/messages
+  522  ausearch -m AVC -ts recent
+  523  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  524  exit
+  525  su -i
+  526  su i
+  527  su -i
+  528  history
+  529  cd TambunanShellScripting/
+  530  ls -la
+  531  cat History_of_Redhat_Fedora_Server67.txt
+  532  history >> History_of_Redhat_Fedora_Server67.txt
+  533  getsebool -a
+  534  setsebool httpd_enable_homedirs
+  535  getsebool httpd_enable_homedirs
+  536  setsebool httpd_enable_homedirs on
+  537  sudo setsebool httpd_enable_homedirs on
+  538  sudo semanage boolean -l | grep httpd_enable_homedirs
+  539  getsebool httpd_enable_homedirs
+  540  setsebool -P httpd_enable_homedirs on
+  541  sudo semanage boolean -l | grep httpd_enable_homedirs
+  542  sudo semanage boolean -l -C
+  543  sudo -i
+  544  history
+  545  cat History_of_Redhat_Fedora_Server69.txt
+  546  history >> History_of_Redhat_Fedora_Server69.txt
+  547  ip a
+  548  netstat -tunlp
+  549  systemctl start apache
+  550  systemctl restart apache
+  551  systemctl start httpd
+  552  netstat -tunlp
+  553  cat History_of_Redhat_Fedora_Server67.txt
+  554  cat History_of_Redhat_Fedora_Server68.txt
+  555  cat History_of_Redhat_Fedora_Server69.txt
+  556  cat History_of_Redhat_Fedora_Server70.txt
+  557  ls -la
+  558  history >> History_of_Redhat_Fedora_Server70.txt
+  559  cat History_of_Redhat_Fedora_Server70.txt
+  560  cat History_of_Redhat_Fedora_Server71.txt
+  561  touch History_of_Redhat_Fedora_Server{72..80}.txt
+  562  ls -la
+  563  parted /dev/vda print
+  564  ls /dev/
+  565  parted /dev/
+  566  ls /dev/
+  567  ls /dev/disk/
+  568  ls /dev/disk/by-label
+  569  ls /dev/disk/by-partuuid
+  570  parted /dev/nvme0 print
+  571  parted /dev/vcsa3
+  572  parted /dev/vcs1
+  573  parted /dev/vda
+  574  clear
+  575  history
+  576  cat History_of_Redhat_Fedora_Server72.txt
+  577  history >> History_of_Redhat_Fedora_Server72.txt
+  578  df
+  579  exit
+  580  ls -la
+  581  history
+  582  poweroff
+  583  history
+  584  ip a
+  585  ls -la
+  586  history
+  587  poweroff
+  588  ls -la
+  589  history
+  590  ip a
+  591  poweroff
+  592  history
+  593  ls
+  594  ip a
+  595  vgs
+  596  lvcreate -n lv_testing -L 5G fedora_fedora
+  597  lvs
+  598  lvdisplay
+  599  mkfs.ext4 /dev/fedora_fedora/lv_testing
+  600  mkdir /test
+  601  mount /dev/fedora_fedora/lv_testing /test
+  602  df -H
+  603  vi /etc/fstab
+  604  umount /test
+  605  df -H
+  606  mount -H
+  607  mount -a
+  608  df -H
+  609  vgs
+  610  history
+  611  ls -la
+  612  cd TambunanShellScripting/
+  613  ls -la
+  614  history >> History_of_Redhat_Fedora_Server76.txt
+  615  ls -la
+  616  history >> History_of_Redhat_Fedora_Server_45.txt
+  617  history >> History_of_Redhat_Fedora_Server_46.txt
+  618  history >> History_of_Redhat_Fedora_Server_47.txt
+  619  history >> History_of_Redhat_Fedora_Server_48.txt
+  620  history >> History_of_Redhat_Fedora_Server_49.txt
+  621  history >> History_of_Redhat_Fedora_Server_50.txt
+  622  ls -la
+  623  poweroff
+  624  ls -la
+  625  hostname charlestambunan
+  626  exit
+  627  ls -la
+  628  history
+  629  lvs
+  630  vgds
+  631  vgs
+  632  ip a
+  633  ipa
+  634  ipa
+  635  ip a
+  636  history
+  637  cd TambunanShellScripting/
+  638  ls -la
+  639  yum install stratisid stratis-cli
+  640  yum install stratisd stratis-cli
+  641  systemctl enable --now stratisd
+  642  dvs
+  643  vds
+  644  df -H
+  645  vgs
+  646  dvs
+  647  dv
+  648  history
+  649  ip a
+  650  lvcreate -n docker_testing -L 6G fedora_fedora
+  651  mkfs.ext4 /dev/fedora_fedora/docker_testing
+  652  mkdir dockbreak
+  653  mount /dev/fedora_fedora/docker_testing dockbreak/
+  654  lvs
+  655  df -H
+  656  stratis pool create stratispool1 /dev/mapper/fedora_fedora-docker_testing
+  657  stratis pool create stratispool1 /dev/mapper/fedora_fedora-lv_testing
+  658  udev
+  659  vgs
+  660  stratis pool list
+  661  lsblk
+  662  blkid -p /dev/nvme0n1p2
+  663  vgs
+  664  stratis pool create stratispool1 /dev/nvme0n1p2
+  665  lsblk
+  666  vgs
+  667  yum install vdo kmod-kvdo
+  668  yum install vdo
+  669  yum install kmod-kvdo
+  670  history
+  671  sudo dnf install kmod-kvdo vdo
+  672  sudo dnf update -y
+  673  cd ..
+  674  cd /home/ctambunan/TambunanShellScripting/
+  675  ls -la
+  676  history >> History_of_Redhat_Fedora_Server78.txt
+  677  ls -la
+  678  poweroff
+  679  poweroff
+  680  ls -la
+  681   nfsconf --set nfsd udp n
+  682   nfsconf --set nfsd vers2 n
+  683   nfsconf --set nfsd vers3 n
+  684  nfsconf --set nfsd tcp y
+  685  nfsconf --set nfsd vers4 y
+  686  nfsconf --set nfsd vers4.0 y
+  687  nfsconf --set nfsd vers4.1 y
+  688   nfsconf --set nfsd vers4.2 y
+  689  mkdir /mantappu
+  690  mount -t nfs serverb.lab.example.com:/shares/
+  691  public /mantappu
+  692  mount -t nfs serverb.lab.example.commount | grep public
+  693  mount | grep public
+  694  umount /mantappu
+  695  mount | grep mantappu
+  696  umount /mantappu
+  697  mount -t nfs serverb.lab.example.com:/shares/mantappu /mantappu/
+  698  mount -t nfs serverb.lab.example.com:/shares/mantappu /mantappu
+  699  mount -t nfs serverb.lab.example.com:/shares/public /mantappu
+  700  vim /etc/fstab
+  701  ls -l
+  702  ls -l /mantappu
+  703  systemctl reboot
+  704  yum install autofs
+  705  mount -t nfs \ serverb.lab.example.com:/shares/direct/external /mnt
+  706  ls -l /mnt
+  707   umount /mnt
+  708  mount -t nfs \ serverb.lab.example.com:/shares/direct/external /mantappu
+  709  vim /etc/auto.master.d/direct.autofs
+  710  vim /etc/auto.direct
+  711  mount -t nfs serverb.lab.example.com:/shares/ indirect /mnt
+  712  mount -t nfs serverb.lab.example.com:/shares/indirect /mnt
+  713   ls -l /mnt
+  714   umount /mnt
+  715  vim /etc/auto.master.d/indirect.autofs
+  716  vim /etc/auto.indirect
+  717  systemctl enable --now autofs
+  718  systemctl reboot
+  719  ls -la
+  720  ip history
+  721  history
+  722  systemctl reboot
+  723   cat /external/testing.txt
+  724  ls -l /internal
+  725  mkdir /internal
+  726  ls -l /internal/west/
+  727  cat /internal/west/README.txt
+  728  echo testing-1 > /internal/west/testing-1.txt
+  729  ls -l /internal
+  730  ls -l /internal/central
+  731  cat /internal/central/README.txt
+  732  echo testing-2 > /internal/central/testing-2.txt
+  733  cat /internal/central/testing-2.txttesting-2
+  734  cat /internal/central/testing-2.txt testing-2
+  735  ls -l /internal
+  736  ls -l /internal/east
+  737   cat /internal/east/README.txt
+  738  echo testing-3 > /internal/east/testing-3.txt
+  739  cat /internal/east/testing-3.txt
+  740   ls -l /internal
+  741  ls -l /external
+  742  history
+  743  history /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server80.txt
+  744  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server80.txt
+  745  cd /home/ctambunan/
+  746  ls -la
+  747  cd TambunanShellScripting/
+  748  ls -la
+  749  mv sean_gelael{1..5}.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  750  mv sean_gelael*.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  751  mv sean_gelael1.txt History_of_Redhat_Fedora_Server91.txt
+  752  mv sean_gelael2.txt History_of_Redhat_Fedora_Server92.txt
+  753  mv sean_gelael3.txt History_of_Redhat_Fedora_Server93.txt
+  754  mv sean_gelael4.txt History_of_Redhat_Fedora_Server94.txt
+  755  mv sean_gelael5.txt History_of_Redhat_Fedora_Server95.txt
+  756  mkdir sean_gelael{7..10}
+  757  ls -la
+  758  mv sean_gelael sean_gelael1
+  759  ls -la
+  760  mv sean_gelael sean_gelael01
+  761  mv sean_gelael1 sean_gelael01
+  762  mv sean_gelael2 sean_gelael02
+  763  mv sean_gelael3 sean_gelael03
+  764  mv sean_gelael4 sean_gelael04
+  765  mv sean_gelael5 sean_gelael05
+  766  mv sean_gelael6 sean_gelael06
+  767  mv sean_gelael7 sean_gelael07
+  768  mv sean_gelael8 sean_gelael08
+  769  mv sean_gelael9 sean_gelael09
+  770  ls -la
+  771  history >> History_of_Redhat_Fedora_Server91.txt
+  772  poweroff
+  773  ip a
+  774  history
+  775  cd TambunanShellScripting/
+  776  ls -la
+  777  poweroff
+  778  history
+  779  cd TambunanShellScripting/
+  780  ls -la
+  781  chmod 765 History_of_Redhat_Fedora_Server9*.txt
+  782  ls -la
+  783  chmod 766 History_of_Redhat_Fedora_Server9*.txt
+  784  ls -la
+  785  chmod 777 History_of_Redhat_Fedora_Server9*.txt
+  786  ls -la
+  787  poweroff
+  788  cd TambunanShellScripting/
+  789  ls -la
+  790  touch History_of_Redhat_Fedora_Server{96..100}.txt
+  791  ls -la
+  792  touch History_of_Redhat_Fedora_Server100.txt
+  793  ls -la
+  794  mv History_of_Redhat_Fedora_Server100.txt History_of_Redhat_Fedora_Server0100.txt
+  795  ls -la
+  796  mv History_of_Redhat_Fedora_Server0100.txt History_of_Redhat_Fedora_Server100.txt
+  797  ls -la
+  798  sudo yum install httpd mod_ssl
+  799  sudo bash -c \ "echo 'I am Charles Tambunan.' > /var/www/html/index.html"
+  800  sudo systemctl enable --now httpd
+  801  exit
+  802  ls -la
+  803  ip a
+  804  history
+  805  ls -la
+  806  cd TambunanShellScripting/
+  807  ls -la
+  808  history >> History_of_Redhat_Fedora_Server98.txt
+  809  ls -la
+  810  poweroff
+  811  vim TambunanShellScripting/History_of_Redhat_Fedora_Server99.txt
+  812  ls -la
+  813  ls -la TambunanShellScripting/
+  814  chmod 777 TambunanShellScripting/
+  815  ls -la TambunanShellScripting/
+  816  poweroff
+  817  git -v
+  818  sudo dnf install git-all
+  819  git -v
+  820  git -version
+  821  git --version
+  822  ssh git@gitlab.com 2fa_recovery_codes
+  823  poweroff
+  824  ip a
+  825  ls -la
+  826  cd TambunanShellScripting/
+  827  ls -la
+  828  cd ElasticSearch01/
+  829  ls -la
+  830  touch IntroductionElasticSearchDB02.txt
+  831  sudo /bin/systemctl enable elasticsearch.service
+  832  sudo systemctl start elasticsearch.service
+  833  sudo systemctl stop elasticsearch.service
+  834  sudo journalctl -f
+  835  sudo journalctl --unit elasticsearch
+  836  sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+  837  ls -la
+  838  nano IntroductionElasticSearchDB02.txt
+  839  nano IntroductionElasticSearchDB02.txt
+  840  touch IntroductionElasticSearchDB03.txt
+  841  sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+  842  curl -X GET "localhost:9200/?pretty"
+  843  GET /
+  844  curl -X GET "localhost:9200
+  845  /?pretty"
+  846  curl -X GET "localhost:9200/?pretty"
+  847  ./bin/elasticsearch
+  848  ./bin/elasticsearch -d -p elastic.pid
+  849  systemctl status elasticsearch.service
+  850  systemctl enable elasticsearch.service
+  851  systemctl restart elasticsearch.service
+  852  systemctl enable elasticsearch.service
+  853  systemctl status elasticsearch.service
+  854  nano /etc/elasticsearch/elasticsearch.yml
+  855  curl -X GET "localhost:9200/?pretty"
+  856  ls -la
+  857  mv sean_gelael1.txt IntroductionElasticSearchDB04.txt
+  858  mv sean_gelael2.txt IntroductionElasticSearchDB05.txt
+  859  mv sean_gelael3.txt IntroductionElasticSearchDB06.txt
+  860  mv sean_gelael4.txt IntroductionElasticSearchDB07.txt
+  861  mv sean_gelael5.txt IntroductionElasticSearchDB08.txt
+  862  ls -la
+  863  nano IntroductionElasticSearchDB03.txt
+  864  ls -la
+  865  mv History /home/ctambunan/
+  866  poweroff
+  867  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  868  nano /etc/yum.repos.d/
+  869  nano /etc/yum.repos.d/elasticsearch.repo
+  870  sudo dnf install --enablerepo=elasticsearch elasticsearch
+  871  ls -la
+  872  cd TambunanLogFiles/
+  873  ls -la
+  874  cd ..
+  875  ls -la
+  876  cd TambunanShellScripting/
+  877  ls -la
+  878  mv sean_gelael* ElasticDB{1..10}/
+  879  ls -la
+  880  mv sean_gelael01 ElasticSearch01
+  881  mv sean_gelael02 ElasticSearch02
+  882  mv sean_gelael03 ElasticSearch03
+  883  mv sean_gelael04 ElasticSearch04
+  884  mv sean_gelael05 ElasticSearch05
+  885  mv sean_gelael06 ElasticSearch06
+  886  mv sean_gelael07 ElasticSearch07
+  887  mv sean_gelael08 ElasticSearch08
+  888  mv sean_gelael09 ElasticSearch09
+  889  mv sean_gelael10 ElasticSearch10
+  890  ls -la
+  891  cd ElasticSearch01/
+  892  touch History >> IntroductionElasticSearchDB01.txt
+  893  nano IntroductionElasticSearchDB01.txt
+  894  history >> IntroductionElasticSearchDB01.txt
+  895  nano IntroductionElasticSearchDB01.txt
+  896  dnf search openjdk
+  897  sudo dnf install java-latest-openjdk.x86_64
+  898  java --version
+  899  sudo alternatives --config java
+  900  java --version
+  901  elastic --version
+  902  elasticsearch --version
+  903  ps -p 1
+  904  sudo chkconfig --add elasticsearch
+  905  sudo -i service elasticsearch start
+  906  systemctl daemon-reload
+  907  sudo -i service elasticsearch stop
+  908  ls -la
+  909  cd TambunanShellScripting/
+  910  ls -la
+  911  cd ElasticSearch01/
+  912  ls -la
+  913  nano IntroductionElasticSearchDB04.txt
+  914  ip a
+  915  cd ..
+  916  history >> History_of_Redhat_Fedora_Server100.txt
+  917  ls -la
+  918  curl -X GET "localhost:9200/?pretty"
+  919  exit
+  920  ls -la
+  921  exit
+  922  history
+  923  history
+  924  ls -la
+  925  cd TambunanShellScripting/
+  926  ls -la
+  927  cd ElasticSearch01/
+  928  ls -la
+  929  ls -la
+  930  history
+  931  curl -XGET 'http://localhost:9200/_nodes'
+  932  curl -XGET 'http://localhost:9200/
+  933  '
+  934  curl -XGET 'http://localhost:9200/'
+  935  history
+  936  systemctl start elasticsearch.service
+  937  systemctl enable elasticsearch.service
+  938  systemctl status elasticsearch.service
+  939  exit
+  940  history
+  941  ls -la
+  942  poweroff
+  943  ls /bin/
+  944  nano /bin/elasticsearch
+  945  nano ES_HOME/config
+  946  cd /etc/elasticsearch/
+  947  ls -la
+  948  java --version
+  949  curl http://127.0.0.1:9200
+  950  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  951  sudo dnf install kibana
+  952  sudo yum install kibana
+  953  nano /etc/yum.repos.d/kibana.repo
+  954  sudo dnf install kibana
+  955  history
+  956  systemctl status kibana
+  957  systemctl enable kibana
+  958  systemctl start kibana
+  959  systemctl status kibana
+  960  ip a
+  961  ./bin/elasticsearch
+  962  cd /bin/elasticsearch
+  963  cd /bin/
+  964  ls -la
+  965  cd /bin/elasticsearch
+  966  ip a
+  967  history
+  968  cd /etc/elasticsearch/
+  969  ls -la
+  970  nano elasticsearch.yml
+  971  ls -la
+  972  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/
+  973  cp /etc/elasticsearch/elasticsearch.yml /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  974  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+
+  975   /etc/elasticsearch/elasticsearch.yml >> /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  976  cp /etc/elasticsearch/elasticsearch.yml /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  977  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/
+  978  nano elasticsearch.yml
+  979  systemctl status elasticsearch.service
+  980  curl http://192.168.0.1:9200
+  981  nano /etc/elasticsearch/elasticsearch.yml
+  982  ip a
+  983  nano /etc/elasticsearch/elasticsearch.yml
+  984  curl http://192.168.231.130:9200
+  985  nano /etc/elasticsearch/elasticsearch.yml
+  986  nano /etc/elasticsearch/elasticsearch.yml
+  987  systemctl restart elasticsearch.service
+  988  systemctl enable elasticsearch.service
+  989  systemctl status elasticsearch.service
+  990  nano /etc/elasticsearch/elasticsearch.yml
+  991  systemctl restart elasticsearch.service
+  992  systemctl enable elasticsearch.service
+  993  systemctl status elasticsearch.service
+  994  stat /etc/systemd/system/kibana.service
+  995  ls -la
+  996  cd TambunanShellScripting/
+  997  ls -la
+  998  history
+[root@fedora 10:11:06 /home/ctambunan/TambunanShellScripting]$  curl -XGET 'http://localhost:9200/_nodes'
+curl: (7) Failed to connect to localhost port 9200 after 4 ms: Connection refused
+[root@fedora 10:11:24 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 10:12:10 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Thu 2022-01-27 18:40:29 WIB; 15h ago
+       Docs: https://www.elastic.co
+    Process: 1055 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (co>   Main PID: 1055 (code=exited, status=1/FAILURE)
+
+        CPU: 13.027s
+
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.p>Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.j>Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.ja>Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(>Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         ... 14 more
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 27 18:40:29 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Consumed 13.027s CPU time.
+
+[root@fedora 10:12:27 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+Job for elasticsearch.service failed because a timeout was exceeded.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 10:13:59 /home/ctambunan/TambunanShellScripting]$ systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+
+[root@fedora 10:14:11 /home/ctambunan/TambunanShellScripting]$
+[root@fedora 10:14:11 /home/ctambunan/TambunanShellScripting]$ systemctl start elasticsearch.service
+Job for elasticsearch.service failed because a timeout was exceeded.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 10:15:36 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: timeout) since Fri 2022-01-28 10:15:36 WIB; 2min 31s ago
+       Docs: https://www.elastic.co
+    Process: 11419 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=143)
+   Main PID: 11419 (code=exited, status=143)
+        CPU: 55.788s
+
+Jan 28 10:14:20 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:15:35 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:15:36 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:15:36 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:15:36 fedora systemd[1]: elasticsearch.service: Consumed 55.788s CPU time.
+[root@fedora 10:18:07 /home/ctambunan/TambunanShellScripting]$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+[root@fedora 10:18:23 /home/ctambunan/TambunanShellScripting]$ nano /etc/yum.repos.d/logstash.repo
+[root@fedora 10:19:38 /home/ctambunan/TambunanShellScripting]$ sudo yum install logstash
+Elastic repository for 7.x packages                                                                                         1.7 MB/s |  39 MB     00:22
+Last metadata expiration check: 0:00:49 ago on Fri 28 Jan 2022 10:20:05 AM WIB.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                             Architecture                      Version                                  Repository                             Size
+============================================================================================================================================================
+Installing:
+
+ logstash                            x86_64                            1:7.16.3-1                               kibana-7.x                            349 M
+
+Transaction Summary
+
+============================================================================================================================================================
+Install  1 Package
+
+Total download size: 349 M
+Installed size: 601 M
+Is this ok [y/N]: y
+Downloading Packages:
+
+logstash-7.16.3-x86_64.rpm                                                                                                  1.9 MB/s | 349 MB     03:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       1.9 MB/s | 349 MB     03:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Running scriptlet: logstash-1:7.16.3-1.x86_64                                                                                                         1/1
+  Installing       : logstash-1:7.16.3-1.x86_64                                                                                                         1/1
+  Running scriptlet: logstash-1:7.16.3-1.x86_64                                                                                                         1/1
+Using bundled JDK: /usr/share/logstash/jdk
+Using provided startup.options file: /etc/logstash/startup.options
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+
+/usr/share/logstash/vendor/bundle/jruby/2.5.0/gems/pleaserun-0.0.32/lib/pleaserun/platform/base.rb:112: warning: constant ::Fixnum is deprecated
+Successfully created system startup script for Logstash
+
+  Verifying        : logstash-1:7.16.3-1.x86_64                                                                                                         1/1
+
+Installed:
+  logstash-1:7.16.3-1.x86_64
+
+Complete!
+[root@fedora 10:26:05 /home/ctambunan/TambunanShellScripting]$ elasticsearch --version
+bash: elasticsearch: command not found
+[root@fedora 10:28:55 /home/ctambunan/TambunanShellScripting]$ curl -XGET 'localhost:9200'
+curl: (7) Failed to connect to localhost port 9200 after 1 ms: Connection refused
+[root@fedora 10:30:14 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 10:31:05 /home/ctambunan/TambunanShellScripting]$ curl -XGET 'localhost:9200'
+curl: (7) Failed to connect to localhost port 9200 after 0 ms: Connection refused
+[root@fedora 10:31:06 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 10:32:40 /home/ctambunan/TambunanShellScripting]$ curl -XGET 'localhost:9200'
+curl: (7) Failed to connect to localhost port 9200 after 0 ms: Connection refused
+[root@fedora 10:32:42 /home/ctambunan/TambunanShellScripting]$ curl -XGET '192.168.0.1:9200'
+
+curl: (7) Failed to connect to 192.168.0.1 port 9200 after 21044 ms: Connection refused
+[root@fedora 10:33:16 /home/ctambunan/TambunanShellScripting]$
+[root@fedora 10:33:16 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 10:33:40 /home/ctambunan/TambunanShellScripting]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:b4:a4:1a brd ff:ff:ff:ff:ff:ff
+    altname enp3s0
+    inet 192.168.231.130/24 brd 192.168.231.255 scope global dynamic noprefixroute ens160
+       valid_lft 1627sec preferred_lft 1627sec
+    inet6 fe80::20c:29ff:feb4:a41a/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+[root@fedora 10:33:43 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 10:34:12 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+Job for elasticsearch.service failed because a timeout was exceeded.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 10:36:00 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: timeout) since Fri 2022-01-28 10:36:00 WIB; 13s ago
+       Docs: https://www.elastic.co
+    Process: 12358 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=143)
+   Main PID: 12358 (code=exited, status=143)
+        CPU: 58.330s
+
+Jan 28 10:34:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:35:59 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:36:00 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:36:00 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:36:00 fedora systemd[1]: elasticsearch.service: Consumed 58.330s CPU time.
+[root@fedora 10:36:13 /home/ctambunan/TambunanShellScripting]$ sudo systemctl show elasticsearch | grep ^Timeout
+TimeoutStartUSec=1min 15s
+TimeoutStopUSec=infinity
+TimeoutAbortUSec=infinity
+TimeoutStartFailureMode=terminate
+TimeoutStopFailureMode=terminate
+TimeoutCleanUSec=infinity
+[root@fedora 10:37:55 /home/ctambunan/TambunanShellScripting]$ sudo journalctl -u elasticsearch
+Jan 26 13:44:19 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 13:45:03 fedora systemd[1]: Started Elasticsearch.
+Jan 26 13:45:12 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 13:45:15 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 13:45:15 fedora systemd[1]: elasticsearch.service: Consumed 45.995s CPU time.
+Jan 26 14:17:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:18:27 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:18:42 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:18:44 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:18:44 fedora systemd[1]: elasticsearch.service: Consumed 48.190s CPU time.
+Jan 26 14:25:01 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 14:25:43 fedora systemd[1]: Started Elasticsearch.
+Jan 26 14:33:41 fedora systemd[1]: Stopping Elasticsearch...
+Jan 26 14:33:43 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 26 14:33:43 fedora systemd[1]: Stopped Elasticsearch.
+Jan 26 14:33:43 fedora systemd[1]: elasticsearch.service: Consumed 51.990s CPU time.
+-- Boot 3941d0d654f74115b7977eb0a2b7fbbb --
+Jan 26 16:24:22 fedora systemd[1]: Starting Elasticsearch...
+Jan 26 16:25:29 fedora systemd[1]: Started Elasticsearch.
+Jan 27 16:05:00 fedora systemd[1]: Stopping Elasticsearch...
+Jan 27 16:05:11 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 27 16:05:11 fedora systemd[1]: Stopped Elasticsearch.
+Jan 27 16:05:11 fedora systemd[1]: elasticsearch.service: Consumed 3min 48.838s CPU time.
+-- Boot 8ebcea3232704b5eb35989749ce9314f --
+Jan 27 16:05:51 fedora systemd[1]: Starting Elasticsearch...
+Jan 27 16:06:52 fedora systemd[1]: Started Elasticsearch.
+Jan 27 17:01:00 fedora systemd[1]: Stopping Elasticsearch...
+Jan 27 17:01:02 fedora systemd[1]: elasticsearch.service: Deactivated successfully.
+Jan 27 17:01:02 fedora systemd[1]: Stopped Elasticsearch.
+Jan 27 17:01:02 fedora systemd[1]: elasticsearch.service: Consumed 2min 55.465s CPU time.
+Jan 27 17:01:02 fedora systemd[1]: Starting Elasticsearch...
+Jan 27 17:01:59 fedora systemd-entrypoint[4364]: ERROR: [1] bootstrap checks failed. You must address the points described in the following [1] lines befor>
+Jan 27 17:01:59 fedora systemd-entrypoint[4364]: bootstrap check failure [1] of [1]: the default discovery settings are unsuitable for production use; at l>
+Jan 27 17:01:59 fedora systemd-entrypoint[4364]: ERROR: Elasticsearch did not exit normally - check the logs at /var/log/elasticsearch/my-application.log
+Jan 27 17:01:59 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=78/CONFIG
+Jan 27 17:01:59 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 27 17:01:59 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 27 17:01:59 fedora systemd[1]: elasticsearch.service: Consumed 43.759s CPU time.
+Jan 27 17:04:15 fedora systemd[1]: Starting Elasticsearch...
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: Ma>
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 17, column 1:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     cluster.name: my-application
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 68, column 2:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      The default list of hosts is ["1 ...
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]]; nested: ParserException[while parsin>
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 17, column 1:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     cluster.name: my-application
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 68, column 2:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      The default list of hosts is ["1 ...
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: ];
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.jav>
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: Caused by: com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException: while parsing a bloc>
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 17, column 1:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     cluster.name: my-application
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 68, column 2:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      The default list of hosts is ["1 ...
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException.from(MarkedYAMLExcept>
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:359)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         ... 10 more
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: Caused by: while parsing a block mapping
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 17, column 1:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     cluster.name: my-application
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:     ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:  in 'reader', line 68, column 2:
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      The default list of hosts is ["1 ...
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:      ^
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:572)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:158)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.java:168)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:355)
+Jan 27 17:04:18 fedora systemd-entrypoint[4636]:         ... 15 more
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: Ma>
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 17, column 1:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     cluster.name: my-application
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 68, column 2:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      The default list of hosts is ["1 ...
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]]; nested: ParserException[while parsin>
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 17, column 1:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     cluster.name: my-application
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 68, column 2:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      The default list of hosts is ["1 ...
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: ];
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.jav>
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: Caused by: com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException: while parsing a bloc>
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 17, column 1:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     cluster.name: my-application
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 68, column 2:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      The default list of hosts is ["1 ...
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException.from(MarkedYAMLExcept>
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:359)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         ... 9 more
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: Caused by: while parsing a block mapping
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 17, column 1:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     cluster.name: my-application
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:     ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]: expected <block end>, but found '<scalar>'
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:  in 'reader', line 68, column 2:
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      The default list of hosts is ["1 ...
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:      ^
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:572)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:158)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.java:168)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:355)
+Jan 27 17:04:22 fedora systemd-entrypoint[4584]:         ... 14 more
+Jan 27 17:04:22 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 27 17:04:22 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 27 17:04:22 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 27 17:04:22 fedora systemd[1]: elasticsearch.service: Consumed 5.775s CPU time.
+-- Boot f27f99c5ea7b4e998461e2873dcf700f --
+Jan 27 18:39:55 fedora systemd[1]: Starting Elasticsearch...
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: Ma>
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 17, column 1:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     cluster.name: my-application
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 68, column 2:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      The default list of hosts is ["1 ...
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]]; nested: ParserException[while parsin>
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 17, column 1:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     cluster.name: my-application
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 68, column 2:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      The default list of hosts is ["1 ...
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: ];
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.jav>
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.KeyStoreCli.main(KeyStoreCli.java:33)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: Caused by: com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException: while parsing a bloc>
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 17, column 1:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     cluster.name: my-application
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 68, column 2:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      The default list of hosts is ["1 ...
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException.from(MarkedYAMLExcept>
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:359)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         ... 10 more
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: Caused by: while parsing a block mapping
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 17, column 1:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     cluster.name: my-application
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:     ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:  in 'reader', line 68, column 2:
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      The default list of hosts is ["1 ...
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:      ^
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:572)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:158)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.java:168)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:355)
+Jan 27 18:40:07 fedora systemd-entrypoint[1571]:         ... 15 more
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: Ma>
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 17, column 1:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     cluster.name: my-application
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 68, column 2:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      The default list of hosts is ["1 ...
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]]; nested: ParserException[while parsin>
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 17, column 1:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     cluster.name: my-application
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 68, column 2:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      The default list of hosts is ["1 ...
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: ];
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1168)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1139)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.jav>
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.cli.Command.main(Command.java:77)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:122)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:80)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: Caused by: com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException: while parsing a bloc>
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 17, column 1:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     cluster.name: my-application
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 68, column 2:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      The default list of hosts is ["1 ...
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  at [Source: (sun.nio.ch.ChannelInputStream); line: 61, column: 16]
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException.from(MarkedYAMLExcept>
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:359)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:685)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:654)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings.access$400(Settings.java:74)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1164)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         ... 9 more
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: Caused by: while parsing a block mapping
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 17, column 1:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     cluster.name: my-application
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:     ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]: expected <block end>, but found '<scalar>'
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:  in 'reader', line 68, column 2:
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      The default list of hosts is ["1 ...
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:      ^
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:572)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:158)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.java:168)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:355)
+Jan 27 18:40:29 fedora systemd-entrypoint[1055]:         ... 14 more
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 27 18:40:29 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 27 18:40:29 fedora systemd[1]: elasticsearch.service: Consumed 13.027s CPU time.
+Jan 28 10:12:43 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:13:59 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:13:59 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:13:59 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:13:59 fedora systemd[1]: elasticsearch.service: Consumed 50.624s CPU time.
+Jan 28 10:14:20 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:15:35 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:15:36 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:15:36 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:15:36 fedora systemd[1]: elasticsearch.service: Consumed 55.788s CPU time.
+Jan 28 10:34:44 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:35:59 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:36:00 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:36:00 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:36:00 fedora systemd[1]: elasticsearch.service: Consumed 58.330s CPU time.
+
+[root@fedora 10:42:29 /home/ctambunan/TambunanShellScripting]$ sudo mkdir /etc/systemd/system/elasticsearch.service.d
+[root@fedora 10:42:33 /home/ctambunan/TambunanShellScripting]$ echo -e "[Service]\nTimeoutStartSec=180" | sudo tee
+[Service]
+TimeoutStartSec=180
+[root@fedora 10:42:48 /home/ctambunan/TambunanShellScripting]$ sudo systemctl daemon-reload
+[root@fedora 10:42:58 /home/ctambunan/TambunanShellScripting]$ sudo systemctl show elasticsearch | grep ^Timeout
+TimeoutStartUSec=1min 15s
+TimeoutStopUSec=infinity
+TimeoutAbortUSec=infinity
+TimeoutStartFailureMode=terminate
+TimeoutStopFailureMode=terminate
+TimeoutCleanUSec=infinity
+[root@fedora 10:43:04 /home/ctambunan/TambunanShellScripting]$ sudo systemctl start elasticsearch
+
+Job for elasticsearch.service failed because a timeout was exceeded.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 10:44:28 /home/ctambunan/TambunanShellScripting]$
+[root@fedora 10:44:28 /home/ctambunan/TambunanShellScripting]$ sudo systemctl status elasticsearch
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: timeout) since Fri 2022-01-28 10:44:28 WIB; 11s ago
+       Docs: https://www.elastic.co
+    Process: 12604 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=143)
+   Main PID: 12604 (code=exited, status=143)
+        CPU: 1min 2.840s
+
+Jan 28 10:43:13 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 10:44:28 fedora systemd[1]: elasticsearch.service: start operation timed out. Terminating.
+Jan 28 10:44:28 fedora systemd[1]: elasticsearch.service: Failed with result 'timeout'.
+Jan 28 10:44:28 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 10:44:28 fedora systemd[1]: elasticsearch.service: Consumed 1min 2.840s CPU time.
+[root@fedora 10:44:40 /home/ctambunan/TambunanShellScripting]$ history
+   30  vim ThirdScript.sh
+   31  for i in {1..6}; do touch test$i.txt ; done
+   32  ls -la
+   33  ls History_of_Redhat_Fedora_Server_41.txt
+   34  ls History_of_Redhat_Fedora_Server_*
+   35  ls History_of_Redhat_Fedora_Server_??.txt
+   36  ls History_of_Redhat_Fedora_Server_?3.txt
+   37  grep History_of_Redhat_Fedora_Server_4?.txt
+   38  cat "Redhat"
+   39  echo "Redhat"
+   40  echo "Redhat" > test1.txt
+   41  cat test1.txt
+   42  echo "CentOS"
+   43  echo "CentOS" > test1.txt
+   44  cat test1.txt
+   45  echo "Redhat" >> test1.txt
+   46  CAT test1.txt
+   47  cat test1.txt
+   48  man sed
+   49  history
+   50  ls -la
+   51  ls -la
+   52  cat make_the_choice.txt
+   53  ls
+   54  ls -R
+   55  ls -lh
+   56  ls -h
+   57  ls -H
+   58  lh
+   59  ls -lh
+   60  history
+   61  history >> test2.txt
+   62  ls -la
+   63  man sed
+   64  cat History_of_Redhat_Fedora_Server_?4.txt
+   65  poweroff
+   66  ls -la
+   67  scp charlestambunan@192.168.37.133:/home/charlestambunan/charles.h /Music
+   68  history
+   69  ls -la
+   70  ls -lh TambunanShellScripting/
+   71  touch TambunanShellScripting/History_Redhat_Fedora_Server{45..50}.txt
+   72  ls -la TambunanShellScripting/
+   73  mv TambunanShellScripting/History_Redhat_Fedora_Server4*.txt History_of_Redhat_Fedora_Server{46...49}.txt
+   74  mv TambunanShellScripting/History_Redhat_Fedora_Server4*.txt History_of_Redhat_Fedora_Server46.txt
+   75  cd TambunanShellScripting/
+   76  ls -la
+   77  mv History_Redhat_Fedora_Server45.txt History_of_Redhat_Fedora_Server_45.txt
+   78  mv History_Redhat_Fedora_Server46.txt History_of_Redhat_Fedora_Server_46.txt
+   79  mv History_Redhat_Fedora_Server47.txt History_of_Redhat_Fedora_Server_48.txt
+   80  mv History_Redhat_Fedora_Server48.txt History_of_Redhat_Fedora_Server_48.txt
+   81  mv History_Redhat_Fedora_Server47.txt History_of_Redhat_Fedora_Server_47.txt
+   82  ls -la
+   83  mv History_of_Redhat_Fedora_Server_48.txt History_of_Redhat_Fedora_Server_47.txt
+   84  mv History_Redhat_Fedora_Server_48.txt History_of_Redhat_Fedora_Server_48.txt
+   85  mv History_Redhat_Fedora_Server_49.txt History_of_Redhat_Fedora_Server_49.txt
+   86  ls -la
+   87  mv History_Redhat_Fedora_Server48.txt History_of_Redhat_Fedora_Server_48.txt
+   88  mv History_Redhat_Fedora_Server49.txt History_of_Redhat_Fedora_Server_49.txt
+   89  mv History_Redhat_Fedora_Server50.txt History_of_Redhat_Fedora_Server_50.txt
+   90  ls -la
+   91  ls History_of_Redhat_Fedora_Server_4*.txt
+   92  ls -la History_of_Redhat_Fedora_Server_4*.txt
+   93  ls -lh History_of_Redhat_Fedora_Server_4*.txt
+   94  ls -lh History_of_Redhat_Fedora_Server_**.txt
+   95  grep ^s
+   96  ip a
+   97  ip a
+   98  history
+   99  ls -la
+  100  touch History_Redhat_Fedora_Server51.txt
+  101  history >> History_Redhat_Fedora_Server51.txt
+  102  cat History_Redhat_Fedora_Server51.txt
+  103  poweroff
+  104  ls -la
+  105  history
+  106  cat /etc/ethertypes
+  107  ls -la
+  108  history
+  109  cat
+  110  less /var/log/messages
+  111  ls -la
+  112  ls -la TambunanG/
+  113  ls -la TambunanShellScripting/
+  114  mv History_Redhat_Fedora_Server5*.txt TambunanShellScripting/
+  115  ls -la
+  116  ls -la TambunanShellScripting/
+  117  mv TambunanShellScripting/History_Redhat_Fedora_Server51.txt History_of_Redhat_Fedora_Server51.txt
+  118  ls -la TambunanShellScripting/
+  119  ls -la
+  120  mv History_of_Redhat_Fedora_Server51.txt TambunanShellScripting/
+  121  ls -la TambunanShellScripting/
+  122  touch TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  123  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{53...60}.txt
+  124  ls -la TambunanShellScripting/
+  125  rm TambunanShellScripting/History_of_Redhat_Fedora_Server{53..60}.txt
+  126  ls -la TambunanShellScripting/
+  127  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{53..60}.txt
+  128  ls -la TambunanShellScripting/
+  129  less /var/log/messages >> TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  130  cat >> TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  131  vim TambunanShellScripting/History_of_Redhat_Fedora_Server52.txt
+  132  sudo dnf -y update
+  133  sudo dnf -y install vim bash-completion curl wget telnet
+  134  sudo sestatus
+  135  sudo setenforce 0
+  136  sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+  137  cat /etc/selinux/config | grep SELINUX =
+  138  cat /etc/selinux/config | grep SELINUX=
+  139  sudo dnf -y install httpd
+  140  sudo dnf -y install httpd
+  141  vim /etc/httpd/conf/httpd.conf
+  142  nano /etc/httpd/conf/httpd.conf
+  143  nano /etc/httpd/conf/httpd.conf
+  144  nano /etc/httpd/conf/httpd.conf
+  145  sudo systemctl start httpd
+  146  sudo systemctl enable httpd
+  147  sudo firewall-cmd --add-service={http,https} --permanent
+  148  sudo firewall-cmd --reload
+  149  sudo dnf -y install php php-cli php-php-gettext php-mbstring php-mcrypt php-mysqlnd php-pear php-curl php-gd php-xml php-bcmath php-zip
+  150  php -v
+  151  php -m
+  152  vim /etc/php.ini
+  153  nano /etc/php.ini
+  154  sudo dnf install mariadb-server
+  155  sudo vim /etc/my.cnf.d/mariadb-server.cnf
+  156  sudo systemctl start mariadb
+  157  sudo systemctl enable mariadb
+  158  sudo mysql_secure_installation
+  159  mysql -u root -p
+  160  ls -la
+  161  history
+  162  sudo firewall-cmd --add-service=mysql --permanent
+  163  sudo firewall-cmd --reload
+  164  nano /var/www/html/phpinfo.php
+  165  sudo systemctl restart httpd
+  166  ip a
+  167  date
+  168  grep '^Mar 22 08:2.*GID' /var/log/secure
+  169   grep 'postfix' /var/log/maillog | head -n 2
+  170  grep -i 'queue' /etc/postfix/main.cf
+  171  ps aux | grep postfix
+  172  grep -e qmgr -e pickup -e cleanup /etc/postfix/master.cf
+  173  exit
+  174  ls -la
+  175  history
+  176  history
+  177  ls -la
+  178  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server53.txt
+  179  cat history TambunanShellScripting/History_of_Redhat_Fedora_Server53.txt
+  180  mkdir -p /home/student/bin/bash-lab
+  181  vim /home/student/bin/bash-lab/
+  182  vim /home/student/bin/bash-lab
+  183  rm /home/student/bin/bash-lab
+  184  rm -d /home/student/bin/bash-lab
+  185  ls -la
+  186  mkdir -p /home/student/bin
+  187  vim /home/student/bin/bash-lab.sh
+  188  chmod a+x /home/student/bin/bash-lab.sh
+  189  vim /home/student/bin/bash-lab.sh
+  190  sh /home/student/bin/bash-lab.sh
+  191  vim /home/student/bin/bash-lab.sh
+  192  sh /home/student/bin/bash-lab.sh
+  193  ip a
+  194  ls -la /home/
+  195  ls -la /home/ctambunan/
+  196  ls -la /home/ctambunan/output-servera
+  197  cat /home/ctambunan/output-servera
+  198  cat /home/ctambunan/output-serverb
+  199  cat /home/ctambunan/output-serverb
+  200  history
+  201  ls -la
+  202  cd TambunanShellScripting/
+  203  ls -la
+  204  vim History_of_Redhat_Fedora_Server54.txt
+  205  cat History_of_Redhat_Fedora_Server54.txt
+  206  history >> History_of_Redhat_Fedora_Server55.txt
+  207  poweroff
+  208  ls -la
+  209  history
+  210  atq
+  211  echo "date >> myjob.txt" | at now
+  212  atq
+  213  watch atq
+  214  cat myjob.txt
+  215  at -q g teatime
+  216  at -q b 16:05
+  217  atq
+  218  at c -2
+  219  at -c 2
+  220  at -c 3
+  221  atq
+  222  history
+  223  crontab -e
+  224  crontab -e
+  225  exit
+  226  vi /etc/cron.daily/usercount
+  227  chmod +x /etc/cron.daily/usercount
+  228  yum install syststat
+  229  yum install sysstat
+  230  history
+  231  cp /usr/lib/systemd/system/sysstat-collect.timer /etc/systemd/system/sysstat-collect.timer
+  232  vim /etc/systemd/system/sysstat-collect.timer
+  233  systemctl daemon-reload
+  234  systemctl enable --now sysstat-collect.timer
+  235  while [ $(ls /var/log/sa | wc -l) -eq 0 ]; do sleep 1s; done
+  236  ls -l /var/log/sa
+  237  ls -l /var/log
+  238  ls -l /var/log/sa
+  239  date
+  240  exit
+  241  cp /usr/lib/tmpfiles.d/tmp.conf /etc/tmpfiles.d/tmp.conf
+  242  vi /etc/tmpfiles.d/tmp.conf
+  243  systemd-tmpfiles --clean /etc/tmpfiles.d/tmp.conf
+  244  vim /etc/tmpfiles.d/momentary.conf
+  245  systemd-tmpfiles --create /etc/tmpfiles.d/momentary.conf
+  246  ls -ld /run/momentary
+  247  touch /run/momentary/testfile
+  248  sleep 30
+  249  systemd-tmpfiles --clean /etc/tmpfiles.d/momentary.conf
+  250  ls -l /run/momentary/testfile
+  251  ls -l /run/momentary/
+  252  ls -l /run/momentary/testfile
+  253  history
+  254  cd ..
+  255  ls -la
+  256  cd /home/ctambunan/TambunanShellScripting/
+  257  ls -la
+  258  vim History_of_Redhat_Fedora_Server56.txt
+  259  vim History_of_Redhat_Fedora_Server57.txt
+  260  cat History_of_Redhat_Fedora_Server57.txt
+  261  history
+  262  ls -la
+  263  cat History_of_Redhat_Fedora_Server58.txt
+  264  vim History_of_Redhat_Fedora_Server58.txt
+  265  cat History_of_Redhat_Fedora_Server57.txt
+  266  history >> History_of_Redhat_Fedora_Server58.txt
+  267  cat History_of_Redhat_Fedora_Server58.txt
+  268  ip a
+  269  history
+  270  poweroff
+  271  ls -la
+  272  history
+  273  ls -la
+  274  yum install tuned
+  275  systemctl enable --now tuned
+  276  tuned-adm active
+  277  tuned-adm list
+  278  tuned-adm profile throughput-performance
+  279  tuned-adm active
+  280  tuned-adm recommend
+  281  tuned-adm off
+  282  tuned-adm active
+  283  yum list tuned
+  284  systemctl is-enabled tuned.service ; systemctl is-active tuned.service
+  285  sudo tuned-adm list
+  286  sudo tuned-adm profile powersave
+  287  sudo tuned-adm active
+  288  history
+  289  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  290  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  291  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  292  ip a
+  293  ls -la
+  294  ps axo pid, comm, nice,cls --sort=-nice
+  295  ps axo pid,comm,nice,cls --sort=-nice
+  296  sha1sum /dev/zero & [1] 3480
+  297  sha1sum /dev/zero &
+  298  ps -o pid,comm,nice 3480
+  299  nice sha1sum /dev/zero &
+  300  ps -o pid,comm,nice 3517
+  301  nice -n 15 sha1sum &
+  302  ps -o pid,comm,nice 3521
+  303  renice -n 19 3521
+  304  renice -n 19 58645
+  305  lab tuning-procsheduling start
+  306  grep -c '^processor' /proc/cpuinfo
+  307  for i in $(seq 1 4); do sha1sum /dev/zero & done
+  308  jobs
+  309  ps u $(pgrep sha1sum)
+  310  pkill sha1sum
+  311  for i in $(seq 1 3); do sha1sum /dev/zero & done
+  312  nice -n 10 sha1sum /dev/zero &
+  313  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+  314  sudo renice -n 5 58645
+  315  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+  316  history
+  317  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  318  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  319  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+  320  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  321  nano TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  322  touch man
+  323  man touch
+  324  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{61..70}.txt
+  325  ls -la TambunanShellScripting/
+  326  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+  327  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  328  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  329  ls -la
+  330  ls -la TambunanShellScripting/
+  331  mv History_Redhat_Fedora_Server1*.txt TambunanShellScripting/sean_gelael/
+  332  ls -R TambunanShellScripting/sean_gelael/
+  333  ls -R
+  334  mv TambunanShellScripting/sean_gelael/History_Redhat_Fedora_Server1*.txt TambunanW/
+  335  ls -R TambunanW/
+  336  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+  337  ip a
+  338  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server62.txt
+  339  poweroff
+  340  history
+  341  ip a
+  342  history
+  343  getfacl reports.txt
+  344  ls -la
+  345  getfacl my_first_cron_job.txt
+  346  ls -l my_first_cron_job.txt
+  347  mv santy_oktavia.c my_second_cron_job.txt
+  348  ls -la
+  349  getfacl .
+  350  ls -la /run/log/journal/
+  351  getfacl /run/log/journal/
+  352  ls -la /dev/
+  353  ls -la /dev/sr0
+  354  getfacl /dev/sr0
+  355  ls -la
+  356  history
+  357  ls -la
+  358  setfacl -m u:name:rX my_second_cron_job.txt
+  359  setfacl -m u:name:rw my_second_cron_job.txt
+  360  setfacl -m g:name:rw my_second_cron_job.txt
+  361  cd ~
+  362  setfacl -m u:name:rX /home/andi/
+  363  setfacl -m u:name:rX /home/andi
+  364  setfacl -m u:name:rX /home/andi/
+  365  setfacl -m u:name:rX file
+  366  ls -la
+  367  poweroff
+  368  ip a
+  369  history
+  370  ls -la
+  371  mkdir -p shares/content
+  372  ls -la
+  373  setfacl -Rm g:consultants:rwX shares/content
+  374  setfacl -Rm u:andi:rwX shares/content
+  375  setfacl -Rm g:andi:rwX shares/content
+  376  setfacl -m d:g:andi:rwx shares/content
+  377  setfacl -m d:u:andi:- shares/content
+  378  history
+  379  cd ..
+  380  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server63.txt
+  381  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  382  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  383  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  384  su - andi
+  385  history
+  386  cd /home/
+  387  ls -la
+  388  cd andi/
+  389  ls -la
+  390  cd user
+  391  cd ..
+  392  cd ctambunan/
+  393  lsa -la
+  394  ls
+  395  history
+  396   setfacl -Rm g:andi:rwX shares/content
+  397  cd ~
+  398  setfacl -Rm g:andi:rwX shares/content
+  399  setfacl -Rm u:operator1:rwX shares/content
+  400  setfacl -Rm u:andi:- /shares/content
+  401  setfacl -Rm u:andi:- shares/content
+  402  setfacl -m d:g:operator1:rwx /shares/content
+  403  setfacl -m d:g:operator1:rwx shares/content
+  404  setfacl -m d:u:andi:- /shares/content
+  405  setfacl -m d:u:andi:- shares/content
+  406  su operator2
+  407  su - andi
+  408  cd shares/content
+  409  ls -la
+  410   cat serverb-loadavg.txt
+  411   touch serverb-loadavg.txt
+  412  passwd operator1
+  413  su - operator1
+  414  touch loadavg.sh
+  415  yum install glances
+  416  glances
+  417  glances >> loadavg.sh
+  418  ls -la
+  419  cat loadavg.sh
+  420  vim loadavg.sh
+  421  touch loadavg2.sh
+  422  vim loadavg2.sh
+  423  mv loadavg2.sh loadavg.sh
+  424  cat loadavg.sh
+  425  vim loadavg.sh
+  426  rm loadavg.sh
+  427  cat loadavg2.sh
+  428  ls -la
+  429  cp loadavg2.sh loadavg1.sh
+  430  ls -la
+  431  sh loadavg2.sh
+  432  mkdir reports
+  433  echo "Test Reports" > reports/test.txt
+  434  exit
+  435  ls -la
+  436  history
+  437  ip a
+  438  history
+  439  yum update
+  440  ps axZ
+  441  systemctl start httpd.socket
+  442  systemctl start httpd
+  443  ps -zC httpd
+  444  ps -ZC httpd
+  445  ls -Z /home
+  446  ls -z /var/www
+  447  ls -Z /var/www
+  448  getenforce
+  449  setenforce
+  450  setenenforce
+  451  setenforce
+  452  setenforce 0
+  453  getenforce
+  454  setenforce Enforcing
+  455  getenforce
+  456  ls -la
+  457  history
+  458  poweroff
+  459  ip a
+  460  getenforce
+  461  vim /etc/selinux/config
+  462  systemctl reboot
+  463  getenforce
+  464  vim /etc/selinux/config
+  465  grep '^SELINUX' /etc/selinux/config
+  466  setenforce 1
+  467  getenforce
+  468  exit
+  469  sudo -
+  470  sudo -i
+  471  history
+  472  cd TambunanShellScripting/
+  473  ls -la
+  474  cat History_of_Redhat_Fedora_Server66.txt
+  475  cat History_of_Redhat_Fedora_Server65.txt
+  476  history >> History_of_Redhat_Fedora_Server66.txt
+  477  ip a
+  478  history
+  479  poweroff
+  480  mkdir /custom
+  481  echo 'This is SERVERA. ' > /custom/index.html
+  482  vim /etc/httpd/conf/httpd.conf
+  483  nano /etc/httpd/conf/httpd.conf
+  484  vim /etc/httpd/conf/httpd.conf
+  485  grep custom /etc/httpd/conf/httpd.conf
+  486  vim /etc/httpd/conf/httpd.conf
+  487  grep custom /etc/httpd/conf/httpd.conf
+  488  systemctl enable --now httpd
+  489  systemctl status httpd
+  490  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  491  restorecon -Rv /custom
+  492  exit
+  493  sudo -i
+  494  ls -la
+  495  history
+  496  cd ~
+  497  history
+  498  exit
+  499  vim /etc/httpd/conf.d/userdir.conf
+  500  grep '#UserDir' /etc/httpd/conf.d/userdir.conf
+  501  grep '^ *UserDir' /etc/httpd/conf.d/userdir.conf
+  502  systemctl enable --now httpd
+  503  mkdir ~/public_html
+  504  echo 'This is student content on Servera.' > \ ~/public_html/index.html
+  505  echo 'This is student content on SERVERA.' > \~/public_html/index.html
+  506  echo 'This is student content on SERVERA.' > ~/public_html/index.html
+  507  chmod 711 ~
+  508  getsebool -a | grep home
+  509  setsebool -P httpd_enable_homedirs on
+  510  ls -la
+  511  cd public_html/
+  512  ls -la
+  513  cat index.html
+  514  cd ..
+  515  history
+  516  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  517  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  518  less /var/log/messages
+  519  sealert -l b1c9cc8f-a953-4625-b79b-82c4f4f1fee3
+  520  SELinux is preventing /usr/sbin/httpd from getattr access on the file /custom/index.html.
+  521  less /var/log/messages
+  522  ausearch -m AVC -ts recent
+  523  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  524  exit
+  525  su -i
+  526  su i
+  527  su -i
+  528  history
+  529  cd TambunanShellScripting/
+  530  ls -la
+  531  cat History_of_Redhat_Fedora_Server67.txt
+  532  history >> History_of_Redhat_Fedora_Server67.txt
+  533  getsebool -a
+  534  setsebool httpd_enable_homedirs
+  535  getsebool httpd_enable_homedirs
+  536  setsebool httpd_enable_homedirs on
+  537  sudo setsebool httpd_enable_homedirs on
+  538  sudo semanage boolean -l | grep httpd_enable_homedirs
+  539  getsebool httpd_enable_homedirs
+  540  setsebool -P httpd_enable_homedirs on
+  541  sudo semanage boolean -l | grep httpd_enable_homedirs
+  542  sudo semanage boolean -l -C
+  543  sudo -i
+  544  history
+  545  cat History_of_Redhat_Fedora_Server69.txt
+  546  history >> History_of_Redhat_Fedora_Server69.txt
+  547  ip a
+  548  netstat -tunlp
+  549  systemctl start apache
+  550  systemctl restart apache
+  551  systemctl start httpd
+  552  netstat -tunlp
+  553  cat History_of_Redhat_Fedora_Server67.txt
+  554  cat History_of_Redhat_Fedora_Server68.txt
+  555  cat History_of_Redhat_Fedora_Server69.txt
+  556  cat History_of_Redhat_Fedora_Server70.txt
+  557  ls -la
+  558  history >> History_of_Redhat_Fedora_Server70.txt
+  559  cat History_of_Redhat_Fedora_Server70.txt
+  560  cat History_of_Redhat_Fedora_Server71.txt
+  561  touch History_of_Redhat_Fedora_Server{72..80}.txt
+  562  ls -la
+  563  parted /dev/vda print
+  564  ls /dev/
+  565  parted /dev/
+  566  ls /dev/
+  567  ls /dev/disk/
+  568  ls /dev/disk/by-label
+  569  ls /dev/disk/by-partuuid
+  570  parted /dev/nvme0 print
+  571  parted /dev/vcsa3
+  572  parted /dev/vcs1
+  573  parted /dev/vda
+  574  clear
+  575  history
+  576  cat History_of_Redhat_Fedora_Server72.txt
+  577  history >> History_of_Redhat_Fedora_Server72.txt
+  578  df
+  579  exit
+  580  ls -la
+  581  history
+  582  poweroff
+  583  history
+  584  ip a
+  585  ls -la
+  586  history
+  587  poweroff
+  588  ls -la
+  589  history
+  590  ip a
+  591  poweroff
+  592  history
+  593  ls
+  594  ip a
+  595  vgs
+  596  lvcreate -n lv_testing -L 5G fedora_fedora
+  597  lvs
+  598  lvdisplay
+  599  mkfs.ext4 /dev/fedora_fedora/lv_testing
+  600  mkdir /test
+  601  mount /dev/fedora_fedora/lv_testing /test
+  602  df -H
+  603  vi /etc/fstab
+  604  umount /test
+  605  df -H
+  606  mount -H
+  607  mount -a
+  608  df -H
+  609  vgs
+  610  history
+  611  ls -la
+  612  cd TambunanShellScripting/
+  613  ls -la
+  614  history >> History_of_Redhat_Fedora_Server76.txt
+  615  ls -la
+  616  history >> History_of_Redhat_Fedora_Server_45.txt
+  617  history >> History_of_Redhat_Fedora_Server_46.txt
+  618  history >> History_of_Redhat_Fedora_Server_47.txt
+  619  history >> History_of_Redhat_Fedora_Server_48.txt
+  620  history >> History_of_Redhat_Fedora_Server_49.txt
+  621  history >> History_of_Redhat_Fedora_Server_50.txt
+  622  ls -la
+  623  poweroff
+  624  ls -la
+  625  hostname charlestambunan
+  626  exit
+  627  ls -la
+  628  history
+  629  lvs
+  630  vgds
+  631  vgs
+  632  ip a
+  633  ipa
+  634  ipa
+  635  ip a
+  636  history
+  637  cd TambunanShellScripting/
+  638  ls -la
+  639  yum install stratisid stratis-cli
+  640  yum install stratisd stratis-cli
+  641  systemctl enable --now stratisd
+  642  dvs
+  643  vds
+  644  df -H
+  645  vgs
+  646  dvs
+  647  dv
+  648  history
+  649  ip a
+  650  lvcreate -n docker_testing -L 6G fedora_fedora
+  651  mkfs.ext4 /dev/fedora_fedora/docker_testing
+  652  mkdir dockbreak
+  653  mount /dev/fedora_fedora/docker_testing dockbreak/
+  654  lvs
+  655  df -H
+  656  stratis pool create stratispool1 /dev/mapper/fedora_fedora-docker_testing
+  657  stratis pool create stratispool1 /dev/mapper/fedora_fedora-lv_testing
+  658  udev
+  659  vgs
+  660  stratis pool list
+  661  lsblk
+  662  blkid -p /dev/nvme0n1p2
+  663  vgs
+  664  stratis pool create stratispool1 /dev/nvme0n1p2
+  665  lsblk
+  666  vgs
+  667  yum install vdo kmod-kvdo
+  668  yum install vdo
+  669  yum install kmod-kvdo
+  670  history
+  671  sudo dnf install kmod-kvdo vdo
+  672  sudo dnf update -y
+  673  cd ..
+  674  cd /home/ctambunan/TambunanShellScripting/
+  675  ls -la
+  676  history >> History_of_Redhat_Fedora_Server78.txt
+  677  ls -la
+  678  poweroff
+  679  poweroff
+  680  ls -la
+  681   nfsconf --set nfsd udp n
+  682   nfsconf --set nfsd vers2 n
+  683   nfsconf --set nfsd vers3 n
+  684  nfsconf --set nfsd tcp y
+  685  nfsconf --set nfsd vers4 y
+  686  nfsconf --set nfsd vers4.0 y
+  687  nfsconf --set nfsd vers4.1 y
+  688   nfsconf --set nfsd vers4.2 y
+  689  mkdir /mantappu
+  690  mount -t nfs serverb.lab.example.com:/shares/
+  691  public /mantappu
+  692  mount -t nfs serverb.lab.example.commount | grep public
+  693  mount | grep public
+  694  umount /mantappu
+  695  mount | grep mantappu
+  696  umount /mantappu
+  697  mount -t nfs serverb.lab.example.com:/shares/mantappu /mantappu/
+  698  mount -t nfs serverb.lab.example.com:/shares/mantappu /mantappu
+  699  mount -t nfs serverb.lab.example.com:/shares/public /mantappu
+  700  vim /etc/fstab
+  701  ls -l
+  702  ls -l /mantappu
+  703  systemctl reboot
+  704  yum install autofs
+  705  mount -t nfs \ serverb.lab.example.com:/shares/direct/external /mnt
+  706  ls -l /mnt
+  707   umount /mnt
+  708  mount -t nfs \ serverb.lab.example.com:/shares/direct/external /mantappu
+  709  vim /etc/auto.master.d/direct.autofs
+  710  vim /etc/auto.direct
+  711  mount -t nfs serverb.lab.example.com:/shares/ indirect /mnt
+  712  mount -t nfs serverb.lab.example.com:/shares/indirect /mnt
+  713   ls -l /mnt
+  714   umount /mnt
+  715  vim /etc/auto.master.d/indirect.autofs
+  716  vim /etc/auto.indirect
+  717  systemctl enable --now autofs
+  718  systemctl reboot
+  719  ls -la
+  720  ip history
+  721  history
+  722  systemctl reboot
+  723   cat /external/testing.txt
+  724  ls -l /internal
+  725  mkdir /internal
+  726  ls -l /internal/west/
+  727  cat /internal/west/README.txt
+  728  echo testing-1 > /internal/west/testing-1.txt
+  729  ls -l /internal
+  730  ls -l /internal/central
+  731  cat /internal/central/README.txt
+  732  echo testing-2 > /internal/central/testing-2.txt
+  733  cat /internal/central/testing-2.txttesting-2
+  734  cat /internal/central/testing-2.txt testing-2
+  735  ls -l /internal
+  736  ls -l /internal/east
+  737   cat /internal/east/README.txt
+  738  echo testing-3 > /internal/east/testing-3.txt
+  739  cat /internal/east/testing-3.txt
+  740   ls -l /internal
+  741  ls -l /external
+  742  history
+  743  history /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server80.txt
+  744  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server80.txt
+  745  cd /home/ctambunan/
+  746  ls -la
+  747  cd TambunanShellScripting/
+  748  ls -la
+  749  mv sean_gelael{1..5}.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  750  mv sean_gelael*.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  751  mv sean_gelael1.txt History_of_Redhat_Fedora_Server91.txt
+  752  mv sean_gelael2.txt History_of_Redhat_Fedora_Server92.txt
+  753  mv sean_gelael3.txt History_of_Redhat_Fedora_Server93.txt
+  754  mv sean_gelael4.txt History_of_Redhat_Fedora_Server94.txt
+  755  mv sean_gelael5.txt History_of_Redhat_Fedora_Server95.txt
+  756  mkdir sean_gelael{7..10}
+  757  ls -la
+  758  mv sean_gelael sean_gelael1
+  759  ls -la
+  760  mv sean_gelael sean_gelael01
+  761  mv sean_gelael1 sean_gelael01
+  762  mv sean_gelael2 sean_gelael02
+  763  mv sean_gelael3 sean_gelael03
+  764  mv sean_gelael4 sean_gelael04
+  765  mv sean_gelael5 sean_gelael05
+  766  mv sean_gelael6 sean_gelael06
+  767  mv sean_gelael7 sean_gelael07
+  768  mv sean_gelael8 sean_gelael08
+  769  mv sean_gelael9 sean_gelael09
+  770  ls -la
+  771  history >> History_of_Redhat_Fedora_Server91.txt
+  772  poweroff
+  773  ip a
+  774  history
+  775  cd TambunanShellScripting/
+  776  ls -la
+  777  poweroff
+  778  history
+  779  cd TambunanShellScripting/
+  780  ls -la
+  781  chmod 765 History_of_Redhat_Fedora_Server9*.txt
+  782  ls -la
+  783  chmod 766 History_of_Redhat_Fedora_Server9*.txt
+  784  ls -la
+  785  chmod 777 History_of_Redhat_Fedora_Server9*.txt
+  786  ls -la
+  787  poweroff
+  788  cd TambunanShellScripting/
+  789  ls -la
+  790  touch History_of_Redhat_Fedora_Server{96..100}.txt
+  791  ls -la
+  792  touch History_of_Redhat_Fedora_Server100.txt
+  793  ls -la
+  794  mv History_of_Redhat_Fedora_Server100.txt History_of_Redhat_Fedora_Server0100.txt
+  795  ls -la
+  796  mv History_of_Redhat_Fedora_Server0100.txt History_of_Redhat_Fedora_Server100.txt
+  797  ls -la
+  798  sudo yum install httpd mod_ssl
+  799  sudo bash -c \ "echo 'I am Charles Tambunan.' > /var/www/html/index.html"
+  800  sudo systemctl enable --now httpd
+  801  exit
+  802  ls -la
+  803  ip a
+  804  history
+  805  ls -la
+  806  cd TambunanShellScripting/
+  807  ls -la
+  808  history >> History_of_Redhat_Fedora_Server98.txt
+  809  ls -la
+  810  poweroff
+  811  vim TambunanShellScripting/History_of_Redhat_Fedora_Server99.txt
+  812  ls -la
+  813  ls -la TambunanShellScripting/
+  814  chmod 777 TambunanShellScripting/
+  815  ls -la TambunanShellScripting/
+  816  poweroff
+  817  git -v
+  818  sudo dnf install git-all
+  819  git -v
+  820  git -version
+  821  git --version
+  822  ssh git@gitlab.com 2fa_recovery_codes
+  823  poweroff
+  824  ip a
+  825  ls -la
+  826  cd TambunanShellScripting/
+  827  ls -la
+  828  cd ElasticSearch01/
+  829  ls -la
+  830  touch IntroductionElasticSearchDB02.txt
+  831  sudo /bin/systemctl enable elasticsearch.service
+  832  sudo systemctl start elasticsearch.service
+  833  sudo systemctl stop elasticsearch.service
+  834  sudo journalctl -f
+  835  sudo journalctl --unit elasticsearch
+  836  sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+  837  ls -la
+  838  nano IntroductionElasticSearchDB02.txt
+  839  nano IntroductionElasticSearchDB02.txt
+  840  touch IntroductionElasticSearchDB03.txt
+  841  sudo journalctl --unit elasticsearch --since  "2016-10-30 18:17:16"
+  842  curl -X GET "localhost:9200/?pretty"
+  843  GET /
+  844  curl -X GET "localhost:9200
+  845  /?pretty"
+  846  curl -X GET "localhost:9200/?pretty"
+  847  ./bin/elasticsearch
+  848  ./bin/elasticsearch -d -p elastic.pid
+  849  systemctl status elasticsearch.service
+  850  systemctl enable elasticsearch.service
+  851  systemctl restart elasticsearch.service
+  852  systemctl enable elasticsearch.service
+  853  systemctl status elasticsearch.service
+  854  nano /etc/elasticsearch/elasticsearch.yml
+  855  curl -X GET "localhost:9200/?pretty"
+  856  ls -la
+  857  mv sean_gelael1.txt IntroductionElasticSearchDB04.txt
+  858  mv sean_gelael2.txt IntroductionElasticSearchDB05.txt
+  859  mv sean_gelael3.txt IntroductionElasticSearchDB06.txt
+  860  mv sean_gelael4.txt IntroductionElasticSearchDB07.txt
+  861  mv sean_gelael5.txt IntroductionElasticSearchDB08.txt
+  862  ls -la
+  863  nano IntroductionElasticSearchDB03.txt
+  864  ls -la
+  865  mv History /home/ctambunan/
+  866  poweroff
+  867  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  868  nano /etc/yum.repos.d/
+  869  nano /etc/yum.repos.d/elasticsearch.repo
+  870  sudo dnf install --enablerepo=elasticsearch elasticsearch
+  871  ls -la
+  872  cd TambunanLogFiles/
+  873  ls -la
+  874  cd ..
+  875  ls -la
+  876  cd TambunanShellScripting/
+  877  ls -la
+  878  mv sean_gelael* ElasticDB{1..10}/
+  879  ls -la
+  880  mv sean_gelael01 ElasticSearch01
+  881  mv sean_gelael02 ElasticSearch02
+  882  mv sean_gelael03 ElasticSearch03
+  883  mv sean_gelael04 ElasticSearch04
+  884  mv sean_gelael05 ElasticSearch05
+  885  mv sean_gelael06 ElasticSearch06
+  886  mv sean_gelael07 ElasticSearch07
+  887  mv sean_gelael08 ElasticSearch08
+  888  mv sean_gelael09 ElasticSearch09
+  889  mv sean_gelael10 ElasticSearch10
+  890  ls -la
+  891  cd ElasticSearch01/
+  892  touch History >> IntroductionElasticSearchDB01.txt
+  893  nano IntroductionElasticSearchDB01.txt
+  894  history >> IntroductionElasticSearchDB01.txt
+  895  nano IntroductionElasticSearchDB01.txt
+  896  dnf search openjdk
+  897  sudo dnf install java-latest-openjdk.x86_64
+  898  java --version
+  899  sudo alternatives --config java
+  900  java --version
+  901  elastic --version
+  902  elasticsearch --version
+  903  ps -p 1
+  904  sudo chkconfig --add elasticsearch
+  905  sudo -i service elasticsearch start
+  906  systemctl daemon-reload
+  907  sudo -i service elasticsearch stop
+  908  ls -la
+  909  cd TambunanShellScripting/
+  910  ls -la
+  911  cd ElasticSearch01/
+  912  ls -la
+  913  nano IntroductionElasticSearchDB04.txt
+  914  ip a
+  915  cd ..
+  916  history >> History_of_Redhat_Fedora_Server100.txt
+  917  ls -la
+  918  curl -X GET "localhost:9200/?pretty"
+  919  exit
+  920  ls -la
+  921  exit
+  922  history
+  923  history
+  924  ls -la
+  925  cd TambunanShellScripting/
+  926  ls -la
+  927  cd ElasticSearch01/
+  928  ls -la
+  929  ls -la
+  930  history
+  931  curl -XGET 'http://localhost:9200/_nodes'
+  932  curl -XGET 'http://localhost:9200/
+  933  '
+  934  curl -XGET 'http://localhost:9200/'
+  935  history
+  936  systemctl start elasticsearch.service
+  937  systemctl enable elasticsearch.service
+  938  systemctl status elasticsearch.service
+  939  exit
+  940  history
+  941  ls -la
+  942  poweroff
+  943  ls /bin/
+  944  nano /bin/elasticsearch
+  945  nano ES_HOME/config
+  946  cd /etc/elasticsearch/
+  947  ls -la
+  948  java --version
+  949  curl http://127.0.0.1:9200
+  950  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  951  sudo dnf install kibana
+  952  sudo yum install kibana
+  953  nano /etc/yum.repos.d/kibana.repo
+  954  sudo dnf install kibana
+  955  history
+  956  systemctl status kibana
+  957  systemctl enable kibana
+  958  systemctl start kibana
+  959  systemctl status kibana
+  960  ip a
+  961  ./bin/elasticsearch
+  962  cd /bin/elasticsearch
+  963  cd /bin/
+  964  ls -la
+  965  cd /bin/elasticsearch
+  966  ip a
+  967  history
+  968  cd /etc/elasticsearch/
+  969  ls -la
+  970  nano elasticsearch.yml
+  971  ls -la
+  972  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/
+  973  cp /etc/elasticsearch/elasticsearch.yml /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  974  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  975   /etc/elasticsearch/elasticsearch.yml >> /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  976  cp /etc/elasticsearch/elasticsearch.yml /home/ctambunan/TambunanShellScripting/ElasticSearch01/IntroductionElasticSearchDB07.txt
+  977  ls -la /home/ctambunan/TambunanShellScripting/ElasticSearch01/
+  978  nano elasticsearch.yml
+  979  systemctl status elasticsearch.service
+  980  curl http://192.168.0.1:9200
+  981  nano /etc/elasticsearch/elasticsearch.yml
+  982  ip a
+  983  nano /etc/elasticsearch/elasticsearch.yml
+  984  curl http://192.168.231.130:9200
+  985  nano /etc/elasticsearch/elasticsearch.yml
+  986  nano /etc/elasticsearch/elasticsearch.yml
+  987  systemctl restart elasticsearch.service
+  988  systemctl enable elasticsearch.service
+  989  systemctl status elasticsearch.service
+  990  nano /etc/elasticsearch/elasticsearch.yml
+  991  systemctl restart elasticsearch.service
+  992  systemctl enable elasticsearch.service
+  993  systemctl status elasticsearch.service
+  994  stat /etc/systemd/system/kibana.service
+  995  ls -la
+  996  cd TambunanShellScripting/
+  997  ls -la
+  998  history
+  999   curl -XGET 'http://localhost:9200/_nodes'
+ 1000  nano /etc/elasticsearch/elasticsearch.yml
+ 1001  systemctl status elasticsearch.service
+ 1002  systemctl restart elasticsearch.service
+ 1003  systemctl enable elasticsearch.service
+ 1004  systemctl start elasticsearch.service
+ 1005  systemctl status elasticsearch.service
+ 1006  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+ 1007  nano /etc/yum.repos.d/logstash.repo
+ 1008  sudo yum install logstash
+ 1009  elasticsearch --version
+ 1010  curl -XGET 'localhost:9200'
+ 1011  nano /etc/elasticsearch/elasticsearch.yml
+ 1012  curl -XGET 'localhost:9200'
+ 1013  nano /etc/elasticsearch/elasticsearch.yml
+ 1014  curl -XGET 'localhost:9200'
+ 1015  curl -XGET '192.168.0.1:9200'
+ 1016  nano /etc/elasticsearch/elasticsearch.yml
+ 1017  ip a
+ 1018  nano /etc/elasticsearch/elasticsearch.yml
+ 1019  systemctl restart elasticsearch.service
+ 1020  systemctl status elasticsearch.service
+ 1021  sudo systemctl show elasticsearch | grep ^Timeout
+ 1022  sudo journalctl -u elasticsearch
+ 1023  sudo mkdir /etc/systemd/system/elasticsearch.service.d
+ 1024  echo -e "[Service]\nTimeoutStartSec=180" | sudo tee
+ 1025  sudo systemctl daemon-reload
+ 1026  sudo systemctl show elasticsearch | grep ^Timeout
+ 1027  sudo systemctl start elasticsearch
+ 1028  sudo systemctl status elasticsearch
+ 1029  history
+[root@fedora 10:46:34 /home/ctambunan/TambunanShellScripting]$ client_loop: send disconnect: Connection reset
+PS D:\> ssh ctambunan@192.168.231.130
+ctambunan@192.168.231.130's password:
+Web console: https://fedora:9090/ or https://192.168.231.130:9090/
+
+Last login: Fri Jan 28 10:10:02 2022 from 192.168.231.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 11:10:24 /home/ctambunan]$ poweroff
+[root@fedora 11:10:27 /home/ctambunan]$ Connection to 192.168.231.130 closed by remote host.
+Connection to 192.168.231.130 closed.
+PS D:\>
+

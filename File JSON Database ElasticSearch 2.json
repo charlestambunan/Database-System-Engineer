@@ -1,0 +1,100 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+# What is a Mapping ?
+
+PUT /my_index/_doc/1
+{
+"username": "kimchy",
+"comment": "Search is something that any application should have",
+"details": {
+"created_at": "2010-04-23T15:48:50",
+"visibility": "public",
+"employee": true
+}
+}
+
+#Analysis and the Inverted Index
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"content": "ingest nodes"
+}
+}
+}
+
+PUT comments/_doc/20
+{
+"comment": "I like Elasticsearch!"
+}
+
+GET _analyze
+{
+"analyzer": "simple",
+"text": "How to configure ingest nodes?"
+}
+
+PUT blogs_test2
+{
+"settings": {
+"analysis": {
+"filter": {
+"my_stopwords": {
+"type": "stop",
+"stopwords": ["to", "and", "or", "is", "the"]
+}
+},
+"analyzer": {
+"my_content_analyzer": {
+"type": "custom",
+"char_filter": [],
+"tokenizer": "standard",
+"filter": ["lowercase","my_stopwords"]
+}
+}
+}
+}
+}
+
+
+GET blogs/_search
+{
+"query": {
+"match": {
+"id": "1"
+}
+}
+}
+GET blogs/_search
+{
+"query": {
+"bool": {
+"filter": {
+"match": {
+"author.keyword": "Charles"
+}
+}
+}
+}
+}
+
+PUT blogs_temp/_doc/1
+{
+"date": "December 22, 2017",
+"author": "Firstname Lastname",
+"title": "Elastic Advent Calendar 2017, Week 3",
+"seo_title": "A Good SEO Title",
+"url": "/blog/some-url",
+"content": "blog content",
+"locales": "ja-jp",
+"@timestamp": "2017-12-22T07:00:00.000Z",
+"category": "Engineering"
+}
+
+GET blogs_temp/_mapping

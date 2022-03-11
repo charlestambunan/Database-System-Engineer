@@ -1,0 +1,10 @@
+Requirement :
+- IP Address seluruh komponen ELK
+- port yg dipakai setiap komponen ELK
+- Storage untuk Master + Data Node berdasarkan size log per hari yang akan dikirim dan retention log untuk penyimpanan log
+- node.name tiap node ELK
+- cluster.name untuk cluster elasticsearch
+- built-in user (user elastic, dll) passwordnya
+- certificate yg dipakai, apakah disediakan dari astralife atau self-signed
+- RBAC kibana setiap divisi nya
+- sample log dari log yang akan dikirimkan ke elasticsearch untuk kebutuhan filtering jika dibutuhkan

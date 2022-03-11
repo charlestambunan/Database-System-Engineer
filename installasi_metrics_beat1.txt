@@ -1,0 +1,36 @@
+Install Metricbeat on the same server as Elasticsearch
+
+Follow these instructions.(opens in a new tab or window)
+
+Step 22
+Enable and configure the Elasticsearch x-pack module in Metricbeat
+
+From the installation directory, run:
+
+metricbeat modules enable elasticsearch-xpack
+
+By default the module collects Elasticsearch metrics from http://localhost:9200. If the local server has a different address, add it to the hosts setting in modules.d/elasticsearch-xpack.yml.
+
+If security is enabled, additional setup(opens in a new tab or window) might be required.
+Step 33
+Configure Metricbeat to send data to the monitoring cluster
+
+Modify metricbeat.yml to set the connection information.
+output.elasticsearch:
+  hosts: ["http://localhost:9200"] ## Monitoring cluster
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
+
+If security is enabled, additional setup(opens in a new tab or window) might be required.
+Step 44
+Start Metricbeat
+
+Follow these instructions.(opens in a new tab or window)
+
+Step 5 is incomplete5
+Monitoring status
+
+No monitoring data detected, but we’ll continue checking.

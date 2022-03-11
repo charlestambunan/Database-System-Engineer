@@ -1,0 +1,42 @@
+    1  sudo dnf install cockpit
+    2  sudo systemctl enable --now cockpit.socket
+    3  sudo firewall-cmd --add-service=cockpit
+    4  sudo firewall-cmd --add-service=cockpit --permanent
+    5  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    6  sudo dnf upgrade
+    7  sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"
+    8  sudo yum update
+    9  sudo yum install snapd
+   10  sudo systemctl enable --now snapd.socket
+   11  sudo ln -s /var/lib/snapd/snap /snap
+   12  sudo snap install firefox
+   13  snap install firefox
+   14  vi /etc/yum.repos.d/google-chrome.repo
+   15  yum info google-chrome-stable
+   16  yum install google-chrome-stable
+   17  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+   18  nano /etc/yum.repos.d/elasticsearch.repo
+   19  sudo dnf install --enablerepo=elasticsearch elasticsearch 
+   20  ps -p 1
+   21  sudo chkconfig --add elasticsearch
+   22  sudo -i service elasticsearch start
+   23  sudo -i service elasticsearch stop
+   24  sudo systemctl start elasticsearch.service
+   25  dnf search openjdk
+   26  sudo dnf install java-latest-openjdk.x86_64
+   27  sudo alternatives --config java
+   28  java --version
+   29  sudo vim /etc/elasticsearch/elasticsearch.yml
+   30  sudo nano /etc/elasticsearch/elasticsearch.yml
+   31  sudo reboot
+   32  ip a
+   33  ls -la
+   34  cd Documents/
+   35  ls -la
+   36  mkdir ELK
+   37  nano installasi_metrics_beat.txt
+   38  ls -la
+   39  cd ELK
+   40  ls -la
+   41  nano installasi_metrics_beat3.txt
+   42  history >> installasi_metrics_beat3.txt 

@@ -1,0 +1,1075 @@
+PowerShell 7.2.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Wed Feb  9 09:31:37 2022
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 10:57:41 /home/ctambunan]$ ls -la
+total 136
+drwx------. 14 ctambunan ctambunan  4096 Jan 13 16:05 .
+drwxr-xr-x.  9 root      root        130 Jan 12 11:13 ..
+-rw-------.  1 ctambunan ctambunan  1216 Feb  2 13:29 .bash_history
+-rw-r--r--.  1 ctambunan ctambunan    18 Jul 22  2021 .bash_logout
+-rw-r--r--.  1 ctambunan ctambunan   141 Jul 22  2021 .bash_profile
+-rw-r--r--.  1 ctambunan ctambunan   492 Jul 22  2021 .bashrc
+-rw-r--r--.  1 root      root       1083 Jan  7 13:09 charles.h
+drwxr-xr-x.  2 root      root         25 Jan  4 09:42 charles_tambunan
+-rw-r--r--.  1 root      root        583 Jan  7 13:11 charles.tar
+-rw-r--r--.  1 root      root        583 Jan  7 13:10 charles.tar.gz
+-rw-r--r--.  1 root      root         20 Jan 13 16:05 cookies.txt
+drwxr-xr-x.  2 root      root         64 Jan  4 12:04 dongan
+-rw-r--r--.  1 ctambunan ctambunan 19966 Jan  7 17:02 history
+-rw-r--r--.  1 root      root          0 Jan  5 06:55 konyolmsg
+-rw-------.  1 ctambunan ctambunan    20 Jan  7 16:57 .lesshst
+-rw-r--r--.  1 root      root          0 Jan 13 11:38 man
+-rw-r--r--.  1 root      root          0 Jan 12 17:34 my_first_cron_job.txt
+-rw-r--r--.  1 root      root         32 Jan 12 16:30 myjob.txt
+-rw-r--r--.  1 root      root       1083 Jan  7 13:15 my_second_cron_job.txt
+-rw-r--r--.  1 root      root         24 Jan 12 11:22 output-servera
+-rw-r--r--.  1 root      root          0 Jan 12 11:22 output-serverb
+-rw-r--r--.  1 root      root       1035 Jan 10 11:04 output.txt
+-rw-r--r--.  1 root      root      20168 Jan  5 06:43 passwd.ps
+drwx------.  2 ctambunan ctambunan    71 Jan  7 17:00 .ssh
+drwxr-xr-x.  2 root      root          6 Jan  8 09:16 TambunanG
+drwxr-xr-x.  2 root      root         86 Jan  6 17:20 TambunanH
+drwxr-xr-x.  2 root      root       4096 Jan  8 09:18 TambunanJ
+drwxr-xr-x.  2 root      root       4096 Jan  7 17:53 TambunanLogFiles
+drwxrwxrwx. 15 root      root       8192 Jan 27 11:49 TambunanShellScripting
+drwxr-xr-x.  4 root      root       4096 Jan 13 11:52 TambunanW
+drwxr-xr-x.  7 root      root        139 Jan  5 07:41 TambunanX
+drwxr-xr-x.  5 root      root       4096 Jan  5 15:05 TambunanY
+drwxr-xr-x.  2 root      root         95 Jan  5 18:47 TambunanZ
+-rw-r--r--.  1 root      root         13 Jan 13 16:00 tea.txt
+-rw-------.  1 ctambunan ctambunan  1087 Jan  5 15:05 .viminfo
+-rw-r--r--.  1 root      root        166 Jan  4 09:32 zcat
+[root@fedora 10:57:43 /home/ctambunan]$ history
+    1  history
+    2  cd ..
+    3  ls -la
+    4  cd /home/ctambunan/TambunanShellScripting/
+    5  ls -la
+    6  vim History_of_Redhat_Fedora_Server56.txt
+    7  vim History_of_Redhat_Fedora_Server57.txt
+    8  cat History_of_Redhat_Fedora_Server57.txt
+    9  history
+   10  ls -la
+   11  cat History_of_Redhat_Fedora_Server58.txt
+   12  vim History_of_Redhat_Fedora_Server58.txt
+   13  cat History_of_Redhat_Fedora_Server57.txt
+   14  history >> History_of_Redhat_Fedora_Server58.txt
+   15  cat History_of_Redhat_Fedora_Server58.txt
+   16  ip a
+   17  history
+   18  poweroff
+   19  ls -la
+   20  history
+   21  ls -la
+   22  yum install tuned
+   23  systemctl enable --now tuned
+   24  tuned-adm active
+   25  tuned-adm list
+   26  tuned-adm profile throughput-performance
+   27  tuned-adm active
+   28  tuned-adm recommend
+   29  tuned-adm off
+   30  tuned-adm active
+   31  yum list tuned
+   32  systemctl is-enabled tuned.service ; systemctl is-active tuned.service
+   33  sudo tuned-adm list
+   34  sudo tuned-adm profile powersave
+   35  sudo tuned-adm active
+   36  history
+   37  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+   38  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+   39  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+   40  ip a
+   41  ls -la
+   42  ps axo pid, comm, nice,cls --sort=-nice
+   43  ps axo pid,comm,nice,cls --sort=-nice
+   44  sha1sum /dev/zero & [1] 3480
+   45  sha1sum /dev/zero &
+   46  ps -o pid,comm,nice 3480
+   47  nice sha1sum /dev/zero &
+   48  ps -o pid,comm,nice 3517
+   49  nice -n 15 sha1sum &
+   50  ps -o pid,comm,nice 3521
+   51  renice -n 19 3521
+   52  renice -n 19 58645
+   53  lab tuning-procsheduling start
+   54  grep -c '^processor' /proc/cpuinfo
+   55  for i in $(seq 1 4); do sha1sum /dev/zero & done
+   56  jobs
+   57  ps u $(pgrep sha1sum)
+   58  pkill sha1sum
+   59  for i in $(seq 1 3); do sha1sum /dev/zero & done
+   60  nice -n 10 sha1sum /dev/zero &
+   61  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+   62  sudo renice -n 5 58645
+   63  ps -o pid,pcpu,nice,comm $(pgrep sha1sum)
+   64  history
+   65  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+   66  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+   67  cat TambunanShellScripting/History_of_Redhat_Fedora_Server59.txt
+   68  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+   69  nano TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+   70  touch man
+   71  man touch
+   72  touch TambunanShellScripting/History_of_Redhat_Fedora_Server{61..70}.txt
+   73  ls -la TambunanShellScripting/
+   74  cat TambunanShellScripting/History_of_Redhat_Fedora_Server60.txt
+   75  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+   76  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+   77  ls -la
+   78  ls -la TambunanShellScripting/
+   79  mv History_Redhat_Fedora_Server1*.txt TambunanShellScripting/sean_gelael/
+   80  ls -R TambunanShellScripting/sean_gelael/
+   81  ls -R
+   82  mv TambunanShellScripting/sean_gelael/History_Redhat_Fedora_Server1*.txt TambunanW/
+   83  ls -R TambunanW/
+   84  cat TambunanShellScripting/History_of_Redhat_Fedora_Server61.txt
+   85  ip a
+   86  history >> TambunanShellScripting/History_of_Redhat_Fedora_Server62.txt
+   87  poweroff
+   88  history
+   89  ip a
+   90  history
+   91  getfacl reports.txt
+   92  ls -la
+   93  getfacl my_first_cron_job.txt
+   94  ls -l my_first_cron_job.txt
+   95  mv santy_oktavia.c my_second_cron_job.txt
+   96  ls -la
+   97  getfacl .
+   98  ls -la /run/log/journal/
+   99  getfacl /run/log/journal/
+  100  ls -la /dev/
+  101  ls -la /dev/sr0
+  102  getfacl /dev/sr0
+  103  ls -la
+  104  history
+  105  ls -la
+  106  setfacl -m u:name:rX my_second_cron_job.txt
+  107  setfacl -m u:name:rw my_second_cron_job.txt
+  108  setfacl -m g:name:rw my_second_cron_job.txt
+  109  cd ~
+  110  setfacl -m u:name:rX /home/andi/
+  111  setfacl -m u:name:rX /home/andi
+  112  setfacl -m u:name:rX /home/andi/
+  113  setfacl -m u:name:rX file
+  114  ls -la
+  115  poweroff
+  116  ip a
+  117  history
+  118  ls -la
+  119  mkdir -p shares/content
+  120  ls -la
+  121  setfacl -Rm g:consultants:rwX shares/content
+  122  setfacl -Rm u:andi:rwX shares/content
+  123  setfacl -Rm g:andi:rwX shares/content
+  124  setfacl -m d:g:andi:rwx shares/content
+  125  setfacl -m d:u:andi:- shares/content
+  126  history
+  127  cd ..
+  128  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server63.txt
+  129  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  130  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  131  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server64.txt
+  132  su - andi
+  133  history
+  134  cd /home/
+  135  ls -la
+  136  cd andi/
+  137  ls -la
+  138  cd user
+  139  cd ..
+  140  cd ctambunan/
+  141  lsa -la
+  142  ls
+  143  history
+  144   setfacl -Rm g:andi:rwX shares/content
+  145  cd ~
+  146  setfacl -Rm g:andi:rwX shares/content
+  147  setfacl -Rm u:operator1:rwX shares/content
+  148  setfacl -Rm u:andi:- /shares/content
+  149  setfacl -Rm u:andi:- shares/content
+  150  setfacl -m d:g:operator1:rwx /shares/content
+  151  setfacl -m d:g:operator1:rwx shares/content
+  152  setfacl -m d:u:andi:- /shares/content
+  153  setfacl -m d:u:andi:- shares/content
+  154  su operator2
+  155  su - andi
+  156  cd shares/content
+  157  ls -la
+  158   cat serverb-loadavg.txt
+  159   touch serverb-loadavg.txt
+  160  passwd operator1
+  161  su - operator1
+  162  touch loadavg.sh
+  163  yum install glances
+  164  glances
+  165  glances >> loadavg.sh
+  166  ls -la
+  167  cat loadavg.sh
+  168  vim loadavg.sh
+  169  touch loadavg2.sh
+  170  vim loadavg2.sh
+  171  mv loadavg2.sh loadavg.sh
+  172  cat loadavg.sh
+  173  vim loadavg.sh
+  174  rm loadavg.sh
+  175  cat loadavg2.sh
+  176  ls -la
+  177  cp loadavg2.sh loadavg1.sh
+  178  ls -la
+  179  sh loadavg2.sh
+  180  mkdir reports
+  181  echo "Test Reports" > reports/test.txt
+  182  exit
+  183  ls -la
+  184  history
+  185  ip a
+  186  history
+  187  yum update
+  188  ps axZ
+  189  systemctl start httpd.socket
+  190  systemctl start httpd
+  191  ps -zC httpd
+  192  ps -ZC httpd
+  193  ls -Z /home
+  194  ls -z /var/www
+  195  ls -Z /var/www
+  196  getenforce
+  197  setenforce
+  198  setenenforce
+  199  setenforce
+  200  setenforce 0
+  201  getenforce
+  202  setenforce Enforcing
+  203  getenforce
+  204  ls -la
+  205  history
+  206  poweroff
+  207  ip a
+  208  getenforce
+  209  vim /etc/selinux/config
+  210  systemctl reboot
+  211  getenforce
+  212  vim /etc/selinux/config
+  213  grep '^SELINUX' /etc/selinux/config
+  214  setenforce 1
+  215  getenforce
+  216  exit
+  217  sudo -
+  218  sudo -i
+  219  history
+  220  cd TambunanShellScripting/
+  221  ls -la
+  222  cat History_of_Redhat_Fedora_Server66.txt
+  223  cat History_of_Redhat_Fedora_Server65.txt
+  224  history >> History_of_Redhat_Fedora_Server66.txt
+  225  ip a
+  226  history
+  227  poweroff
+  228  mkdir /custom
+  229  echo 'This is SERVERA. ' > /custom/index.html
+  230  vim /etc/httpd/conf/httpd.conf
+  231  nano /etc/httpd/conf/httpd.conf
+  232  vim /etc/httpd/conf/httpd.conf
+  233  grep custom /etc/httpd/conf/httpd.conf
+  234  vim /etc/httpd/conf/httpd.conf
+  235  grep custom /etc/httpd/conf/httpd.conf
+  236  systemctl enable --now httpd
+  237  systemctl status httpd
+  238  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  239  restorecon -Rv /custom
+  240  exit
+  241  sudo -i
+  242  ls -la
+  243  history
+  244  cd ~
+  245  history
+  246  exit
+  247  vim /etc/httpd/conf.d/userdir.conf
+  248  grep '#UserDir' /etc/httpd/conf.d/userdir.conf
+  249  grep '^ *UserDir' /etc/httpd/conf.d/userdir.conf
+  250  systemctl enable --now httpd
+  251  mkdir ~/public_html
+  252  echo 'This is student content on Servera.' > \ ~/public_html/index.html
+  253  echo 'This is student content on SERVERA.' > \~/public_html/index.html
+  254  echo 'This is student content on SERVERA.' > ~/public_html/index.html
+  255  chmod 711 ~
+  256  getsebool -a | grep home
+  257  setsebool -P httpd_enable_homedirs on
+  258  ls -la
+  259  cd public_html/
+  260  ls -la
+  261  cat index.html
+  262  cd ..
+  263  history
+  264  cat /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  265  history >> /home/ctambunan/TambunanShellScripting/History_of_Redhat_Fedora_Server68.txt
+  266  less /var/log/messages
+  267  sealert -l b1c9cc8f-a953-4625-b79b-82c4f4f1fee3
+  268  SELinux is preventing /usr/sbin/httpd from getattr access on the file /custom/index.html.
+  269  less /var/log/messages
+  270  ausearch -m AVC -ts recent
+  271  semanage fcontext -a -t httpd_sys_content_t '/custom(/.*)?'
+  272  exit
+  273  su -i
+  274  su i
+  275  su -i
+  276  history
+  277  cd TambunanShellScripting/
+  278  ls -la
+  279  cat History_of_Redhat_Fedora_Server67.txt
+  280  history >> History_of_Redhat_Fedora_Server67.txt
+  281  getsebool -a
+  282  setsebool httpd_enable_homedirs
+  283  getsebool httpd_enable_homedirs
+  284  setsebool httpd_enable_homedirs on
+  285  sudo setsebool httpd_enable_homedirs on
+  286  sudo semanage boolean -l | grep httpd_enable_homedirs
+  287  getsebool httpd_enable_homedirs
+  288  setsebool -P httpd_enable_homedirs on
+  289  sudo semanage boolean -l | grep httpd_enable_homedirs
+  290  sudo semanage boolean -l -C
+  291  sudo -i
+  292  history
+  293  cat History_of_Redhat_Fedora_Server69.txt
+  294  history >> History_of_Redhat_Fedora_Server69.txt
+  295  ip a
+  296  netstat -tunlp
+  297  systemctl start apache
+  298  systemctl restart apache
+  299  systemctl start httpd
+  300  netstat -tunlp
+  301  cat History_of_Redhat_Fedora_Server67.txt
+  302  cat History_of_Redhat_Fedora_Server68.txt
+  303  cat History_of_Redhat_Fedora_Server69.txt
+  304  cat History_of_Redhat_Fedora_Server70.txt
+  305  ls -la
+  306  history >> History_of_Redhat_Fedora_Server70.txt
+  307  cat History_of_Redhat_Fedora_Server70.txt
+  308  cat History_of_Redhat_Fedora_Server71.txt
+  309  touch History_of_Redhat_Fedora_Server{72..80}.txt
+  310  ls -la
+  311  parted /dev/vda print
+  312  ls /dev/
+  313  parted /dev/
+  314  ls /dev/
+  315  ls /dev/disk/
+  316  ls /dev/disk/by-label
+  317  ls /dev/disk/by-partuuid
+  318  parted /dev/nvme0 print
+  319  parted /dev/vcsa3
+  320  parted /dev/vcs1
+  321  parted /dev/vda
+  322  clear
+  323  history
+  324  cat History_of_Redhat_Fedora_Server72.txt
+  325  history >> History_of_Redhat_Fedora_Server72.txt
+  326  df
+  327  exit
+  328  ls -la
+  329  history
+  330  poweroff
+  331  history
+  332  ip a
+  333  ls -la
+  334  history
+  335  poweroff
+  336  ls -la
+  337  history
+  338  ip a
+  339  poweroff
+  340  history
+  341  ls
+  342  ip a
+  343  vgs
+  344  lvcreate -n lv_testing -L 5G fedora_fedora
+  345  lvs
+  346  lvdisplay
+  347  mkfs.ext4 /dev/fedora_fedora/lv_testing
+  348  mkdir /test
+  349  mount /dev/fedora_fedora/lv_testing /test
+  350  df -H
+  351  vi /etc/fstab
+  352  umount /test
+  353  df -H
+  354  mount -H
+  355  mount -a
+  356  df -H
+  357  vgs
+  358  history
+  359  ls -la
+  360  cd TambunanShellScripting/
+  361  ls -la
+  362  history >> History_of_Redhat_Fedora_Server76.txt
+  363  ls -la
+  364  history >> History_of_Redhat_Fedora_Server_45.txt
+  365  history >> History_of_Redhat_Fedora_Server_46.txt
+  366  history >> History_of_Redhat_Fedora_Server_47.txt
+  367  history >> History_of_Redhat_Fedora_Server_48.txt
+  368  history >> History_of_Redhat_Fedora_Server_49.txt
+  369  history >> History_of_Redhat_Fedora_Server_50.txt
+  370  ls -la
+  371  poweroff
+  372  cd TambunanShellScripting/
+  373  ls -la
+  374  mv sean_gelael sean_gelael01
+  375  mv sean_gelael2 sean_gelael02
+  376  mv sean_gelael3 sean_gelael03
+  377  mv sean_gelael4 sean_gelael04
+  378  mv sean_gelael5 sean_gelael05
+  379  mv sean_gelael6 sean_gelael06
+  380  mkdir sean_gelael{07..10}
+  381  ls -la
+  382  mv sean_gelael*.txt History_of_Redhat_Fedora_Server{91..95}.txt
+  383  mv sean_gelael1.txt History_of_Redhat_Fedora_Server91.txt
+  384  mv sean_gelael2.txt History_of_Redhat_Fedora_Server92.txt
+  385  mv sean_gelael3.txt History_of_Redhat_Fedora_Server93.txt
+  386  mv sean_gelael4.txt History_of_Redhat_Fedora_Server94.txt
+  387  mv sean_gelael5.txt History_of_Redhat_Fedora_Server95.txt
+  388  history
+  389  ls -la
+  390  poweroff
+  391  history
+  392  cd TambunanShellScripting/
+  393  ls -la
+  394  ip a
+  395  cd TambunanShellScripting/
+  396  ls -la
+  397  ip a
+  398  poweroff
+  399  poweroff
+  400  history
+  401   mv sean_gelael01 ElasticSearch01
+  402  cd TambunanShellScripting/
+  403  mv sean_gelael01 ElasticSearch01
+  404   mv sean_gelael02 ElasticSearch02
+  405  mv sean_gelael03 ElasticSearch03
+  406  mv sean_gelael04 ElasticSearch04
+  407  mv sean_gelael05 ElasticSearch05
+  408  mv sean_gelael06 ElasticSearch06
+  409  mv sean_gelael07 ElasticSearch07
+  410  mv sean_gelael08 ElasticSearch08
+  411  mv sean_gelael09 ElasticSearch09
+  412  mv sean_gelael10 ElasticSearch10
+  413  ls -la
+  414  cd ..
+  415  chmod 777 TambunanShellScripting/
+  416  cd TambunanShellScripting/
+  417  ls -la
+  418  cd ElasticSearch01/
+  419  ls -la
+  420  cd ..
+  421  cd ElasticSearch02/
+  422  ls -la
+  423  cd ..
+  424  cd ElasticSearch01/
+  425  ls -la
+  426  mv sean_gelael01 IntroductionElasticSearchDB01.txt
+  427  mv sean_gelael01.txt IntroductionElasticSearchDB01.txt
+  428  mv sean_gelael1.txt IntroductionElasticSearchDB01.txt
+  429  mv sean_gelael2.txt IntroductionElasticSearchDB02.txt
+  430  mv sean_gelael3.txt IntroductionElasticSearchDB03.txt
+  431  mv sean_gelael4.txt IntroductionElasticSearchDB04.txt
+  432  mv sean_gelael5.txt IntroductionElasticSearchDB05.txt
+  433  ls -la
+  434  chmod 777 IntroductionElasticSearchDB01.txt
+  435  chmod 777 IntroductionElasticSearchDB02.txt
+  436  chmod 777 IntroductionElasticSearchDB03.txt
+  437  chmod 777 IntroductionElasticSearchDB04.txt
+  438  chmod 777 IntroductionElasticSearchDB05.txt
+  439  ls -la
+  440  ls -la
+  441  exit
+  442  ls -la
+  443  cd TambunanShellScripting/
+  444  ls -la
+  445  chmod 777 ElasticSearch01/
+  446  ls -la ElasticSearch01/
+  447  exit
+  448  history
+  449  ls -la
+  450  cd TambunanShellScripting/
+  451  ls -la
+  452  ip a
+  453  poweroff
+  454  ls -la
+  455  sudo dnf install java-latest-openjdk.x86_64
+  456  sudo alternatives --config java
+  457  java --version
+  458  nano /etc/yum.repos.d/elasticsearch.repo
+  459  sudo dnf install --enablerepo=elasticsearch elasticsearch
+  460  sudo chkconfig --add elasticsearch
+  461  sudo -i service elasticsearch start
+  462  sudo -i service elasticsearch stop
+  463  sudo /bin/systemctl daemon-reload
+  464  sudo /bin/systemctl enable elasticsearch.service
+  465  sudo systemctl start elasticsearch.service
+  466  systemctl status elasticsearch.service
+  467  curl -X GET "localhost:9200/?pretty"
+  468  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  469  nano /etc/yum.repos.d/kibana.repo
+  470  sudo dnf install kibana
+  471  ps -p 1
+  472  sudo chkconfig --add kibana
+  473  sudo -i service kibana start
+  474  sudo -i service kibana stop
+  475  sudo /bin/systemctl daemon-reload
+  476  sudo /bin/systemctl enable kibana.service
+  477  sudo systemctl start kibana.service
+  478  bin/elasticsearch
+  479  http://localhost:5601
+  480  nano /etc/elasticsearch/elasticsearch.yml
+  481  ES_PATH_CONF=/etc/elasticsearch
+  482  ES_PATH_CONF=/path/to/my/config ./bin/elasticsearch
+  483  nano /etc/elasticsearch/elasticsearch.yml
+  484  sudo systemctl stop kibana.service
+  485  sudo systemctl enable kibana.service
+  486  sudo systemctl start kibana.service
+  487  sudo systemctl status kibana.service
+  488  curl -X GET "localhost:9200/?pretty"
+  489  KBN_PATH_CONF=/home/kibana/config ./bin/kibana
+  490  nano /etc/kibana/kibana.yml
+  491  systemctl stop kibana.service
+  492  systemctl enable kibana.service
+  493  systemctl start kibana.service
+  494  systemctl status kibana.service
+  495  http://localhost:5601
+  496  http://192.168.86.130:5601
+  497  systemctl status elasticsearch.service
+  498  nano /etc/elasticsearch/elasticsearch.yml
+  499  poweroff
+  500   http://localhost:5601
+  501  poweroff
+  502  sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  503  nano /etc/yum.repos.d/logstash.repo
+  504  sudo yum install logstash
+  505  systemctl enable logstash.service
+  506  systemctl enable start.service
+  507  systemctl enable start logstash.service
+  508  systemctl start logstash.service
+  509  systemctl status logstash.service
+  510  systemctl enable kibana.service
+  511  systemctl start kibana.service
+  512  systemctl status kibana.service
+  513  nano /etc/kibana/kibana.yml
+  514  ip a
+  515  nano /etc/kibana/kibana.yml
+  516  systemctl stop kibana.service
+  517  firewall-cmd --add-port=5601/tcp --permanent; firewall-cmd --reload; firewall-cmd --list-all
+  518  systemctl start kibana.service
+  519  systemctl status kibana.service
+  520  history
+  521  cd ..
+  522  cd ..
+  523  cd /home/ctambunan/
+  524  ls -la
+  525  cd TambunanShellScripting/
+  526  ls -la
+  527  cd ElasticSearch02/
+  528  ls -lA
+  529  ls -la
+  530  cd ..
+  531  cd ElasticSearch01/
+  532  ls -la
+  533  ip a
+  534  cd..
+  535  cd ..
+  536  chmod 777 ElasticSearch02/
+  537  nano /etc/logstash/logstash.yml
+  538  cd ElasticSearch02/
+  539  ls -la
+  540  nano ConfigurationElasticSearch+KibanaDB11.txt
+  541  touch ConfigurationElasticSearch+Kibana+Logstash13.txt
+  542  touch ConfigurationElasticSearch+Kibana+Logstash14.txt
+  543  cp /etc/logstash/logstash.yml ConfigurationElasticSearch+Kibana+Logstash14.txt
+  544  cp /etc/kibana/kibana.yml ConfigurationElasticSearch+Kibana+Logstash13.txt
+  545  cp /etc/elasticsearch/elasticsearch.yml ConfigurationElasticSearch+Kibana+Logstash15.txt
+  546  ls -la
+  547  chmod 777 ConfigurationElasticSearch+Kibana+Logstash15.txt
+  548  curl -XGET 'http://ip_nodex:9200/_cluster/state?pretty
+  549  curl -X GET "localhost:9200/?pretty"
+  550  systemctl enable elasticsearch.service
+  551  systemctl start elasticsearch.service
+  552  nano /etc/elasticsearch/elasticsearch.yml
+  553  nano /etc/logstash/logstash.yml
+  554  nano /etc/kibana/kibana.yml
+  555  systemctl enable elasticsearch.service
+  556  systemctl start elasticsearch.service
+  557  sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+  558  nano /etc/yum.repos.d/metricbeat.repo
+  559  sudo yum install metricbeat
+  560  nano /etc/metricbeat/metricbeat.yml
+  561  metricbeat modules list
+  562  metricbeat modules enable nginx
+  563  nano /etc/metricbeat/metricbeat.yml
+  564  systemctl enable metricbeat.service
+  565  systemctl start metricbeat.service
+  566  systemctl status metricbeat.service
+  567  nano /etc/elasticsearch/elasticsearch.yml
+  568  systemctl status elasticsearch.service
+  569  nano /usr/lib/systemd/system/elasticsearch.service
+  570  journalctl -u elasticsearch.service -xe
+  571  touch ElastiSearch.txt
+  572  journalctl -u elasticsearch.service -xe >> ElastiSearch.txt
+  573  cat ElastiSearch.txt
+  574  journalctl -u elasticsearch.service -xe
+  575  nano /etc/elasticsearch/elasticsearch.yml
+  576  systemctl enable elastic.service
+  577  systemctl enable elasticsearch.service
+  578  systemctl start  elasticsearch.service
+  579  journalctl -xeu
+  580  journalctl -xeu elasticsearch.service
+  581  nano /etc/elasticsearch/elasticsearch.yml
+  582  nano /etc/elasticsearch/elasticsearch.yml
+  583  systemctl start  elasticsearch.service
+  584  nano /etc/elasticsearch/elasticsearch.yml
+  585  ip a
+  586  systemctl start  elasticsearch.service
+  587  journalctl -xeu elasticsearch.service
+  588  nano /var/log/elasticsearch/my-application.log
+  589  nano /etc/elasticsearch/elasticsearch.yml
+  590  systemctl enable elasticsearch.service
+  591  systemctl start elasticsearch.service
+  592  curl -X GET "localhost:9200"
+  593  sudo vim /etc/kibana/kibana.yml
+  594  sudo nano /etc/kibana/kibana.yml
+  595  systemctl start kibana.service
+  596  systemctl status kibana.service
+  597  firewall-cmd --add-port=5601/tcp --permanent
+  598  firewall-cmd --reload
+  599  http://localhost:5601
+  600  ip a
+  601  nano /etc/elasticsearch/elasticsearch.yml
+  602  history
+  603  ip a
+  604  cd TambunanShellScripting/
+  605  ls -la
+  606  chmod 777 ElasticSearch02/
+  607  nano /etc/elasticsearch/elasticsearch.yml
+  608  nano /etc/elasticsearch/elasticsearch.yml
+  609  cd /etc/elasticsearch/
+  610  ls -la
+  611  nano roles.yml
+  612  ls -la
+  613  nano jvm.options
+  614  ls -la
+  615  nano elasticsearch-plugins.example.yml
+  616  ls -la
+  617  cd jvm.options.d/
+  618  ls -la
+  619  cd ..
+  620  ls -la
+  621  nano jvm.options
+  622  nano jvm.options
+  623  nano jvm.options
+  624  systemctl stop elasticsearch.service
+  625  systemctl start elasticsearch.service
+  626  systemctl status elasticsearch.service
+  627  nano jvm.options
+  628  systemctl start elasticsearch.service
+  629  systemctl status elasticsearch.service
+  630  nano jvm.options
+  631  systemctl status elasticsearch.service
+  632  systemctl start elasticsearch.service
+  633  systemctl status elasticsearch.service
+  634  systemctl status kibana.service
+
+  635  systemctl start kibana.service
+
+  636  systemctl status kibana.service
+  637  systemctl restart logstash.service
+  638  poweroff
+  639  poweroff
+  640  poweroff
+  641  ls -la
+  642  history
+[root@fedora 10:57:47 /home/ctambunan]$  firewall-cmd --add-port=5601/tcp --permanent
+Warning: ALREADY_ENABLED: 5601:tcp
+
+success
+[root@fedora 10:57:54 /home/ctambunan]$ firewall-cmd --reload
+success
+[root@fedora 10:58:21 /home/ctambunan]$ firewall-cmd --list-ports
+5601/tcp
+[root@fedora 10:58:30 /home/ctambunan]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:a6:a1:44 brd ff:ff:ff:ff:ff:ff
+    altname enp3s0
+    inet 192.168.86.130/24 brd 192.168.86.255 scope global dynamic noprefixroute ens160
+       valid_lft 1093sec preferred_lft 1093sec
+    inet6 fe80::20c:29ff:fea6:a144/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+[root@fedora 11:00:01 /home/ctambunan]$  firewall-cmd --add-port=5601/tcp --permanent
+Warning: ALREADY_ENABLED: 5601:tcp
+success
+[root@fedora 11:37:40 /home/ctambunan]$ firewall-cmd --list-ports
+5601/tcp
+[root@fedora 11:37:42 /home/ctambunan]$ exit
+exit
+[ctambunan@fedora ~]$ exit
+logout
+Connection to 192.168.86.130 closed.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+Web console: https://fedora:9090/ or https://192.168.86.130:9090/
+
+Last login: Wed Feb  9 10:59:21 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 18:27:26 /home/ctambunan]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 18:27:57 /home/ctambunan]$ nano /etc/kibana/kibana.yml
+[root@fedora 18:30:08 /home/ctambunan]$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+
+Unexpected response code [500] from calling GET http://127.0.0.1:9200/_security/_authenticate?pretty
+It doesn't look like the X-Pack security feature is enabled on this Elasticsearch node.
+Please check if you have enabled X-Pack security in your elasticsearch.yml configuration file.
+
+
+ERROR: X-Pack Security is disabled by configuration.
+[root@fedora 18:30:51 /home/ctambunan]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 18:31:18 /home/ctambunan]$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+Exception in thread "main" SettingsException[Failed to load settings from [elasticsearch.yml]]; nested: MarkedYAMLException[while parsing a block mapping
+ in 'reader', line 17, column 1:
+    cluster.name: charles_2
+    ^
+expected <block end>, but found '<block mapping start>'
+ in 'reader', line 97, column 3:
+      xpack.security.enabled: true
+      ^
+
+ at [Source: (sun.nio.ch.ChannelInputStream); line: 74, column: 51]]; nested: ParserException[while parsing a block mapping
+ in 'reader', line 17, column 1:
+    cluster.name: charles_2
+    ^
+expected <block end>, but found '<block mapping start>'
+ in 'reader', line 97, column 3:
+
+      xpack.security.enabled: true
+      ^
+];
+        at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1189)
+        at org.elasticsearch.common.settings.Settings$Builder.loadFromPath(Settings.java:1160)
+        at org.elasticsearch.node.InternalSettingsPreparer.prepareEnvironment(InternalSettingsPreparer.java:75)
+        at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:91)
+        at org.elasticsearch.cli.EnvironmentAwareCommand.createEnv(EnvironmentAwareCommand.java:82)
+        at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:77)
+        at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+        at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:95)
+        at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:112)
+        at org.elasticsearch.cli.Command.main(Command.java:77)
+        at org.elasticsearch.xpack.security.authc.esnative.tool.SetupPasswordTool.main(SetupPasswordTool.java:128)
+Caused by: com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException: while parsing a block mapping
+ in 'reader', line 17, column 1:
+    cluster.name: charles_2
+    ^
+
+expected <block end>, but found '<block mapping start>'
+ in 'reader', line 97, column 3:
+      xpack.security.enabled: true
+      ^
+
+ at [Source: (sun.nio.ch.ChannelInputStream); line: 74, column: 51]
+        at com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException.from(MarkedYAMLException.java:27)
+        at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:359)
+        at org.elasticsearch.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:73)
+        at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:706)
+        at org.elasticsearch.common.settings.Settings.fromXContent(Settings.java:675)
+        at org.elasticsearch.common.settings.Settings.access$400(Settings.java:75)
+        at org.elasticsearch.common.settings.Settings$Builder.loadFromStream(Settings.java:1185)
+        ... 10 more
+Caused by: while parsing a block mapping
+ in 'reader', line 17, column 1:
+    cluster.name: charles_2
+    ^
+expected <block end>, but found '<block mapping start>'
+ in 'reader', line 97, column 3:
+      xpack.security.enabled: true
+      ^
+
+        at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingKey.produce(ParserImpl.java:572)
+        at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:158)
+        at org.yaml.snakeyaml.parser.ParserImpl.getEvent(ParserImpl.java:168)
+        at com.fasterxml.jackson.dataformat.yaml.YAMLParser.nextToken(YAMLParser.java:355)
+        ... 15 more
+[root@fedora 18:31:31 /home/ctambunan]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 18:31:56 /home/ctambunan]$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+
+Unexpected response code [500] from calling GET http://127.0.0.1:9200/_security/_authenticate?pretty
+It doesn't look like the X-Pack security feature is enabled on this Elasticsearch node.
+Please check if you have enabled X-Pack security in your elasticsearch.yml configuration file.
+
+
+ERROR: X-Pack Security is disabled by configuration.
+[root@fedora 18:32:01 /home/ctambunan]$ curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+>
+>
+> ^C
+[root@fedora 18:33:37 /home/ctambunan]$ curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+>
+>
+>
+> ^C
+[root@fedora 18:33:42 /home/ctambunan]$ nano /etc/metricbeat/metricbeat.yml
+[root@fedora 18:34:27 /home/ctambunan]$ curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.16.3-x86_64.rpm
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+ 27 42.4M   27 11.7M    0     0  1470k      0  0:00:29  0:00:08  0:00:21 2420k
+ 38 42.4M   38 16.4M    0     0  1658k      0  0:00:26  0:00:10  0:00:16 2472k
+ 43 42.4M   43 18.3M    0     0  1682k      0  0:00:25  0:00:11  0:00:14 2450k
+ 49 42.4M   49 21.0M    0     0  1777k      0  0:00:24  0:00:12  0:00:12 2436k
+ 54 42.4M   54 23.3M    0     0  1817k      0  0:00:23  0:00:13  0:00:10 2384k
+ 61 42.4M   61 26.1M    0     0  1890k      0  0:00:23  0:00:14  0:00:09 2602k
+ 67 42.4M   67 28.6M    0     0  1935k      0  0:00:22  0:00:15  0:00:07 2499k
+
+ 69 42.4M   69 29.3M    0     0  1847k      0  0:00:23  0:00:16  0:00:07 2213k
+ 70 42.4M   70 29.7M    0     0  1775k      0  0:00:24  0:00:17  0:00:07 1770k
+ 74 42.4M   74 31.7M    0     0  1793k      0  0:00:24  0:00:18  0:00:06 1731k
+ 80 42.4M   80 34.3M    0     0  1834k      0  0:00:23  0:00:19  0:00:04 1676k
+ 86 42.4M   86 36.8M    0     0  1871k      0  0:00:23  0:00:20  0:00:03 1680k
+
+ 92 42.4M   92 39.3M    0     0  1906k      0  0:00:22  0:00:21  0:00:01 2102k
+100 42.4M  100 42.4M    0     0  1943k      0  0:00:22  0:00:22 --:--:-- 2582k
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$
+[root@fedora 18:35:02 /home/ctambunan]$  systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-02-09 08:52:10 WIB; 9h ago
+       Docs: https://www.elastic.co
+   Main PID: 1171 (java)
+      Tasks: 76 (limit: 3475)
+     Memory: 1.2G
+        CPU: 1min 42.725s
+     CGroup: /system.slice/elasticsearch.service
+             ├─1171 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+AlwaysPreTouch -Xss1m -Djava.awt.hea>
+             └─2311 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Feb 09 08:51:42 fedora systemd[1]: Starting Elasticsearch...
+Feb 09 08:52:10 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 18:35:19 /home/ctambunan]$  systemctl restart elasticsearch.service
+[root@fedora 18:35:36 /home/ctambunan]$ curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "cluster.routing.allocation.exclude._name": "target-node-name"
+  }
+}
+'
+ 1010  curl -X PUT "localhost:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "persistent": {
+    "cluster.routing.allocation.exclude._name": null
+  }
+}
+'
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "security_exception",
+        "reason" : "missing authentication credentials for REST request [/_cluster/settings?pretty]",
+        "header" : {
+          "WWW-Authenticate" : "Basic realm=\"security\" charset=\"UTF-8\""
+        }
+      }
+    ],
+    "type" : "security_exception",
+    "reason" : "missing authentication credentials for REST request [/_cluster/settings?pretty]",
+    "header" : {
+      "WWW-Authenticate" : "Basic realm=\"security\" charset=\"UTF-8\""
+    }
+  },
+  "status" : 401
+}
+bash: 1010: command not found
+[root@fedora 18:35:53 /home/ctambunan]$ systemctl restart kibana.service
+[root@fedora 18:36:16 /home/ctambunan]$ systemctl status kibana.service
+● kibana.service - Kibana
+     Loaded: loaded (/etc/systemd/system/kibana.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-02-09 18:36:16 WIB; 5s ago
+       Docs: https://www.elastic.co
+   Main PID: 19188 (node)
+      Tasks: 11 (limit: 3475)
+     Memory: 260.8M
+        CPU: 5.290s
+     CGroup: /system.slice/kibana.service
+             └─19188 /usr/share/kibana/bin/../node/bin/node /usr/share/kibana/bin/../src/cli/dist --logging.dest=/var/log/kibana/kibana.log --pid.file=/run/kibana/kibana.pid "--deprecatio>
+
+Feb 09 18:36:16 fedora systemd[1]: Started Kibana.
+
+[root@fedora 18:36:23 /home/ctambunan]$ /usr/share/elasticsearch/bin/elasticsearch-setup-passwords interactive
+Initiating the setup of passwords for reserved users elastic,apm_system,kibana,kibana_system,logstash_system,beats_system,remote_monitoring_user.
+You will be prompted to enter passwords as the process progresses.
+Please confirm that you would like to continue [y/N]y
+
+
+Enter password for [elastic]:
+Reenter password for [elastic]:
+Enter password for [apm_system]:
+Reenter password for [apm_system]:
+
+
+Enter password for [kibana_system]:
+Reenter password for [kibana_system]:
+Enter password for [logstash_system]:
+Reenter password for [logstash_system]:
+Enter password for [beats_system]:
+Reenter password for [beats_system]:
+Enter password for [remote_monitoring_user]:
+Reenter password for [remote_monitoring_user]:
+Changed password for user [apm_system]
+Changed password for user [kibana_system]
+Changed password for user [kibana]
+Changed password for user [logstash_system]
+Changed password for user [beats_system]
+Changed password for user [remote_monitoring_user]
+Changed password for user [elastic]
+[root@fedora 18:43:29 /home/ctambunan]$ cd /home/ctambunan/TambunanShellScripting/ElasticSearch03/
+[root@fedora 18:44:33 /home/ctambunan/TambunanShellScripting/ElasticSearch03]$ ls -la
+total 12
+drwxr-xr-x.  2 root root    6 Jan 10 15:36 .
+drwxrwxrwx. 15 root root 8192 Jan 27 11:49 ..
+[root@fedora 18:44:36 /home/ctambunan/TambunanShellScripting/ElasticSearch03]$ cd ..
+[root@fedora 18:46:52 /home/ctambunan/TambunanShellScripting]$ chmod 777 ElasticSearch03/
+[root@fedora 18:46:57 /home/ctambunan/TambunanShellScripting]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:a6:a1:44 brd ff:ff:ff:ff:ff:ff
+    altname enp3s0
+    inet 192.168.86.130/24 brd 192.168.86.255 scope global dynamic noprefixroute ens160
+       valid_lft 1104sec preferred_lft 1104sec
+    inet6 fe80::20c:29ff:fea6:a144/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+[root@fedora 18:47:30 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --permanent --add-port=5601/tcp
+Warning: ALREADY_ENABLED: 5601:tcp
+success
+[root@fedora 18:48:31 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --list-port
+5601/tcp
+[root@fedora 18:48:37 /home/ctambunan/TambunanShellScripting]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 18:50:19 /home/ctambunan/TambunanShellScripting]$ nano /etc/kibana/kibana.yml
+[root@fedora 18:50:34 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --permanent --add-port=5700/tcp
+success
+[root@fedora 18:50:44 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --reload
+success
+[root@fedora 18:51:03 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --list-port
+5601/tcp 5700/tcp
+[root@fedora 18:51:06 /home/ctambunan/TambunanShellScripting]$ systemctl restart kibana.service
+[root@fedora 18:51:43 /home/ctambunan/TambunanShellScripting]$ systemctl restart logstash.service
+
+^C
+[root@fedora 18:52:33 /home/ctambunan/TambunanShellScripting]$ systemctl restart elasticsearch.service
+
+[root@fedora 18:52:48 /home/ctambunan/TambunanShellScripting]$
+[root@fedora 18:52:48 /home/ctambunan/TambunanShellScripting]$ systemctl status elasticsearch.service
+● elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: active (running) since Wed 2022-02-09 18:52:48 WIB; 28s ago
+       Docs: https://www.elastic.co
+
+   Main PID: 19650 (java)
+
+      Tasks: 75 (limit: 3475)
+
+     Memory: 1.8G
+        CPU: 25.600s
+     CGroup: /system.slice/elasticsearch.service
+             ├─19650 /usr/share/elasticsearch/jdk/bin/java -Xshare:auto -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+AlwaysPreTouch -Xss1m -Djava.awt.he>
+             └─19842 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Feb 09 18:52:38 fedora systemd[1]: Starting Elasticsearch...
+Feb 09 18:52:48 fedora systemd[1]: Started Elasticsearch.
+
+[root@fedora 18:53:18 /home/ctambunan/TambunanShellScripting]$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0c:29:a6:a1:44 brd ff:ff:ff:ff:ff:ff
+    altname enp3s0
+    inet 192.168.86.130/24 brd 192.168.86.255 scope global dynamic noprefixroute ens160
+       valid_lft 1647sec preferred_lft 1647sec
+    inet6 fe80::20c:29ff:fea6:a144/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+[root@fedora 18:53:26 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --reload '
+>
+> ^C
+[root@fedora 18:56:43 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --reload
+success
+[root@fedora 18:56:46 /home/ctambunan/TambunanShellScripting]$ firewall-cmd --list-port
+5601/tcp 5700/tcp
+[root@fedora 18:56:50 /home/ctambunan/TambunanShellScripting]$ exit
+exit
+[ctambunan@fedora ~]$ exit
+logout
+Connection to 192.168.86.130 closed.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.130
+ctambunan@192.168.86.130's password:
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Web console: https://fedora:9090/ or https://192.168.86.128:9090/
+
+Last login: Wed Feb  9 18:33:02 2022 from 192.168.86.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 21:28:10 /home/ctambunan]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 21:28:21 /home/ctambunan]$ nano /etc/kibana/kibana.yml
+[root@fedora 21:28:43 /home/ctambunan]$ nano /etc/kibana/kibana.yml
+[root@fedora 21:41:48 /home/ctambunan]$ exit
+exit
+[ctambunan@fedora ~]$ exit
+logout
+Connection to 192.168.86.128 closed.
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Permission denied, please try again.
+ctambunan@192.168.86.128's password:
+Permission denied, please try again.
+ctambunan@192.168.86.128's password:
+ctambunan@192.168.86.128: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+PS C:\Users\Charles Tambunan> ssh ctambunan@192.168.86.128
+ctambunan@192.168.86.128's password:
+Permission denied, please try again.
+ctambunan@192.168.86.128's password:
+Permission denied, please try again.
+ctambunan@192.168.86.128's password:
+ctambunan@192.168.86.128: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+PS C:\Users\Charles Tambunan>

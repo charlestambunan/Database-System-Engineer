@@ -1,0 +1,420 @@
+[root@fedora 19:35:25 /]$ journalctl -xe
+░░ Subject: A start job for unit dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service has finished successfully.
+░░
+░░ The job identifier is 6438.
+Jan 28 19:23:43 fedora audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dbus-:1.3-org.fedorapr>
+Jan 28 19:23:43 fedora setroubleshoot[7027]: AnalyzeThread.run(): Cancel pending alarm
+Jan 28 19:23:43 fedora systemd[1]: Started dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service.
+░░ Subject: A start job for unit dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service has finished successfully.
+░░
+░░ The job identifier is 6538.
+Jan 28 19:23:43 fedora audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dbus-:1.3-org.fedorapr>
+Jan 28 19:23:44 fedora setroubleshoot[7027]: SELinux is preventing systemd-user-ru from create access on the directory 1000. For complete SELinux messages >
+Jan 28 19:23:44 fedora setroubleshoot[7027]: SELinux is preventing systemd-user-ru from create access on the directory 1000.
+
+                                             *****  Plugin catchall (100. confidence) suggests   **************************
+
+                                             If you believe that systemd-user-ru should be allowed create access on the 1000 directory by default.
+                                             Then you should report this as a bug.
+                                             You can generate a local policy module to allow this access.
+                                             Do
+                                             allow this access for now by executing:
+                                             # ausearch -c 'systemd-user-ru' --raw | audit2allow -M my-systemduserru
+                                             # semodule -X 300 -i my-systemduserru.pp
+
+Jan 28 19:23:44 fedora setroubleshoot[7027]: AnalyzeThread.run(): Set alarm timeout to 10
+Jan 28 19:23:53 fedora systemd[1]: dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service: Main process exited, code=killed, status=14/ALRM
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ An ExecStart= process belonging to unit dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service has exited.
+░░
+░░ The process' exit code is 'killed' and its exit status is 14.
+Jan 28 19:23:53 fedora systemd[1]: dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service: Failed with result 'signal'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ The unit dbus-:1.3-org.fedoraproject.SetroubleshootPrivileged@2.service has entered the 'failed' state with result 'signal'.
+Jan 28 19:23:53 fedora audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dbus-:1.3-org.fedorapro>
+Jan 28 19:23:54 fedora systemd[1]: dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service: Main process exited, code=killed, status=14/ALRM
+░░ Subject: Unit process exited
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ An ExecStart= process belonging to unit dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service has exited.
+░░
+░░ The process' exit code is 'killed' and its exit status is 14.
+Jan 28 19:23:54 fedora systemd[1]: dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service: Failed with result 'signal'.
+░░ Subject: Unit failed
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ The unit dbus-:1.3-org.fedoraproject.Setroubleshootd@2.service has entered the 'failed' state with result 'signal'.
+Jan 28 19:23:54 fedora audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dbus-:1.3-org.fedorapro>
+Jan 28 19:24:07 fedora audit[7039]: USER_AUTH pid=7039 uid=1000 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:auth>
+Jan 28 19:24:07 fedora audit[7039]: USER_ACCT pid=7039 uid=1000 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:acco>
+Jan 28 19:24:07 fedora audit[7039]: USER_CMD pid=7039 uid=1000 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='cwd="/home/c>
+Jan 28 19:24:07 fedora audit[7039]: CRED_REFR pid=7039 uid=1000 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:setc>
+Jan 28 19:24:07 fedora sudo[7039]: ctambunan : TTY=pts/0 ; PWD=/home/ctambunan ; USER=root ; COMMAND=/usr/bin/su
+Jan 28 19:24:07 fedora audit[7039]: USER_START pid=7039 uid=1000 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:ses>
+Jan 28 19:24:07 fedora sudo[7039]: pam_unix(sudo:session): session opened for user root(uid=0) by ctambunan(uid=1000)
+Jan 28 19:24:07 fedora audit[7040]: USER_AUTH pid=7040 uid=0 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:authent>
+Jan 28 19:24:07 fedora audit[7040]: USER_ACCT pid=7040 uid=0 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:account>
+Jan 28 19:24:07 fedora audit[7040]: CRED_ACQ pid=7040 uid=0 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:setcred >
+Jan 28 19:24:07 fedora su[7040]: (to root) root on pts/0
+Jan 28 19:24:07 fedora su[7040]: pam_unix(su:session): session opened for user root(uid=0) by ctambunan(uid=0)
+Jan 28 19:24:07 fedora audit[7040]: USER_START pid=7040 uid=0 auid=1000 ses=2 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:sessio>
+Jan 28 19:24:12 fedora systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+░░ Subject: Unit succeeded
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ The unit systemd-hostnamed.service has successfully entered the 'dead' state.
+Jan 28 19:24:12 fedora audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-hostnamed comm=>
+Jan 28 19:24:12 fedora audit: BPF prog-id=0 op=UNLOAD
+Jan 28 19:24:12 fedora audit: BPF prog-id=0 op=UNLOAD
+Jan 28 19:25:03 fedora systemd[1]: Starting Check pmlogger instances are running...
+░░ Subject: A start job for unit pmlogger_check.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmlogger_check.service has begun execution.
+░░
+░░ The job identifier is 6638.
+Jan 28 19:25:03 fedora systemd[1]: Started Check pmlogger instances are running.
+░░ Subject: A start job for unit pmlogger_check.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmlogger_check.service has finished successfully.
+░░
+░░ The job identifier is 6638.
+Jan 28 19:25:03 fedora audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=pmlogger_check comm="s>
+Jan 28 19:25:04 fedora systemd[1]: pmlogger_check.service: Deactivated successfully.
+░░ Subject: Unit succeeded
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ The unit pmlogger_check.service has successfully entered the 'dead' state.
+Jan 28 19:25:04 fedora audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=pmlogger_check comm="sy>
+Jan 28 19:25:29 fedora chronyd[848]: Selected source 162.159.200.1 (2.fedora.pool.ntp.org)
+Jan 28 19:25:29 fedora chronyd[848]: System clock wrong by 1.849273 seconds
+Jan 28 19:28:03 fedora systemd[1]: Starting Check PMIE instances are running...
+░░ Subject: A start job for unit pmie_check.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmie_check.service has begun execution.
+░░
+░░ The job identifier is 6737.
+Jan 28 19:28:03 fedora systemd[1]: Started Check PMIE instances are running.
+░░ Subject: A start job for unit pmie_check.service has finished successfully
+Jan 28 19:24:12 fedora audit: BPF prog-id=0 op=UNLOAD
+Jan 28 19:24:12 fedora audit: BPF prog-id=0 op=UNLOAD
+
+Jan 28 19:25:03 fedora systemd[1]: Starting Check pmlogger instances are running...
+
+░░ Subject: A start job for unit pmlogger_check.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmlogger_check.service has begun execution.
+░░
+░░ The job identifier is 6638.
+Jan 28 19:25:03 fedora systemd[1]: Started Check pmlogger instances are running.
+░░ Subject: A start job for unit pmlogger_check.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmlogger_check.service has finished successfully.
+░░
+░░ The job identifier is 6638.
+Jan 28 19:25:03 fedora audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=pmlogger_check comm="s>
+Jan 28 19:25:04 fedora systemd[1]: pmlogger_check.service: Deactivated successfully.
+░░ Subject: Unit succeeded
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ The unit pmlogger_check.service has successfully entered the 'dead' state.
+Jan 28 19:25:04 fedora audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=pmlogger_check comm="sy>
+Jan 28 19:25:29 fedora chronyd[848]: Selected source 162.159.200.1 (2.fedora.pool.ntp.org)
+Jan 28 19:25:29 fedora chronyd[848]: System clock wrong by 1.849273 seconds
+Jan 28 19:28:03 fedora systemd[1]: Starting Check PMIE instances are running...
+░░ Subject: A start job for unit pmie_check.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░
+░░ A start job for unit pmie_check.service has begun execution.
+░░
+░░ The job identifier is 6737.
+Jan 28 19:28:03 fedora systemd[1]: Started Check PMIE instances are running.
+░░ Subject: A start job for unit pmie_check.service has finished successfully
+░░ Defined-By: systemd
+
+[root@fedora 19:36:28 /]$ sudo nano /etc/elasticsearch/jvm.options
+[root@fedora 19:38:28 /]$ sudo nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 19:40:19 /]$ systemctl restart elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 19:40:32 /]$ systemctl start elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 19:40:41 /]$ systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:40:41 WIB; 10s ago
+       Docs: https://www.elastic.co
+    Process: 7844 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 7844 (code=exited, status=1/FAILURE)
+        CPU: 2.858s
+
+Jan 28 19:40:39 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:40:41 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Consumed 2.858s CPU time.
+...skipping...
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:40:41 WIB; 10s ago
+       Docs: https://www.elastic.co
+    Process: 7844 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 7844 (code=exited, status=1/FAILURE)
+        CPU: 2.858s
+
+Jan 28 19:40:39 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:40:41 fedora systemd-entrypoint[7975]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:40:41 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:40:41 fedora systemd[1]: elasticsearch.service: Consumed 2.858s CPU time.
+~
+~
+~
+~
+~
+~
+~
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
+[root@fedora 19:45:06 /]$ curl -XGET 'http://localhost:9200/'
+curl: (7) Failed to connect to localhost port 9200 after 0 ms: Connection refused
+[root@fedora 19:45:12 /]$ curl -XGET 'http://localhost:9300/'
+curl: (7) Failed to connect to localhost port 9300 after 1 ms: Connection refused
+[root@fedora 19:45:18 /]$ cd ..
+[root@fedora 19:45:27 /]$ cd /etc/elasticsearch/
+[root@fedora 19:45:35 /etc/elasticsearch]$ ls -la
+total 64
+drwxr-s---.   3 root elasticsearch  4096 Jan 26 13:21 .
+
+drwxr-xr-x. 144 root root           8192 Jan 28 11:26 ..
+-rw-rw----.   1 root elasticsearch   199 Jan 26 13:21 elasticsearch.keystore
+-rw-r--r--.   1 root elasticsearch    76 Jan 26 13:21 .elasticsearch.keystore.initial_md5sum
+-rw-rw----.   1 root elasticsearch  1042 Jan  7 06:46 elasticsearch-plugins.example.yml
+-rw-rw----.   1 root elasticsearch  3451 Jan 28 19:40 elasticsearch.yml
+-rw-rw----.   1 root elasticsearch  3329 Jan 28 19:38 jvm.options
+drwxr-s---.   2 root elasticsearch     6 Jan  7 06:49 jvm.options.d
+-rw-rw----.   1 root elasticsearch 19150 Jan  7 06:46 log4j2.properties
+-rw-rw----.   1 root elasticsearch   473 Jan  7 06:46 role_mapping.yml
+-rw-rw----.   1 root elasticsearch   197 Jan  7 06:46 roles.yml
+-rw-rw----.   1 root elasticsearch     0 Jan  7 06:46 users
+-rw-rw----.   1 root elasticsearch     0 Jan  7 06:46 users_roles
+[root@fedora 19:45:36 /etc/elasticsearch]$ nano elasticsearch.yml
+[root@fedora 19:49:03 /etc/elasticsearch]$ sudo /bin/systemctl enable elasticsearch.service
+
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+[root@fedora 19:49:23 /etc/elasticsearch]$ sudo systemctl start elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 19:49:34 /etc/elasticsearch]$ sudo systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:49:34 WIB; 10s ago
+       Docs: https://www.elastic.co
+    Process: 8057 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 8057 (code=exited, status=1/FAILURE)
+        CPU: 2.997s
+
+Jan 28 19:49:32 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:49:34 fedora systemd-entrypoint[8188]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:49:34 fedora systemd-entrypoint[8188]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:49:34 fedora systemd-entrypoint[8188]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >
+Jan 28 19:49:34 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:49:34 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:49:34 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:49:34 fedora systemd[1]: elasticsearch.service: Consumed 2.997s CPU time.
+
+[root@fedora 19:51:24 /etc/elasticsearch]$ nano /etc/elasticsearch/elasticsearch.yml
+[root@fedora 19:52:35 /etc/elasticsearch]$ sudo systemctl start elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 19:52:39 /etc/elasticsearch]$
+[root@fedora 19:52:39 /etc/elasticsearch]$ sudo systemctl enable elasticsearch.service
+Synchronizing state of elasticsearch.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable elasticsearch
+[root@fedora 19:52:54 /etc/elasticsearch]$ sudo systemctl start elasticsearch.service
+Job for elasticsearch.service failed because the control process exited with error code.
+See "systemctl status elasticsearch.service" and "journalctl -xeu elasticsearch.service" for details.
+[root@fedora 19:53:00 /etc/elasticsearch]$ sudo systemctl status elasticsearch.service
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:53:00 WIB; 5s ago
+       Docs: https://www.elastic.co
+    Process: 8425 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 8425 (code=exited, status=1/FAILURE)
+        CPU: 2.874s
+
+Jan 28 19:52:58 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:53:00 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Consumed 2.874s CPU time.
+...skipping...
+× elasticsearch.service - Elasticsearch
+     Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled)
+
+     Active: failed (Result: exit-code) since Fri 2022-01-28 19:53:00 WIB; 5s ago
+       Docs: https://www.elastic.co
+    Process: 8425 ExecStart=/usr/share/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet (code=exited, status=1/FAILURE)
+   Main PID: 8425 (code=exited, status=1/FAILURE)
+        CPU: 2.874s
+
+Jan 28 19:52:58 fedora systemd[1]: Starting Elasticsearch...
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: encountered [2] errors parsing [/etc/elasticsearch/jvm.options]
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [1]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [31]: >
+Jan 28 19:53:00 fedora systemd-entrypoint[8556]: [2]: encountered improperly formatted JVM option in [/etc/elasticsearch/jvm.options] on line number [32]: >
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Main process exited, code=exited, status=1/FAILURE
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Failed with result 'exit-code'.
+Jan 28 19:53:00 fedora systemd[1]: Failed to start Elasticsearch.
+Jan 28 19:53:00 fedora systemd[1]: elasticsearch.service: Consumed 2.874s CPU time.
+~
+~
+~
+~
+
+~
+~
+~
+~
+~
+~
+~
+
+  GNU nano 5.8                                                            jvm.options                                                                       ################################################################
+## IMPORTANT: JVM heap size
+################################################################
+##
+## The heap size is automatically configured by Elasticsearch
+## based on the available memory in your system and the roles
+## each node is configured to fulfill. If specifying heap is
+## required, it should be done through a file in jvm.options.d,
+## and the min and max should be set to the same value. For
+## example, to set the heap to 4 GB, create a new file in the
+## jvm.options.d directory containing these lines:
+##
+##Xms512m
+##Xmx512m
+##
+## See https://www.elastic.co/guide/en/elasticsearch/reference/7.16/heap-size.html
+## for more information
+##
+################################################################
+
+
+################################################################
+## Expert settings
+################################################################
+##
+## All settings below here are considered expert settings. Do
+## not adjust them unless you understand what you are doing. Do
+## not edit them in this file; instead, create a new file in the
+## jvm.options.d directory containing your adjustments.
+##
+################################################################
+
+## GC configuration
+8-13:-XX:+UseConcMarkSweepGC
+8-13:-XX:CMSInitiatingOccupancyFraction=75
+client_loop: send disconnect: Connection reset
+PS D:\> ssh ctambunan@192.168.231.130
+ctambunan@192.168.231.130's password: here Is      ^K Cut           ^T Execute       ^C Location      M-U Undo         M-A Set Mark     M-] To Bracket
+Web console: https://fedora:9090/ or https://192.168.231.130:9090/  ^J Justify       ^/ Go To Line    M-E Redo         M-6 Copy         ^Q Where Was
+
+Last login: Fri Jan 28 19:23:41 2022 from 192.168.231.1
+[ctambunan@fedora ~]$ sudo su
+[sudo] password for ctambunan:
+[root@fedora 20:55:51 /home/ctambunan]$ ls -la
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
+[root@fedora 19:53:22 /etc/elasticsearch]$ nano /etc/elasticsearch/jvm.options
+[root@fedora 19:54:18 /etc/elasticsearch]$ [root@fedora 19:54:18 /etc/elasticsearch]$ cp /etc/elasticsearch/jvm.options /etc/elasticsearch/jvm.options.d
+[root@fedora 19:54:36 /etc/elasticsearch]$ cd /etc/elasticsearch/
+[root@fedora 19:54:48 /etc/elasticsearch]$ ls -la
+total 64
+drwxr-s---.   3 root elasticsearch  4096 Jan 26 13:21 .
+drwxr-xr-x. 144 root root           8192 Jan 28 11:26 ..
+-rw-rw----.   1 root elasticsearch   199 Jan 26 13:21 elasticsearch.keystore
+-rw-r--r--.   1 root elasticsearch    76 Jan 26 13:21 .elasticsearch.keystore.initial_md5sum
+-rw-rw----.   1 root elasticsearch  1042 Jan  7 06:46 elasticsearch-plugins.example.yml
+-rw-rw----.   1 root elasticsearch  3521 Jan 28 19:52 elasticsearch.yml
+-rw-rw----.   1 root elasticsearch  3329 Jan 28 19:54 jvm.options
+drwxr-s---.   2 root elasticsearch    25 Jan 28 19:54 jvm.options.d
+-rw-rw----.   1 root elasticsearch 19150 Jan  7 06:46 log4j2.properties
+-rw-rw----.   1 root elasticsearch   473 Jan  7 06:46 role_mapping.yml
+-rw-rw----.   1 root elasticsearch   197 Jan  7 06:46 roles.yml
+-rw-rw----.   1 root elasticsearch     0 Jan  7 06:46 users
+-rw-rw----.   1 root elasticsearch     0 Jan  7 06:46 users_roles
+[root@fedora 19:54:52 /etc/elasticsearch]$ nano jvm.options.d
+[root@fedora 19:55:12 /etc/elasticsearch]$ cd jvm.options.d
+[root@fedora 19:55:33 /etc/elasticsearch/jvm.options.d]$ ls -la
+total 8
+drwxr-s---. 2 root elasticsearch   25 Jan 28 19:54 .
+drwxr-s---. 3 root elasticsearch 4096 Jan 26 13:21 ..
+-rw-r-----. 1 root elasticsearch 3329 Jan 28 19:54 jvm.options
+[root@fedora 19:55:35 /etc/elasticsearch/jvm.options.d]$ nano jvm.options

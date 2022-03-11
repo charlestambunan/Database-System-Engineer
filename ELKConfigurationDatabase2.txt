@@ -1,0 +1,21 @@
+    1  poweroff
+    2  ls -la
+    3  cd Documents/
+    4  ls -la
+    5  rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    6  nano 
+    7  nano /etc/yum.repos.d/ELK.repo
+    8  yum install elasticsearch
+    9  yum install kibana
+   10  yum install logstash
+   11  ls -la
+   12  exit
+   13  ip a
+   14  ip a
+   15  poweroff
+   16  history
+   17  cd Documents/
+   18  ls -la
+   19  cd ElasticSearch03/
+   20  ls -la
+   21  history >> ELKConfigurationDatabase2.txt
